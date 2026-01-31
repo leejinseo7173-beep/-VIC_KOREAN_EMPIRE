@@ -1,0 +1,28 @@
+﻿DHE = { # Korea
+    flag_definition = {
+		coa = KOR
+		priority = 2
+		trigger = {
+			OR = {
+				scope:actor ?= {
+					has_variable = dhe_empire_formed 
+				}
+				coa_def_republic_flag_trigger = yes
+			}
+		}
+	}
+	flag_definition = {
+		coa = KOR_subject_CHI
+		priority = 2
+		trigger = {
+			coa_def_chinese_ensign_trigger = yes
+		}
+	}
+	flag_definition = {
+		coa = KOR_communist
+		priority = 1500
+		trigger = {
+			coa_def_communist_flag_trigger = yes
+		}
+	}
+}

@@ -1,0 +1,12 @@
+﻿# Encoding: UTF-8 with BOM
+
+
+# (로그) Unexpected token: icon → 제거
+dhe_reforms = {
+context = country
+}
+
+
+dhe_conquest = {
+context = country
+}

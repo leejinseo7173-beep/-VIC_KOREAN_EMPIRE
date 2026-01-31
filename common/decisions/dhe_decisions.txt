@@ -1,0 +1,139 @@
+﻿# Encoding: UTF-8 with BOM
+
+
+# 1. 칭제건원 선포
+dhe_proclaim_empire_decision = {
+is_shown = {
+c:KOR ?= this
+NOT = { has_variable = dhe_empire_formed }
+}
+
+
+possible = {
+is_subject = no
+has_technology_researched = nationalism
+has_law = law_type:law_monarchy
+NOT = { has_law = law_type:law_isolationism }
+NOT = { has_law = law_type:law_traditionalism }
+
+
+owns_entire_state_region = STATE_SEOUL
+owns_entire_state_region = STATE_PYONGYANG
+owns_entire_state_region = STATE_SARIWON
+owns_entire_state_region = STATE_YANGHO
+owns_entire_state_region = STATE_BUSAN
+}
+
+
+when_taken = {
+if = {
+limit = { NOT = { has_variable = dhe_reform_score } }
+set_variable = { name = dhe_reform_score value = 0 }
+}
+
+
+trigger_event = { id = dhe_event.1 popup = yes }
+}
+
+
+ai_chance = { value = 100 }
+}
+
+
+# 2. 황실의 원대한 야망
+dhe_great_korea_ambition = {
+is_shown = {
+exists = c:DHE
+c:DHE ?= this
+NOT = { has_variable = dhe_great_korea_ambition_taken }
+}
+
+
+possible = {
+is_subject = no
+army_size >= 60
+}
+
+
+when_taken = {
+set_variable = dhe_great_korea_ambition_taken
+add_journal_entry = { type = je_dhe_great_korea_conquest }
+
+
+s:STATE_SHENGJING = { add_claim = c:DHE }
+s:STATE_SOUTHERN_MANCHURIA = { add_claim = c:DHE }
+s:STATE_AMUR = { add_claim = c:DHE }
+s:STATE_NORTHERN_MANCHURIA = { add_claim = c:DHE }
+s:STATE_KYUSHU = { add_claim = c:DHE }
+s:STATE_KANSAI = { add_claim = c:DHE }
+s:STATE_HOKKAIDO = { add_claim = c:DHE }
+s:STATE_TOHOKU = { add_claim = c:DHE }
+s:STATE_KANTO = { add_claim = c:DHE }
+s:STATE_CHUBU = { add_claim = c:DHE }
+s:STATE_CHUGOKU = { add_claim = c:DHE }
+s:STATE_SHIKOKU = { add_claim = c:DHE }
+s:STATE_RYUKYU_ISLANDS = { add_claim = c:DHE }
+s:STATE_FORMOSA = { add_claim = c:DHE }
+}
+}
+
+# 한글 교육 준비 (Prepare)
+dhe_hangeul_edu_prepare_decision = {
+    # 화면에 보이는 조건: 대한제국 태그일 때만
+    is_shown = {
+        c:DHE ?= this
+        exists = c:DHE
+        NOT = { has_variable = dhe_hangeul_edu_preparing }
+    }    
+    possible = {
+    custom_tooltip = {
+        text = dhe_hangeul_edu_prepare_req_reform_tt    # ← 이제 한글로 표시
+        has_variable = dhe_gwangmu_reform_started
+    } 
+    
+
+        treasury >= 500000
+        bureaucracy >= 200
+        authority >= 200
+
+    }
+    when_taken = {
+        # 변수 설정
+        set_variable = dhe_hangeul_edu_preparing 
+        add_modifier = {
+            name = dhe_mod_hangeul_edu_preparation_20y
+            years = 20
+        }
+    } 
+    ai_chance = { value = 50 }
+}
+
+
+# [신규] 한글 교육 완료
+dhe_hangeul_edu_complete_decision = {
+    is_shown = {
+        c:DHE ?= this
+        exists = c:DHE
+        has_variable = dhe_hangeul_edu_preparing
+        NOT = { has_variable = dhe_hangeul_edu_completed }
+    }
+
+    possible = {
+        literacy_rate >= 0.5
+        has_law = law_type:law_public_schools
+        any_scope_building = { is_building_type = building_university level >= 3 }
+    }
+
+    when_taken = {
+        set_variable = dhe_hangeul_edu_completed
+        remove_variable = dhe_hangeul_edu_preparing
+        remove_modifier = dhe_mod_hangeul_edu_preparation_20y
+        add_modifier = {
+            name = dhe_mod_hangeul_edu_completed
+        }
+
+        trigger_event = { id = dhe_event.hangeul_complete popup = yes }
+    }
+
+    ai_chance = { value = 40 }
+}

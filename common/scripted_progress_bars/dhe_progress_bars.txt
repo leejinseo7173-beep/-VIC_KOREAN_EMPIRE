@@ -1,0 +1,21 @@
+﻿# Encoding: UTF-8 with BOM
+
+
+# (로그) Unexpected token: value → value 블록 제거
+# NOTE: 실제 값 연동은 추후 scripted_value/전용 갱신 로직으로 복구
+
+
+dhe_reform_main_bar = {
+name = "dhe_reform_main_bar"
+desc = "dhe_reform_main_bar_desc"
+default_green = yes
+max_value = 6
+}
+
+
+dhe_conquest_bar = {
+name = "dhe_conquest_bar"
+desc = "dhe_conquest_bar_desc"
+default = yes
+max_value = 14
+}

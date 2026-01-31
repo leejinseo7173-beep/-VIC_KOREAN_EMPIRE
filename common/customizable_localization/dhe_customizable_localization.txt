@@ -1,0 +1,81 @@
+﻿custom_loc_type = {
+    name = DHE_GWANGMU_CHECKLIST
+    type = country  # 일지(JE) 스코프에서 호출됨
+
+    # ==========================
+    # 1. 산업 개혁 (Industry)
+    # ==========================
+    text = {
+        trigger = { 
+            owner = { has_variable = dhe_gwangmu_industry_done } 
+        }
+        localization_key = "DHE_CHECK_INDUSTRY_YES"
+    }
+    text = {
+        trigger = { 
+            # 변수가 없을 때 (기본값)
+            NOT = { owner = { has_variable = dhe_gwangmu_industry_done } } 
+        }
+        localization_key = "DHE_CHECK_INDUSTRY_NO"
+    }
+
+    # ==========================
+    # 2. 군제 개혁 (Military)
+    # ==========================
+    text = {
+        trigger = { owner = { has_variable = dhe_gwangmu_military_done } }
+        localization_key = "DHE_CHECK_MILITARY_YES"
+    }
+    text = {
+        trigger = { NOT = { owner = { has_variable = dhe_gwangmu_military_done } } }
+        localization_key = "DHE_CHECK_MILITARY_NO"
+    }
+
+    # ==========================
+    # 3. 교육 개혁 (Education)
+    # ==========================
+    text = {
+        trigger = { owner = { has_variable = dhe_gwangmu_education_done } }
+        localization_key = "DHE_CHECK_EDU_YES"
+    }
+    text = {
+        trigger = { NOT = { owner = { has_variable = dhe_gwangmu_education_done } } }
+        localization_key = "DHE_CHECK_EDU_NO"
+    }
+
+    # ==========================
+    # 4. 행정 개혁 (Admin)
+    # ==========================
+    text = {
+        trigger = { owner = { has_variable = dhe_gwangmu_admin_done } }
+        localization_key = "DHE_CHECK_ADMIN_YES"
+    }
+    text = {
+        trigger = { NOT = { owner = { has_variable = dhe_gwangmu_admin_done } } }
+        localization_key = "DHE_CHECK_ADMIN_NO"
+    }
+
+    # ==========================
+    # 5. 사회 개혁 (Society)
+    # ==========================
+    text = {
+        trigger = { owner = { has_variable = dhe_gwangmu_society_done } }
+        localization_key = "DHE_CHECK_SOCIETY_YES"
+    }
+    text = {
+        trigger = { NOT = { owner = { has_variable = dhe_gwangmu_society_done } } }
+        localization_key = "DHE_CHECK_SOCIETY_NO"
+    }
+
+    # ==========================
+    # 6. 기반시설 (Infrastructure)
+    # ==========================
+    text = {
+        trigger = { owner = { has_variable = dhe_gwangmu_infrastructure_done } }
+        localization_key = "DHE_CHECK_INFRA_YES"
+    }
+    text = {
+        trigger = { NOT = { owner = { has_variable = dhe_gwangmu_infrastructure_done } } }
+        localization_key = "DHE_CHECK_INFRA_NO"
+    }
+}

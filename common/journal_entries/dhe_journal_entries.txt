@@ -1,0 +1,381 @@
+﻿# Encoding: UTF-8 with BOM
+
+# =============================================================================
+# [메인] 광무개혁 (진행도바 제거 + ✅/❌ 체크는 loc에서 표시)
+# =============================================================================
+je_dhe_gwangmu_reform_main = {
+	group = dhe_reforms
+
+	is_shown_when_inactive = {
+		exists = c:DHE
+		this = c:DHE
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = dhe_gwangmu_reform_completed }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	possible = {
+		exists = c:DHE
+		this = c:DHE
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = dhe_gwangmu_reform_completed }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = je_dhe_gwangmu_reform_main_goal_tooltip
+			
+			has_variable = dhe_gwangmu_industry_done
+			has_variable = dhe_gwangmu_military_done
+			has_variable = dhe_gwangmu_education_done
+			has_variable = dhe_gwangmu_admin_done
+			has_variable = dhe_gwangmu_society_done
+			has_variable = dhe_gwangmu_infrastructure_done
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_gwangmu_reform_completed
+		trigger_event = { id = dhe_event.4 }
+	}
+}
+
+# =============================================================================
+# [하위] 산업 개혁 - 레벨 3 이상
+# =============================================================================
+je_dhe_gwangmu_industry = {
+	group = dhe_reforms
+
+	is_shown_when_inactive = {
+		exists = c:DHE
+		this = c:DHE
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = dhe_gwangmu_industry_done }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	possible = {
+		exists = c:DHE
+		this = c:DHE
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = dhe_gwangmu_industry_done }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	complete = {
+		and = {
+			any_scope_building = {
+				is_building_type = building_railway
+				level >= 5
+			}
+			any_scope_building = {
+				is_building_type = building_coal_mine
+				level >= 5
+			}
+			any_scope_building = {
+				is_building_type = building_steel_mill
+				level >= 5
+			}
+            any_scope_building = {
+                is_building_type = building_motor_industry
+                level >= 2
+			}
+            any_scope_building = {
+                is_building_type = building_glassworks
+				level >= 3
+			}
+            any_scope_building = {
+                is_building_type = building_tooling_workshop
+				level >= 5
+			}
+            any_scope_building = {
+                is_building_type = building_textile_mill
+				level >= 2
+			}
+            any_scope_building = {
+                is_building_type = building_explosives_factory
+				level >= 4
+			}
+            any_scope_building = {
+                is_building_type = building_food_industry
+				level >= 5
+			}			
+            any_scope_building = {
+                is_building_type = building_military_shipyard
+				level >= 4
+			}
+			has_technology_researched = railways
+			has_technology_researched = atmospheric_engine
+			has_technology_researched = mechanized_workshops
+            has_technology_researched = intensive_agriculture
+		    has_technology_researched = bessemer_process
+		}
+		
+	}
+
+	on_complete = {
+		set_variable = dhe_gwangmu_industry_done
+	}
+}
+
+# =============================================================================
+# [하위] 군제 개혁
+# =============================================================================
+je_dhe_gwangmu_military = {
+	group = dhe_reforms
+
+	is_shown_when_inactive = {
+		exists = c:DHE
+		this = c:DHE
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = dhe_gwangmu_military_done }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	possible = {
+		exists = c:DHE
+		this = c:DHE
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = dhe_gwangmu_military_done }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	complete = {
+    has_technology_researched = line_infantry
+    has_technology_researched = general_staff
+    has_technology_researched = napoleonic_warfare
+	has_technology_researched = power_of_the_purse
+    # 군대 규모 50 이상
+    army_size >= 100
+    navy_size >= 15
+
+    any_scope_building = {
+        is_building_type = building_arms_industry
+        level >= 3
+    }
+    any_scope_building = {
+        is_building_type = building_artillery_foundry
+        level >= 3
+    }
+    any_scope_building = {
+        is_building_type = building_military_shipyard
+        level >= 2
+    }
+    }
+	on_complete = {
+		set_variable = dhe_gwangmu_military_done
+    }
+}
+# =============================================================================
+# [하위] 교육 개혁 - 레벨 3 이상
+# =============================================================================
+je_dhe_gwangmu_education = {
+	group = dhe_reforms
+
+	is_shown_when_inactive = {
+		exists = c:DHE
+		this = c:DHE
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = dhe_gwangmu_education_done }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	possible = {
+		exists = c:DHE
+		this = c:DHE
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = dhe_gwangmu_education_done }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	complete = {
+	any_scope_building = {
+		is_building_type = building_university
+		level >= 6
+		}
+	has_law = law_type:law_public_schools
+    literacy_rate >= 0.5
+	custom_tooltip = {
+         text = dhe_hangeul_edu_completed
+	     has_variable = dhe_hangeul_edu_completed }
+    has_technology_researched = academia
+    has_technology_researched = empiricism
+    has_technology_researched = mass_communication
+	}
+
+	on_complete = {
+		set_variable = dhe_gwangmu_education_done
+	}
+}
+
+# =============================================================================
+# [하위] 행정 개혁 - 레벨 3 이상
+# =============================================================================
+je_dhe_gwangmu_admin = {
+	group = dhe_reforms
+
+	is_shown_when_inactive = {
+		exists = c:DHE
+		this = c:DHE
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = dhe_gwangmu_admin_done }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	possible = {
+		exists = c:DHE
+		this = c:DHE
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = dhe_gwangmu_admin_done }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	complete = {
+    any_scope_building = {
+        is_building_type = building_government_administration
+        level >= 5
+    }
+    any_scope_building = {
+        is_building_type = building_financial_district
+        level >= 4
+    }
+	    bureaucracy >= 50
+		has_technology_researched = central_archives
+		has_law = law_type:law_proportional_taxation
+	}
+
+	on_complete = {
+		set_variable = dhe_gwangmu_admin_done
+	}
+}
+
+# =============================================================================
+# [하위] 사회 개혁
+# =============================================================================
+je_dhe_gwangmu_society = {
+	group = dhe_reforms
+
+	is_shown_when_inactive = {
+		exists = c:DHE
+		this = c:DHE
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = dhe_gwangmu_society_done }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	possible = {
+		exists = c:DHE
+		this = c:DHE
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = dhe_gwangmu_society_done }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	complete = {
+    OR = {
+        has_law = law_type:law_freedom_of_conscience
+        has_law = law_type:law_right_of_assembly
+        has_law = law_type:law_censored_press
+        has_law = law_type:law_protected_speech
+	}
+	has_technology_researched = egalitarianism
+    has_technology_researched = labor_movement
+    has_technology_researched = human_rights
+    has_technology_researched = modern_sewerage
+    has_technology_researched = medical_degrees
+	}
+
+	on_complete = {
+		set_variable = dhe_gwangmu_society_done
+	}
+}
+
+
+# =============================================================================
+# [하위] 기반시설 정비 - 레벨 3 이상
+# =============================================================================
+je_dhe_gwangmu_infrastructure = {
+	group = dhe_reforms
+
+	is_shown_when_inactive = {
+		exists = c:DHE
+		this = c:DHE
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = dhe_gwangmu_infrastructure_done }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	possible = {
+		exists = c:DHE
+		this = c:DHE
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = dhe_gwangmu_infrastructure_done }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	complete = {
+		and = {
+			any_scope_building = {
+				is_building_type = building_port
+				level >= 5
+			}
+            any_scope_building = {
+                is_building_type = building_railway
+                level >= 5
+            }			
+			any_scope_building = {
+				is_building_type = building_construction_sector
+				level >= 3
+			}
+			any_scope_building = {
+				is_building_type = building_urban_center
+				level >= 8
+			}
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_gwangmu_infrastructure_done
+	}
+}
+
+# =============================================================================
+# [정복] 대동아 통합 전쟁
+# =============================================================================
+je_dhe_great_korea_conquest = {
+	group = dhe_conquest
+
+	possible = {
+		exists = c:DHE
+		this = c:DHE
+		has_variable = dhe_great_korea_ambition_taken
+		NOT = { has_variable = dhe_ambition_fulfilled }
+	}
+
+	complete = {
+		owns_entire_state_region = STATE_SHENGJING
+		owns_entire_state_region = STATE_SOUTHERN_MANCHURIA
+		owns_entire_state_region = STATE_AMUR
+		owns_entire_state_region = STATE_NORTHERN_MANCHURIA
+
+		owns_entire_state_region = STATE_KYUSHU
+		owns_entire_state_region = STATE_KANSAI
+		owns_entire_state_region = STATE_HOKKAIDO
+		owns_entire_state_region = STATE_TOHOKU
+		owns_entire_state_region = STATE_KANTO
+		owns_entire_state_region = STATE_CHUBU
+		owns_entire_state_region = STATE_CHUGOKU
+		owns_entire_state_region = STATE_SHIKOKU
+		owns_entire_state_region = STATE_RYUKYU_ISLANDS
+
+		owns_entire_state_region = STATE_FORMOSA
+	}
+
+	on_complete = {
+		set_variable = dhe_ambition_fulfilled
+		trigger_event = { id = dhe_event.2 popup = yes }
+	}
+
+	should_be_pinned_by_default = yes
+}
