@@ -1,0 +1,68 @@
+﻿l_korean: 
+building_gyeongbokgung: "경복궁"
+ building_gyeongbokgung_desc: "조선의 법궁이자 대한제국의 황궁입니다. 국가의 권위와 위신을 드높이고 수많은 관료들이 국정을 돌보는 제국의 심장입니다."
+
+ # [2] 경복궁 생산 방식(효과) 현지화
+ pmg_gyeongbokgung: "황궁 관리"
+ pm_gyeongbokgung_active: "황궁 운영"
+ pm_gyeongbokgung_active_desc: "황궁을 정상적으로 운영하여 국가의 위신과 권위를 높입니다."
+
+ dhe_mod_gyeongbokgung_reconstruction: "경복궁 중건 준비 중"
+ 
+ dhe_rebuild_gyeongbokgung_decision: "경복궁 중건 준비"
+ dhe_rebuild_gyeongbokgung_decision_desc: "임진왜란 이후 폐허로 남았던 경복궁을 대한제국의 위상에 걸맞은 정궁으로 중건하기 위한 대대적인 기초 작업에 착수합니다. 전국에서 자재를 모으고 부지를 정리하는 데 1년이 소요될 것입니다."
+ 
+ je_dhe_rebuild_gyeongbokgung: "경복궁 중건 준비"
+ je_dhe_rebuild_gyeongbokgung_reason: "경복궁을 제국의 위엄에 걸맞게 재건하기 위해 전국에서 자재와 인력을 모으고 터를 닦고 있습니다. 1년의 준비 기간이 끝나면 본격적인 공사를 시작할 수 있습니다."
+ 
+ dhe_gyeongbokgung.1.t: "경복궁 중건 준비 완료!"
+ dhe_gyeongbokgung.1.d: "1년간의 피나는 노력 끝에, 마침내 경복궁 중건을 위한 모든 기초 작업이 끝났습니다. 터가 반듯하게 닦이고 훌륭한 목재와 석재가 산더미처럼 쌓였습니다. 이제 국가의 역량을 총동원하여 본격적으로 웅장한 황궁을 건설할 때입니다!"
+ dhe_gyeongbokgung.1.f: "천하의 중심을 세울 터가 마련되었도다."
+ dhe_gyeongbokgung.1.a: "즉각 건설을 명하라!"
+ 
+ dhe_gyeongbokgung_unlock_tt: "일지를 통해 경복궁 중건 준비(1년)가 완료되어야 합니다."
+
+ building_jongmyo: "종묘"
+ building_jongmyo_desc: "조선 역대 왕과 왕비의 신위를 모신 유교 사당입니다. 국가의 근본이자 왕실의 정통성을 상징하는 가장 신성한 공간입니다."
+ 
+ pmg_jongmyo: "종묘제례"
+ pm_jongmyo_active: "종묘제례 봉행"
+ pm_jongmyo_active_desc: "정기적으로 웅장한 종묘제례를 거행하여 왕실의 정통성과 국가의 기강을 확고히 다집니다."
+ building_sungkyunkwan: "성균관"
+ building_sungkyunkwan_desc: "조선 최고의 교육 기관이자 국가 인재 양성의 요람입니다. 수많은 유생들이 이곳에서 학문에 정진하며 국가의 미래와 혁신을 이끌어갈 동량으로 성장합니다."
+ 
+ pmg_sungkyunkwan: "성균관 운영"
+ pm_sungkyunkwan_active: "대과 준비 및 학문 연구"
+ pm_sungkyunkwan_active_desc: "성균관 유생들이 학문에 정진하여 국가의 전반적인 혁신 수치와 교육 수준을 크게 끌어올립니다."
+ 
+building_wonsoobu: "원수부"
+ building_wonsoobu_desc: "대한제국 황제 직속의 최고 군사 통수 기관입니다. 육해군을 총괄하며 신식 군대인 시위대와 진위대의 육성을 주도합니다."
+ 
+ pmg_wonsoobu: "원수부 운영"
+ pm_wonsoobu_active: "황제 통수권 확립"
+ pm_wonsoobu_active_desc: "원수부가 활성화되어 제국군의 지휘 체계가 일원화되고, 전군의 전투력과 군사적 위상이 크게 상승합니다."
+ 
+ dhe_wonsoobu_unlock_tt: "기초 군사 개혁을 완료하여 §Y원수부 창설§! 잠금이 해제되어야 합니다."
+
+ # 1단계 완료 이벤트
+ dhe_infra_event.1.t: "기초 기반시설 확충 완료"
+ dhe_infra_event.1.d: "전국 주요 도시에 철도와 항구가 들어서며, 제국의 근대적 물류망 기초가 닦였습니다. 이제 한성에 거대한 중앙역을 건설하고, 한반도를 종단하는 대규모 철도망을 완성하여 천하의 물자를 제국으로 모아들일 차례입니다."
+ dhe_infra_event.1.f: "길이 뚫리면 부와 힘이 따라오는 법입니다."
+ dhe_infra_event.1.a: "제국의 대동맥을 완성하라!"
+
+ # 이벤트 툴팁
+ dhe_infra_event_1_tt: "경성역 및 철도망 심화 일지 해금"
+ dhe_infra_event_1_desc_tt: "한성에 거대한 랜드마크인 §Y[경성역]§!을 건설할 수 있게 되며, 일지 탭에 §Y[제국 철도망 완성]§! 심화 미션이 추가됩니다."
+
+ # 심화 일지
+ je_dhe_gwangmu_railway_network: "제국 철도망 완성 (경부·경의선)"
+ je_dhe_gwangmu_railway_network_reason: "제국의 남쪽 끝 부산에서 북쪽 끝 평양까지 잇는 거대한 철도망을 부설해야 합니다. 강철 객차를 도입하고, 한성을 중심으로 §Y충청, 양호, 부산(경부선)§! 및 §Y해서, 평양(경의선)§! 지역에 철도를 3레벨 이상 건설하십시오."
+
+ # 랜드마크 (경성역)
+ building_seoul_station: "경성역 (서울역)"
+ building_seoul_station_desc: "대한제국 철도망의 심장이자, 수많은 여행객과 물자가 오가는 거대한 중앙 역사입니다. 이 웅장한 건물은 제국 근대화의 상징과도 같습니다."
+ dhe_seoul_station_unlock_tt: "기초 인프라 정비를 완료하여 §Y경성역 건설§! 잠금이 해제되어야 합니다."
+ pmg_seoul_station: "중앙 역사 운영"
+ pm_seoul_station_active: "제국 교통의 심장"
+ pm_seoul_station_active_desc: "경성역이 본격적으로 운영되며 한성의 기반시설이 폭발적으로 증가하고 전국의 물류가 원활해집니다."
+

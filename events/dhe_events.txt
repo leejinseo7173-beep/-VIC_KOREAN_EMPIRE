@@ -3,48 +3,41 @@ namespace = dhe_event
 
 
 # 1. 제국 선포
-# (요구) icon/event_image 제거
 dhe_event.1 = {
 type = country_event
 title = dhe_event.1.t
 desc = dhe_event.1.d
+event_image = {
+		video = "ep1_donghak_rebellion"
+	}
 
 
 option = {
 name = dhe_event.1.a
-change_tag = DHE
-set_country_type = recognized
-add_primary_culture = cu:japanese
 add_primary_culture = cu:manchu
-
-
-s:STATE_SEOUL = { add_homeland = cu:korean }
-s:STATE_PYONGYANG = { add_homeland = cu:korean }
-s:STATE_SARIWON = { add_homeland = cu:korean }
-s:STATE_YANGHO = { add_homeland = cu:korean }
-s:STATE_BUSAN = { add_homeland = cu:korean }
-
-
 add_modifier = { name = dhe_imperial_prestige days = -1 }
 set_variable = dhe_empire_formed
-trigger_event = { id = dhe_event.3 popup = yes }
+trigger_event = { id = dhe_event.3 }
 }
 }
 
 
 # 2. 통합 승리
-# (요구) icon/event_image 제거
 dhe_event.2 = {
 type = country_event
 title = dhe_event.2.t
 desc = dhe_event.2.d
-
-
+icon ="gfx/interface/icons/event_icons/event_default.dds"
+	event_image = { 
+		texture = "gfx/interface/icons/event_pictures/dhe_event_2.dds" 
+	}
 option = {
 name = dhe_event.2.a
 add_loyalists = { value = 0.2 }
-
-
+custom_tooltip = {
+			text = dhe_event_2_tt
+			tooltip = dhe_event_2_desc_tt
+		}
 s:STATE_SHENGJING = { add_homeland = cu:korean }
 s:STATE_SOUTHERN_MANCHURIA = { add_homeland = cu:korean }
 s:STATE_AMUR = { add_homeland = cu:korean }
@@ -67,61 +60,318 @@ add_modifier = { name = dhe_manifest_destiny_completed days = -1 }
 
 
 # 3. 광무개혁 선포
-# (요구) icon/event_image 제거
 dhe_event.3 = {
 type = country_event
 title = dhe_event.3.t
 desc = dhe_event.3.d
-
+icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	event_image = { 
+		texture = "gfx/interface/icons/event_pictures/dhe_event_3.dds" 
+	}
 
 option = {
-name = dhe_event.3.a
+		name = dhe_event.3.a
+		custom_tooltip = {
+			text = dhe_event_3_tt
+			tooltip = dhe_event_3_desc_tt
+		}
+		
+		if = {
+			limit = { NOT = { has_variable = dhe_reform_score } }
+			set_variable = { name = dhe_reform_score value = 0 }
+		}
+		set_variable = dhe_gwangmu_reform_started
 
-if = {
-limit = { NOT = { has_variable = dhe_reform_score } }
-set_variable = { name = dhe_reform_score value = 0 }
-}
-set_variable = dhe_gwangmu_reform_started
+		# ★ 메인 일지 1개
+		add_journal_entry = { type = je_dhe_gwangmu_reform_main }
+		
+		# ★ 분야별 개혁 일지 5개
+		add_journal_entry = { type = je_dhe_gwangmu_military }
+		add_journal_entry = { type = je_dhe_gwangmu_education }
+		add_journal_entry = { type = je_dhe_gwangmu_admin }
+		add_journal_entry = { type = je_dhe_gwangmu_society }
+		add_journal_entry = { type = je_dhe_gwangmu_infrastructure }
 
+		# [cite_start]★ (수정됨) 4대 권역 산업화 일지 4개 완벽 추가! [cite: 14, 15, 16, 17, 18]
+		add_journal_entry = { type = je_korea_capital_industry }
+		add_journal_entry = { type = je_korea_south_industry }
+		add_journal_entry = { type = je_korea_busan_industry }
+		add_journal_entry = { type = je_korea_north_industry }
 
-# [CHANGE] 광무개혁 일지 7개(메인+6개)를 이벤트 선택 후에 주입
-add_journal_entry = { type = je_dhe_gwangmu_reform_main }
-add_journal_entry = { type = je_dhe_gwangmu_industry }
-add_journal_entry = { type = je_dhe_gwangmu_military }
-add_journal_entry = { type = je_dhe_gwangmu_education }
-add_journal_entry = { type = je_dhe_gwangmu_admin }
-add_journal_entry = { type = je_dhe_gwangmu_society }
-add_journal_entry = { type = je_dhe_gwangmu_infrastructure }
-}
-
+		# 4대 권역 모디파이어 뿌리기
+		every_scope_state = {
+			limit = {
+				owner = ROOT
+				OR = { state_region = s:STATE_SEOUL state_region = s:STATE_HAESEO }
+			}
+			add_modifier = { name = modifier_capital_developing months = -1 }
+		}
+		every_scope_state = {
+			limit = {
+				owner = ROOT
+				OR = { state_region = s:STATE_CHNGCHEONG state_region = s:STATE_YANGHO }
+			}
+			add_modifier = { name = modifier_south_developing months = -1 }
+		}
+		every_scope_state = {
+			limit = {
+				owner = ROOT
+				state_region = s:STATE_BUSAN
+			}
+			add_modifier = { name = modifier_busan_developing months = -1 }
+		}
+		every_scope_state = {
+			limit = {
+				owner = ROOT
+				OR = { state_region = s:STATE_GWANDONG state_region = s:STATE_PYONGYANG state_region = s:STATE_SARIWON }
+			}
+			add_modifier = { name = modifier_north_developing months = -1 }
+		}
+	}
 
 }
 
 
 # 4. 광무개혁 성공
-# (요구) icon/event_image 제거
-# (로그) Unknown effect add_clout → 제거
 dhe_event.4 = {
 type = country_event
 title = dhe_event.4.t
 desc = dhe_event.4.d
-
-
+icon ="gfx/interface/icons/modifier_icons/dhe_gwangmu_reform_success.dds"
+	event_image = { 
+		texture = "gfx/interface/icons/event_pictures/dhe_event_4.dds" 
+	}
 option = {
 name = dhe_event.4.a
+custom_tooltip = {
+			text = dhe_event_4_tt
+			tooltip = dhe_event_4_desc_tt
+		}
 add_modifier = { name = dhe_gwangmu_reform_success days = -1 }
 }
 }
 
 # [신규] 한글 교육 완료 이벤트
-dhe_event.hangeul_complete = {
+dhe_event.5 = {
     type = country_event
     title = dhe_event.hangeul_complete.t
     desc = dhe_event.hangeul_complete.d
-    
+    icon = "gfx/interface/icons/modifier_icons/dhe_mod_hangeul_edu_completed.dds"
+	event_image = { 
+		texture = "gfx/interface/icons/event_pictures/dhe_event_5.dds" 
+	}
     option = {
         name = dhe_event.hangeul_complete.a
-        add_prestige = 100
+custom_tooltip = {
+			text = dhe_event_5_tt
+			tooltip = dhe_event_5_desc_tt
+		}
         add_loyalists = { value = 0.1 }
     }
+}
+namespace = dhe_gyeongbokgung
+
+dhe_gyeongbokgung.1 = {
+	type = country_event
+	placement = root
+	
+	title = dhe_gyeongbokgung.1.t
+	desc = dhe_gyeongbokgung.1.d
+	flavor = dhe_gyeongbokgung.1.f
+	
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_reform.dds"
+	event_image = { 
+		texture = "gfx/interface/icons/event_pictures/dhe_event_3.dds" 
+	}
+	option = {
+	name = dhe_gyeongbokgung.1.a
+custom_tooltip = {
+			text = dhe_gyeongbokgung_tt
+			tooltip = dhe_gyeongbokgung_desc_tt
+		}
+    set_global_variable = dhe_gyeongbokgung_unlocked
+	remove_global_variable = dhe_gyeongbokgung_in_progress	
+	set_global_variable = dhe_gyeongbokgung_completed
+	}
+}
+namespace = dhe_university
+
+# [1] 기초 교육 개혁 완료 -> 대학 설립 일지 활성화 이벤트
+dhe_university.1 = {
+	type = country_event
+	placement = root
+	
+	title = dhe_university.1.t
+	desc = dhe_university.1.d
+	flavor = dhe_university.1.f
+	
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	option = {
+		name = dhe_university.1.a
+custom_tooltip = {
+			text = dhe_university_1_tt
+			tooltip = dhe_university_1_desc_tt
+		}
+		add_journal_entry = { type = je_dhe_seoul_national_university }
+	}
+}
+
+# [2] 서울대학교(제국대학) 설립 완료 이벤트
+dhe_university.2 = {
+	type = country_event
+	placement = root
+	
+	title = dhe_university.2.t
+	desc = dhe_university.2.d
+	flavor = dhe_university.2.f
+	
+	icon = "gfx/interface/icons/event_icons/event_school.dds"
+
+	option = {
+		name = dhe_university.2.a
+custom_tooltip = {
+			text = dhe_university_2_tt
+			tooltip = dhe_university_2_desc_tt
+		}
+		random_scope_state = {
+			limit = { state_region = s:STATE_SEOUL }
+			add_modifier = {
+				name = dhe_mod_seoul_national_university
+				days = -1
+			}
+		}
+		
+		# 충성파 5만 명 획득
+		add_loyalists = {
+			value = 50000
+		}
+	}
+}
+namespace = dhe_military_event
+
+# 1단계 군사 개혁 완료 & 2단계 심화 일지 활성화 이벤트
+dhe_military_event.1 = {
+	type = country_event
+	placement = root
+	
+	title = dhe_military_event.1.t
+	desc = dhe_military_event.1.d
+	flavor = dhe_military_event.1.f
+	
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+
+	option = {
+		name = dhe_military_event.1.a
+		custom_tooltip = {
+			text = dhe_military_event_1_tt
+			tooltip = dhe_military_event_1_desc_tt
+		}
+		# 2단계 심화 군사 일지 활성화!
+		add_journal_entry = { type = je_dhe_gwangmu_military_advanced }
+		set_global_variable = dhe_wonsoobu_unlocked
+	}
+}
+namespace = dhe_infra_event
+
+# 1단계 인프라 완료 & 경성역/2단계 일지 해금 이벤트
+dhe_infra_event.1 = {
+	type = country_event
+	placement = root
+	
+	title = dhe_infra_event.1.t
+	desc = dhe_infra_event.1.d
+	flavor = dhe_infra_event.1.f
+	
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_infrastructure.dds"
+
+	option = {
+		name = dhe_infra_event.1.a
+		custom_tooltip = {
+			text = dhe_infra_event_1_tt
+			tooltip = dhe_infra_event_1_desc_tt
+		}
+		# 경성역(서울역) 건설 변수 해금
+		set_global_variable = dhe_seoul_station_unlocked
+		
+		# 2단계 철도망 심화 일지 추가
+		add_journal_entry = { type = je_dhe_gwangmu_railway_network }
+	}
+}
+namespace = dhe_conquest_event
+
+# 1. 북방 영토 수복 (만주) 완료 이벤트
+dhe_conquest_event.1 = {
+	type = country_event
+	placement = root
+	
+	title = dhe_conquest_event.1.t
+	desc = dhe_conquest_event.1.d
+	flavor = dhe_conquest_event.1.f
+	
+	icon = "gfx/interface/icons/event_icons/dhe_great_korea_conquest.dds"
+	
+	option = {
+		name = dhe_conquest_event.1.a
+		custom_tooltip = {
+			text = dhe_conquest_event_1_tt
+			tooltip = dhe_conquest_event_1_desc_tt
+		}
+		
+		# 기존 지역 본토 편입
+		s:STATE_SHENGJING = { add_homeland = cu:korean }
+		s:STATE_SOUTHERN_MANCHURIA = { add_homeland = cu:korean }
+		s:STATE_NORTHERN_MANCHURIA = { add_homeland = cu:korean }
+		s:STATE_AMUR = { add_homeland = cu:korean }
+		
+		# 추가된 고토 지역 본토 편입
+		s:STATE_JIANDAO = { add_homeland = cu:korean }
+		s:STATE_JILIN = { add_homeland = cu:korean }
+		s:STATE_REHE = { add_homeland = cu:korean }
+		
+		# 충성파 10% 증가 및 만주 수복 영구 버프 획득
+		add_loyalists = { value = 0.1 }
+		add_modifier = {
+			name = dhe_mod_northern_expansion_success
+			months = -1
+		}
+	}
+}
+# 2. 남방 영토 수복 (일본 및 대만) 완료 이벤트
+dhe_conquest_event.2 = {
+	type = country_event
+	placement = root
+	
+	title = dhe_conquest_event.2.t
+	desc = dhe_conquest_event.2.d
+	flavor = dhe_conquest_event.2.f
+	
+	icon = "gfx/interface/icons/event_icons/dhe_great_korea_conquest.dds"
+	
+	option = {
+		name = dhe_conquest_event.2.a
+		custom_tooltip = {
+			text = dhe_conquest_event_2_tt
+			tooltip = dhe_conquest_event_2_desc_tt
+		}
+		
+		# 일본 및 대만 전역 한국인 본토 편입
+		s:STATE_KYUSHU = { add_homeland = cu:korean }
+		s:STATE_KANSAI = { add_homeland = cu:korean }
+		s:STATE_HOKKAIDO = { add_homeland = cu:korean }
+		s:STATE_TOHOKU = { add_homeland = cu:korean }
+		s:STATE_KANTO = { add_homeland = cu:korean }
+		s:STATE_CHUBU = { add_homeland = cu:korean }
+		s:STATE_CHUGOKU = { add_homeland = cu:korean }
+		s:STATE_SHIKOKU = { add_homeland = cu:korean }
+		s:STATE_RYUKYU_ISLANDS = { add_homeland = cu:korean }
+		s:STATE_FORMOSA = { add_homeland = cu:korean }
+		
+		# 충성파 10% 증가 및 남방 정벌 영구 버프 획득
+		add_loyalists = { value = 0.1 }
+		add_modifier = {
+			name = dhe_mod_southern_expansion_success
+			months = -1
+		}
+	}
 }

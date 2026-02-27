@@ -41,6 +41,7 @@ dhe_manifest_destiny_completed = {
 
 
 dhe_gwangmu_reform_success = {
+    icon = "gfx/interface/icons/modifier_icons/dhe_gwangmu_reform_success.dds"
     # 위신 +100 (기존 +10)
     country_prestige_add = 100
     
@@ -63,6 +64,7 @@ dhe_gwangmu_reform_success = {
 
 #한글교육 완료
 dhe_mod_hangeul_edu_preparation_20y = {
+    icon = "gfx/interface/icons/modifier_icons/dhe_mod_hangeul_edu_completed.dds"
     state_education_access_add = 0.2
     country_bureaucracy_add = -200
     country_authority_add = -200
@@ -70,8 +72,132 @@ dhe_mod_hangeul_edu_preparation_20y = {
 
 # [신규] 한글 교육 완료 효과
 dhe_mod_hangeul_edu_completed = {
+    icon = "gfx/interface/icons/modifier_icons/dhe_mod_hangeul_edu_completed.dds"
     country_tech_research_speed_mult = 0.15
     state_education_access_add = 0.25
     country_prestige_add = 100
     state_pop_qualifications_mult = 2
+}
+# File: common/modifiers/dhe_regional_modifiers.txt
+
+# File: common/modifiers/dhe_regional_modifiers.txt
+# (에러 로그에 뜬 "Unknown modifier type" 문제 해결)
+
+# --- 수도권 ---
+modifier_capital_developing = {
+	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	building_construction_sector_throughput_add = 0.20
+}
+modifier_capital_completed = {
+	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	building_government_administration_throughput_add = 0.15
+	building_urban_center_throughput_add = 0.15
+}
+
+# --- 남부 ---
+modifier_south_developing = {
+	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	building_construction_sector_throughput_add = 0.20
+}
+modifier_south_completed = {
+	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	building_group_bg_agriculture_throughput_add = 0.15
+	building_group_bg_light_industry_throughput_add = 0.15
+}
+
+# --- 부산 ---
+modifier_busan_developing = {
+	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	building_construction_sector_throughput_add = 0.20
+}
+modifier_busan_completed = {
+	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	building_group_bg_heavy_industry_throughput_add = 0.20
+	building_port_throughput_add = 0.20
+}
+
+# --- 북부 ---
+modifier_north_developing = {
+	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	building_construction_sector_throughput_add = 0.20
+}
+modifier_north_completed = {
+	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	building_group_bg_mining_throughput_add = 0.25
+}
+dhe_mod_gyeongbokgung_reconstruction = {
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_reform.dds"
+	# 원하신다면 여기에 건설력 디버프나 권위 버프를 넣을 수 있지만, 일단은 단순 타이머로 비워둡니다.
+}
+dhe_mod_seoul_national_university = {
+	icon = "gfx/interface/icons/modifier_icons/modifier_education.dds"
+	
+	state_building_university_throughput_add = 0.50 # 대학교 처리율(혁신 산출량) +50%
+	state_education_access_add = 0.20               # 해당 지역 교육 접근성 +20%
+	state_qualifications_mult = 0.30                # 엘리트 직업 자격 획득 +30%
+}
+# ⚔️ [심화] 광무 군사 개혁 완수 버프 (제국 국방의 완성)
+dhe_mod_military_reform_success = {
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+	unit_offense_add = 10                  # 군대 공격력 +10%
+	unit_defense_add = 10                  # 군대 방어력 +10%
+	country_military_pol_str_mult = 0.10   # 군부 정치력 +10% (신식 군대 위상)
+}
+dhe_mod_military_reform_advanced_success = {
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+	
+	# 1. 압도적인 전투력 (1단계의 2배 효과!)
+	unit_offense_add = 20                  # 군대 공격력 +20%
+	unit_defense_add = 20                  # 군대 방어력 +20%
+	
+	# 2. 최정예 부대의 유지력
+	unit_morale_recovery_add = 0.2         # 사기 회복 속도 +20% (좀비처럼 회복해서 싸웁니다)
+	
+	# 3. 제국의 위상
+	country_army_power_projection_mult = 0.25 # 군사력 투사 +25% (군대 규모로 얻는 위신이 대폭 증가하여 열강 진입이 매우 쉬워집니다)
+}
+# 🚂 [심화] 제국 철도망 완성 보상
+dhe_mod_railway_network_success = {
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_infrastructure.dds"
+	state_infrastructure_mult = 0.20           # 전 국토 기반시설 +20% 추가 (1단계 합치면 총 +35%)
+	state_market_access_price_impact = -0.15   # 시장 접근성 패널티 15% 무시 (어디든 물자 유통이 잘 됨)
+	building_railway_throughput_add = 0.20     # 전국 모든 철도 처리율 +20% (교통망 효율 극대화)
+}# 📜 [심화] 광무 행정 개혁 완수 버프 (완벽한 중앙집권)
+dhe_mod_admin_reform_advanced_success = {
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_admin.dds"
+	
+	# 압도적인 행정 효율과 통치력
+	country_bureaucracy_add = 500               # 기본 행정력 +500 (1단계의 2배)
+	country_institution_size_cost_mult = -0.20  # 제도 유지 비용 -20% (경찰, 교육, 보건 등 제도를 최고치로 올려도 행정력이 널널합니다)
+	country_tax_capacity_add = 50               # 전국 모든 주 조세 역량 +50 추가 (세금 누수 완전 차단)
+	country_authority_add = 100                 # 권위 +100 (황제의 강력한 통치력)
+}
+
+# 🤝 [심화] 광무 사회 개혁 완수 버프 (계몽된 제국 시민)
+dhe_mod_society_reform_advanced_success = {
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_society.dds"
+	
+	# 폭발적인 인구 성장과 민생 안정
+	country_standard_of_living_add = 2.0          # 전국민 생활 수준 +2 (1단계 합치면 총 +3, 국가 전체가 부유해집니다)
+	country_loyalists_from_sol_change_mult = 0.50 # 생활 수준 상승 시 충성파 발생 +50% (충성파가 미친 듯이 복사됩니다)
+	country_radicals_from_sol_change_mult = -0.50 # 생활 수준 하락 시 급진파 발생 -50% (불만이 거의 생기지 않음)
+	country_tech_spread_add = 0.20                # 기술 전파 +20% (선진 문물 흡수 속도 극대화)
+}
+# 🐎 북방의 패자 (만주 수복 영구 버프)
+dhe_mod_northern_expansion_success = {
+	icon = "gfx/interface/icons/event_icons/dhe_great_korea_conquest.dds"
+	
+	country_prestige_add = 50                     # 위신 +50 (대륙 진출의 위엄)
+	state_assimilation_mult = 0.50                # 동화 속도 +50% (타 민족을 빠르게 한국인으로 동화)
+	country_mass_migration_attraction_mult = 0.25 # 이주 매력도 +25% (새로운 영토로 폭발적인 인구 유입)
+	unit_supply_consumption_mult = -0.10          # 군대 보급품 소비 -10% (광활한 만주의 풍부한 보급)
+}
+# ⚓ 태평양의 지배자 (일본 및 대만 제패)
+dhe_mod_southern_expansion_success = {
+	icon = "gfx/interface/icons/event_icons/dhe_great_korea_conquest.dds"
+	
+	country_prestige_add = 50                     # 위신 +50 (제국주의 열강으로서의 위엄)
+	country_navy_power_projection_mult = 0.25     # 해군력 투사 +25% (동아시아의 완벽한 제해권 장악)
+	state_assimilation_mult = 0.50                # 동화 속도 +50%
+	country_influence_add = 50                    # 외교 영향력 +50 (역내 패권국으로 도약)
 }

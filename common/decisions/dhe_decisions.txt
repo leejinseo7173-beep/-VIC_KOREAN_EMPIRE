@@ -1,139 +1,214 @@
-﻿# Encoding: UTF-8 with BOM
+﻿# File: common/decisions/korea_decisions.txt
+# (디시전을 누를 때 일지 활성화 + 각 지역에 모디파이어를 동시에 뿌립니다)
 
+dhe_start_gwangmu_reform_decision = {
+	is_shown = {
+		this = c:KOR
+		NOT = { has_variable = dhe_gwangmu_reform_started }
+		
+	}
 
-# 1. 칭제건원 선포
-dhe_proclaim_empire_decision = {
-is_shown = {
-c:KOR ?= this
-NOT = { has_variable = dhe_empire_formed }
+	possible = {
+		this = c:KOR
+		
+        has_variable = KOR_korean_empire_declared
+	}
+
+	when_taken = {
+		set_variable = dhe_gwangmu_reform_started
+		custom_tooltip = { text = dhe_start_gwangmu_reform_tt }
+         trigger_event = { id = dhe_event.3 popup = yes }
+		# 1. 수도권 모디파이어 부여
+		every_scope_state = {
+			limit = {
+				owner = ROOT
+				OR = {
+					state_region = s:STATE_SEOUL
+					state_region = s:STATE_HAESEO
+				}
+			}
+			add_modifier = { name = modifier_capital_developing months = -1 }
+		}
+		
+		# 2. 남부 모디파이어 부여
+		every_scope_state = {
+			limit = {
+				owner = ROOT
+				OR = {
+					state_region = s:STATE_CHNGCHEONG
+					state_region = s:STATE_YANGHO
+				}
+			}
+			add_modifier = { name = modifier_south_developing months = -1 }
+		}
+		
+		# 3. 부산 모디파이어 부여
+		every_scope_state = {
+			limit = {
+				owner = ROOT
+				state_region = s:STATE_BUSAN
+			}
+			add_modifier = { name = modifier_busan_developing months = -1 }
+		}
+		
+		# 4. 북부 모디파이어 부여
+		every_scope_state = {
+			limit = {
+				owner = ROOT
+				OR = {
+					state_region = s:STATE_GWANDONG
+					state_region = s:STATE_PYONGYANG
+					state_region = s:STATE_SARIWON
+				}
+			}
+			add_modifier = { name = modifier_north_developing months = -1 }
+		}
+	}
+
+	ai_chance = {
+		value = 100
+	}
 }
-
-
-possible = {
-is_subject = no
-has_technology_researched = nationalism
-has_law = law_type:law_monarchy
-NOT = { has_law = law_type:law_isolationism }
-NOT = { has_law = law_type:law_traditionalism }
-
-
-owns_entire_state_region = STATE_SEOUL
-owns_entire_state_region = STATE_PYONGYANG
-owns_entire_state_region = STATE_SARIWON
-owns_entire_state_region = STATE_YANGHO
-owns_entire_state_region = STATE_BUSAN
-}
-
-
-when_taken = {
-if = {
-limit = { NOT = { has_variable = dhe_reform_score } }
-set_variable = { name = dhe_reform_score value = 0 }
-}
-
-
-trigger_event = { id = dhe_event.1 popup = yes }
-}
-
-
-ai_chance = { value = 100 }
-}
-
-
 # 2. 황실의 원대한 야망
 dhe_great_korea_ambition = {
 is_shown = {
-exists = c:DHE
-c:DHE ?= this
+exists = c:KOR
+c:KOR ?= this
 NOT = { has_variable = dhe_great_korea_ambition_taken }
 }
 
 
 possible = {
 is_subject = no
-army_size >= 60
+army_size >= 30
 }
 
 
 when_taken = {
 set_variable = dhe_great_korea_ambition_taken
 add_journal_entry = { type = je_dhe_great_korea_conquest }
+add_journal_entry = { type = je_dhe_northern_expansion }
+add_journal_entry = { type = je_dhe_southern_expansion } 
 
+# 3. 영유권(클레임) 박기 (전부 c:KOR로 완벽 수정!)
+		# [만주 및 고토]
+		s:STATE_SHENGJING = { add_claim = c:KOR }
+		s:STATE_SOUTHERN_MANCHURIA = { add_claim = c:KOR }
+		s:STATE_AMUR = { add_claim = c:KOR }
+		s:STATE_NORTHERN_MANCHURIA = { add_claim = c:KOR }
+		s:STATE_JIANDAO = { add_claim = c:KOR }
+		s:STATE_JILIN = { add_claim = c:KOR }
+		s:STATE_REHE = { add_claim = c:KOR }
 
-s:STATE_SHENGJING = { add_claim = c:DHE }
-s:STATE_SOUTHERN_MANCHURIA = { add_claim = c:DHE }
-s:STATE_AMUR = { add_claim = c:DHE }
-s:STATE_NORTHERN_MANCHURIA = { add_claim = c:DHE }
-s:STATE_KYUSHU = { add_claim = c:DHE }
-s:STATE_KANSAI = { add_claim = c:DHE }
-s:STATE_HOKKAIDO = { add_claim = c:DHE }
-s:STATE_TOHOKU = { add_claim = c:DHE }
-s:STATE_KANTO = { add_claim = c:DHE }
-s:STATE_CHUBU = { add_claim = c:DHE }
-s:STATE_CHUGOKU = { add_claim = c:DHE }
-s:STATE_SHIKOKU = { add_claim = c:DHE }
-s:STATE_RYUKYU_ISLANDS = { add_claim = c:DHE }
-s:STATE_FORMOSA = { add_claim = c:DHE }
+		# [일본 및 대만]
+		s:STATE_KYUSHU = { add_claim = c:KOR }
+		s:STATE_KANSAI = { add_claim = c:KOR }
+		s:STATE_HOKKAIDO = { add_claim = c:KOR }
+		s:STATE_TOHOKU = { add_claim = c:KOR }
+		s:STATE_KANTO = { add_claim = c:KOR }
+		s:STATE_CHUBU = { add_claim = c:KOR }
+		s:STATE_CHUGOKU = { add_claim = c:KOR }
+		s:STATE_SHIKOKU = { add_claim = c:KOR }
+		s:STATE_RYUKYU_ISLANDS = { add_claim = c:KOR }
+		s:STATE_FORMOSA = { add_claim = c:KOR }
 }
 }
 
-# 한글 교육 준비 (Prepare)
+# File: common/decisions/dhe_hangeul_decisions.txt
+# (또는 기존 디시전 파일에 추가)
+
+# =============================================================================
+# 1. 한글 교육 준비 (Prepare)
+# =============================================================================
 dhe_hangeul_edu_prepare_decision = {
-    # 화면에 보이는 조건: 대한제국 태그일 때만
-    is_shown = {
-        c:DHE ?= this
-        exists = c:DHE
-        NOT = { has_variable = dhe_hangeul_edu_preparing }
-    }    
-    possible = {
-    custom_tooltip = {
-        text = dhe_hangeul_edu_prepare_req_reform_tt    # ← 이제 한글로 표시
-        has_variable = dhe_gwangmu_reform_started
-    } 
-    
+	is_shown = {
+		this = c:KOR
+		NOT = { has_variable = dhe_hangeul_edu_preparing }
+		NOT = { has_variable = dhe_hangeul_edu_completed }
+	}
 
-        treasury >= 500000
-        bureaucracy >= 200
-        authority >= 200
-
-    }
-    when_taken = {
-        # 변수 설정
-        set_variable = dhe_hangeul_edu_preparing 
-        add_modifier = {
-            name = dhe_mod_hangeul_edu_preparation_20y
-            years = 20
+	possible = {
+		custom_tooltip = {
+			text = dhe_hangeul_edu_prepare_req_reform_tt
         }
-    } 
-    ai_chance = { value = 50 }
+			has_variable = dhe_gwangmu_reform_started
+		
+		# V3에서는 treasury(일시불 국고) 트리거가 잘 작동하지 않을 수 있습니다. 
+		# (필요시 삭제하거나 gold_reserves 등으로 우회해야 합니다)
+		# treasury >= 500000 
+		bureaucracy >= 200
+		authority >= 200
+	}
+
+	when_taken = {
+		set_variable = dhe_hangeul_edu_preparing 
+		add_modifier = {
+			name = dhe_mod_hangeul_edu_preparation_20y
+			months = 240 # [수정됨] 빅토리아 3는 years 대신 months를 사용합니다.
+		}
+	} 
+
+	ai_chance = { value = 50 }
 }
 
-
-# [신규] 한글 교육 완료
+# =============================================================================
+# 2. [신규] 한글 교육 완료 (Complete)
+# =============================================================================
 dhe_hangeul_edu_complete_decision = {
-    is_shown = {
-        c:DHE ?= this
-        exists = c:DHE
-        has_variable = dhe_hangeul_edu_preparing
-        NOT = { has_variable = dhe_hangeul_edu_completed }
+	is_shown = {
+		this = c:KOR
+		has_variable = dhe_hangeul_edu_preparing
+		NOT = { has_variable = dhe_hangeul_edu_completed }
     }
+	possible = {
+		literacy_rate >= 0.5
+		has_law = law_type:law_public_schools
+		
+		# [수정됨] 국가 스코프에서는 소유한 주(State)를 통해 건물을 검사해야 안전합니다.
+		any_scope_state = {
+			owner = ROOT
+			any_scope_building = { is_building_type = building_university level >= 3 }
+		}
+	}
 
-    possible = {
-        literacy_rate >= 0.5
-        has_law = law_type:law_public_schools
-        any_scope_building = { is_building_type = building_university level >= 3 }
-    }
+	when_taken = {
+		set_variable = dhe_hangeul_edu_completed
+		remove_variable = dhe_hangeul_edu_preparing
+		trigger_event = { id = dhe_event.5 popup = yes }
+		# 혹시 모를 버그 방지를 위해 조건부로 기존 모디파이어 제거
+		if = {
+			limit = { has_modifier = dhe_mod_hangeul_edu_preparation_20y }
+			remove_modifier = dhe_mod_hangeul_edu_preparation_20y
+		}
+		
+		add_modifier = {
+			name = dhe_mod_hangeul_edu_completed
+			months = -1 # 영구 지속
+		}
 
-    when_taken = {
-        set_variable = dhe_hangeul_edu_completed
-        remove_variable = dhe_hangeul_edu_preparing
-        remove_modifier = dhe_mod_hangeul_edu_preparation_20y
-        add_modifier = {
-            name = dhe_mod_hangeul_edu_completed
-        }
+	}
 
-        trigger_event = { id = dhe_event.hangeul_complete popup = yes }
-    }
-
-    ai_chance = { value = 40 }
+	ai_chance = { value = 40 }
+}
+dhe_rebuild_gyeongbokgung_decision = {
+	is_shown = {
+		this = c:KOR
+		NOT = { has_global_variable = dhe_gyeongbokgung_completed }
+		NOT = { has_global_variable = dhe_gyeongbokgung_in_progress }
+	}
+	possible = {
+		custom_tooltip = "1년의 공사 기간이 소요됩니다."
+	}
+	when_taken = {
+		# ★ 전역 변수로 진행 상황 체크
+		set_global_variable = dhe_gyeongbokgung_in_progress
+		
+		add_modifier = {
+			name = dhe_mod_gyeongbokgung_reconstruction
+			months = 1
+		}
+		
+		add_journal_entry = { type = je_dhe_rebuild_gyeongbokgung }
+	}
+	ai_chance = { base = 10 }
 }

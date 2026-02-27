@@ -1,0 +1,89 @@
+﻿pm_gyeongbokgung_active = {
+	texture = "gfx/interface/icons/building_icons/building_government_administration.dds"
+	
+	building_modifiers = {
+		level_scaled = {
+			building_employment_bureaucrats_add = 600
+			building_employment_clergymen_add = 150
+		}
+	}
+	country_modifiers = {
+		workforce_scaled = {
+			country_authority_add = 40
+			country_prestige_add = 20
+		}
+	}
+		state_modifiers = {
+		workforce_scaled = {
+			building_government_administration_throughput_add = 0.2
+		}
+	}
+}
+pm_jongmyo_active = {
+	texture = "gfx/interface/icons/building_icons/building_government_administration.dds"
+	
+	building_modifiers = {
+		level_scaled = {
+			building_employment_clergymen_add = 400
+			building_employment_bureaucrats_add = 200
+		}
+	}
+	country_modifiers = {
+		workforce_scaled = {
+			country_legitimacy_add = 10     # 정통성 증가 (매우 중요!)
+			country_authority_add = 20      # 권위 증가
+			country_prestige_add = 15       # 위신 증가
+		}
+	}
+}
+pm_sungkyunkwan_active = {
+	texture = "gfx/interface/icons/building_icons/building_university.dds"
+	
+	building_modifiers = {
+		level_scaled = {
+			building_employment_academics_add = 600   # 학자(지식인) 대거 고용
+			building_employment_clergymen_add = 400   # 성직자(유학자) 고용
+		}
+	}
+	country_modifiers = {
+		workforce_scaled = {
+			country_innovation_add = 20     # ★ 국가 혁신(기술 연구 속도) +20 추가!
+			country_prestige_add = 10       # 위신 증가
+		}
+	}
+	state_modifiers = {
+		workforce_scaled = {
+			state_education_access_add = 0.20 # 한성 지역 교육 접근성 +20%
+			state_qualifications_mult = 0.20  # 자격 획득 +20% (빠른 직업 전환)
+		}
+	}
+}
+pm_wonsoobu_active = {
+	texture = "gfx/interface/icons/building_icons/building_military_academy.dds"
+	
+	building_modifiers = {
+		level_scaled = {
+			building_employment_officers_add = 800     # 장교 800명 고용
+			building_employment_bureaucrats_add = 200  # 관료 200명 고용
+		}
+	}
+	country_modifiers = {
+		workforce_scaled = {
+			country_authority_add = 50                 # 황제의 권위 +50
+			country_prestige_add = 20                  # 제국 위신 +20
+			country_army_power_projection_mult = 0.15  # 군사력 투사 +15% (군대 위상 증가)
+			unit_offense_add = 10                      # 전군 공격력 +10%
+		}
+	}
+}
+pm_seoul_station_active = {
+	texture = "gfx/interface/icons/building_icons/building_railway.dds"
+	
+	country_modifiers = {
+		workforce_scaled = {
+			country_prestige_add = 20                  # 교통의 요지 위신 획득
+			state_infrastructure_add = 50              # 한성의 인프라 폭발적 증가
+			country_mass_migration_attraction_mult = 0.20 # 이주 매력도 증가
+		}
+	}
+}

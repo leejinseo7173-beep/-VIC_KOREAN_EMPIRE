@@ -1,0 +1,147 @@
+﻿state_trait_han_river = { #한강
+	icon = "gfx/interface/icons/state_trait_icons/river.dds"
+	
+	modifier = {
+		state_infrastructure_add = 15
+		state_market_access_price_impact = 0.1
+		state_trade_capacity_mult = 0.15
+	}
+}
+
+state_trait_unsan_mine = { #운산 금광지대
+	icon = "gfx/interface/icons/state_trait_icons/resources_ore.dds"
+	
+	modifier = {
+		building_gold_mine_throughput_add = 0.5
+	}
+}
+
+state_trait_taebaek_sierra = { #태백산맥
+	icon = "gfx/interface/icons/state_trait_icons/mountain.dds"
+	
+	modifier = {
+		building_group_bg_logging_throughput_add = 0.2
+	    building_group_bg_ranching_throughput_add = -0.1
+		building_group_bg_agriculture_throughput_add = -0.1
+		building_group_bg_plantations_throughput_add = -0.1
+		state_infrastructure_mult = -0.1
+		state_market_access_price_impact = -0.05
+	}
+}
+
+state_trait_nakdong_river = { #낙동강유역
+
+	icon = "gfx/interface/icons/state_trait_icons/river.dds"
+	modifier = {
+		state_infrastructure_add = 10
+		state_market_access_price_impact = 0.05
+		state_trade_capacity_mult = 0.05
+		building_group_bg_agriculture_throughput_add = 0.1
+		building_group_bg_plantations_throughput_add = 0.05
+	}
+}
+
+state_trait_kep_gold_river = { #금강유역
+
+	icon = "gfx/interface/icons/state_trait_icons/river.dds"
+	modifier = {
+		state_infrastructure_add = 5
+		state_market_access_price_impact = 0.05
+		state_trade_capacity_mult = 0.1
+		building_group_bg_agriculture_throughput_add = 0.1
+		building_group_bg_plantations_throughput_add = 0.1
+	}
+}
+
+state_trait_bongsan_mine = { #봉산탄전
+	icon = "gfx/interface/icons/state_trait_icons/resources_ore.dds"
+	modifier = {
+		building_coal_mine_throughput_add = 0.2
+	}
+}
+state_trait_hanseong_capital = {
+	icon = "gfx/interface/icons/modifier_icons/modifier_default.dds"
+	modifier = {
+    state_building_throughput_mult = 0.3       # 모든 건물 처리율 +30% (공장, 농장 효율이 미쳐 날뜁니다)
+		state_construction_mult = 0.5              # 주 건설 속도 +50% (건물을 클릭하자마자 뚝딱 지어집니다)
+		state_infrastructure_mult = 0.5            # 기반시설 +50% (초반에 철도를 안 깔아도 시장 접근성이 100% 유지됩니다)
+		
+		# 💰 2. 쏟아지는 세금과 행정력
+		state_tax_capacity_add = 500               # 조세 역량 +500 (초반 조선의 고질병인 '세금 누수'가 아예 사라집니다)
+		state_bureaucracy_population_base_mult = 0.5 # 행정력 산출 +50% (정부청사 조금만 지어도 행정력이 폭발합니다)
+		
+		# 👨‍👩‍👧‍👦 3. 전 세계 인재가 모이는 지상 낙원
+		state_migration_pull_mult = 3.0            # 이주 매력도 +300% (전 세계의 실업자, 지식인들이 한성으로 미친듯이 몰려옵니다)
+		state_standard_of_living_add = 5           # 생활 수준 +5 (한성에 살기만 해도 백성들이 부유해지고 충성파가 복사됩니다)
+		
+		# 🎓 4. 아시아 최고의 대학살
+		state_education_access_add = 0.5           # 교육 접근성 +50% (학교를 안 지어도 한성 백성들의 식자율이 쭉쭉 오릅니다)
+		state_qualifications_mult = 0.5                 # 도시화 수치 +20
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#만주 둥베이평원 흑토지대 구현
+
+##송눈평원_송강,눈강,길림
+state_trait_Songnun_Plain = { #송눈평원_송화강 흑토지대
+	icon = "gfx/interface/icons/state_trait_icons/good_soils.dds"
+	modifier = {
+		building_group_bg_agriculture_throughput_add = 0.2
+	}
+}
+
+##삼강평원_합강
+state_trait_Samgang_Plain = { #삼강평원
+	icon = "gfx/interface/icons/state_trait_icons/good_soils.dds"
+	modifier = {
+		building_group_bg_agriculture_throughput_add = 0.15
+	}
+}
+
+##요하평원_요령(요동+요서), 요북
+state_trait_Yoha_Plain = { #요하평원
+	icon = "gfx/interface/icons/state_trait_icons/good_soils.dds"
+	modifier = {
+		state_infrastructure_add = 5
+		building_group_bg_agriculture_throughput_add = 0.10
+	}
+}
+
+##와르카 웨지 #연해주 타이가 수림
+state_trait_Warka_Weji = {
+	icon = "gfx/interface/icons/state_trait_icons/resources_lumber.dds"
+
+	modifier = {
+		building_group_bg_logging_throughput_add = 0.1
+	}
+}
+
+##쿠르카 웨지 #아무르 타이가 수림
+state_trait_Kurka_Weji = {
+	icon = "gfx/interface/icons/state_trait_icons/resources_lumber.dds"
+
+	modifier = {
+		building_group_bg_logging_throughput_add = 0.2
+	}
+}
+
+##힝안 웨지 (Hinggan Weji) - 흥안성 타이가 수림
+state_trait_Hinggan_Weji = {
+	icon = "gfx/interface/icons/state_trait_icons/resources_lumber.dds"
+
+	modifier = {
+		building_group_bg_logging_throughput_add = 0.1
+		goods_output_hardwood_mult = 0.1
+	}
+}

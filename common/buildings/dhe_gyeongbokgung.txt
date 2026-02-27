@@ -1,0 +1,152 @@
+﻿building_gyeongbokgung = {
+	building_group = bg_monuments
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_reform.dds"
+	expandable = no    
+	downsizeable = no
+	unique = yes
+
+	city_gfx_interactions = {
+		clear_size_area = yes
+		size = 3
+	}
+
+	production_method_groups = {
+		pmg_gyeongbokgung
+	}
+
+
+	potential = {
+		state_region = s:STATE_SEOUL
+	}
+	can_build_government = {
+		custom_tooltip = {
+			text = dhe_gyeongbokgung_unlock_tt
+			has_global_variable = dhe_gyeongbokgung_unlocked
+		}
+	}
+    required_construction = construction_cost_low
+	ai_value = 10000
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
+}
+building_jongmyo = {
+	building_group = bg_monuments
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_reform.dds"
+	expandable = no    
+	downsizeable = no
+	unique = yes
+	buildable = no
+
+	city_gfx_interactions = {
+		clear_size_area = yes
+		size = 3
+	}
+
+	production_method_groups = {
+		pmg_jongmyo
+	}
+
+	potential = {
+		state_region = s:STATE_SEOUL
+	}
+	
+	# 종묘는 국가의 근본이므로 디시전 해금 없이 바로 지을 수 있게 설정
+	can_build_government = {
+		always = yes
+	}
+	
+	required_construction = construction_cost_low
+	ai_value = 10000
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
+}
+building_sungkyunkwan = {
+	building_group = bg_monuments
+	icon = "gfx/interface/icons/building_icons/building_university.dds" 
+	expandable = no    
+	downsizeable = no
+	unique = yes
+	buildable = no
+
+	city_gfx_interactions = {
+		clear_size_area = yes
+		size = 3
+	}
+
+	production_method_groups = {
+		pmg_sungkyunkwan
+	}
+
+	potential = {
+		state_region = s:STATE_SEOUL
+	}
+	
+	can_build_government = {
+		always = yes
+	}
+	
+	required_construction = construction_cost_low
+	ai_value = 10000
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
+}
+building_wonsoobu = {
+	building_group = bg_monuments
+	icon = "gfx/interface/icons/building_icons/building_military_academy.dds" # 바닐라 사관학교 아이콘
+	expandable = no    
+	downsizeable = no
+	unique = yes
+
+	city_gfx_interactions = {
+		clear_size_area = yes
+		size = 3
+	}
+
+	production_method_groups = {
+		pmg_wonsoobu
+	}
+
+	potential = {
+		state_region = s:STATE_SEOUL
+	}
+	
+	# ★ 핵심: 군사 개혁 1단계를 깨고 이 변수를 얻어야만 지을 수 있음!
+	can_build_government = {
+		custom_tooltip = {
+			text = dhe_wonsoobu_unlock_tt
+			has_global_variable = dhe_wonsoobu_unlocked
+		}
+	}
+	
+	required_construction = construction_cost_low
+	ai_value = 10000
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
+}
+building_seoul_station = {
+	building_group = bg_monuments
+	icon = "gfx/interface/icons/building_icons/building_railway.dds"
+	expandable = no    
+	downsizeable = no
+	unique = yes
+
+	city_gfx_interactions = {
+		clear_size_area = yes
+		size = 3
+	}
+
+	production_method_groups = {
+		pmg_seoul_station
+	}
+
+	potential = {
+		state_region = s:STATE_SEOUL
+	}
+	
+	can_build_government = {
+		custom_tooltip = {
+			text = dhe_seoul_station_unlock_tt
+			has_global_variable = dhe_seoul_station_unlocked
+		}
+	}
+	
+	required_construction = construction_cost_low
+	ai_value = 10000
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
+}

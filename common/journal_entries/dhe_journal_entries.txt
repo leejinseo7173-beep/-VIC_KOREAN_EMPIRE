@@ -1,245 +1,478 @@
-﻿# Encoding: UTF-8 with BOM
+﻿# File: common/journal_entries/dhe_journal_entries.txt
+# Encoding: UTF-8 with BOM
 
 # =============================================================================
-# [메인] 광무개혁 (진행도바 제거 + ✅/❌ 체크는 loc에서 표시)
+# [메인] 광무개혁
 # =============================================================================
 je_dhe_gwangmu_reform_main = {
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_reform.dds"
 	group = dhe_reforms
-
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
 	is_shown_when_inactive = {
-		exists = c:DHE
-		this = c:DHE
-		has_variable = dhe_gwangmu_reform_started
-		NOT = { has_variable = dhe_gwangmu_reform_completed }
-		NOT = { has_variable = dhe_gwangmu_reform_failed }
+		exists = c:KOR
+		this = c:KOR
 	}
 
 	possible = {
-		exists = c:DHE
-		this = c:DHE
+		exists = c:KOR
+		this = c:KOR
 		has_variable = dhe_gwangmu_reform_started
 		NOT = { has_variable = dhe_gwangmu_reform_completed }
 		NOT = { has_variable = dhe_gwangmu_reform_failed }
 	}
 
-	complete = {
+complete = {
 		custom_tooltip = {
-			text = je_dhe_gwangmu_reform_main_goal_tooltip
-			
-			has_variable = dhe_gwangmu_industry_done
+			text = je_korea_capital_industry_done_tt
+			tooltip = je_korea_capital_industry_done_desc_tt
+			has_variable = korea_capital_industry_done
+		}
+		custom_tooltip = {
+			text = je_korea_south_industry_done_tt
+			tooltip = je_korea_south_industry_done_desc_tt
+			has_variable = korea_south_industry_done
+		}
+		custom_tooltip = {
+			text = je_korea_busan_industry_done_tt
+			tooltip = je_korea_busan_industry_done_desc_tt
+			has_variable = korea_busan_industry_done
+		}
+		custom_tooltip = {
+			text = je_korea_north_industry_done_tt
+			tooltip = je_korea_north_industry_done_desc_tt
+			has_variable = korea_north_industry_done
+		}
+		custom_tooltip = {
+			text = je_dhe_gwangmu_military_done_tt
+			tooltip = je_dhe_gwangmu_military_done_desc_tt
 			has_variable = dhe_gwangmu_military_done
+		}
+		custom_tooltip = {
+			text = je_dhe_gwangmu_education_done_tt
+			tooltip = je_dhe_gwangmu_education_done_desc_tt
 			has_variable = dhe_gwangmu_education_done
+		}
+		custom_tooltip = {
+			text = je_dhe_gwangmu_admin_done_tt
+			tooltip = je_dhe_gwangmu_admin_done_desc_tt
 			has_variable = dhe_gwangmu_admin_done
+		}
+		custom_tooltip = {
+			text = je_dhe_gwangmu_society_done_tt
+			tooltip = je_dhe_gwangmu_society_done_desc_tt
 			has_variable = dhe_gwangmu_society_done
+		}
+		custom_tooltip = {
+			text = je_dhe_gwangmu_infrastructure_done_tt
+			tooltip = je_dhe_gwangmu_infrastructure_done_desc_tt
 			has_variable = dhe_gwangmu_infrastructure_done
 		}
 	}
-
 	on_complete = {
 		set_variable = dhe_gwangmu_reform_completed
 		trigger_event = { id = dhe_event.4 }
 	}
 }
 
-# =============================================================================
-# [하위] 산업 개혁 - 레벨 3 이상
-# =============================================================================
-je_dhe_gwangmu_industry = {
-	group = dhe_reforms
+# File: common/journal_entries/dhe_journal_entries.txt
+# (에러를 뿜던 any_owned_state와 on_active를 모두 제거한 완벽한 4개 권역 산업 일지 코드입니다. 이전에 작성하신 메인 일지 아래에 이 4개를 덮어씌워주세요.)
 
+# =============================================================================
+# 1. 수도권 복합 산업화 (서울, 해서)
+# =============================================================================
+je_korea_capital_industry = {
+	icon = "gfx/interface/icons/event_icons/dhe_hanjiang_qiji.dds"
+	group = dhe_reforms
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
 	is_shown_when_inactive = {
-		exists = c:DHE
-		this = c:DHE
+		exists = c:KOR
+		this = c:KOR
 		has_variable = dhe_gwangmu_reform_started
-		NOT = { has_variable = dhe_gwangmu_industry_done }
-		NOT = { has_variable = dhe_gwangmu_reform_failed }
+		NOT = { has_variable = korea_capital_industry_done }
 	}
 
 	possible = {
-		exists = c:DHE
-		this = c:DHE
+		exists = c:KOR
+		this = c:KOR
 		has_variable = dhe_gwangmu_reform_started
-		NOT = { has_variable = dhe_gwangmu_industry_done }
-		NOT = { has_variable = dhe_gwangmu_reform_failed }
+		NOT = { has_variable = korea_capital_industry_done }
+		
+		any_scope_state = {
+			owner = ROOT
+			OR = {
+				state_region = s:STATE_SEOUL
+				state_region = s:STATE_HAESEO
+			}
+		}
 	}
 
 	complete = {
-		and = {
-			any_scope_building = {
-				is_building_type = building_railway
-				level >= 5
-			}
-			any_scope_building = {
-				is_building_type = building_coal_mine
-				level >= 5
-			}
-			any_scope_building = {
-				is_building_type = building_steel_mill
-				level >= 5
-			}
-            any_scope_building = {
-                is_building_type = building_motor_industry
-                level >= 2
-			}
-            any_scope_building = {
-                is_building_type = building_glassworks
-				level >= 3
-			}
-            any_scope_building = {
-                is_building_type = building_tooling_workshop
-				level >= 5
-			}
-            any_scope_building = {
-                is_building_type = building_textile_mill
-				level >= 2
-			}
-            any_scope_building = {
-                is_building_type = building_explosives_factory
-				level >= 4
-			}
-            any_scope_building = {
-                is_building_type = building_food_industry
-				level >= 5
-			}			
-            any_scope_building = {
-                is_building_type = building_military_shipyard
-				level >= 4
-			}
-			has_technology_researched = railways
-			has_technology_researched = atmospheric_engine
-			has_technology_researched = mechanized_workshops
-            has_technology_researched = intensive_agriculture
-		    has_technology_researched = bessemer_process
+		custom_tooltip = {
+			text = korea_capital_industry_goal_tt
 		}
-		
-	}
+			any_scope_state = {
+				state_region = s:STATE_SEOUL
+				owner = ROOT
+				any_scope_building = { is_building_type = building_urban_center level >= 5 }
+				any_scope_building = { is_building_type = building_government_administration level >= 3 }
+			}
+			any_scope_state = {
+				state_region = s:STATE_HAESEO
+				owner = ROOT
+				any_scope_building = { is_building_type = building_university level >= 2 }
+			}
+		}
+	
 
 	on_complete = {
-		set_variable = dhe_gwangmu_industry_done
+		set_variable = korea_capital_industry_done
+		every_scope_state = {
+			limit = {
+				owner = ROOT
+				OR = {
+					state_region = s:STATE_SEOUL
+					state_region = s:STATE_HAESEO
+				}
+			}
+			if = { limit = { has_modifier = modifier_capital_developing } remove_modifier = modifier_capital_developing }
+			add_modifier = { name = modifier_capital_completed months = 120 }
+		}
 	}
 }
 
+# =============================================================================
+# 2. 남부 농업 및 경공업 (충청, 양호)
+# =============================================================================
+je_korea_south_industry = {
+	icon = "gfx/interface/icons/event_icons/dhe_south_industry.dds"
+	group = dhe_reforms
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
+	is_shown_when_inactive = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = korea_south_industry_done }
+	}
+
+	possible = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = korea_south_industry_done }
+		
+		any_scope_state = {
+			owner = ROOT
+			OR = {
+				state_region = s:STATE_CHNGCHEONG
+				state_region = s:STATE_YANGHO
+			}
+		}
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = korea_south_industry_goal_tt
+		}
+			any_scope_state = {
+				state_region = s:STATE_CHNGCHEONG
+				owner = ROOT
+				any_scope_building = { is_building_type = building_textile_mill level >= 3 }
+				any_scope_building = { is_building_type = building_food_industry level >= 3 }
+			}
+			any_scope_state = {
+				state_region = s:STATE_YANGHO
+				owner = ROOT
+				any_scope_building = { is_building_type = building_rice_farm level >= 10 }
+			}
+		}
+	
+
+	on_complete = {
+		set_variable = korea_south_industry_done
+		every_scope_state = {
+			limit = {
+				owner = ROOT
+				OR = {
+					state_region = s:STATE_CHNGCHEONG
+					state_region = s:STATE_YANGHO
+				}
+			}
+			if = { limit = { has_modifier = modifier_south_developing } remove_modifier = modifier_south_developing }
+			add_modifier = { name = modifier_south_completed months = 120 }
+		}
+	}
+}
+
+# =============================================================================
+# 3. 부산 중공업 (부산)
+# =============================================================================
+je_korea_busan_industry = {
+	icon = "gfx/interface/icons/event_icons/dhe_busan_industry.dds"
+	group = dhe_reforms
+	is_shown_in_lobby = {
+		c:kor ?= THIS
+    }
+	is_shown_when_inactive = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = korea_busan_industry_done }
+	}
+
+	possible = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = korea_busan_industry_done }
+		
+		any_scope_state = {
+			owner = ROOT
+			state_region = s:STATE_BUSAN
+		}
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = korea_busan_industry_goal_tt
+		}
+			any_scope_state = {
+				state_region = s:STATE_BUSAN
+				owner = ROOT
+				any_scope_building = { is_building_type = building_shipyard level >= 3 }
+				any_scope_building = { is_building_type = building_motor_industry level >= 2 }
+				any_scope_building = { is_building_type = building_steel_mill level >= 3 }
+			}
+		}
+
+	on_complete = {
+		set_variable = korea_busan_industry_done
+		every_scope_state = {
+			limit = {
+				owner = ROOT
+				state_region = s:STATE_BUSAN
+			}
+			if = { limit = { has_modifier = modifier_busan_developing } remove_modifier = modifier_busan_developing }
+			add_modifier = { name = modifier_busan_completed months = 120 }
+		}
+	}
+}
+
+# =============================================================================
+# 4. 북부 자원 및 중공업 (관동, 평양, 사리원)
+# =============================================================================
+je_korea_north_industry = {
+	icon = "gfx/interface/icons/event_icons/dhe_north_industry.dds"
+	group = dhe_reforms
+	is_shown_in_lobby = {
+		c:kor ?= THIS
+    }
+	is_shown_when_inactive = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = korea_north_industry_done }
+	}
+
+	possible = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = korea_north_industry_done }
+		
+		any_scope_state = {
+			owner = ROOT
+			OR = {
+				state_region = s:STATE_GWANDONG
+				state_region = s:STATE_PYONGYANG
+				state_region = s:STATE_SARIWON
+			}
+		}
+	}
+
+complete = {
+		# 강철 철도 차량 기술 요구
+		has_technology_researched = steel_railway_cars
+		
+		# [경부선 라인] 철도 3레벨 이상 (안전한 스코프 적용)
+		any_scope_state = {
+			state_region = s:STATE_SEOUL
+			owner = ROOT
+			any_scope_building = { is_building_type = building_railway level >= 3 }
+		}
+		any_scope_state = {
+			state_region = s:STATE_CHNGCHEONG
+			owner = ROOT
+			any_scope_building = { is_building_type = building_railway level >= 3 }
+		}
+		any_scope_state = {
+			state_region = s:STATE_YANGHO
+			owner = ROOT
+			any_scope_building = { is_building_type = building_railway level >= 3 }
+		}
+		any_scope_state = {
+			state_region = s:STATE_BUSAN
+			owner = ROOT
+			any_scope_building = { is_building_type = building_railway level >= 3 }
+		}
+
+		# [경의선 라인] 철도 3레벨 이상 (안전한 스코프 적용)
+		any_scope_state = {
+			state_region = s:STATE_HAESEO
+			owner = ROOT
+			any_scope_building = { is_building_type = building_railway level >= 3 }
+		}
+		any_scope_state = {
+			state_region = s:STATE_PYONGYANG
+			owner = ROOT
+			any_scope_building = { is_building_type = building_railway level >= 3 }
+		}
+	}
+	
+
+	on_complete = {
+		set_variable = korea_north_industry_done
+		every_scope_state = {
+			limit = {
+				owner = ROOT
+				OR = {
+					state_region = s:STATE_GWANDONG
+					state_region = s:STATE_PYONGYANG
+					state_region = s:STATE_SARIWON
+				}
+			}
+			if = { limit = { has_modifier = modifier_north_developing } remove_modifier = modifier_north_developing }
+			add_modifier = { name = modifier_north_completed months = 120 }
+		}
+	}
+}
 # =============================================================================
 # [하위] 군제 개혁
 # =============================================================================
 je_dhe_gwangmu_military = {
+	 icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
 	group = dhe_reforms
-
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
 	is_shown_when_inactive = {
-		exists = c:DHE
-		this = c:DHE
+		exists = c:KOR
+		this = c:KOR
 		has_variable = dhe_gwangmu_reform_started
 		NOT = { has_variable = dhe_gwangmu_military_done }
 		NOT = { has_variable = dhe_gwangmu_reform_failed }
 	}
 
 	possible = {
-		exists = c:DHE
-		this = c:DHE
+		exists = c:KOR
+		this = c:KOR
 		has_variable = dhe_gwangmu_reform_started
 		NOT = { has_variable = dhe_gwangmu_military_done }
 		NOT = { has_variable = dhe_gwangmu_reform_failed }
 	}
 
 	complete = {
-    has_technology_researched = line_infantry
-    has_technology_researched = general_staff
-    has_technology_researched = napoleonic_warfare
-	has_technology_researched = power_of_the_purse
-    # 군대 규모 50 이상
-    army_size >= 100
-    navy_size >= 15
+		has_technology_researched = line_infantry
+		has_technology_researched = general_staff
+		has_technology_researched = napoleonic_warfare
+		has_technology_researched = power_of_the_purse
+		army_size >= 100
+		navy_size >= 15
 
-    any_scope_building = {
-        is_building_type = building_arms_industry
-        level >= 3
+		any_scope_building = { is_building_type = building_arms_industry level >= 3 }
+		any_scope_building = { is_building_type = building_artillery_foundry level >= 3 }
+		any_scope_building = { is_building_type = building_military_shipyard level >= 2 }
     }
-    any_scope_building = {
-        is_building_type = building_artillery_foundry
-        level >= 3
-    }
-    any_scope_building = {
-        is_building_type = building_military_shipyard
-        level >= 2
-    }
-    }
+
 	on_complete = {
 		set_variable = dhe_gwangmu_military_done
+		add_modifier = {
+			name = dhe_mod_military_reform_success
+			months = -1
+		}
+		
+		# ★ 핵심: 2단계 심화 일지를 여는 이벤트 호출!
+		trigger_event = { id = dhe_military_event.1 }
     }
 }
+
 # =============================================================================
-# [하위] 교육 개혁 - 레벨 3 이상
+# [하위] 교육 개혁
 # =============================================================================
 je_dhe_gwangmu_education = {
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_education.dds"
 	group = dhe_reforms
-
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
 	is_shown_when_inactive = {
-		exists = c:DHE
-		this = c:DHE
+		exists = c:KOR
+		this = c:KOR
 		has_variable = dhe_gwangmu_reform_started
 		NOT = { has_variable = dhe_gwangmu_education_done }
 		NOT = { has_variable = dhe_gwangmu_reform_failed }
 	}
 
 	possible = {
-		exists = c:DHE
-		this = c:DHE
+		exists = c:KOR
+		this = c:KOR
 		has_variable = dhe_gwangmu_reform_started
 		NOT = { has_variable = dhe_gwangmu_education_done }
 		NOT = { has_variable = dhe_gwangmu_reform_failed }
 	}
 
 	complete = {
-	any_scope_building = {
-		is_building_type = building_university
-		level >= 6
+		any_scope_building = { is_building_type = building_university level >= 6 }
+		has_law = law_type:law_public_schools
+		literacy_rate >= 0.5
+		custom_tooltip = {
+			text = dhe_hangeul_edu_completed
+			has_variable = dhe_hangeul_edu_completed 
 		}
-	has_law = law_type:law_public_schools
-    literacy_rate >= 0.5
-	custom_tooltip = {
-         text = dhe_hangeul_edu_completed
-	     has_variable = dhe_hangeul_edu_completed }
-    has_technology_researched = academia
-    has_technology_researched = empiricism
-    has_technology_researched = mass_communication
+		has_technology_researched = academia
+		has_technology_researched = empiricism
+		has_technology_researched = mass_communication
 	}
 
 	on_complete = {
 		set_variable = dhe_gwangmu_education_done
+		trigger_event = { id = dhe_university.1  }
 	}
 }
 
 # =============================================================================
-# [하위] 행정 개혁 - 레벨 3 이상
+# [하위] 행정 개혁
 # =============================================================================
 je_dhe_gwangmu_admin = {
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_admin.dds"
 	group = dhe_reforms
-
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
 	is_shown_when_inactive = {
-		exists = c:DHE
-		this = c:DHE
+		exists = c:KOR
+		this = c:KOR
 		has_variable = dhe_gwangmu_reform_started
 		NOT = { has_variable = dhe_gwangmu_admin_done }
 		NOT = { has_variable = dhe_gwangmu_reform_failed }
 	}
 
 	possible = {
-		exists = c:DHE
-		this = c:DHE
+		exists = c:KOR
+		this = c:KOR
 		has_variable = dhe_gwangmu_reform_started
 		NOT = { has_variable = dhe_gwangmu_admin_done }
 		NOT = { has_variable = dhe_gwangmu_reform_failed }
 	}
 
 	complete = {
-    any_scope_building = {
-        is_building_type = building_government_administration
-        level >= 5
-    }
-    any_scope_building = {
-        is_building_type = building_financial_district
-        level >= 4
-    }
+		any_scope_building = { is_building_type = building_government_administration level >= 5 }
+		any_scope_building = { is_building_type = building_financial_district level >= 4 }
 	    bureaucracy >= 50
 		has_technology_researched = central_archives
 		has_law = law_type:law_proportional_taxation
@@ -247,6 +480,7 @@ je_dhe_gwangmu_admin = {
 
 	on_complete = {
 		set_variable = dhe_gwangmu_admin_done
+		add_modifier = { name = dhe_mod_admin_reform_advanced_success months = -1 }
 	}
 }
 
@@ -254,61 +488,67 @@ je_dhe_gwangmu_admin = {
 # [하위] 사회 개혁
 # =============================================================================
 je_dhe_gwangmu_society = {
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_society.dds"
 	group = dhe_reforms
-
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
 	is_shown_when_inactive = {
-		exists = c:DHE
-		this = c:DHE
+		exists = c:KOR
+		this = c:KOR
 		has_variable = dhe_gwangmu_reform_started
 		NOT = { has_variable = dhe_gwangmu_society_done }
 		NOT = { has_variable = dhe_gwangmu_reform_failed }
 	}
 
 	possible = {
-		exists = c:DHE
-		this = c:DHE
+		exists = c:KOR
+		this = c:KOR
 		has_variable = dhe_gwangmu_reform_started
 		NOT = { has_variable = dhe_gwangmu_society_done }
 		NOT = { has_variable = dhe_gwangmu_reform_failed }
 	}
 
 	complete = {
-    OR = {
-        has_law = law_type:law_freedom_of_conscience
-        has_law = law_type:law_right_of_assembly
-        has_law = law_type:law_censored_press
-        has_law = law_type:law_protected_speech
-	}
-	has_technology_researched = egalitarianism
-    has_technology_researched = labor_movement
-    has_technology_researched = human_rights
-    has_technology_researched = modern_sewerage
-    has_technology_researched = medical_degrees
+		OR = {
+			has_law = law_type:law_freedom_of_conscience
+			has_law = law_type:law_right_of_assembly
+			has_law = law_type:law_censorship
+			has_law = law_type:law_protected_speech
+		}
+		has_technology_researched = egalitarianism
+		has_technology_researched = labor_movement
+		has_technology_researched = human_rights
+		has_technology_researched = modern_sewerage
+		has_technology_researched = medical_degrees
 	}
 
 	on_complete = {
 		set_variable = dhe_gwangmu_society_done
+		add_modifier = { name = dhe_mod_society_reform_advanced_success months = -1 }
 	}
 }
 
-
 # =============================================================================
-# [하위] 기반시설 정비 - 레벨 3 이상
+# [하위] 기반시설 정비
 # =============================================================================
 je_dhe_gwangmu_infrastructure = {
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_infrastructure.dds"
 	group = dhe_reforms
-
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
 	is_shown_when_inactive = {
-		exists = c:DHE
-		this = c:DHE
+		exists = c:KOR
+		this = c:KOR
 		has_variable = dhe_gwangmu_reform_started
 		NOT = { has_variable = dhe_gwangmu_infrastructure_done }
 		NOT = { has_variable = dhe_gwangmu_reform_failed }
 	}
 
 	possible = {
-		exists = c:DHE
-		this = c:DHE
+		exists = c:KOR
+		this = c:KOR
 		has_variable = dhe_gwangmu_reform_started
 		NOT = { has_variable = dhe_gwangmu_infrastructure_done }
 		NOT = { has_variable = dhe_gwangmu_reform_failed }
@@ -316,27 +556,23 @@ je_dhe_gwangmu_infrastructure = {
 
 	complete = {
 		and = {
-			any_scope_building = {
-				is_building_type = building_port
-				level >= 5
-			}
-            any_scope_building = {
-                is_building_type = building_railway
-                level >= 5
-            }			
-			any_scope_building = {
-				is_building_type = building_construction_sector
-				level >= 3
-			}
-			any_scope_building = {
-				is_building_type = building_urban_center
-				level >= 8
-			}
+			any_scope_building = { is_building_type = building_port level >= 5 }
+			any_scope_building = { is_building_type = building_railway level >= 5 }			
+			any_scope_building = { is_building_type = building_construction_sector level >= 3 }
+			any_scope_building = { is_building_type = building_urban_center level >= 8 }
 		}
 	}
 
 	on_complete = {
 		set_variable = dhe_gwangmu_infrastructure_done
+		# 1단계 기본 보상
+		add_modifier = {
+			name = dhe_mod_infrastructure_reform_success
+			months = -1
+		}
+		
+		# ★ 2단계 일지와 경성역을 해금하는 이벤트 호출!
+		trigger_event = { id = dhe_infra_event.1 }
 	}
 }
 
@@ -344,11 +580,14 @@ je_dhe_gwangmu_infrastructure = {
 # [정복] 대동아 통합 전쟁
 # =============================================================================
 je_dhe_great_korea_conquest = {
+	icon = "gfx/interface/icons/event_icons/dhe_great_korea_conquest.dds"
 	group = dhe_conquest
-
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
 	possible = {
-		exists = c:DHE
-		this = c:DHE
+		exists = c:KOR
+		this = c:KOR
 		has_variable = dhe_great_korea_ambition_taken
 		NOT = { has_variable = dhe_ambition_fulfilled }
 	}
@@ -358,7 +597,6 @@ je_dhe_great_korea_conquest = {
 		owns_entire_state_region = STATE_SOUTHERN_MANCHURIA
 		owns_entire_state_region = STATE_AMUR
 		owns_entire_state_region = STATE_NORTHERN_MANCHURIA
-
 		owns_entire_state_region = STATE_KYUSHU
 		owns_entire_state_region = STATE_KANSAI
 		owns_entire_state_region = STATE_HOKKAIDO
@@ -368,13 +606,205 @@ je_dhe_great_korea_conquest = {
 		owns_entire_state_region = STATE_CHUGOKU
 		owns_entire_state_region = STATE_SHIKOKU
 		owns_entire_state_region = STATE_RYUKYU_ISLANDS
-
 		owns_entire_state_region = STATE_FORMOSA
 	}
 
 	on_complete = {
 		set_variable = dhe_ambition_fulfilled
-		trigger_event = { id = dhe_event.2 popup = yes }
+		trigger_event = { id = dhe_event.2 }
+	}
+
+	should_be_pinned_by_default = yes
+}
+je_dhe_rebuild_gyeongbokgung = {
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_reform.dds"
+	group = dhe_conquest
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
+	is_shown_when_inactive = { has_global_variable = dhe_gyeongbokgung_in_progress }
+	possible = { has_global_variable = dhe_gyeongbokgung_in_progress }
+	
+	# 타이머 모디파이어가 사라지면(2년이 지나면) 완료!
+	complete = {
+		NOT = { has_modifier = dhe_mod_gyeongbokgung_reconstruction }
+	}
+
+	# 완료 시 축하 이벤트를 띄웁니다.
+	on_complete = {
+		trigger_event = { id = dhe_gyeongbokgung.1 }
+	}
+}
+je_dhe_seoul_national_university = {
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_education.dds"
+	group = dhe_reforms
+	is_shown_in_lobby = {
+		c:kor ?= THIS
+    }
+	possible = {
+		has_variable = dhe_education_reform_done
+	}
+	
+	# 완료 조건: 학술 기술 연구 완료 & 한성에 대학교 5레벨 이상 존재
+	complete = {
+		has_technology_researched = dialectics
+		any_scope_state = {
+		state_region = s:STATE_SEOUL
+		owner = ROOT
+		any_scope_building = { 
+			is_building_type =
+			 building_university
+				level >= 10
+			}
+		}
+	}
+
+	# 조건 달성 시 완료 이벤트 팝업!
+	on_complete = {
+		trigger_event = { id = dhe_university.2 }
+	}
+}
+# =============================================================================
+# [심화] 제국 국방의 완성 (군사 개혁 2단계)
+# =============================================================================
+je_dhe_gwangmu_military_advanced = {
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+	group = dhe_reforms
+	is_shown_in_lobby = {
+		c:kor ?= THIS
+    }
+	possible = {
+		exists = c:KOR
+		this = c:KOR
+		# 1단계가 완료되었음을 체크
+		has_variable = dhe_gwangmu_military_done
+	}
+
+	complete = {
+		# ★ 2단계 심화 조건 (원하시는 대로 숫자를 바꾸셔도 됩니다!)
+		has_technology_researched = trench_works         # 참호전 기술
+		has_technology_researched = machine_guns         # 기관총 기술
+		army_size >= 200                                 # 육군 200개 대대
+		navy_size >= 50                                  # 해군 50개 전단
+		
+		any_scope_building = { is_building_type = building_munitions_plant level >= 5 } # 탄약 공장 5레벨
+	}
+
+	on_complete = {
+		# 2단계 심화 완료 보상 (예: 압도적인 군대 버프)
+		add_modifier = {
+			name = dhe_mod_military_reform_advanced_success
+			months = -1
+		}
+	}
+}
+
+# =============================================================================
+# [심화] 제국 대동맥 완성 (경부선 및 경의선 부설)
+# =============================================================================
+je_dhe_gwangmu_railway_network = {
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_infrastructure.dds"
+	group = dhe_reforms
+	is_shown_in_lobby = {
+		c:kor ?= THIS
+    }
+	possible = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_gwangmu_infrastructure_done
+	}
+
+	complete = {
+		# 강철 철도 차량 기술 요구
+		has_technology_researched = steel_railway_cars
+		
+		# [경부선 라인] 철도 3레벨 이상
+		s:STATE_SEOUL = { has_building_level = { building = building_railway level >= 3 } }
+		s:STATE_CHNGCHEONG = { has_building_level = { building = building_railway level >= 3 } }
+		s:STATE_YANGHO = { has_building_level = { building = building_railway level >= 3 } }
+		s:STATE_BUSAN = { has_building_level = { building = building_railway level >= 3 } }
+
+		# [경의선 라인] 철도 3레벨 이상
+		s:STATE_HAESEO = { has_building_level = { building = building_railway level >= 3 } }
+		s:STATE_PYONGYANG = { has_building_level = { building = building_railway level >= 3 } }
+	}
+
+	on_complete = {
+		# 철도망 완성 사기급 보상 버프
+		add_modifier = {
+			name = dhe_mod_railway_network_success
+			months = -1
+		}
+	}
+}
+# =============================================================================
+# [정복] 북방 고토 회복 (만주 수복)
+# =============================================================================
+je_dhe_northern_expansion = {
+	icon = "gfx/interface/icons/event_icons/dhe_great_korea_conquest.dds"
+	group = dhe_conquest
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
+	possible = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_great_korea_ambition_taken
+	}
+
+	complete = {
+		# 기존 만주 및 연해주 4개 주
+		owns_entire_state_region = STATE_SHENGJING
+		owns_entire_state_region = STATE_SOUTHERN_MANCHURIA
+		owns_entire_state_region = STATE_NORTHERN_MANCHURIA
+		owns_entire_state_region = STATE_AMUR
+		
+		# 추가된 고토 3개 주 (간도, 길림, 열하)
+		owns_entire_state_region = STATE_JIANDAO
+		owns_entire_state_region = STATE_JILIN
+		owns_entire_state_region = STATE_REHE
+	}
+
+	on_complete = {
+		set_variable = dhe_northern_expansion_done
+		# 만주 정복 전용 이벤트 팝업!
+		trigger_event = { id = dhe_conquest_event.1 }
+	}
+ should_be_pinned_by_default = yes
+}
+# =============================================================================
+# [정복] 동아시아 제해권 장악 (일본 및 대만 제패)
+# =============================================================================
+je_dhe_southern_expansion = {
+	icon = "gfx/interface/icons/event_icons/dhe_great_korea_conquest.dds"
+	group = dhe_conquest
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
+	possible = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_great_korea_ambition_taken
+	}
+
+	complete = {
+		# 일본 열도 및 류큐, 대만 (총 10개 주)
+		owns_entire_state_region = STATE_KYUSHU
+		owns_entire_state_region = STATE_KANSAI
+		owns_entire_state_region = STATE_HOKKAIDO
+		owns_entire_state_region = STATE_TOHOKU
+		owns_entire_state_region = STATE_KANTO
+		owns_entire_state_region = STATE_CHUBU
+		owns_entire_state_region = STATE_CHUGOKU
+		owns_entire_state_region = STATE_SHIKOKU
+		owns_entire_state_region = STATE_RYUKYU_ISLANDS
+		owns_entire_state_region = STATE_FORMOSA
+	}
+
+	on_complete = {
+		set_variable = dhe_southern_expansion_done
+		# 남방 정벌 전용 이벤트 팝업!
+		trigger_event = { id = dhe_conquest_event.2 }
 	}
 
 	should_be_pinned_by_default = yes
