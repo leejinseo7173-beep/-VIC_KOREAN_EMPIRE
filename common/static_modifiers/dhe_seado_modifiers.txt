@@ -1,0 +1,12 @@
+﻿modifier_sedo_politics = {
+	icon = "gfx/interface/icons/event_icons/event_bureaucracy.dds"
+	ig_landowners_pol_str_mult = 0.5            # 지주 정치력 폭증
+	country_legitimacy_add = -20                # 정통성 하락
+	country_bureaucracy_mult = -0.3             # 행정력 마비
+}
+
+modifier_samjeong_corruption = {
+	icon = "gfx/interface/icons/event_icons/event_famine.dds"
+	country_tax_capacity_mult = -0.3            # 국가 전체 조세 역량 30% 감소
+	ig_rural_folk_approval_add = -10            # 전원주민 찬성도 하락
+}

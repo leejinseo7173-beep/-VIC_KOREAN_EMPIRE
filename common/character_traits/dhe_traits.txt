@@ -1,0 +1,161 @@
+﻿# 특성 1: 조국 근대화의 설계자 (산업/경제 끝판왕)
+trait_miracle_on_the_han = {
+    type = personality
+    texture = "gfx/interface/icons/character_trait_icons/innovative.dds"
+    possible = { always = no }
+
+    character_modifier = {
+        character_popularity_add = 30
+    }
+    
+    country_modifier = { 
+        # 경제 부스팅
+        country_minting_mult = 0.15                           
+        tax_income_add = 0.2                                  
+        country_weekly_innovation_add = 5                     
+
+        # 전체 산업 처리율(Throughput) 강제 펌핑 (_add 사용)
+        building_construction_sector_throughput_add = 0.3     
+        building_group_bg_manufacturing_throughput_add = 0.2  
+        building_group_bg_heavy_industry_throughput_add = 0.3 
+        building_group_bg_light_industry_throughput_add = 0.2 
+        building_group_bg_power_throughput_add = 0.3          
+        building_railway_throughput_add = 0.2                 
+        building_port_throughput_add = 0.2                    
+    }
+
+    interest_group_modifier = { 
+        interest_group_pol_str_mult = 0.2                  
+    }
+
+    command_modifier = { 
+        unit_supply_consumption_mult = -0.2                
+        character_battle_condition_logistics_secured_mult = 2
+    }
+}
+
+# 특성 2: 철권통치 (권력 장악 및 반대파 억압)
+trait_iron_fisted_ruler = {
+    type = personality
+    texture = "gfx/interface/icons/character_trait_icons/imperious.dds"
+    possible = { always = no }
+
+    character_modifier = {
+        character_command_limit_mult = 0.5                  
+    }
+    
+    country_modifier = { 
+        country_authority_add = 250                         
+        political_movement_radicalism_add = -0.5             # 급진파 발생 억제 (밀레니엄 모드 안전 문법 적용)
+        country_institution_size_change_speed_mult = 0.3    
+    }
+
+    interest_group_modifier = { 
+        # 지식인(주요 반대파)의 정치력과 지지율을 박살냄
+        interest_group_ig_intelligentsia_pop_attraction_mult = -0.5 
+        interest_group_ig_intelligentsia_pol_str_mult = -0.5
+    }
+
+    command_modifier = { 
+        unit_offense_mult = 0.2                             
+        unit_morale_loss_mult = -0.2                        
+    }
+}
+
+# 특성 3: 새마을 운동 (농촌 개혁 및 인프라 부스팅)
+trait_saemaul_undong = {
+    type = personality
+    texture = "gfx/interface/icons/character_trait_icons/charismatic.dds"
+    possible = { always = no }
+
+    character_modifier = {
+        character_popularity_add = 20
+    }
+    
+    country_modifier = { 
+        state_decree_cost_mult = -0.5                       
+        building_group_bg_agriculture_throughput_add = 0.3   # 농업 건물 처리율 (_add 사용)
+        country_incorporation_speed_mult = 0.25             
+    }
+
+    interest_group_modifier = { 
+        # 전원주민(농민)의 압도적 지지 확보
+        interest_group_ig_rural_folk_pop_attraction_mult = 0.5 
+        interest_group_ig_rural_folk_pol_str_mult = 0.5
+    }
+
+    command_modifier = { 
+        unit_defense_mult = 0.2                             
+        character_battle_condition_charted_terrain_mult = 2 
+    }
+}
+
+# 특성 4: 내 일생 조국과 민족을 위하여 (위신 및 사기 극대화)
+trait_for_the_nation = {
+    type = personality
+    texture = "gfx/interface/icons/character_trait_icons/stalwart_defender.dds"
+    possible = { always = no }
+
+    character_modifier = {
+        character_health_add = 100                           # 불로불사 체력
+        character_popularity_add = 50                       
+    }
+    
+    country_modifier = { 
+        country_legitimacy_base_add = 25                     # 정부 구성(정통성) 난이도 대폭 하락
+        country_prestige_add = 50                           
+    }
+
+    command_modifier = { 
+        unit_morale_recovery_mult = 0.4                      # 전투 중 사기 40% 추가 회복
+        character_battle_condition_aggressive_maneuver_mult = 3 
+    }
+}
+# 특성 5: 수출입국 (수출 주도형 경제 및 행정 효율 특화)
+trait_export_oriented = {
+    type = personality
+    texture = "gfx/interface/icons/character_trait_icons/tactful.dds"
+    possible = { always = no }
+
+    character_modifier = {
+        character_popularity_add = 20
+    }
+    
+    country_modifier = { 
+        # 무역과 기술 발전 펌핑
+        country_bureaucracy_mult = 0.2                       # 국가 행정력 +20% (밀레니엄 모드 문법 적용)
+        country_tech_spread_mult = 0.25                      # 기술 전파 속도 +25%
+        country_production_tech_research_speed_mult = 0.2    # 생산 기술 연구 속도 +20%
+        country_infamy_decay_mult = 0.1                      # 악명 감소 속도 +10% (글로벌 무역을 위한 외교 세탁)
+    }
+
+    interest_group_modifier = { 
+        # 기업가(자본가) 집단과의 결탁 및 부스팅
+        interest_group_ig_industrialists_pop_attraction_mult = 0.3 
+        interest_group_ig_industrialists_pol_str_mult = 0.3
+    }
+}
+
+# 특성 6: 자주국방 (군사 기술 및 압도적 전투력 특화)
+trait_self_reliant_defense = {
+    type = personality
+    texture = "gfx/interface/icons/character_trait_icons/wrathful.dds"
+    possible = { always = no }
+
+    character_modifier = {
+        character_popularity_add = 20
+    }
+    
+    country_modifier = { 
+        # 군사 굴기
+        country_military_tech_research_speed_mult = 0.3      # 군사 기술 연구 속도 +30%
+        country_army_power_projection_mult = 0.2             # 육군 전력 투사(위신 반영) +20%
+    }
+
+    command_modifier = { 
+        # 무자비한 화력전 특화
+        unit_combat_unit_type_mobile_artillery_offense_mult = 0.2  # 기동 포병 공격력 +20%
+        unit_combat_unit_type_cannon_artillery_offense_mult = 0.2  # 대포 포병 공격력 +20%
+        character_battle_condition_surprise_maneuver_mult = 2      # '기습 기동' 전술 발동 확률 2배
+    }
+}

@@ -1,0 +1,64 @@
+﻿# 1. 충정공 민영환
+dhe_min_yeong_hwan = {
+    first_name = "yeong_hwan"        # ★ 반드시 영어(키값)로 써야 고장 안 남!
+	last_name = "min"
+	historical = no                 # ★ 초상화 지정 전까지는 no로 두어야 에러가 안 납니다!
+	age = 45                        
+	culture = cu:korean
+	religion = rel:mahayana
+	
+	interest_group = ig_armed_forces
+	ideology = ideology_jingoist    # ★ 치명적 오류 해결: 지도자는 이념(국수주의자)이 필수입니다!
+	ig_leader = yes                  
+	is_general = yes                 
+	
+	traits = { 
+		charismatic       
+	}
+}
+
+# 2. 도마 안중근
+dhe_ahn_jung_geun = {
+    first_name = "jung_geun"         # ★ 영어 키값
+	last_name = "ahn"
+	historical = no                 # ★ 초상화 지정 전까지는 no!
+	age = 30
+	culture = cu:korean
+	religion = rel:catholic
+	
+	interest_group = ig_intelligentsia 
+	ideology = ideology_radical     # ★ 치명적 오류 해결: 이념(급진파) 추가!
+	ig_leader = yes                  
+	is_general = yes                 
+	
+	traits = { 
+		brave                 
+	}
+}
+# 3. 국가재건최고회의 의장 박정희
+dhe_park_chung_hee = {
+	first_name = "chung_hee"        # ★ 반드시 영어(키값)로!
+	last_name = "park"              # ★ 반드시 영어(키값)로!
+	historical = no                 # ★ 초상화 지정 전까지는 no!
+	age = 25                       # 5.16 군사정변 당시 나이와 비슷하게 세팅
+	culture = cu:korean
+	religion = rel:mahayana
+
+
+	outfit_tags = {
+		general_outfit   # 엔진이 "아, 이 사람은 무조건 장군복을 입혀야지!" 하고 인식합니다.
+	}
+	interest_group = ig_armed_forces
+	ideology = ideology_developmental_autocrat # 권위주의자 이념 (강력한 철권통치)
+	ig_leader = yes                  
+	is_general = yes                 
+	
+traits = { 
+		trait_miracle_on_the_han  # 1. 한강의 기적 (산업)
+		trait_iron_fisted_ruler   # 2. 철권통치 (권력)
+		trait_saemaul_undong      # 3. 새마을 운동 (농촌)
+		trait_for_the_nation      # 4. 조국과 민족 (정통성/위신)
+		trait_export_oriented     # ★ 5. 수출입국 (무역/행정)
+		trait_self_reliant_defense # ★ 6. 자주국방 (군사)
+	}
+}

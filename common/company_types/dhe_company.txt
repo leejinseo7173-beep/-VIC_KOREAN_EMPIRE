@@ -2,18 +2,17 @@
 company_daehan_cheonil_bank = {
 	# 1. 외형 설정 (바닐라 금융 아이콘 활용)
 	icon = "gfx/interface/icons/company_icons/generic_finance.dds"
-	background = "gfx/interface/illustrations/company_backgrounds/generic_finance.dds"
+	background = "gfx/interface/icons/event_icons/dhe_company.dds"
 
 	# 2. 기업 속성
 	category = shopkeeper_owned      # 자본가/상인 소유
 	flavored_company = yes           
 	preferred_headquarters = { STATE_SEOUL }
-
-	# 3. 핵심 건물 (금융 구역과 정부 청사)
-	# 이 건물들의 수익성이 좋아야 기업이 번영합니다.
 	building_types = {
-		building_financial_district
-		building_government_administration
+	  building_tooling_workshop
+	  building_port
+	  building_logging_camp
+	  building_rice_farm
 	}
 
 	# 4. 확장 건물 (무역 센터)
@@ -37,27 +36,26 @@ company_daehan_cheonil_bank = {
 
 	# 7. 실제 설립 가능 조건 (광무개혁 선포 + 중앙은행 기술)
 	possible = {
+
 		has_variable = dhe_gwangmu_reform_started # 광무개혁 디시전 실행 후
 		has_technology_researched = central_banking
+# ★ 설립 조건: 한성에 '공구 공장' 3레벨 이상 존재
+
 		any_scope_state = {
 			state_region = s:STATE_SEOUL
 			is_incorporated = yes
 			any_scope_building = {
-				is_building_type = building_financial_district
+				is_building_type = building_tooling_workshop
 				level >= 3
 			}
 		}
 	}
 
+
 	# 8. 번영 버프 (대한제국의 금고 역할)
 	prosperity_modifier = {
 		country_minting_mult = 0.20                  # 조폐량 +20% (강력한 재정 보너스)
 		country_interest_rate_mult = -0.15           # 국가 대출 이자율 -15%
-		building_financial_district_throughput_add = 0.10 # 금융 구역 처리율 +10%
-	}
-
-	# 9. AI 설정
-	ai_weight = {
-		value = 5
+		building_tooling_workshop_throughput_add = 0.10
 	}
 }

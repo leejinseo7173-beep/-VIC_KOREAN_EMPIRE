@@ -1,0 +1,52 @@
+﻿namespace = dhe_event
+# ==========================================================
+# [프롤로그] 1836년 2월 1일 은자의 나라 붕괴 이벤트
+# ==========================================================
+dhe_event.100 = {
+	type = country_event
+	placement = root
+	title = dhe_event.100.t
+	desc = dhe_event.100.d
+	flavor = dhe_event.100.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	immediate = {
+		# 이벤트가 뜨면, 일지를 띄우는 스위치(변수)를 켭니다.
+		set_variable = dhe_hermit_kingdom_broken
+		
+		# 모더님 방식대로 완벽한 바닐라 모디파이어를 무기한(months = -1)으로 박습니다!
+		add_modifier = { name = modifier_sedo_politics months = -1 }
+		add_modifier = { name = modifier_samjeong_corruption months = -1 }
+	}
+
+	option = {
+		name = dhe_event.100.a
+		default_option = yes
+		# 억지로 일지를 띄우는 명령어(add_journal_entry)는 지웠습니다. 
+		# 위에서 변수를 켰기 때문에 엔진이 알아서 3개의 헬조선 일지를 화면에 띄워줍니다!
+	}
+}
+
+# ==========================================================
+# [프롤로그] 도탄에 빠진 왕조 클리어 이벤트
+# ==========================================================
+dhe_event.101 = {
+	type = country_event
+	placement = root
+	title = dhe_event.101.t
+	desc = dhe_event.101.d
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_reform.dds"
+	immediate = {
+		# 혹시 남아있을지 모를 디버프들을 확실하게 지워줍니다.
+		remove_modifier = modifier_sedo_politics
+		remove_modifier = modifier_samjeong_corruption
+		
+		# ★ 대한제국 선포를 위한 최종 열쇠(변수) 부여!
+		set_variable = dhe_joseon_saved
+	}
+	option = {
+		name = dhe_event.101.a
+		default_option = yes
+		add_loyalists = { value = 0.1 }
+	}
+}

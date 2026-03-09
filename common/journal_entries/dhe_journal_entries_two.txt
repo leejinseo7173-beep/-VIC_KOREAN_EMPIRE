@@ -1,0 +1,125 @@
+﻿# ==========================================================
+# [폭풍 전야] 조용한 은자의 나라
+# ==========================================================
+je_dhe_hermit_kingdom = {
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	group = dhe_reforms
+	is_shown_when_inactive = {
+		exists = c:KOR
+		this = c:KOR
+	}
+	possible = {
+		c:KOR ?= THIS
+		NOT = { has_variable = dhe_hermit_kingdom_broken }
+	}
+
+	# ★ 완료 조건: 1달짜리 타이머 모디파이어가 사라지면 자동으로 완료!
+complete = {
+		custom_tooltip = {
+			text = dhe_hermit_timer_tt
+			game_date >= 1836.2.1
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_hermit_kingdom_broken
+		
+		trigger_event = { id = dhe_event.100 popup = yes }
+	}
+}
+
+# (이 아래에 기존 je_dhe_save_joseon 등 3개의 일지를 그대로 두시면 됩니다!)
+# ==========================================================
+# [메인 프롤로그] 도탄에 빠진 왕조
+# ==========================================================
+je_dhe_save_joseon = {
+	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
+	group = dhe_reforms
+	
+	is_shown_in_lobby = { c:KOR ?= THIS }
+	is_shown_when_inactive = {
+		c:KOR ?= THIS
+		NOT = { has_variable = dhe_joseon_saved }
+	}
+	possible = {
+		c:KOR ?= THIS
+		NOT = { has_variable = dhe_joseon_saved }
+	}
+
+	# ★ 지옥 탈출 조건: 두 개의 세부 개혁을 모두 완수해야 함!
+	complete = {
+		has_variable = dhe_samjeong_resolved
+	}
+
+	on_complete = {
+		# ★ 대한제국 선포의 핵심 열쇠 발급!
+		set_variable = dhe_joseon_saved 
+		
+		# 완료 축하 이벤트 팝업
+		trigger_event = { id = dhe_event.101 popup = yes }
+	}
+}
+
+# ==========================================================
+# [세부 일지 1] 세도정치 타파 (정치 개혁)
+# ==========================================================
+je_dhe_sedo_politics_reform = {
+	icon = "gfx/interface/icons/event_icons/event_bureaucracy.dds"
+	group = dhe_reforms
+	
+	is_shown_in_lobby = { c:KOR ?= THIS }
+	is_shown_when_inactive = {
+		c:KOR ?= THIS
+		NOT = { has_variable = dhe_sedo_resolved }
+	}
+	possible = {
+		c:KOR ?= THIS
+		has_modifier = modifier_sedo_politics
+		NOT = { has_variable = dhe_sedo_resolved }
+	}
+
+	complete = {
+		# 지주 세력 무력화 (정치력 20% 이하로 찍어 누르기)
+		ig:ig_landowners = { political_strength <= 0.20 }
+	}
+
+	on_complete = {
+		# 세도정치 디버프 삭제 및 클리어 변수 발급
+		remove_modifier = modifier_sedo_politics
+		set_variable = dhe_sedo_resolved
+	}
+}
+
+# ==========================================================
+# [세부 일지 2] 삼정의 문란 개혁 (경제 개혁)
+# ==========================================================
+je_dhe_samjeong_reform = {
+	icon = "gfx/interface/icons/event_icons/event_famine.dds"
+	group = dhe_reforms
+	
+	is_shown_in_lobby = { c:KOR ?= THIS }
+	is_shown_when_inactive = {
+		c:KOR ?= THIS
+		NOT = { has_variable = dhe_samjeong_resolved }
+	}
+	possible = {
+		c:KOR ?= THIS
+		has_modifier = modifier_samjeong_corruption
+		NOT = { has_variable = dhe_samjeong_resolved }
+	}
+
+	complete = {
+		# 부패의 온상인 낡은 법안 철폐
+		NOT = { has_law = law_type:law_traditionalism }       # 전통주의 탈출
+		NOT = { has_law = law_type:law_land_based_taxation }  # 토지 기반 조세 탈출
+		
+		# 국가 기틀 정상화
+		bureaucracy >= 0 # 행정력 적자 상태가 아닐 것
+	}
+
+	on_complete = {
+		# 삼정의 문란 디버프 삭제 및 클리어 변수 발급
+		remove_modifier = modifier_samjeong_corruption
+		set_variable = dhe_samjeong_resolved
+	}
+}

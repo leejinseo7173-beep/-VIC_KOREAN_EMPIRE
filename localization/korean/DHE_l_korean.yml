@@ -3,12 +3,12 @@
  DHE:0 "대한제국"
  DHE_ADJ:0 "대한제국"
  DHE_DEF:0 "대한제국"
-
- # 2. 이벤트 텍스트
- dhe_event.1.t:0 "칭제건원(稱帝建元): 제국의 여명"
- dhe_event.1.d:0 "반만년 유구한 역사를 지닌 우리 배달겨레는 그동안 대륙의 거대한 그늘 아래서 인내하며 때를 기다려왔다. 이제 우리는 낡은 사대(事大)의 껍질을 과감히 깨부수고, 자주적인 황제국임을 만방에 선포한다.\n\n오늘부로 국호를 '대한(大韓)'이라 하고, 독자적인 연호를 제정하여 황제의 위엄을 드높일 것이다.\n\n이것은 단순한 국호의 변경이 아니다. 우리 민족의 운명을 스스로 개척하겠다는 결연한 의지의 표명이며, 동방의 등불이 다시 타오르고 있음을 알리는 신호탄이다!"
- dhe_event.1.a:0 "황제 폐하 만세! 만세! 만만세!"
-
+# 1. 제국 선포 이벤트
+ 
+ dhe_event.1.t: "만천하에 고하는 칭제건원 (稱帝建元)"
+ dhe_event.1.d: "오랜 세월 주변 열강의 간섭과 핍박을 받아온 우리 국가는 마침내 모든 굴레를 벗어던지고, 굳건한 자주 독립의 황제국임을 만천하에 선포합니다.\n\n새롭게 탄생한 대한제국은 이제 단순한 한반도의 국가가 아닙니다. 광무황제께서는 압록강과 두만강 너머 만주 벌판에 대한 우리의 역사적 권리를 천명하시며, 제국의 깃발 아래 만주족을 비롯한 다양한 민족을 모두 아우르는 거대한 제국주의적 비전을 제시하셨습니다.\n\n과거 고구려와 발해가 누렸던 북방의 영광을 되찾기 위한 위대한 첫걸음이, 바로 오늘 시작되었습니다."
+ dhe_event.1.a: "황제 폐하, 만세! 만세! 만만세!"
+ 
  dhe_event.2.t:0 "천하통일(天下統一): 대동아의 진정한 주인"
  dhe_event.2.d:0 "북으로는 광활한 만주 벌판의 옛 고토를 수복하여 고구려와 발해의 기상을 되찾았고, 남으로는 현해탄을 건너 일본 열도와 대만까지 우리의 강역으로 복속시켰다.\n\n이것은 단순한 영토 확장이 아니다. 단군 이래 최대의 과업이자, 서구 열강의 침탈로부터 아시아를 지켜낼 새로운 질서가 우리 손에 의해 확립되었음을 알리는 역사적 순간이다.\n\n이제 아시아의 태양은 도쿄가 아닌 서울에서 떠오를 것이며, 황제의 칙령이 동방의 모든 바다와 땅을 다스리게 될 것이다. 우리가 곧 아시아의 질서이자 법이다!"
  dhe_event.2.a:0 "동방의 절대 패자(覇者)여, 영원하라!"
@@ -25,42 +25,57 @@
  dhe_event.hangeul_complete.d:0 "체계적인 교육 덕분에 백성들이 글을 깨우치고 있습니다. 국력이 크게 신장될 것입니다."
  dhe_event.hangeul_complete.a:0 "훌륭하구나."
 
- # 3. 결단(Decision)
- dhe_proclaim_empire_decision:0 "칭제건원 선포"
- dhe_proclaim_empire_decision_desc:0 "서세동점의 혼란 속에서 우리 민족이 살아남을 길은 오직 스스로 강해지는 것뿐이다. 500년 묵은 사대의 예를 과감히 벗어던지고, 황제의 위엄을 갖추어 만방에 자주독립국임을 선포하라."
- dhe_proclaim_empire_decision_tooltip:0 "국가 태그가 [DHE]로 변경되고 제국의 반열에 오릅니다."
+ dhe_event_1_tt: "대한제국 선포 보상"
+ dhe_event_1_desc_tt: "만주족이 §Y수용 문화(주 문화)§!로 편입되며, 막대한 제국 위신을 얻고 곧이어 §Y광무개혁§!이 시작됩니다."
+ 
+ dhe_event_2_tt: "대통합 달성 보상"
+ dhe_event_2_desc_tt: "만주 및 일본 전역이 §Y한국인 본토(Homeland)§!로 편입되며, 전체 인구의 20%가 충성파로 전환되고 강력한 통합 버프를 얻습니다."
+ 
+ dhe_event_3_tt: "광무개혁 일지 활성화"
+ dhe_event_3_desc_tt: "국정 전반에 걸친 §Y6개의 광무개혁 미션(일지)§!이 새롭게 시작됩니다."
+ 
+ dhe_event_4_tt: "광무개혁 최종 보상"
+ dhe_event_4_desc_tt: "광무개혁의 모든 미션을 달성한 보상으로 국가 전반에 압도적인 §Y영구 모디파이어§!가 적용됩니다."
+ 
+ dhe_event_5_tt: "한글 보급 완료 보상"
+ dhe_event_5_desc_tt: "문맹 퇴치의 훌륭한 성과로 전체 인구의 10%가 새롭게 §Y충성파§!로 전환됩니다."
+ 
+ dhe_gyeongbokgung_tt: "경복궁 중건 잠금 해제"
+ dhe_gyeongbokgung_desc_tt: "이제 한성(서울)의 건설 탭에서 직접 §Y경복궁§!을 건설할 수 있게 됩니다."
+ 
+ dhe_university_1_tt: "제국대학 미션 활성화"
+ dhe_university_1_desc_tt: "일지 탭에 §Y서울대학교(제국대학) 설립§! 미션이 새롭게 추가됩니다."
+ 
+ dhe_university_2_tt: "서울대학교 설립 보상"
+ dhe_university_2_desc_tt: "한성(서울) 지역에 강력한 §Y국립 대학 효율 버프§!가 영구적으로 적용되며, 5만 명의 충성파를 즉시 얻습니다."
 
- dhe_great_korea_ambition:0 "황실의 원대한 야망"
- dhe_great_korea_ambition_desc:0 "한반도는 너무 좁다. 북으로는 잃어버린 고토를 수복하여 대륙으로 뻗어나가고, 남으로는 왜구의 본거지를 정벌하여 동아시아의 진정한 패자가 되어야 한다."
- dhe_great_korea_ambition_tooltip:0 "만주와 일본, 대만 전역에 대한 [concept_claim]을 획득합니다."
+ # 이벤트 텍스트
+ dhe_military_event.1.t: "기초 군제 개혁 완료"
+ dhe_military_event.1.d: "우리의 군대가 마침내 구식 무기를 버리고 근대적인 전열보병과 대포로 무장했습니다! 군의 뼈대가 세워졌으니, 이제 황제 폐하의 권위를 세우고 열강의 침탈을 막아낼 '진정한 대제국군'으로 거듭날 때입니다."
+ dhe_military_event.1.f: "원수부를 창설하여 군 통수권을 확립하라!"
+ dhe_military_event.1.a: "강력한 자주국방을 위하여!"
+ 
+ dhe_military_event_1_tt: "심화 군사 개혁 시작"
+ dhe_military_event_1_desc_tt: "일지 탭에 §Y[제국 국방의 완성]§! 심화 미션이 새롭게 추가됩니다."
 
  # 한글 교육 결정
+
  dhe_hangeul_edu_prepare_decision:0 "한글 교육 준비"
  dhe_hangeul_edu_prepare_decision_desc:0 "황제 폐하의 칙령 아래, 백성 모두가 글을 깨칠 수 있도록 국가 차원의 한글 교육 체계를 준비한다."
  dhe_hangeul_edu_prepare_decision_tooltip:0 "20년간 한글 교육 준비 정책을 시행합니다."
- dhe_hangeul_edu_preparing:0 "한글 교육 준비 중"
+ dhe_hangeul_edu_preparing:0 "한글 교육 준비."
  dhe_hangeul_edu_complete_decision:0 "한글 교육 완수"
  dhe_hangeul_edu_complete_decision_desc:0 "한글 교육 체계가 전국에 정착되었습니다. 문자는 더 이상 지식인의 전유물이 아닙니다."
  dhe_hangeul_edu_complete_decision_tooltip:0 "한글 교육이 완전히 제도화되어 영구적인 효과를 얻습니다."
- dhe_hangeul_edu_completed:0 "한글 교육 완료"
+ dhe_hangeul_edu_completed:0 "한글 교육 완료."
+ 
 
- # 한글 교육 결정 조건 툴팁 (custom_tooltip용)
- dhe_hangeul_edu_prepare_req_reform_tt:0 "광무개혁이 시작되어야 합니다"
- dhe_hangeul_edu_complete_req_literacy_tt:0 "문해율 50% 이상"
- dhe_hangeul_edu_complete_req_university_tt:0 "대학 레벨 3 이상 보유"
-
- # 4. 일지(Journal Entries) - 메인
+# 4. 일지(Journal Entries) - 메인
  je_dhe_gwangmu_reform_main:0 "광무개혁"
  je_dhe_gwangmu_reform_main_desc:0 "황제 폐하의 칙령 아래, 국정 전반의 개혁을 추진한다.\n\n[Custom('DHE_GWANGMU_CHECKLIST')]"
  je_dhe_gwangmu_reform_main_goal:0 "모든 광무개혁 과제를 완수하라"
  je_dhe_gwangmu_reform_main_reason:0 "황제 폐하의 칙령 아래, 국정 전반의 개혁을 추진한다."
  je_dhe_gwangmu_reform_main_goal_tooltip:0 "모든 광무개혁 과제를 완수하라"
- 
- # 5. 일지 - 산업 개혁
- je_dhe_gwangmu_industry:0 "산업 개혁"
- je_dhe_gwangmu_industry_desc:0 "철도, 탄광, 제철 등 근대 산업의 기반을 확립한다."
- je_dhe_gwangmu_industry_goal:0 "철도, 탄광, 제철소 중 하나 이상 건설"
- je_dhe_gwangmu_industry_reason:0 "철도, 탄광, 제철 등 근대 산업의 기반을 확립한다."
 
  # 6. 일지 - 군제 개혁
  je_dhe_gwangmu_military:0 "군제 개혁"
@@ -92,11 +107,37 @@
  je_dhe_gwangmu_infrastructure_goal:0 "항만, 건설업, 도시 중심지 중 하나 이상 건설"
  je_dhe_gwangmu_infrastructure_reason:0 "항만과 건설 능력을 확충해 국력을 받친다."
 
- # 11. 일지 - 대동아 정복
- je_dhe_great_korea_conquest:0 "대동아 통합 전쟁"
- je_dhe_great_korea_conquest_desc:0 "만주와 일본 열도, 대만을 우리의 영토로 편입하여 동아시아의 패권을 확립한다.\n\n[concept_sovereignty]를 완전히 장악해야 한다."
- je_dhe_great_korea_conquest_goal:0 "만주 4개 주, 일본 9개 주, 대만 1개 주를 모두 완전 점령"
- je_dhe_great_korea_conquest_reason:0 "만주와 일본 열도, 대만을 우리의 영토로 편입하여 동아시아의 패권을 확립한다.\n\n[concept_sovereignty]를 완전히 장악해야 한다."
+ dhe_hangeul_edu_prepare_req_reform_tt:0 "광무개혁이 시작되어야 합니다"
+ dhe_hangeul_edu_prepare_req_not_preparing_tt:0 "아직 한글 교육을 준비 중이 아니어야 합니다"
+ dhe_hangeul_edu_prepare_req_not_completed_tt:0 "아직 한글 교육이 완료되지 않았어야 합니다"
+
+ dhe_start_gwangmu_reform_decision: "광무개혁 선포"
+ dhe_start_gwangmu_reform_decision_desc: "이제 우리는 당당한 자주 독립 제국이 되었습니다. 낡은 악습을 타파하고, 구본신참(舊本新參)의 정신으로 제국 전역을 근대화하는 거대한 개혁을 시작할 때입니다."
+ dhe_start_gwangmu_reform_decision_tooltip: "제국의 전 권역을 대상으로 하는 거대한 산업화 및 개혁 일지들이 시작됩니다."
+ dhe_start_gwangmu_reform_tt: "광무개혁 연계 일지들이 활성화됩니다."
+ 
+ je_korea_capital_industry: "제국의 심장, 한성 대개조"
+ je_korea_capital_industry_reason: "반만년 역사의 중심이자 황은이 머무는 한성, 그리고 그를 호위하는 해서는 마땅히 천하의 으뜸가는 근대 대도시로 거듭나야 합니다. 낡은 초가를 허물고 마천루와 굴뚝을 세워, 오만한 열강의 사신들이 제국의 웅장한 위용 앞에 고개 숙이게 하십시오."
+ je_korea_capital_industry_desc: "수도권 일대에 근대적인 복합 산업 단지를 조성해야 합니다."
+ korea_capital_industry_goal_tt: "다음 핵심 인프라를 모두 확충하십시오:\n- 한성(서울) 지역에 도심지 5레벨 및 행정부 3레벨 이상 건설\n- 해서 지역에 대학교 2레벨 이상 건설"
+
+
+ je_korea_south_industry: "삼남 식산흥업 (殖産興業)"
+ je_korea_south_industry_reason: "삼남의 비옥한 대지는 예로부터 우리 민족을 먹여 살린 굳건한 젖줄이었습니다. 이제 이 풍요로운 들판에 근대적 농법의 결실과 방직 기계의 굉음을 더할 때입니다. 백성을 배불리 먹이고 천하를 우리의 비단으로 덮어 완전한 자립 경제를 이룩해야 합니다."
+ je_korea_south_industry_desc: "충청 및 양호 일대의 농업 생산력을 극대화하고 경공업을 육성해야 합니다."
+ korea_south_industry_goal_tt: "다음 핵심 인프라를 모두 확충하십시오:\n- 충청 지역에 방직 공장 3레벨 및 식료품 공장 3레벨 이상 건설\n- 양호(전라) 지역에 쌀 농장 10레벨 이상 건설"
+
+
+ je_korea_busan_industry: "제국 해양 진출의 교두보, 부산"
+ je_korea_busan_industry_reason: "망망대해로 뻗어가는 관문인 부산. 우물 안 개구리였던 뼈저린 과거를 뒤로하고, 이제 우리는 거친 바다를 지배해야 합니다. 시뻘건 쇳물로 빚어낸 거대한 철갑선들을 진수시켜 제국의 당당한 깃발을 태평양 너머까지 휘날리게 하십시오."
+ je_korea_busan_industry_desc: "부산 일대에 대규모 중공업 단지와 조선소를 건설해야 합니다."
+ korea_busan_industry_goal_tt: "다음 핵심 인프라를 모두 확충하십시오:\n- 부산 지역에 조선소 3레벨, 전동기 공장 2레벨, 철강 공장 3레벨 이상 건설"
+
+
+ je_korea_north_industry: "북방의 검은 황금과 철혈 (鐵血)"
+ je_korea_north_industry_reason: "서릿발 날리는 관동의 영봉과 평양, 사리원의 깊은 땅속에는 제국을 강철의 거인으로 깨울 무한한 동력이 잠들어 있습니다. 곡괭이와 다이너마이트로 산맥을 허물고 솟구치는 석탄과 철광석으로 부국강병의 뼈대를 주조하십시오."
+ je_korea_north_industry_desc: "북부 일대의 광산을 집중적으로 개발하고 중공업 기반을 다져야 합니다."
+ korea_north_industry_goal_tt: "다음 핵심 인프라를 모두 확충하십시오:\n- 평양 지역에 석탄 광산 5레벨 및 공구 공장 3레벨 이상 건설\n- 사리원 지역에 철 광산 5레벨 이상 건설\n- 관동 지역에 벌목장 5레벨 이상 건설"
 
  # 12. 체크리스트 표시용 (Custom Loc)
  DHE_CHECK_INDUSTRY_YES:0 "✅ 산업 개혁 완료\n"
@@ -112,23 +153,50 @@
  DHE_CHECK_INFRA_YES:0 "✅ 기반시설 정비 완료\n"
  DHE_CHECK_INFRA_NO:0 "❌ 기반시설 정비 미완료\n"
 
- # 13. 수정자(Modifier)
- dhe_imperial_prestige:0 "황제의 위엄"
- dhe_imperial_prestige_desc:0 "제국 선포로 인한 위신과 권위 상승"
- 
- dhe_manifest_destiny_completed:0 "대동아 천명 완수"
- dhe_manifest_destiny_completed_desc:0 "동아시아의 패권을 확립한 위업"
- 
- dhe_gwangmu_reform_success:0 "광무개혁의 성공"
- dhe_gwangmu_reform_success_desc:0 "근대화 개혁을 성공적으로 완수함"
-
- # 한글 교육 모디파이어
- dhe_mod_hangeul_edu_preparation_20y:0 "한글 교육 실행"
- dhe_mod_hangeul_edu_preparation_20y_desc:0 "국가 주도의 한글 교육 제도를 정비하고 교재와 교원을 양성하는 과도기 단계입니다."
-
- dhe_mod_hangeul_edu_completed:0 "한글 교육 완수"
- dhe_mod_hangeul_edu_completed_desc:0 "한글이 전 사회에 보급되어, 문해력과 국가 통합이 비약적으로 향상되었습니다."
 
  # 14. Journal Entry Group
  dhe_reforms:0 "광무개혁"
  dhe_conquest:0 "대한제국 확장"
+ 
+ 
+ # [개념 정의: 마우스 오버 시 뜨는 설명]
+ concept_dhe_capital_industry: "수도권 복합 산업화"
+ concept_dhe_capital_industry_desc: "일지 목록에 있는 #Y '제국의 심장, 한성 대개조'#! 일지를 완료해야 합니다."
+ concept_dhe_south_industry: "삼남 식산흥업"
+ concept_dhe_south_industry_desc: "일지 목록에 있는 #Y '삼남 식산흥업'#! 일지를 완료해야 합니다."
+ concept_dhe_busan_industry: "부산 중공업 육성"
+ concept_dhe_busan_industry_desc: "일지 목록에 있는 #Y '제국 해양 진출의 교두보, 부산'#! 일지를 완료해야 합니다."
+ concept_dhe_north_industry: "북방 자원 및 중공업 육성"
+ concept_dhe_north_industry_desc: "일지 목록에 있는 #Y '북방의 검은 황금과 철혈'#! 일지를 완료해야 합니다."
+ concept_dhe_military_reform: "군제 개혁"
+ concept_dhe_military_reform_desc: "일지 목록에 있는 #Y '군제 개혁'#! 일지를 완료해야 합니다."
+ concept_dhe_education_reform: "교육 개혁"
+ concept_dhe_education_reform_desc: "일지 목록에 있는 #Y '교육 개혁'#! 일지를 완료해야 합니다."
+ concept_dhe_admin_reform: "행정 개혁"
+ concept_dhe_admin_reform_desc: "일지 목록에 있는 #Y '행정 개혁'#! 일지를 완료해야 합니다."
+ concept_dhe_society_reform: "사회 개혁"
+ concept_dhe_society_reform_desc: "일지 목록에 있는 #Y '사회 개혁'#! 일지를 완료해야 합니다."
+ concept_dhe_infrastructure_reform: "기반시설 정비"
+ concept_dhe_infrastructure_reform_desc: "일지 목록에 있는 #Y '기반시설 정비'#! 일지를 완료해야 합니다."
+
+ # [메인 일지 목표 달성 현황 텍스트]
+ je_korea_capital_industry_done_tt: "[concept_dhe_capital_industry] 완료"
+ je_korea_south_industry_done_tt: "[concept_dhe_south_industry] 완료"
+ je_korea_busan_industry_done_tt: "[concept_dhe_busan_industry] 완료"
+ je_korea_north_industry_done_tt: "[concept_dhe_north_industry] 완료"
+ je_dhe_gwangmu_military_done_tt: "[concept_dhe_military_reform] 달성"
+ je_dhe_gwangmu_education_done_tt: "[concept_dhe_education_reform] 달성"
+ je_dhe_gwangmu_admin_done_tt: "[concept_dhe_admin_reform] 달성"
+ je_dhe_gwangmu_society_done_tt: "[concept_dhe_society_reform] 달성"
+ je_dhe_gwangmu_infrastructure_done_tt: "[concept_dhe_infrastructure_reform] 달성"
+
+# 광무개혁 메인 일지 달성 조건 상세 툴팁
+ je_korea_capital_industry_done_desc_tt: "수도권 복합 산업화 일지의 모든 조건을 만족해야 합니다."
+ je_korea_south_industry_done_desc_tt: "삼남 식산흥업 일지의 모든 조건을 만족해야 합니다."
+ je_korea_busan_industry_done_desc_tt: "부산 중공업 육성 일지의 모든 조건을 만족해야 합니다."
+ je_korea_north_industry_done_desc_tt: "북방 자원 및 중공업 육성 일지의 모든 조건을 만족해야 합니다."
+ je_dhe_gwangmu_military_done_desc_tt: "군제 개혁 일지의 모든 조건을 만족해야 합니다."
+ je_dhe_gwangmu_education_done_desc_tt: "교육 개혁 일지의 모든 조건을 만족해야 합니다."
+ je_dhe_gwangmu_admin_done_desc_tt: "행정 개혁 일지의 모든 조건을 만족해야 합니다."
+ je_dhe_gwangmu_society_done_desc_tt: "사회 개혁 일지의 모든 조건을 만족해야 합니다."
+ je_dhe_gwangmu_infrastructure_done_desc_tt: "기반시설 정비 일지의 모든 조건을 만족해야 합니다."

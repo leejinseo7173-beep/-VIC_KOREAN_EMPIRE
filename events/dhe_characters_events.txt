@@ -1,0 +1,68 @@
+﻿namespace = dhe_character_event
+
+dhe_character_event.1 = {
+	type = country_event
+	placement = root
+	
+	title = dhe_character_event.1.t
+	desc = dhe_character_event.1.d
+	
+	option = {
+		name = dhe_character_event.1.a
+		default_option = yes
+		
+		# 밀레니엄 모드와 100% 동일한 구조
+		create_character = {
+			template = dhe_min_yeong_hwan
+			on_created = {
+				add_character_role = politician
+			}
+		}
+		
+		create_character = {
+			template = dhe_ahn_jung_geun
+			on_created = {
+				add_character_role = politician
+			}
+		}
+	}
+}
+# 박정희 등장 이벤트 (군사 정변 또는 강력한 지도자 대두)
+  dhe_character_event.2 = {
+	type = country_event
+	placement = root
+		event_image = { 
+		texture = "gfx/interface/icons/event_pictures/dhe_event_6.dds" 
+	}
+	title = dhe_character_event.2.t
+	desc = dhe_character_event.2.d
+	
+	event_image = {
+		video = "gfx/event_pictures/asia_military_parade.dds"
+	}
+	
+	# 이벤트 창 양옆에 3D 초상화 띄우기 (얼굴 깎기 전까진 랜덤 아저씨가 섭니다)
+	left_icon = scope_park
+
+	immediate = {
+		create_character = {
+			template = dhe_park_chung_hee
+			save_scope_as = scope_park
+			on_created = {
+				add_character_role = politician
+				make_interest_group_leader = yes  # ★ 등장 즉시 군부 1인자로 강제 등극!
+			}
+		}
+	}
+
+	option = {
+		name = dhe_character_event.2.a
+		default_option = yes
+		
+		# 강력한 국가 주도 산업화 버프 5년 제공
+		add_modifier = {
+			name = state_construction_mult
+			months = 60
+		}
+	}
+}

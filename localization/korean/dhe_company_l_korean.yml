@@ -1,3 +1,5 @@
 ﻿l_korean:
  company_daehan_cheonil_bank: "대한천일은행"
  company_daehan_cheonil_bank_flavor: "1899년 고종 황제의 내탕금(황실 자본)을 기반으로 설립된 제국 최초의 민족 은행입니다. '하늘 아래 첫째가는 은행'이라는 자부심 아래, 외세의 경제 침탈에 맞서 국고를 관리하고 상권 지키기에 앞장서고 있습니다."
+ daehan_bank_building_req_tt: "한성(서울)에 특화 건물(공구 공장) 3레벨 이상 존재"
+ daehan_bank_reform_started.tt: "[concept_dhe_gwangmu_reform_started] 완료

@@ -10,14 +10,21 @@ desc = dhe_event.1.d
 event_image = {
 		video = "ep1_donghak_rebellion"
 	}
-
+icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 
 option = {
 name = dhe_event.1.a
-add_primary_culture = cu:manchu
+		add_culture_acceptance_modifier = {
+			culture = cu:manchu
+			multiplier = 55
+		}
+		add_culture_acceptance_modifier = {
+			culture = cu:mongol
+			multiplier = 45
+		}
 add_modifier = { name = dhe_imperial_prestige days = -1 }
 set_variable = dhe_empire_formed
-trigger_event = { id = dhe_event.3 }
+trigger_event = { id = dhe_event.3 popup = yes}
 }
 }
 
@@ -75,7 +82,7 @@ option = {
 			text = dhe_event_3_tt
 			tooltip = dhe_event_3_desc_tt
 		}
-		
+		trigger_event = { id = dhe_character_event.2 popup = yes}
 		if = {
 			limit = { NOT = { has_variable = dhe_reform_score } }
 			set_variable = { name = dhe_reform_score value = 0 }
