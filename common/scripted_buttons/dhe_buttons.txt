@@ -1,0 +1,55 @@
+﻿# Encoding: UTF-8 with BOM
+
+# 버튼 1: 탐관오리 숙청 (반복 가능)
+dhe_button_purge_corrupt_officials = {
+	name = "dhe_button_purge_corrupt_officials"
+	desc = "dhe_button_purge_corrupt_officials_desc"
+
+	visible = {
+		c:KOR ?= THIS
+		has_journal_entry = je_dhe_sedo_politics_reform
+	}
+
+	possible = {
+		NOT = { has_variable = dhe_cooldown_purge }
+	}
+
+	effect = {
+		add_progress = {
+			name = dhe_progress_bar_royal_authority
+			value = 10
+		}
+		set_variable = {
+			name = dhe_cooldown_purge
+			days = 365 
+		}
+		# ★ 수정: 에러를 내던 가짜 명령어 대신, 즉시 급진파 1만 명을 늘리는 확실한 페널티로 교체!
+		add_radicals = 10000
+	}
+}
+
+# 버튼 2: 서원 철폐 (단 1번 사용 가능)
+dhe_button_abolish_seowon = {
+	name = "dhe_button_abolish_seowon"
+	desc = "dhe_button_abolish_seowon_desc"
+
+	visible = {
+		c:KOR ?= THIS
+		has_journal_entry = je_dhe_sedo_politics_reform
+	}
+
+	possible = {
+		NOT = { has_variable = dhe_seowon_abolished }
+	}
+
+	effect = {
+		add_progress = {
+			name = dhe_progress_bar_royal_authority
+			value = 30
+		}
+		set_variable = dhe_seowon_abolished
+		
+		# ★ 수정: 서원 철폐의 뼈아픈 대가로 급진파 5만 명 폭증!
+		add_radicals = 50000
+	}
+}

@@ -1,4 +1,6 @@
-﻿namespace = dhe_event
+﻿# Encoding: UTF-8 with BOM
+namespace = dhe_event
+
 # ==========================================================
 # [프롤로그] 1836년 2월 1일 은자의 나라 붕괴 이벤트
 # ==========================================================
@@ -11,19 +13,24 @@ dhe_event.100 = {
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 
 	immediate = {
-		# 이벤트가 뜨면, 일지를 띄우는 스위치(변수)를 켭니다.
+		# 1. 일지 등장 스위치 ON
 		set_variable = dhe_hermit_kingdom_broken
 		
-		# 모더님 방식대로 완벽한 바닐라 모디파이어를 무기한(months = -1)으로 박습니다!
-		add_modifier = { name = modifier_sedo_politics months = -1 }
-		add_modifier = { name = modifier_samjeong_corruption months = -1 }
+		# 2. 영구 디버프 부여 (months를 안 적어야 영구 지속됩니다!)
+		add_modifier = { name = modifier_sedo_politics }
+		add_modifier = { name = modifier_samjeong_corruption }
+		
+		# 3. 헬조선 일지 5개 강제 활성화 (확실하게 띄우기)
+		add_journal_entry = { type = je_dhe_save_joseon }
+		add_journal_entry = { type = je_dhe_sedo_politics_reform }
+		add_journal_entry = { type = je_dhe_samjeong_jeonjeong }
+		add_journal_entry = { type = je_dhe_samjeong_gunjeong }
+		add_journal_entry = { type = je_dhe_samjeong_hwangok }
 	}
 
 	option = {
 		name = dhe_event.100.a
 		default_option = yes
-		# 억지로 일지를 띄우는 명령어(add_journal_entry)는 지웠습니다. 
-		# 위에서 변수를 켰기 때문에 엔진이 알아서 3개의 헬조선 일지를 화면에 띄워줍니다!
 	}
 }
 
@@ -36,14 +43,16 @@ dhe_event.101 = {
 	title = dhe_event.101.t
 	desc = dhe_event.101.d
 	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_reform.dds"
+
 	immediate = {
-		# 혹시 남아있을지 모를 디버프들을 확실하게 지워줍니다.
+		# 1. 고통스러웠던 헬조선 디버프들을 국가에서 완전히 삭제합니다.
 		remove_modifier = modifier_sedo_politics
 		remove_modifier = modifier_samjeong_corruption
 		
-		# ★ 대한제국 선포를 위한 최종 열쇠(변수) 부여!
+		# 2. 대한제국 선포 버튼을 켜기 위한 최종 열쇠(변수)를 부여합니다.
 		set_variable = dhe_joseon_saved
 	}
+
 	option = {
 		name = dhe_event.101.a
 		default_option = yes
