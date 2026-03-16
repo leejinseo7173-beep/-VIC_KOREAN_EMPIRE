@@ -66,8 +66,11 @@ je_dhe_sedo_politics_reform = {
 
 	complete = {
 		# ★ 클리어 조건: 왕권 게이지 100 달성
-		scope:journal_entry = {
-			"scripted_bar_progress(dhe_progress_bar_royal_authority)" >= 100
+		custom_tooltip = {
+			text = dhe_sedo_bar_full_tt
+			scope:journal_entry = {
+				"scripted_bar_progress(dhe_progress_bar_royal_authority)" >= 100
+			}
 		}
 	}
 
