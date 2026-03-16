@@ -4,38 +4,24 @@ dhe_progress_bar_royal_authority = {
 	desc = "dhe_progress_bar_royal_authority_desc"
 
 	weekly_progress = {
-		add = {
-			desc = "dhe_royal_auth_base"
-			value = -0.5
-		}
+		add = -0.5
 		if = {
 			limit = {
-				# ★ 수정: political_strength 대신 clout 사용!
 				ig:ig_landowners = { clout >= 0.3 }
 			}
-			add = {
-				desc = "dhe_royal_auth_landowners_high"
-				value = -0.5
-			}
+			add = -0.5
 		}
 		if = {
 			limit = {
 				ig:ig_landowners = { clout <= 0.2 }
 			}
-			add = {
-				desc = "dhe_royal_auth_landowners_low"
-				value = 1.0
-			}
+			add = 1.0
 		}
 		if = {
 			limit = {
-				# ★ 수정: 행정력 오류 대신 안전한 정통성(legitimacy) 조건 사용!
 				legitimacy >= 50
 			}
-			add = {
-				desc = "dhe_royal_auth_bureaucracy_good"
-				value = 0.5
-			}
+			add = 0.5
 		}
 	}
 

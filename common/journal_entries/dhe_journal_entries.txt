@@ -26,47 +26,38 @@ je_dhe_gwangmu_reform_main = {
 complete = {
 		custom_tooltip = {
 			text = je_korea_capital_industry_done_tt
-			tooltip = je_korea_capital_industry_done_desc_tt
 			has_variable = korea_capital_industry_done
 		}
 		custom_tooltip = {
 			text = je_korea_south_industry_done_tt
-			tooltip = je_korea_south_industry_done_desc_tt
 			has_variable = korea_south_industry_done
 		}
 		custom_tooltip = {
 			text = je_korea_busan_industry_done_tt
-			tooltip = je_korea_busan_industry_done_desc_tt
 			has_variable = korea_busan_industry_done
 		}
 		custom_tooltip = {
 			text = je_korea_north_industry_done_tt
-			tooltip = je_korea_north_industry_done_desc_tt
 			has_variable = korea_north_industry_done
 		}
 		custom_tooltip = {
 			text = je_dhe_gwangmu_military_done_tt
-			tooltip = je_dhe_gwangmu_military_done_desc_tt
 			has_variable = dhe_gwangmu_military_done
 		}
 		custom_tooltip = {
 			text = je_dhe_gwangmu_education_done_tt
-			tooltip = je_dhe_gwangmu_education_done_desc_tt
 			has_variable = dhe_gwangmu_education_done
 		}
 		custom_tooltip = {
 			text = je_dhe_gwangmu_admin_done_tt
-			tooltip = je_dhe_gwangmu_admin_done_desc_tt
 			has_variable = dhe_gwangmu_admin_done
 		}
 		custom_tooltip = {
 			text = je_dhe_gwangmu_society_done_tt
-			tooltip = je_dhe_gwangmu_society_done_desc_tt
 			has_variable = dhe_gwangmu_society_done
 		}
 		custom_tooltip = {
 			text = je_dhe_gwangmu_infrastructure_done_tt
-			tooltip = je_dhe_gwangmu_infrastructure_done_desc_tt
 			has_variable = dhe_gwangmu_infrastructure_done
 		}
 	}

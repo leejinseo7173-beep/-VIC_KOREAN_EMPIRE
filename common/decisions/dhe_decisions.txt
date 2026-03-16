@@ -129,7 +129,7 @@ dhe_rebuild_gyeongbokgung_decision = {
 		NOT = { has_global_variable = dhe_gyeongbokgung_in_progress }
 	}
 	possible = {
-		custom_tooltip = "1년의 공사 기간이 소요됩니다."
+		custom_tooltip = { text = dhe_gyeongbokgung_duration_tt }
 	}
 	when_taken = {
 		# ★ 전역 변수로 진행 상황 체크
@@ -142,5 +142,5 @@ dhe_rebuild_gyeongbokgung_decision = {
 		
 		add_journal_entry = { type = je_dhe_rebuild_gyeongbokgung }
 	}
-	ai_chance = { base = 10 }
+	ai_chance = { value = 10 }
 }

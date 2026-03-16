@@ -3,12 +3,12 @@
 dhe_recalculate_reform_score = {
 	set_variable = { name = dhe_reform_score value = 0 }
 
-	if = { limit = { has_variable = dhe_gwangmu_industry_done } add_to_variable = { name = dhe_reform_score value = 1 } }
-	if = { limit = { has_variable = dhe_gwangmu_military_done } add_to_variable = { name = dhe_reform_score value = 1 } }
-	if = { limit = { has_variable = dhe_gwangmu_education_done } add_to_variable = { name = dhe_reform_score value = 1 } }
-	if = { limit = { has_variable = dhe_gwangmu_admin_done } add_to_variable = { name = dhe_reform_score value = 1 } }
-	if = { limit = { has_variable = dhe_gwangmu_society_done } add_to_variable = { name = dhe_reform_score value = 1 } }
-	if = { limit = { has_variable = dhe_gwangmu_infrastructure_done } add_to_variable = { name = dhe_reform_score value = 1 } }
+	if = { limit = { has_variable = dhe_gwangmu_industry_done } change_variable = { name = dhe_reform_score value = 1 } }
+	if = { limit = { has_variable = dhe_gwangmu_military_done } change_variable = { name = dhe_reform_score value = 1 } }
+	if = { limit = { has_variable = dhe_gwangmu_education_done } change_variable = { name = dhe_reform_score value = 1 } }
+	if = { limit = { has_variable = dhe_gwangmu_admin_done } change_variable = { name = dhe_reform_score value = 1 } }
+	if = { limit = { has_variable = dhe_gwangmu_society_done } change_variable = { name = dhe_reform_score value = 1 } }
+	if = { limit = { has_variable = dhe_gwangmu_infrastructure_done } change_variable = { name = dhe_reform_score value = 1 } }
 }
 
 dhe_init_conquest_score = {

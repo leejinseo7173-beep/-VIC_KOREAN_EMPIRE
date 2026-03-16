@@ -1,4 +1,4 @@
-﻿custom_loc_type = {
+﻿defined_text = {
     name = DHE_GWANGMU_CHECKLIST
     type = country  # 일지(JE) 스코프에서 호출됨
 

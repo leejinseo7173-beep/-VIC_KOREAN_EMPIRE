@@ -28,9 +28,6 @@ dhe_manifest_destiny_completed = {
     # 동화 속도 +50%
     state_assimilation_mult = 0.50
     
-    # 급진파 발생 -25%
-    country_radicals_from_discrimination_mult = -0.25
-    
     # 군사력 +10%
     unit_offense_add = 5
     unit_defense_add = 5
