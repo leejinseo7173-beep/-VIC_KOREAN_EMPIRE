@@ -1,5 +1,4 @@
-﻿# File: common/journal_entries/dhe_journal_entries.txt
-# Encoding: UTF-8 with BOM
+﻿
 
 # =============================================================================
 # [프롤로그 0] 타이머: 조용한 은자의 나라
@@ -30,16 +29,35 @@ je_dhe_hermit_kingdom = {
 je_dhe_save_joseon = {
 	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
 	group = dhe_reforms
+	is_progressing = {
+		always = yes
+	}
 	possible = {
 		c:KOR ?= THIS
 		has_variable = dhe_hermit_kingdom_broken 
 		NOT = { has_variable = dhe_joseon_saved }
 	}
-	complete = {
-		has_variable = dhe_sedo_resolved
-		has_variable = dhe_jeonjeong_resolved
-		has_variable = dhe_gunjeong_resolved
-		has_variable = dhe_hwangok_resolved
+complete = {
+		custom_tooltip = {
+			text = je_dhe_req_sedo_tt
+			tooltip = je_dhe_req_sedo_desc_tt
+			has_variable = dhe_sedo_resolved
+		}
+		custom_tooltip = {
+			text = je_dhe_req_jeonjeong_tt
+			tooltip = je_dhe_req_jeonjeong_desc_tt
+			has_variable = dhe_jeonjeong_resolved
+		}
+		custom_tooltip = {
+			text = je_dhe_req_gunjeong_tt
+			tooltip = je_dhe_req_gunjeong_desc_tt
+			has_variable = dhe_gunjeong_resolved
+		}
+		custom_tooltip = {
+			text = je_dhe_req_hwangok_tt
+			tooltip = je_dhe_req_hwangok_desc_tt
+			has_variable = dhe_hwangok_resolved
+		}
 	}
 	on_complete = {
 		trigger_event = { id = dhe_event.101 popup = yes }
@@ -52,23 +70,25 @@ je_dhe_save_joseon = {
 je_dhe_sedo_politics_reform = {
 	icon = "gfx/interface/icons/event_icons/event_bureaucracy.dds"
 	group = dhe_reforms
-	
 	# ★ 방금 만든 게이지와 버튼 2개를 이 일지에 연결합니다!
 	scripted_progress_bar = dhe_progress_bar_royal_authority
 	scripted_button = dhe_button_purge_corrupt_officials
 	scripted_button = dhe_button_abolish_seowon
-	
+
+scripted_button = dhe_button_test_northern_manchuria
+
 	possible = {
 		c:KOR ?= THIS
 		has_variable = dhe_hermit_kingdom_broken
 		NOT = { has_variable = dhe_sedo_resolved }
 	}
 
-	complete = {
-		# ★ 클리어 조건: 왕권 게이지 100 달성
+complete = {
 		custom_tooltip = {
-			text = dhe_sedo_bar_full_tt
-			scope:journal_entry = {
+			text = dhe_royal_authority_max_tt
+			tooltip = dhe_royal_authority_max_desc_tt
+			
+			je:je_dhe_sedo_politics_reform = {
 				"scripted_bar_progress(dhe_progress_bar_royal_authority)" >= 100
 			}
 		}
@@ -79,64 +99,349 @@ je_dhe_sedo_politics_reform = {
 	}
 }
 
-# =============================================================================
-# [프롤로그 3] 경제 1: 전정(田政)의 문란 타파 (토지세 개혁)
-# =============================================================================
+# ==========================================================
+# 👑 상위 메인 일지: 전정의 문란 타파
+# ==========================================================
 je_dhe_samjeong_jeonjeong = {
-	icon = "gfx/interface/icons/event_icons/event_famine.dds"
-	group = dhe_reforms
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+     group = dhe_reforms
+    
 	possible = {
-		c:KOR ?= THIS
-		has_variable = dhe_hermit_kingdom_broken
-		NOT = { has_variable = dhe_jeonjeong_resolved }
+		has_variable = dhe_samjeong_started 
 	}
+
+	# [완료 조건] 두 서브 일지를 모두 깼을 때(변수 2개가 생겼을 때) 완료됨!
 	complete = {
-		NOT = { has_law = law_type:law_traditionalism }
-		NOT = { has_law = law_type:law_land_based_taxation }
+		has_variable = dhe_yangjeon_completed
+		has_variable = dhe_eungyeol_completed
 	}
+
 	on_complete = {
 		set_variable = dhe_jeonjeong_resolved
+		remove_variable = dhe_yangjeon_completed
+		remove_variable = dhe_eungyeol_completed
 	}
+
+	# 플레이어가 누를 [팔도 양전 어명] 시작 버튼
+	scripted_button = dhe_button_start_jeonjeong_reform
+}
+# ==========================================================
+# 📜 서브 일지 A: 팔도 양전 사업 (행정전)
+# ==========================================================
+je_dhe_yangjeon = {
+	icon = "gfx/interface/icons/event_icons/event_bureaucracy.dds"
+	group = dhe_reforms
+
+	possible = { has_variable = dhe_yangjeon_active }
+
+	# [핵심] 낡은 progressbar 관련 코드 전부 삭제하고 이거 하나만 넣습니다!
+	scripted_progress_bar = dhe_progress_bar_yangjeon
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_yangjeon_max_tt
+			tooltip = dhe_yangjeon_max_desc_tt
+			je:je_dhe_yangjeon = {
+				"scripted_bar_progress(dhe_progress_bar_yangjeon)" >= 100
+			}
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_yangjeon_completed
+		remove_variable = dhe_yangjeon_active
+	}
+
+	scripted_button = dhe_button_yangjeon_inspire
+	scripted_button = dhe_button_yangjeon_fund
+	scripted_button = dhe_button_yangjeon_punish
 }
 
+# ==========================================================
+# 🗡️ 서브 일지 B: 장막 뒤의 칼날 (은결 색출 암투전)
+# ==========================================================
+je_dhe_eungyeol = {
+	icon = "gfx/interface/icons/event_icons/event_intrigue.dds"
+	group = dhe_reforms
+
+	possible = { has_variable = dhe_eungyeol_active }
+
+	# [핵심] 낡은 progressbar 관련 코드 전부 삭제하고 이거 하나만 넣습니다!
+	scripted_progress_bar = dhe_progress_bar_eungyeol
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_eungyeol_max_tt
+			tooltip = dhe_eungyeol_max_desc_tt
+			je:je_dhe_eungyeol = {
+				"scripted_bar_progress(dhe_progress_bar_eungyeol)" >= 100
+			}
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_eungyeol_completed
+		remove_variable = dhe_eungyeol_active
+		add_treasury = 500000
+	}
+
+	scripted_button = dhe_button_eungyeol_puzzle
+	scripted_button = dhe_button_eungyeol_inspect
+	scripted_button = dhe_button_eungyeol_divide
+}
 # =============================================================================
-# [프롤로그 4] 경제 2: 군정(軍政)의 문란 타파 (군포 개혁)
+# [프롤로그 4] 경제 2: 군정(軍政)의 문란 타파 (호포제와 군제 개혁)
 # =============================================================================
 je_dhe_samjeong_gunjeong = {
 	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
 	group = dhe_reforms
+	
 	possible = {
 		c:KOR ?= THIS
 		has_variable = dhe_hermit_kingdom_broken
 		NOT = { has_variable = dhe_gunjeong_resolved }
 	}
-	complete = {
-		NOT = { has_law = law_type:law_peasant_levies }
+
+	immediate = {
+		scope:journal_entry ?= {
+			add_progress = { name = dhe_progress_bar_gunjeong value = 0 }
+		}
 	}
+
+	scripted_progress_bar = dhe_progress_bar_gunjeong
+	scripted_button = dhe_button_gunjeong_inspector
+	scripted_button = dhe_button_gunjeong_hopo
+	scripted_button = dhe_button_gunjeong_modern_army
+
+	# ===== [여기에 있던 on_monthly_pulse 덩어리를 통째로 삭제했습니다!] =====
+
+	complete = {
+		custom_tooltip = {
+			text = je_dhe_gunjeong_law_tt
+			NOT = { has_law = law_type:law_peasant_levies }
+		}
+		custom_tooltip = {
+			text = dhe_gunjeong_max_tt
+			tooltip = dhe_gunjeong_max_desc_tt
+			je:je_dhe_samjeong_gunjeong ?= {
+				"scripted_bar_progress(dhe_progress_bar_gunjeong)" >= 100
+			}
+		}
+	}
+	
 	on_complete = {
 		set_variable = dhe_gunjeong_resolved
 	}
 }
-
 # =============================================================================
-# [프롤로그 5] 경제 3: 환곡(還穀)의 문란 타파 (사창제 및 행정망 복구)
+# [프롤로그 5] 경제 3: 환곡(還穀)의 문란 타파
 # =============================================================================
 je_dhe_samjeong_hwangok = {
-	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_admin.dds"
+	icon = "gfx/interface/icons/event_icons/event_famine.dds"
 	group = dhe_reforms
+	
 	possible = {
 		c:KOR ?= THIS
 		has_variable = dhe_hermit_kingdom_broken
 		NOT = { has_variable = dhe_hwangok_resolved }
 	}
-	complete = {
-		bureaucracy >= 0 
-		building_levels = {
-			building = building_government_administration
-			value >= 5
+
+	immediate = {
+		scope:journal_entry ?= {
+			add_progress = { name = dhe_progress_bar_hwangok value = 0 }
 		}
 	}
+
+	scripted_progress_bar = dhe_progress_bar_hwangok
+	scripted_button = dhe_button_hwangok_purge
+	scripted_button = dhe_button_hwangok_relief
+	scripted_button = dhe_button_hwangok_sachang
+
+	complete = {
+		# 조건 1: 고유 악법(문란한 환곡제) 폐지
+		custom_tooltip = {
+			text = dhe_hwangok_law_tt
+			NOT = { has_law = law_type:law_hwangok_system }
+		}
+		# 조건 2: 진척도 100 달성
+		custom_tooltip = {
+			text = dhe_hwangok_max_tt
+			tooltip = dhe_hwangok_max_desc_tt
+			je:je_dhe_samjeong_hwangok ?= {
+				"scripted_bar_progress(dhe_progress_bar_hwangok)" >= 100
+			}
+		}
+	}
+	
 	on_complete = {
 		set_variable = dhe_hwangok_resolved
+	}
+}
+
+je_dhe_jiandao_expansion = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	group = dhe_conquest
+	
+	is_shown_in_lobby = { c:KOR ?= THIS }
+         possible = {
+		has_variable = dhe_jiandao_unlocked
+		NOT = { has_variable = dhe_jiandao_completed }
+	}
+	
+	scripted_progress_bar = dhe_progress_bar_jiandao
+	scripted_button = dhe_button_expand_jiandao
+	scripted_button = dhe_button_jiandao_immigration
+	
+	# 진행도 바가 6(타일 6개)에 도달하면 완료!
+	complete = {
+		custom_tooltip = {
+			text = dhe_jiandao_max_tt
+			tooltip = dhe_jiandao_max_desc_tt
+			je:je_dhe_jiandao_expansion ?= {
+				"scripted_bar_progress(dhe_progress_bar_jiandao)" >= 6
+			}
+		}
+	}
+	
+	on_complete = {
+		set_variable = dhe_jiandao_resolved 
+		trigger_event = { id = dhe_jiandao.2 popup = yes }
+	}
+}
+
+# =============================================================================
+# 🦅 고토 수복: 연해주(외만주) 개척
+# =============================================================================
+je_dhe_outer_manchuria = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	group = dhe_conquest
+	
+	possible = {
+		c:KOR ?= THIS
+		has_variable =  dhe_outer_manchuria_unlocked
+		NOT = { has_variable = dhe_outer_manchuria_resolved }
+	}
+
+	immediate = {
+		scope:journal_entry ?= {
+			add_progress = { name = dhe_progress_bar_outer_manchuria value = 0 }
+		}
+	}
+
+	scripted_progress_bar = dhe_progress_bar_outer_manchuria
+	scripted_button = dhe_button_outer_manchuria_expansion
+    scripted_button = dhe_button_outer_manchuria_immigration
+	complete = {
+		# 타일 13개를 모두 먹어서 진척도가 13이 되면 일지 완료!
+		je:je_dhe_outer_manchuria ?= {
+			"scripted_bar_progress(dhe_progress_bar_outer_manchuria)" >= 13
+		}
+	}
+	
+	on_complete = {
+		set_variable = dhe_outer_manchuria_resolved
+		trigger_event = { id = dhe_expansion.2 popup = yes }
+	}
+}
+
+# =============================================================================
+# 👑 그랜드 마스터 일지: 북방 경영 (간도 + 연해주 수복 완료 시)
+# =============================================================================
+je_dhe_grand_northern_expansion = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	group = dhe_conquest
+	
+	possible = {
+		c:KOR ?= THIS
+		# 이 일지를 이미 클리어하지 않았을 것
+		NOT = { has_variable = dhe_grand_northern_expansion_resolved }
+	}
+
+	# 💥 클리어 조건: 간도 일지와 연해주 일지가 모두 깨져 있을 것!
+	complete = {
+		has_variable = dhe_jiandao_resolved          # 간도 클리어 변수
+		has_variable = dhe_outer_manchuria_resolved  # 연해주 클리어 변수
+	}
+	
+	on_complete = {
+		set_variable = dhe_grand_northern_expansion_resolved
+		
+		# 보상: 대제국 정복 일지들을 해금하는 피날레 이벤트 호출!
+		trigger_event = { id = dhe_expansion.4 popup = yes }
+	}
+}
+
+# =============================================================================
+# ⚔️ 메인 일지: 자주독립의 길 (대청제국 종속국 탈피)
+# =============================================================================
+je_dhe_road_to_independence = {
+	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
+	group = dhe_reforms
+	
+	possible = {
+		c:KOR ?= THIS
+		# 조선을 구원한 이후이고, 아직 누군가의 종속국(조공국)일 때
+		has_variable = dhe_joseon_saved
+		is_subject = yes
+	}
+
+	immediate = {
+		scope:journal_entry ?= {
+			add_progress = { name = dhe_progress_bar_independence value = 0 }
+		}
+	}
+
+	scripted_progress_bar = dhe_progress_bar_independence
+	scripted_button = dhe_button_refuse_tribute
+	scripted_button = dhe_button_independence_parade
+	scripted_button = dhe_button_trigger_independence_war
+
+	# 💥 클리어 조건: 외교전을 통해 청나라로부터 진짜 '독립(is_subject = no)'을 쟁취했을 때!
+	complete = {
+		is_subject = no
+	}
+	
+	on_complete = {
+		set_variable = dhe_independence_achieved
+		trigger_event = { id = dhe_independence.2 popup = yes }
+	}
+}
+
+# =============================================================================
+# 🧨 위기 일지: 임오(壬午)의 붉은 불길 (임오군란)
+# =============================================================================
+je_dhe_imo_mutiny = {
+	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
+	group = dhe_reforms
+	
+	possible = {
+		c:KOR ?= THIS
+		has_variable = dhe_hermit_kingdom_broken
+		NOT = { has_variable = dhe_imo_mutiny_resolved } # 이벤트 터지면 일지 닫힘
+	}
+
+	scripted_progress_bar = dhe_progress_bar_military_discontent
+	scripted_button = dhe_button_pay_soldiers
+	scripted_button = dhe_button_punish_supply_officers
+
+	# 🟢 평화적 해결: 직업 군인제 도입 + 분노 0 유지
+	complete = {
+		has_law = law_type:law_professional_army
+		"scripted_bar_progress(dhe_progress_bar_military_discontent)" <= 0
+	}
+
+	on_complete = {
+		set_variable = dhe_imo_mutiny_resolved
+		add_modifier = { name = dhe_mod_loyal_army months = 120 }
+	}
+
+	# 🔴 위기 대폭발: 분노 100 도달 시 일지 실패 -> 군란 이벤트 발생!
+	fail = {
+		"scripted_bar_progress(dhe_progress_bar_military_discontent)" >= 100
+	}
+
+	on_fail = {
+		set_variable = dhe_imo_mutiny_resolved
+		trigger_event = { id = dhe_imo.1 popup = yes }
 	}
 }

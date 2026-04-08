@@ -1,45 +1,332 @@
 ﻿# Encoding: UTF-8 with BOM
+
 dhe_progress_bar_royal_authority = {
 	name = "dhe_progress_bar_royal_authority"
 	desc = "dhe_progress_bar_royal_authority_desc"
 
-	weekly_progress = {
-		add = {
-			desc = "dhe_royal_auth_base"
-			value = -0.5
+	# [핵심 수술 1] 바닐라 표준 진행도 스킨. 이게 있어야 UI가 매달 움직입니다!
+	default = yes 
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		# 1. 기본 감소치
+		if = {
+			limit = { always = yes }
+			subtract = {
+				desc = "dhe_royal_auth_base"
+				value = 2.0
+			}
 		}
+		
+		# 2. 지주 세력 강함 (패널티) - [핵심 수술 2] 불필요한 owner 껍데기 제거
 		if = {
 			limit = {
-				# ★ 수정: political_strength 대신 clout 사용!
 				ig:ig_landowners = { clout >= 0.3 }
 			}
-			add = {
+			subtract = {
 				desc = "dhe_royal_auth_landowners_high"
-				value = -0.5
+				value = 2.0
 			}
 		}
+		
+		# 3. 지주 세력 약함 (보너스)
 		if = {
 			limit = {
 				ig:ig_landowners = { clout <= 0.2 }
 			}
 			add = {
 				desc = "dhe_royal_auth_landowners_low"
-				value = 1.0
+				value = 4.0
 			}
 		}
+		
+		# 4. 정통성 높음 (보너스)
 		if = {
 			limit = {
-				# ★ 수정: 행정력 오류 대신 안전한 정통성(legitimacy) 조건 사용!
-				legitimacy >= 50
+				government_legitimacy >= 50
 			}
 			add = {
 				desc = "dhe_royal_auth_bureaucracy_good"
-				value = 0.5
+				value = 2.0
 			}
 		}
 	}
+}
+# ==========================================================
+# 📜 서브 일지 A: 팔도 양전 사업 진행도
+# ==========================================================
+dhe_progress_bar_yangjeon = {
+	name = "dhe_progress_bar_yangjeon"
+	desc = "dhe_progress_bar_yangjeon_desc"
+	default = yes 
 
 	start_value = 0
 	min_value = 0
 	max_value = 100
+
+	monthly_progress = {
+		if = {
+			limit = { always = yes }
+			subtract = { desc = "dhe_yj_base_decay" value = 1.0 }
+		}
+		if = {
+			# [수정] owner 스코프로 안전하게 감싸기!
+			limit = { owner = { ig:ig_landowners = { clout >= 0.2 } } }
+			subtract = { desc = "dhe_yj_landowners_high" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_law = law_type:law_hereditary_bureaucrats } }
+			subtract = { desc = "dhe_yj_hereditary_bureaucrats" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_law = law_type:law_appointed_bureaucrats } }
+			add = { desc = "dhe_yj_appointed_bureaucrats" value = 2.0 }
+		}
+		if = {
+			limit = { owner = { ig:ig_intelligentsia = { clout >= 0.15 } } }
+			add = { desc = "dhe_yj_intelligentsia_high" value = 1.0 }
+		}
+	}
+}
+
+# ==========================================================
+# 🗡️ 서브 일지 B: 은결 색출 장악도
+# ==========================================================
+dhe_progress_bar_eungyeol = {
+	name = "dhe_progress_bar_eungyeol"
+	desc = "dhe_progress_bar_eungyeol_desc"
+	default = yes 
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		if = {
+			limit = { always = yes }
+			subtract = { desc = "dhe_eg_base_decay" value = 2.0 }
+		}
+		if = {
+			limit = { owner = { ig:ig_landowners = { clout >= 0.3 } } }
+			subtract = { desc = "dhe_eg_landowners_high" value = 2.0 }
+		}
+		if = {
+			limit = { owner = { has_law = law_type:law_local_police_force } }
+			subtract = { desc = "dhe_eg_local_police" value = 1.0 }
+		}
+		if = {
+			# [수정] OR 구문도 owner 안에서 묶어주어야 합니다!
+			limit = {
+				owner = {
+					OR = {
+						has_law = law_type:law_dedicated_police_force
+						has_law = law_type:law_secret_police
+					}
+				}
+			}
+			add = { desc = "dhe_eg_state_police" value = 2.0 }
+		}
+		if = {
+			limit = { owner = { ig:ig_landowners = { clout < 0.1 } } }
+			add = { desc = "dhe_eg_landowners_low" value = 3.0 }
+		}
+	}
+}
+
+# ==========================================================
+# 군정(군포) 개혁 진척도
+# ==========================================================
+dhe_progress_bar_gunjeong = {
+	name = "dhe_progress_bar_gunjeong"
+	desc = "dhe_progress_bar_gunjeong_desc"
+	default = yes 
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		# 1. 기본 감소 (양반들의 지속적인 조세 저항)
+		if = {
+			limit = { always = yes }
+			subtract = { desc = "dhe_gj_base_decay" value = 1.0 }
+		}
+		
+		# 2. 정부 정통성이 50~74일 때 (안정적)
+		if = {
+			limit = { 
+				owner = { 
+					legitimacy >= 50 
+					legitimacy < 75 
+				} 
+			}
+			add = { desc = "dhe_gj_legitimacy_mid" value = 1.0 }
+		}
+		
+		# 3. 정부 정통성이 75 이상일 때 (매우 안정적)
+		if = {
+			limit = { owner = { legitimacy >= 75 } }
+			add = { desc = "dhe_gj_legitimacy_high" value = 2.0 }
+		}
+		
+		# 4. '직업 군인' 법률 제정 시 개혁 가속화
+		if = {
+			limit = { owner = { has_law = law_type:law_professional_army } }
+			add = { desc = "dhe_gj_professional_army" value = 2.0 }
+		}
+	}
+}
+
+# ==========================================================
+# 환곡 타파(사창제 도입) 진척도
+# ==========================================================
+dhe_progress_bar_hwangok = {
+	name = "dhe_progress_bar_hwangok"
+	desc = "dhe_progress_bar_hwangok_desc"
+	default = yes 
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		# 1. 기본 감소 (지방 향리들의 끊임없는 삥땅)
+		if = {
+			limit = { always = yes }
+			subtract = { desc = "dhe_hg_base_decay" value = 1.0 }
+		}
+		
+		# 2. 임명직 관료제(Appointed Bureaucrats) 도입 시 (중앙 통제 강화)
+		if = {
+			limit = { owner = { has_law = law_type:law_appointed_bureaucrats } }
+			add = { desc = "dhe_hg_appointed_bureaucrats" value = 2.0 }
+		}
+		
+		# 3. 행정력이 풍부할 때 (철저한 장부 감사)
+		if = {
+			limit = { owner = { bureaucracy > 100 } }
+			add = { desc = "dhe_hg_high_bureaucracy" value = 1.0 }
+		}
+	}
+}
+
+dhe_progress_bar_jiandao = {
+	name = "dhe_progress_bar_jiandao"
+	desc = "dhe_progress_bar_jiandao_desc"
+	default = yes 
+
+	start_value = 0
+	min_value = 0
+	max_value = 6
+}
+
+# ==========================================================
+# 🗺️ 제국 팽창: 연해주 핵심 영토 수복 진척도
+# ==========================================================
+dhe_progress_bar_outer_manchuria = {
+	name = "dhe_progress_bar_outer_manchuria"
+	desc = "dhe_progress_bar_outer_manchuria_desc"
+	default = yes 
+
+	start_value = 0
+	min_value = 0
+	max_value = 13 # 타일 13개를 모두 먹으면 끝!
+}
+
+# ==========================================================
+# ⚔️ 자주독립 준비도 (대청제국으로부터의 독립)
+# ==========================================================
+dhe_progress_bar_independence = {
+	name = "dhe_progress_bar_independence"
+	desc = "dhe_progress_bar_independence_desc"
+	default = yes 
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		# 청나라의 압박으로 매달 조금씩 감소
+		if = {
+			limit = { always = yes }
+			subtract = { desc = "dhe_ind_base_decay" value = 1.0 }
+		}
+		
+		# 우리 군사력이 어느 정도 갖춰졌을 때 (육군 30대대 이상)
+		if = {
+			limit = { owner = { army_size >= 30 } }
+			add = { desc = "dhe_ind_army_strong" value = 1.0 }
+		}
+		
+		# 청나라가 내전 중이거나 약해졌을 때 (절호의 기회)
+		if = {
+			limit = { 
+				exists = c:CHI
+				c:CHI = { has_civil_war = yes }
+			}
+			add = { desc = "dhe_ind_qing_civil_war" value = 3.0 }
+		}
+	}
+}
+
+# ==========================================================
+# 💢 구식 군대의 분노 (임오군란 트리거)
+# ==========================================================
+dhe_progress_bar_military_discontent = {
+	name = "dhe_progress_bar_military_discontent"
+	desc = "dhe_progress_bar_military_discontent_desc"
+	default = yes 
+
+	start_value = 30 # 시작부터 이미 뿔이 나 있습니다.
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		# 1. 삼정의 문란(군정)이 해결 안 된 상태라면 매달 분노 상승
+		if = {
+			limit = { has_modifier = modifier_samjeong_corruption }
+			add = { desc = "dhe_mil_corruption" value = 2.0 }
+		}
+		
+		# 2. 군사 지출(월급)을 짜게 줄 때 분노 상승
+		if = {
+			limit = { owner = { military_spending_level <= 2 } }
+			add = { desc = "dhe_mil_low_pay" value = 2.0 }
+		}
+
+		# 3. 양반(지주)들이 정부에 있으면 중간 착복으로 인해 분노 상승
+		if = {
+			limit = { owner = { ig:ig_landowners = { is_in_government = yes } } }
+			add = { desc = "dhe_mil_yangban_corruption" value = 1.0 }
+		}
+
+		# 4. 반대로, 직업 군인제 등 군사 개혁을 이뤄내면 서서히 감소
+		if = {
+			limit = { has_law = law_type:law_professional_army }
+			subtract = { desc = "dhe_mil_reform_progress" value = 3.0 }
+		}
+	}
+}
+# ==========================================================
+# ⚙️ 광무개혁 (하위 일지 연동형 진척도 바)
+# ==========================================================
+dhe_progress_bar_gwangmu = {
+	name = "dhe_progress_bar_gwangmu"
+	desc = "dhe_progress_bar_gwangmu_desc"
+	default = yes 
+
+	start_value = 0
+	min_value = 0
+	max_value = 200
+
+	monthly_progress = {
+		# 하위 일지 클리어와 버튼으로만 오르도록 세팅
+		if = {
+			limit = { always = yes }
+			add = { desc = "dhe_gwangmu_base_manual" value = 0 }
+		}
+	}
 }

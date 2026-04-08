@@ -47,6 +47,6 @@ korea.1 = {
 				set_interest_group_name = ig_landowners
 			}
 		}
-		trigger_event = { id = dhe_event.1 popup = yes }
+		trigger_event = { id = dhe_event.1 }
 	}
 }

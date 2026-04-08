@@ -1,0 +1,213 @@
+﻿# ==========================================================
+# ==========================================================
+dhe_transfer_next_jiandao_province = {
+	if = {
+		limit = { p:x031AD1 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x031AD1
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xDF828B = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xDF828B
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:x76800C = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x76800C
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xA05162 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xA05162
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xE43B63 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xE43B63
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+		else_if = {
+		limit = { p:xA05646 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xA05646
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+}
+
+# ==========================================================
+#
+# ==========================================================
+dhe_count_korean_jiandao_provinces = {
+	set_variable = { name = dhe_jiandao_korean_province_count value = 0 }
+	
+	if = {
+		limit = { p:x031AD1 = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+	if = {
+		limit = { p:x76800C = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+	if = {
+		limit = { p:xA05162 = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+	if = {
+		limit = { p:xA05646 = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+	if = {
+		limit = { p:xDF828B = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+	if = {
+		limit = { p:xE43B63 = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+}
+dhe_transfer_outer_manchuria_prov = {
+	if = {
+		limit = { p:x60D080 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x60D080
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:x55EDE2 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x55EDE2
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:x08BE7F = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x08BE7F
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:x79F88A = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x79F88A
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:x8811C4 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x8811C4
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:x1E0962 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x1E0962
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xA748D2 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xA748D2
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xF44CBD = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xF44CBD
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xF44CBD = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xF44CBD
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xCD3C76 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xCD3C76
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xF8C942 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xF8C942
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	#dDSDSDD			
+	else_if = {
+		limit = { p:x9F61D4 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x9F61D4
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xD93024 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xD93024
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xEFA41F = { owner = c:CHI } }
+		transfer_province = { PROVINCE = xEFA41F GIVER = c:CHI TAKER = ROOT }
+	}	
+}

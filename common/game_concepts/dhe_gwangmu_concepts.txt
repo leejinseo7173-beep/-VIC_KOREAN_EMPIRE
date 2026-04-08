@@ -7,4 +7,3 @@ concept_dhe_education_reform = {}
 concept_dhe_admin_reform = {}
 concept_dhe_society_reform = {}
 concept_dhe_infrastructure_reform = {}
-concept_dhe_gwangmu_reform_started ={}

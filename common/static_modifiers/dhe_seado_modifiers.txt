@@ -10,3 +10,105 @@ modifier_samjeong_corruption = {
 	country_tax_capacity_mult = -0.3            # 국가 전체 조세 역량 30% 감소
 	ig_rural_folk_approval_add = -10            # 전원주민 찬성도 하락
 }
+modifier_dhe_hidden_claws = {
+	icon = "gfx/interface/icons/modifier_icons/modifier_prestige_positive.dds"
+	
+	# 국가 권위 +10%, 위신 +5%
+	country_authority_mult = 0.10
+	country_prestige_mult = 0.05
+}
+
+# ==========================================================
+# 🛤️ 1. 초기 북방 개척 (간도 / 연해주) 누락분
+# ==========================================================
+# 간도 이주 장려 버프 (1년)
+dhe_modifier_jiandao_settlement = {
+	icon = "gfx/interface/icons/event_icons/event_migration.dds"
+	state_migration_pull_mult = 0.50          # 이주 매력도 폭증
+}
+
+# 연해주 국가 주도 이주 사업 버프 (1년)
+dhe_modifier_state_sponsored_migration = {
+	icon = "gfx/interface/icons/modifier_icons/migration_attraction.dds"
+	state_migration_pull_mult = 0.50          # 이주 매력도 폭증
+	state_infrastructure_add = 2              # 초기 정착촌 인프라 제공
+}
+
+# 연해주 13거점 완료 피날레 버프 (10년)
+dhe_modifier_northern_expansion = {
+	icon = "gfx/interface/icons/modifier_icons/prestige.dds"
+	ig_armed_forces_approval_add = 5          # 군부 지지도 상승
+	country_prestige_add = 25                 # 위신 획득
+}
+
+# 마스터 일지: 만주 경영 완료 버프 (10년)
+dhe_modifier_manchurian_hegemony = {
+	icon = "gfx/interface/icons/modifier_icons/prestige.dds"
+	country_prestige_mult = 0.15              # 국가 위신 15% 상승
+	interest_group_ig_armed_forces_pol_str_mult = 0.20 # 군부 정치력 20% 펌핑
+	army_morale_recovery_add = 0.10           # 군대 사기 회복 +10%
+}
+
+# ==========================================================
+# ⚖️ 2. 삼정의 문란 (환곡) 누락분
+# ==========================================================
+# 사창제 시범 운영 시 일시적 행정력 마비 (1년)
+dhe_bureaucracy_cost_temp = {
+	icon = "gfx/interface/icons/event_icons/event_bureaucracy.dds"
+	country_bureaucracy_add = -100            # 행정력 일시 감소
+}
+
+# ==========================================================
+# ⚔️ 3. 자주독립의 길 (청나라 독립전쟁) 누락분
+# ==========================================================
+# 독립군의 투혼 (독립전쟁 시 2년짜리 폭주 버프)
+dhe_mod_independence_war_buff = {
+	icon = "gfx/interface/icons/event_icons/event_military_camp.dds"
+	unit_offense_add = 25                     # 공격력 +25%
+	unit_defense_add = 25                     # 방어력 +25%
+	unit_morale_recovery_add = 0.5            # 사기 회복 +50% (좀비 군대)
+}
+
+# 사대의 사슬을 끊다 (독립 승리 보상)
+dhe_mod_true_independence = {
+	icon = "gfx/interface/icons/event_icons/event_victory.dds"
+	country_prestige_add = 50                 # 위신 펌핑
+	country_authority_add = 100               # 권위 +100
+	country_influence_add = 50                # 외교 영향력 추가
+}
+
+# 통제 잃은 변방 (독립 승리 시 청나라 만주 지역에 살포되는 붕괴 디버프)
+dhe_mod_unmanaged_manchuria = {
+	icon = "gfx/interface/icons/event_icons/event_bureaucracy.dds"
+	state_tax_capacity_mult = -0.50           # 지역 조세 역량 반토막
+	state_infrastructure_mult = -0.20         # 지역 기반시설 20% 감소
+	state_migration_pull_mult = -0.50         # 지역 이주 매력도 반토막
+}
+
+# ==========================================================
+# 🧨 4. 임오군란 위기 누락분
+# ==========================================================
+# 서울 불바다 (강경 진압 시 서울에 박히는 패널티)
+dhe_mod_seoul_on_fire = {
+	icon = "gfx/interface/icons/event_icons/event_city_on_fire.dds"
+	state_infrastructure_mult = -0.50         # 인프라 반토막
+	state_tax_capacity_mult = -0.50           # 세금 수합 불가
+	state_mortality_mult = 0.20               # 사망률 증가 (민간인 피해)
+}
+
+# 충성스러운 군대 (군란을 돈과 권위로 평화롭게 막고 개혁 성공 시)
+dhe_mod_loyal_army = {
+	icon = "gfx/interface/icons/event_icons/event_military_camp.dds"
+	unit_morale_recovery_add = 0.20           # 사기 회복 증가
+	ig_armed_forces_approval_add = 5          # 군부 지지도 상승
+}
+
+# ==========================================================
+# 🏗️ 5. 광무개혁 (인프라 1단계 보상) 누락분
+# ==========================================================
+# 기반시설 정비 1단계 성공 버프 (경성역 전 단계)
+dhe_mod_infrastructure_reform_success = {
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_infrastructure.dds"
+	state_infrastructure_mult = 0.15          # 전국 기반시설 15% 펌핑
+	state_construction_mult = 0.10            # 건설 효율 10% 증가
+}

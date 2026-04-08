@@ -1,12 +1,12 @@
 ﻿# Encoding: UTF-8 with BOM
 
-# 버튼 1: 탐관오리 숙청 (반복 가능)
 dhe_button_purge_corrupt_officials = {
 	name = "dhe_button_purge_corrupt_officials"
 	desc = "dhe_button_purge_corrupt_officials_desc"
 
 	visible = {
-		c:KOR ?= THIS
+		exists = c:KOR
+		this = c:KOR
 		has_journal_entry = je_dhe_sedo_politics_reform
 	}
 
@@ -15,26 +15,29 @@ dhe_button_purge_corrupt_officials = {
 	}
 
 	effect = {
-		add_progress = {
-			name = dhe_progress_bar_royal_authority
-			value = 10
+		je:je_dhe_sedo_politics_reform ?= {
+			add_progress = { value = 10 name = dhe_progress_bar_royal_authority }
 		}
+		
 		set_variable = {
 			name = dhe_cooldown_purge
-			days = 365 
+			days = 30
 		}
-		# ★ 수정: 에러를 내던 가짜 명령어 대신, 즉시 급진파 1만 명을 늘리는 확실한 페널티로 교체!
-		add_radicals = 10000
+		
+		add_radicals = {
+			value = 0.05
+			pop_type = bureaucrats
+		}
 	}
 }
 
-# 버튼 2: 서원 철폐 (단 1번 사용 가능)
 dhe_button_abolish_seowon = {
 	name = "dhe_button_abolish_seowon"
 	desc = "dhe_button_abolish_seowon_desc"
 
 	visible = {
-		c:KOR ?= THIS
+		exists = c:KOR
+		this = c:KOR
 		has_journal_entry = je_dhe_sedo_politics_reform
 	}
 
@@ -43,13 +46,421 @@ dhe_button_abolish_seowon = {
 	}
 
 	effect = {
-		add_progress = {
-			name = dhe_progress_bar_royal_authority
-			value = 30
+		je:je_dhe_sedo_politics_reform ?= {
+			add_progress = { value = 30 name = dhe_progress_bar_royal_authority }
 		}
-		set_variable = dhe_seowon_abolished
 		
-		# ★ 수정: 서원 철폐의 뼈아픈 대가로 급진파 5만 명 폭증!
-		add_radicals = 50000
+		# 2. [핵심] 365일짜리 타이머 변수 부착 (1년 쿨다운)
+		set_variable = {
+			name = dhe_seowon_abolished
+			days = 365 
+		}
+		
+		add_radicals = {
+			value = 0.10
+			pop_type = aristocrats
+		}
+	}
+}
+# [어명 하사 버튼] 투트랙 일지 시작!
+dhe_button_start_jeonjeong_reform = {
+	name = "dhe_button_start_jeonjeong_reform"
+	desc = "dhe_button_start_jeonjeong_reform_desc"
+
+	visible = {
+		has_journal_entry = je_dhe_samjeong_jeonjeong
+		NOT = { has_variable = dhe_yangjeon_active }
+		NOT = { has_variable = dhe_yangjeon_completed }
+	}
+
+	possible = { always = yes }
+
+	effect = {
+		# 1. 스위치 켜고 게이지를 0으로 맞춥니다.
+		set_variable = dhe_yangjeon_active
+		set_variable = dhe_eungyeol_active
+		set_variable = { name = dhe_yangjeon_progress value = 0 }
+		set_variable = { name = dhe_eungyeol_progress value = 0 }
+		
+		# 2. ★ 추가된 핵심: 즉시 하위 일지 2개를 강제로 일지 창에 꽂아 넣습니다!
+		add_journal_entry = { type = je_dhe_yangjeon }
+		add_journal_entry = { type = je_dhe_eungyeol }
+	}
+}
+# ==========================================================
+# [서브 일지 A: 양전 사업] 상호작용 버튼 3개
+# ==========================================================
+dhe_button_yangjeon_inspire = {
+	name = "dhe_button_yangjeon_inspire"
+	desc = "dhe_button_yangjeon_inspire_desc"
+	visible = { always = yes } 
+	possible = { NOT = { has_variable = dhe_cool_yj_1 } }
+	effect = {
+		je:je_dhe_yangjeon ?= { add_progress = { value = 10 name = dhe_progress_bar_yangjeon } }
+		custom_tooltip = dhe_button_yangjeon_inspire_tt
+		hidden_effect = { set_variable = { name = dhe_cool_yj_1 days = 90 } }
+	}
+}
+
+dhe_button_yangjeon_fund = {
+	name = "dhe_button_yangjeon_fund"
+	desc = "dhe_button_yangjeon_fund_desc"
+	visible = { always = yes } 
+	possible = { NOT = { has_variable = dhe_cool_yj_2 } }
+	effect = {
+		add_treasury = -50000 
+		je:je_dhe_yangjeon ?= { add_progress = { value = 20 name = dhe_progress_bar_yangjeon } }
+		custom_tooltip = dhe_button_yangjeon_fund_tt
+		hidden_effect = { set_variable = { name = dhe_cool_yj_2 days = 180 } }
+	}
+}
+
+dhe_button_yangjeon_punish = {
+	name = "dhe_button_yangjeon_punish"
+	desc = "dhe_button_yangjeon_punish_desc"
+	visible = { always = yes }
+	possible = { NOT = { has_variable = dhe_cool_yj_3 } }
+	effect = {
+		ig:ig_bureaucrats = { add_ig_approval = -2 } 
+		je:je_dhe_yangjeon ?= { add_progress = { value = 15 name = dhe_progress_bar_yangjeon } }
+		custom_tooltip = dhe_button_yangjeon_punish_tt
+		hidden_effect = { set_variable = { name = dhe_cool_yj_3 days = 365 } }
+	}
+}
+
+# ==========================================================
+# [서브 일지 B: 은결 색출] 상호작용 버튼 3개
+# ==========================================================
+dhe_button_eungyeol_puzzle = {
+	name = "dhe_button_eungyeol_puzzle"
+	desc = "dhe_button_eungyeol_puzzle_desc"
+	visible = { always = yes }
+	possible = { NOT = { has_variable = dhe_cool_eg_1 } }
+	effect = {
+		je:je_dhe_eungyeol ?= { add_progress = { value = 10 name = dhe_progress_bar_eungyeol } }
+		custom_tooltip = dhe_button_eungyeol_puzzle_tt
+		hidden_effect = { set_variable = { name = dhe_cool_eg_1 days = 90 } }
+	}
+}
+
+dhe_button_eungyeol_inspect = {
+	name = "dhe_button_eungyeol_inspect"
+	desc = "dhe_button_eungyeol_inspect_desc"
+	visible = { always = yes }
+	possible = { NOT = { has_variable = dhe_cool_eg_2 } }
+	effect = {
+		add_treasury = -20000 
+		ig:ig_landowners = { add_ig_approval = -1 } 
+		je:je_dhe_eungyeol ?= { add_progress = { value = 20 name = dhe_progress_bar_eungyeol } }
+		custom_tooltip = dhe_button_eungyeol_inspect_tt
+		hidden_effect = { set_variable = { name = dhe_cool_eg_2 days = 180 } }
+	}
+}
+
+dhe_button_eungyeol_divide = {
+	name = "dhe_button_eungyeol_divide"
+	desc = "dhe_button_eungyeol_divide_desc"
+	visible = { always = yes }
+	possible = { NOT = { has_variable = dhe_cool_eg_3 } }
+	effect = {
+		add_treasury = 30000 
+		ig:ig_landowners = { add_ig_approval = -3 } 
+		je:je_dhe_eungyeol ?= { add_progress = { value = 35 name = dhe_progress_bar_eungyeol } }
+		custom_tooltip = dhe_button_eungyeol_divide_tt
+		hidden_effect = { set_variable = { name = dhe_cool_eg_3 days = 365 } }
+	}
+}
+
+# 1. 암행어사 파견 (부정부패 색출)
+dhe_button_gunjeong_inspector = {
+	name = "dhe_button_gunjeong_inspector"
+	desc = "dhe_button_gunjeong_inspector_desc"
+	visible = { always = yes }
+	possible = { NOT = { has_variable = dhe_cd_gunjeong_inspector } }
+	effect = { trigger_event = { id = dhe_gunjeong.1 popup = yes } }
+}
+
+# 2. 호포법 공론화 (양반에게 군포 징수 시도)
+dhe_button_gunjeong_hopo = {
+	name = "dhe_button_gunjeong_hopo"
+	desc = "dhe_button_gunjeong_hopo_desc"
+	visible = { always = yes }
+	possible = { NOT = { has_variable = dhe_cd_gunjeong_hopo } }
+	effect = { trigger_event = { id = dhe_gunjeong.2 popup = yes } }
+}
+
+# 3. 신식 군대 시범 양성 (군사력 시위)
+dhe_button_gunjeong_modern_army = {
+	name = "dhe_button_gunjeong_modern_army"
+	desc = "dhe_button_gunjeong_modern_army_desc"
+	visible = { always = yes }
+	possible = { NOT = { has_variable = dhe_cd_gunjeong_modern_army } }
+	effect = { trigger_event = { id = dhe_gunjeong.3 popup = yes } }
+}
+
+# 1. 탐관오리 숙청
+dhe_button_hwangok_purge = {
+	name = "dhe_button_hwangok_purge"
+	desc = "dhe_button_hwangok_purge_desc"
+	visible = { always = yes }
+	possible = { NOT = { has_variable = dhe_cd_hwangok_purge } }
+	effect = { trigger_event = { id = dhe_hwangok.1 popup = yes } }
+}
+
+# 2. 내탕금 구휼 (긴급 민란 방지용)
+dhe_button_hwangok_relief = {
+	name = "dhe_button_hwangok_relief"
+	desc = "dhe_button_hwangok_relief_desc"
+	visible = { always = yes }
+	possible = { NOT = { has_variable = dhe_cd_hwangok_relief } }
+	effect = { trigger_event = { id = dhe_hwangok.2 popup = yes } }
+}
+
+# 3. 사창제 시범 운영 (빠른 개혁)
+dhe_button_hwangok_sachang = {
+	name = "dhe_button_hwangok_sachang"
+	desc = "dhe_button_hwangok_sachang_desc"
+	visible = { always = yes }
+	possible = { NOT = { has_variable = dhe_cd_hwangok_sachang } }
+	effect = { trigger_event = { id = dhe_hwangok.3 popup = yes } }
+}
+
+dhe_button_expand_jiandao = {
+	name = "dhe_button_expand_jiandao"
+	desc = "dhe_button_expand_jiandao_desc"
+	visible = { always = yes }
+	
+	possible = {
+		NOT = { has_variable = dhe_cooldown_jiandao }
+	}
+	
+	effect = {
+		# 버튼을 누르면 팝업 이벤트가 뜹니다.
+		trigger_event = { id = dhe_jiandao.1 popup = yes }
+	}
+}
+
+dhe_button_jiandao_immigration = {
+	name = "dhe_button_jiandao_immigration"
+	desc = "dhe_button_jiandao_immigration_desc"
+	visible = { always = yes }
+	
+	possible = {
+		# 쿨다운 1년
+		NOT = { has_variable = dhe_cd_jiandao_immigration }
+		
+		# [핵심] 간도에 조선 영토(타일)가 최소 1개 이상 존재할 때만 활성화
+		any_scope_state = {
+			state_region = s:STATE_JIANDAO
+			owner = ROOT
+		}
+	}
+	
+	effect = {
+		trigger_event = { id = dhe_jiandao.4 popup = yes }
+	}
+}
+
+# ==========================================================
+# 🔘 연해주 국경 지대 편입 버튼
+# ==========================================================
+dhe_button_outer_manchuria_expansion = {
+	name = "dhe_button_outer_manchuria_expansion"
+	desc = "dhe_button_outer_manchuria_expansion_desc"
+	visible = { always = yes }
+	
+	possible = {
+		# 진척도가 13 미만일 때만 누를 수 있음
+		je:je_dhe_outer_manchuria ?= {
+			NOT = { "scripted_bar_progress(dhe_progress_bar_outer_manchuria)" >= 13 }
+		}
+		# 💥 2. 쿨다운이 돌고 있지 않을 때만 누를 수 있음!
+		NOT = { has_variable = dhe_cd_outer_manchuria }
+	}
+	
+	effect = {
+		# 💥 이벤트 팝업 호출!
+		trigger_event = { id = dhe_expansion.1 popup = yes }
+	}
+}
+
+# ==========================================================
+# 🔘 연해주 이주민 정착 지원 버튼
+# ==========================================================
+dhe_button_outer_manchuria_immigration = {
+	name = "dhe_button_outer_manchuria_immigration"
+	desc = "dhe_button_outer_manchuria_immigration_desc"
+	visible = { always = yes }
+	
+	possible = {
+		# 1. 쿨다운 1년 (360일)
+		NOT = { has_variable = dhe_cd_outer_manchuria_immigration }
+		
+		# 2. 연해주(외만주)에 조선 영토가 최소 1개 이상 존재할 때만 활성화!
+		any_scope_state = {
+			state_region = s:STATE_OUTER_MANCHURIA
+			owner = ROOT
+		}
+	}
+	
+	effect = {
+		trigger_event = { id = dhe_expansion.3 popup = yes }
+	}
+}
+
+# ==========================================================
+# 🔘 조공 거부 (독립 준비도 상승, 청나라 관계 하락)
+# ==========================================================
+dhe_button_refuse_tribute = {
+	name = "dhe_button_refuse_tribute"
+	desc = "dhe_button_refuse_tribute_desc"
+	visible = { always = yes }
+	
+	possible = {
+		NOT = { has_variable = dhe_cd_refuse_tribute }
+		exists = c:CHI
+	}
+	
+	effect = {
+		set_variable = { name = dhe_cd_refuse_tribute days = 180 }
+		
+		# 청나라 빡침 (관계도 하락)
+		c:CHI = { change_relations = { country = ROOT value = -20 } }
+		
+		# 독립 준비도 +25
+		je:je_dhe_road_to_independence ?= {
+			add_progress = { name = dhe_progress_bar_independence value = 25 }
+		}
+	}
+}
+
+# ==========================================================
+# 🔘 신식 군대 무력시위 (위신 소모, 독립 준비도 상승)
+# ==========================================================
+dhe_button_independence_parade = {
+	name = "dhe_button_independence_parade"
+	desc = "dhe_button_independence_parade_desc"
+	visible = { always = yes }
+	
+	possible = {
+		NOT = { has_variable = dhe_cd_independence_parade }
+		army_size >= 20 # 군대가 좀 있어야 가능
+	}
+	
+	effect = {
+		set_variable = { name = dhe_cd_independence_parade days = 360 }
+		add_treasury = -20000
+		
+		je:je_dhe_road_to_independence ?= {
+			add_progress = { name = dhe_progress_bar_independence value = 20 }
+		}
+	}
+}
+
+# ==========================================================
+# 🔘 💥 독립 전쟁 선포 준비 (게이지 100 달성 시 켤 수 있는 결전 버프)
+# ==========================================================
+dhe_button_trigger_independence_war = {
+	name = "dhe_button_trigger_independence_war"
+	desc = "dhe_button_trigger_independence_war_desc"
+	visible = { always = yes }
+	
+	possible = {
+		# 게이지가 100 이상이어야 함
+		je:je_dhe_road_to_independence ?= {
+			"scripted_bar_progress(dhe_progress_bar_independence)" >= 100
+		}
+		# 버프가 없을 때만
+		NOT = { has_modifier = dhe_mod_independence_war_buff }
+	}
+	
+	effect = {
+		trigger_event = { id = dhe_independence.1 popup = yes }
+	}
+}
+
+# 💰 체납 급료 긴급 지급 (돈으로 막기)
+dhe_button_pay_soldiers = {
+	name = "dhe_button_pay_soldiers"
+	desc = "dhe_button_pay_soldiers_desc"
+	visible = { always = yes }
+	
+	possible = {
+		NOT = { has_variable = dhe_cd_pay_soldiers }
+		owner = { treasury >= 30000 }
+	}
+	
+	effect = {
+		set_variable = { name = dhe_cd_pay_soldiers days = 180 }
+		add_treasury = -30000
+		je:je_dhe_imo_mutiny ?= {
+			subtract_progress = { name = dhe_progress_bar_military_discontent value = 25 }
+		}
+	}
+}
+
+# ⚖️ 선혜청 당상 엄벌 (꼬리 자르기로 막기)
+dhe_button_punish_supply_officers = {
+	name = "dhe_button_punish_supply_officers"
+	desc = "dhe_button_punish_supply_officers_desc"
+	visible = { always = yes }
+	
+	possible = {
+		NOT = { has_variable = dhe_cd_punish_officers }
+	}
+	
+	effect = {
+		set_variable = { name = dhe_cd_punish_officers days = 360 }
+		# 권위를 소모하고 지주를 빡치게 하는 대신 군인들을 달램
+		add_authority = -100
+		ig:ig_landowners = { add_approval = -5 }
+		je:je_dhe_imo_mutiny ?= {
+			subtract_progress = { name = dhe_progress_bar_military_discontent value = 20 }
+		}
+	}
+}
+
+# ==========================================================
+# 🔘 광무개혁 가속 버튼
+# ==========================================================
+# 💰 황실 비자금(내탕금) 투입 (국고 소모, 개혁 가속)
+dhe_button_gwangmu_fund = {
+	name = "dhe_button_gwangmu_fund"
+	desc = "dhe_button_gwangmu_fund_desc"
+	visible = { always = yes }
+	
+	possible = {
+		NOT = { has_variable = dhe_cd_gwangmu_fund }
+		owner = { treasury >= 50000 } # 국고 5만 필요
+	}
+	
+	effect = {
+		set_variable = { name = dhe_cd_gwangmu_fund days = 360 }
+		add_treasury = -50000
+		
+		je:je_dhe_gwangmu_reform_main ?= {
+			add_progress = { name = dhe_progress_bar_gwangmu value = 10 }
+		}
+	}
+}
+
+# 🌍 구미(歐美) 시찰단 파견 (위신/권위 소모, 개혁 가속)
+dhe_button_gwangmu_mission = {
+	name = "dhe_button_gwangmu_mission"
+	desc = "dhe_button_gwangmu_mission_desc"
+	visible = { always = yes }
+	
+	possible = {
+		NOT = { has_variable = dhe_cd_gwangmu_mission }
+		owner = { authority >= 100 }
+	}
+	
+	effect = {
+		set_variable = { name = dhe_cd_gwangmu_mission days = 360 }
+		add_authority = -100
+		
+		je:je_dhe_gwangmu_reform_main ?= {
+			add_progress = { name = dhe_progress_bar_gwangmu value = 10 }
+		}
 	}
 }

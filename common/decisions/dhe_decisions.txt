@@ -18,10 +18,7 @@ army_size >= 30
 
 when_taken = {
 set_variable = dhe_great_korea_ambition_taken
-add_journal_entry = { type = je_dhe_great_korea_conquest }
-add_journal_entry = { type = je_dhe_northern_expansion }
-add_journal_entry = { type = je_dhe_southern_expansion } 
-
+trigger_event = { id = dhe_ambition.1 popup = yes }
 # 3. 영유권(클레임) 박기 (전부 c:KOR로 완벽 수정!)
 		# [만주 및 고토]
 		s:STATE_SHENGJING = { add_claim = c:KOR }
@@ -137,7 +134,7 @@ dhe_rebuild_gyeongbokgung_decision = {
 		
 		add_modifier = {
 			name = dhe_mod_gyeongbokgung_reconstruction
-			months = 24
+			months = 1
 		}
 		
 		add_journal_entry = { type = je_dhe_rebuild_gyeongbokgung }

@@ -83,71 +83,47 @@ dhe_mod_hangeul_edu_completed = {
 # File: common/modifiers/dhe_regional_modifiers.txt
 # (에러 로그에 뜬 "Unknown modifier type" 문제 해결)
 
-# --- 수도권 대개조 총력전 (개발 중 버프) ---
+# --- 수도권 ---
 modifier_capital_developing = {
 	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
-	state_construction_mult = 0.20                         # 지역 건설 속도 +20% (수도권 집중 건설)
-	building_government_administration_throughput_add = 0.10 # 행정 처리율 +10% (행정력 지원)
-	building_university_throughput_add = 0.10              # 대학교 처리율 +10% (지식인/혁신 펌핑)
+	building_construction_sector_throughput_add = 0.20
 }
-
-# --- 삼남 근대화의 물결 (개발 중 버프) ---
-modifier_south_developing = {
-	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
-	state_construction_mult = 0.15                         # 지역 건설 속도 +15%
-	building_group_bg_agriculture_throughput_add = 0.15    # 농업/플랜테이션 처리율 +15% (기초 식량 및 원자재 펌핑)
-	state_infrastructure_mult = 0.10                       # 기반시설 +10%
-}
-
-# --- 용광로와 조선의 불꽃 (개발 중 버프) ---
-modifier_busan_developing = {
-	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
-	state_construction_mult = 0.15                         # 지역 건설 속도 +15%
-	building_group_bg_heavy_industry_throughput_add = 0.15 # 중공업 처리율 +15% (공구, 철강 기초 체력 제공)
-	building_port_throughput_add = 0.15                    # 항구 처리율 +15% (자재 수입용 수송대 확보)
-}
-
-# --- 북부 자원 채굴 총력전 (개발 중 버프) ---
-modifier_north_developing = {
-	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
-	state_construction_mult = 0.25                         # 지역 건설 속도 +25% (험난한 북부 지형 개척용 극대화)
-	building_group_bg_mining_throughput_add = 0.20         # 광산 채굴 처리율 +20% (빠른 석탄/철광석 확보)
-	state_migration_pull_mult = 0.20                       # 이주 매력도 +20% (북부로 노동자들을 끌어모음)
-}
-# --- 수도권 완료 보상 (행정/지식의 중심) ---
 modifier_capital_completed = {
 	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
-	building_government_administration_throughput_add = 0.25 # 행정 처리율 +25%
-	building_urban_center_throughput_add = 0.25            # 도심지 처리율 +25%
-	state_education_access_add = 0.20                      # 교육 접근성 +20% (지식인 펌핑)
-	state_infrastructure_mult = 0.15                       # 지역 기반시설 +15%
+	building_government_administration_throughput_add = 0.15
+	building_urban_center_throughput_add = 0.15
 }
 
-# --- 남부 완료 보상 (식량/소비재의 요람) ---
+# --- 남부 ---
+modifier_south_developing = {
+	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	building_construction_sector_throughput_add = 0.20
+}
 modifier_south_completed = {
 	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
-	building_group_bg_agriculture_throughput_add = 0.25    # 모든 농업/플랜테이션 처리율 +25%
-	building_group_bg_light_industry_throughput_add = 0.20 # 모든 경공업 처리율 +20%
-	state_standard_of_living_add = 1.5                     # 지역 생활 수준 +1.5 (남부 백성들이 엄청나게 부유해집니다)
-	state_migration_pull_mult = 0.25                       # 이주 매력도 +25%
+	building_group_bg_agriculture_throughput_add = 0.15
+	building_group_bg_light_industry_throughput_add = 0.15
 }
 
-# --- 부산 완료 보상 (해양 및 중공업 패권) ---
+# --- 부산 ---
+modifier_busan_developing = {
+	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	building_construction_sector_throughput_add = 0.20
+}
 modifier_busan_completed = {
 	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
-	building_group_bg_heavy_industry_throughput_add = 0.25 # 모든 중공업 처리율 +25%
-	building_port_throughput_add = 0.30                    # 항구 처리율 +30% (압도적인 수송대 창출)
-	building_shipyard_throughput_add = 0.25                # 민간 조선소 처리율 +25%
-	building_military_shipyard_throughput_add = 0.25       # 해군 조선소 처리율 +25% (함대 무한 양산)
+	building_group_bg_heavy_industry_throughput_add = 0.20
+	building_port_throughput_add = 0.20
 }
 
-# --- 북부 완료 보상 (자원 채굴 및 군수 총력전) ---
+# --- 북부 ---
+modifier_north_developing = {
+	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	building_construction_sector_throughput_add = 0.20
+}
 modifier_north_completed = {
 	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
-	building_group_bg_mining_throughput_add = 0.30         # 모든 광산 채굴 처리율 +30% (자원이 쏟아짐)
-	building_arms_industry_throughput_add = 0.25           # 무기 공장 처리율 +25%
-	building_artillery_foundry_throughput_add = 0.25       # 대포 공창 처리율 +25%
-	state_construction_mult = 0.20                         # 지역 건설 속도 +20%
+	building_group_bg_mining_throughput_add = 0.25
 }
 dhe_mod_gyeongbokgung_reconstruction = {
 	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_reform.dds"
@@ -205,7 +181,7 @@ dhe_mod_society_reform_advanced_success = {
 	country_standard_of_living_add = 2.0          # 전국민 생활 수준 +2 (1단계 합치면 총 +3, 국가 전체가 부유해집니다)
 	country_loyalists_from_sol_change_mult = 0.50 # 생활 수준 상승 시 충성파 발생 +50% (충성파가 미친 듯이 복사됩니다)
 	country_radicals_from_sol_change_mult = -0.50 # 생활 수준 하락 시 급진파 발생 -50% (불만이 거의 생기지 않음)
-	country_tech_spread_add = 32.20                # 기술 전파 +20% (선진 문물 흡수 속도 극대화)
+	country_tech_spread_add = 0.20                # 기술 전파 +20% (선진 문물 흡수 속도 극대화)
 }
 # 🐎 북방의 패자 (만주 수복 영구 버프)
 dhe_mod_northern_expansion_success = {

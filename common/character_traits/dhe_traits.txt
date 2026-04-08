@@ -159,3 +159,71 @@ trait_self_reliant_defense = {
         character_battle_condition_surprise_maneuver_mult = 2      # '기습 기동' 전술 발동 확률 2배
     }
 }
+
+# 1. 미래를 꿰뚫어 보는 자 (기술/혁신 특화)
+dhe_trait_visionary = {
+    type = personality
+    texture = "gfx/interface/icons/character_trait_icons/innovative.dds"
+    possible = { always = no }
+
+    character_modifier = {
+        character_popularity_add = 50
+    }
+    
+    country_modifier = {
+        country_innovation_add = 20
+        country_tech_spread_mult = 0.15
+    }
+}
+
+# 2. 조숙한 흑막 (권력 장악 및 법률 제정 특화)
+dhe_trait_precocious_mastermind = {
+    type = personality
+    texture = "gfx/interface/icons/character_trait_icons/authoritarian.dds"
+    possible = { always = no }
+
+    character_modifier = {
+        character_popularity_add = 50
+    }
+    
+    country_modifier = {
+        country_authority_add = 150
+        country_enactment_time_mult = -0.15
+    }
+}
+
+# 3. 냉혹한 군주 (반대파 억압 및 군사력 특화)
+dhe_trait_cold_blooded_monarch = {
+    type = personality
+    texture = "gfx/interface/icons/character_trait_icons/cruel.dds"
+    possible = { always = no }
+
+    character_modifier = {
+        character_popularity_add = 50
+    }
+    
+    country_modifier = {
+        political_movement_radicalism_add = -0.2  # 시위대 급진성 억제
+    }
+
+    command_modifier = {
+        unit_offense_mult = 0.10
+        unit_defense_mult = 0.10
+    }
+}
+
+# 4. 기만술의 달인 (외교 및 위신 특화)
+dhe_trait_master_of_deception = {
+    type = personality
+    texture = "gfx/interface/icons/character_trait_icons/cautious.dds"
+    possible = { always = no }
+
+    character_modifier = {
+        character_popularity_add = 50
+    }
+    
+    country_modifier = {
+        country_infamy_decay_mult = 0.20          # 악명 감소 속도 펌핑
+        country_prestige_add = 30
+    }
+}

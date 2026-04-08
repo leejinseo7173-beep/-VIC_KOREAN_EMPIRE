@@ -26,11 +26,16 @@ dhe_event.100 = {
 		add_journal_entry = { type = je_dhe_samjeong_jeonjeong }
 		add_journal_entry = { type = je_dhe_samjeong_gunjeong }
 		add_journal_entry = { type = je_dhe_samjeong_hwangok }
+		add_journal_entry = { type = je_dhe_imo_mutiny }
+		#아래 두개는 지우기 확인용
+		add_journal_entry = { type = je_dhe_road_to_independence }
+		add_journal_entry = { type = je_dhe_outer_manchuria }
 	}
 
 	option = {
 		name = dhe_event.100.a
 		default_option = yes
+		trigger_event = { id = dhe_event.102 popup = yes}
 	}
 }
 
@@ -48,7 +53,7 @@ dhe_event.101 = {
 		# 1. 고통스러웠던 헬조선 디버프들을 국가에서 완전히 삭제합니다.
 		remove_modifier = modifier_sedo_politics
 		remove_modifier = modifier_samjeong_corruption
-		
+		add_journal_entry = { type = je_dhe_road_to_independence }
 		# 2. 대한제국 선포 버튼을 켜기 위한 최종 열쇠(변수)를 부여합니다.
 		set_variable = dhe_joseon_saved
 	}
@@ -57,5 +62,586 @@ dhe_event.101 = {
 		name = dhe_event.101.a
 		default_option = yes
 		add_loyalists = { value = 0.1 }
+	}
+}
+# ==========================================================
+# [프롤로그 연계] 천재 소년왕의 각성 (1836)
+# ==========================================================
+dhe_event.102 = {
+	type = country_event
+	placement = root
+	title = dhe_event.102.t
+	desc = dhe_event.102.d
+	flavor = dhe_event.102.f
+	icon = "gfx/interface/icons/event_icons/event_ruler.dds"
+
+	immediate = {
+        heir = {
+			add_trait = dhe_trait_visionary               # 미래를 꿰뚫어 보는 자
+			add_trait = dhe_trait_precocious_mastermind   # 조숙한 흑막
+			add_trait = dhe_trait_cold_blooded_monarch    # 냉혹한 군주
+			add_trait = dhe_trait_master_of_deception     # 기만술의 달인
+            add_trait = Expert artillery commander
+			add_trait = Masterful diplomat
+			add_trait = Expert colonial administrator
+			add_trait = Expert entrepreneur
+			add_trait = Expert offensive planner
+			add_trait = Engineer
+	}
+}
+
+	option = {
+		name = dhe_event.102.a
+		default_option = yes
+		# 조용히 발톱을 숨긴다는 의미로 일시적인 위신(Prestige) 보너스 획득
+# 💥 [수정완료] 디렉터님이 만드신 '숨겨둔 발톱' 전용 모디파이어 정상 부여!
+		add_modifier = {
+			name = modifier_dhe_hidden_claws
+			months = 120 # 10년 유지 (성인이 되어 친정할 때까지)
+		}
+	}
+}
+
+namespace = dhe_gunjeong
+
+# 1. 암행어사 파견
+dhe_gunjeong.1 = {
+	type = country_event
+	placement = root
+	title = dhe_gunjeong.1.t
+	desc = dhe_gunjeong.1.d
+	icon = "gfx/interface/icons/event_icons/event_intrigue.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_gunjeong.1.a
+		set_variable = { name = dhe_cd_gunjeong_inspector days = 180 }
+		
+		# 효과: 비용 1만 파운드 소모, 급진파 약간 감소, 진척도 +15
+		add_treasury = -10000
+		add_radicals = -5000
+		je:je_dhe_samjeong_gunjeong ?= {
+			add_progress = { name = dhe_progress_bar_gunjeong value = 15 }
+		}
+	}
+}
+
+# 2. 호포법 공론화 (핵심, 하이 리스크 하이 리턴)
+dhe_gunjeong.2 = {
+	type = country_event
+	placement = root
+	title = dhe_gunjeong.2.t
+	desc = dhe_gunjeong.2.d
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_gunjeong.2.a
+		set_variable = { name = dhe_cd_gunjeong_hopo days = 360 }
+		
+		# 효과: 양반들의 거센 반발(급진파 대량 증가), 진척도 폭증(+35)
+		add_radicals = 20000
+		je:je_dhe_samjeong_gunjeong ?= {
+			add_progress = { name = dhe_progress_bar_gunjeong value = 35 }
+		}
+	}
+}
+
+# 3. 신식 군대 시범 양성
+dhe_gunjeong.3 = {
+	type = country_event
+	placement = root
+	title = dhe_gunjeong.3.t
+	desc = dhe_gunjeong.3.d
+	icon = "gfx/interface/icons/event_icons/event_military_camp.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_gunjeong.3.a
+		set_variable = { name = dhe_cd_gunjeong_modern_army days = 360 }
+		
+		# 효과: 대규모 자금 소모, 군부 충성도 증가(대신 위신 소폭 상승), 진척도 +20
+		add_treasury = -50000
+		add_prestige = 5
+		je:je_dhe_samjeong_gunjeong ?= {
+			add_progress = { name = dhe_progress_bar_gunjeong value = 20 }
+		}
+	}
+}
+
+namespace = dhe_hwangok
+
+# 1. 탐관오리 숙청
+dhe_hwangok.1 = {
+	type = country_event
+	placement = root
+	title = dhe_hwangok.1.t
+	desc = dhe_hwangok.1.d
+	icon = "gfx/interface/icons/event_icons/event_intrigue.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_hwangok.1.a
+		set_variable = { name = dhe_cd_hwangok_purge days = 180 }
+		
+		# 효과: 지주 반발, 급진파 소폭 증가, 진척도 +15
+		ig:ig_landowners = {
+			add_modifier = { name = ig_approval_angry_temp months = 6 }
+		}
+		add_radicals = 5000
+		je:je_dhe_samjeong_hwangok ?= {
+			add_progress = { name = dhe_progress_bar_hwangok value = 15 }
+		}
+	}
+}
+
+# 2. 내탕금 구휼
+dhe_hwangok.2 = {
+	type = country_event
+	placement = root
+	title = dhe_hwangok.2.t
+	desc = dhe_hwangok.2.d
+	icon = "gfx/interface/icons/event_icons/event_famine.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_hwangok.2.a
+		set_variable = { name = dhe_cd_hwangok_relief days = 360 }
+		
+		# 효과: 국고 소모, 급진파 대폭 감소 (민심 수습)
+		add_treasury = -30000
+		add_radicals = -20000
+	}
+}
+
+# 3. 사창제 시범 운영
+dhe_hwangok.3 = {
+	type = country_event
+	placement = root
+	title = dhe_hwangok.3.t
+	desc = dhe_hwangok.3.d
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_hwangok.3.a
+		set_variable = { name = dhe_cd_hwangok_sachang days = 360 }
+		
+		# 효과: 행정력 일시적 소모, 진척도 대폭 증가(+30)
+		add_modifier = { name = dhe_bureaucracy_cost_temp months = 12 }
+		je:je_dhe_samjeong_hwangok ?= {
+			add_progress = { name = dhe_progress_bar_hwangok value = 30 }
+		}
+	}
+}
+
+namespace = dhe_jiandao
+
+# [버튼 누를 때 터지는 이벤트] 타일 1개 뺏기
+dhe_jiandao.1 = {
+	type = country_event
+	placement = root
+	title = dhe_jiandao.1.t
+	desc = dhe_jiandao.1.d
+	flavor = dhe_jiandao.1.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jiandao.1.a
+		
+		# 1. 아까 테스트하신 '원본 코드' 스크립트 실행 (타일 뺏기)
+		dhe_transfer_next_jiandao_province = yes
+		
+		# 2. 180일 쿨다운 부착
+		set_variable = { name = dhe_cooldown_jiandao days = 1 }
+		
+		# 3. 악명 증가 및 청나라 관계도 하락 (원하시는 대로 수치 조절 가능)
+		add_infamy = 2
+		if = {
+			limit = { exists = c:CHI }
+			c:CHI = { change_relations = { country = ROOT value = -10 } }
+		}
+		
+		# 4. 일지 진행도 1칸 올리기
+		je:je_dhe_jiandao_expansion ?= {
+			add_progress = { name = dhe_progress_bar_jiandao value = 1 }
+		}
+	}
+}
+# [버튼 연계] 간도 이민 장려금 지급 이벤트
+dhe_jiandao.4 = {
+	type = country_event
+	placement = root
+	title = dhe_jiandao.4.t
+	desc = dhe_jiandao.4.d
+	icon = "gfx/interface/icons/event_icons/event_migration.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jiandao.4.a
+		
+		# 1. 쿨다운 360일 (1년)
+		set_variable = { name = dhe_cd_jiandao_immigration days = 360 }
+		
+		# 2. 이민 장려금 및 정착촌 건설 비용 지출
+		add_treasury = -20000
+		
+		# 3. 간도 내 조선 소유의 주(State)에 효과 부여
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_JIANDAO
+				owner = ROOT
+			}
+			
+			# [기존 효과] 이주 매력도 버프 (자연 이민 유도)
+			add_modifier = {
+				name = dhe_modifier_jiandao_settlement
+				months = 12
+			}
+			
+			# ==========================================================
+			# 💥 [새로운 기적] 조선인 백성 5만 명을 허공에서 즉시 생성!
+			# ==========================================================
+            create_pop = {
+				culture = korean
+				pop_type = peasants   # 직업을 지정 안 하면 튕길 수 있으니 '소작농'으로 고정
+				size = 50000          # 5만 명 스폰!
+			}
+		}
+	}
+}
+
+# [일지 완료 이벤트] 간도 영유권 확립!
+dhe_jiandao.2 = {
+	type = country_event
+	placement = root
+	title = dhe_jiandao.2.t
+	desc = dhe_jiandao.2.d
+	flavor = dhe_jiandao.2.f
+	icon = "gfx/interface/icons/event_icons/event_military_camp.dds"
+
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jiandao.2.a
+		
+		# 국가 위신 획득
+		add_prestige = 20
+		
+		# 간도 주(STATE_JIANDAO)에 한국인 본토(Core) 박기
+		s:STATE_JIANDAO = {
+			add_homeland = cu:korean
+			if = {
+				limit = { is_homeland = cu:manchu }
+				remove_homeland = cu:manchu
+			}
+		}
+	}
+}
+namespace = dhe_ambition
+
+# ==========================================================
+# 🦅 황실의 원대한 야망 (북방 확장 선포 이벤트)
+# ==========================================================
+dhe_ambition.1 = {
+	type = country_event
+	placement = root
+	title = dhe_ambition.1.t
+	desc = dhe_ambition.1.d
+	flavor = dhe_ambition.1.f
+	
+	icon = "gfx/interface/icons/event_icons/event_eagle.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_ambition.1.a
+		
+		# 1. 제국 선포의 위엄 (위신 50 펌핑)
+		add_prestige = 50 
+		
+		# 2. [핵심] 하위 일지 해금 스위치 온!
+		set_variable = dhe_jiandao_unlocked
+		set_variable = dhe_outer_manchuria_unlocked # 연해주용 변수도 안전하게 켜줍니다
+		
+		# 3. [핵심] 북방 진출 3대 일지 화면에 즉시 등판!
+		add_journal_entry = { type = je_dhe_jiandao_expansion }       # 1 간도 개척
+		add_journal_entry = { type = je_dhe_outer_manchuria }         # 2 연해주 개척
+		add_journal_entry = { type = je_dhe_grand_northern_expansion } # 3 북방 경영 (마스터)
+	}
+}
+namespace = dhe_expansion
+
+# ==========================================================
+# 🦅 연해주(외만주) 거점 확보 이벤트
+# ==========================================================
+dhe_expansion.1 = {
+	type = country_event
+	placement = root
+	title = dhe_expansion.1.t
+	desc = dhe_expansion.1.d
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	
+	# 버튼으로만 작동하게 설정
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_expansion.1.a
+		set_variable = { name = dhe_cd_outer_manchuria days = 180 }
+		
+		# 💥 2. 청나라(CHI)와의 관계도 -10 악화 및 악명(Infamy) 1.0 증가
+		change_relations = {
+			country = c:CHI
+			value = -5
+		}
+		# 1. 13개 지정 타일 중 다음 타일을 조선으로 편입!
+		dhe_transfer_outer_manchuria_prov = yes
+		
+		# 2. 일지 진척도 1 증가!
+		je:je_dhe_outer_manchuria ?= {
+			add_progress = { name = dhe_progress_bar_outer_manchuria value = 1 }
+		}
+	}
+}
+
+# ==========================================================
+# 🌾 연해주 이주민 정착 이벤트
+# ==========================================================
+dhe_expansion.3 = {
+	type = country_event
+	placement = root
+	title = dhe_expansion.3.t
+	desc = dhe_expansion.3.d
+	icon = "gfx/interface/icons/event_icons/event_migration.dds"
+	
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_expansion.3.a
+		
+		# 1. 쿨타임 1년(360일) 적용
+		set_variable = { name = dhe_cd_outer_manchuria_immigration days = 360 }
+		
+		# 2. 이주 정착 지원금 소모 (국고 2만 파운드)
+		add_treasury = -20000
+		
+		# 3. 우리가 소유한 연해주 주(State)에 효과 부여
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_OUTER_MANCHURIA
+				owner = ROOT
+			}
+			
+			# 효과 A: 한국인 1만 명 즉시 생성 (알박기 뽕맛!)
+			create_pop = {
+				culture = korean
+				pop_type = peasants
+				size = 10000
+			}
+			
+			# 효과 B: 1년간 연해주 지역의 이주 매력도 폭발 (자연 이주 유도)
+			add_modifier = {
+				name = dhe_modifier_state_sponsored_migration
+				months = 12
+			}
+		}
+	}
+}
+# ==========================================================
+# 🎆 연해주 13거점 수복 완료 (피날레 보상 이벤트)
+# ==========================================================
+dhe_expansion.2 = {
+	type = country_event
+	placement = root
+	title = dhe_expansion.2.t
+	desc = dhe_expansion.2.d
+	icon = "gfx/interface/icons/event_icons/event_victory.dds"
+	
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_expansion.2.a
+		
+		# 보상 1: 엄청난 국가 위신 획득 (열강으로 가는 발판)
+		add_prestige = 50
+		
+		# 보상 2: 10년간 유지되는 강력한 국가 버프 (북방 고토 수복)
+		add_modifier = {
+			name = dhe_modifier_northern_expansion
+			months = 120
+		}
+		# 💥 보상 3: 연해주(외만주) 전체 명분 획득 + [한국인 본토(Homeland) 추가!]
+		s:STATE_OUTER_MANCHURIA = {
+			add_claim = c:KOR
+			add_homeland = cu:korean
+		}
+	}
+}
+
+# ==========================================================
+# 🎆 만주 경영 마스터 일지 완료 (최종 피날레 & 원본 3일지 해금)
+# ==========================================================
+dhe_expansion.4 = {
+	type = country_event
+	placement = root
+	title = dhe_expansion.4.t
+	desc = dhe_expansion.4.d
+	icon = "gfx/interface/icons/event_icons/event_victory.dds"
+	
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_expansion.4.a
+		
+		# 보상 1: 일시불로 엄청난 위신(Prestige) 100 펌핑
+		add_prestige = 100
+		
+		# 보상 2: 10년간 유지되는 만주 패권 버프
+		add_modifier = {
+			name = dhe_modifier_manchurian_hegemony
+			months = 120
+		}
+		
+		# 💥 보상 3: [핵심] 대한제국의 진정한 팽창 야망 변수 활성화!
+		set_variable = dhe_great_korea_ambition_taken
+		
+		# 💥 보상 4: 원본 3대 정복 일지를 플레이어의 일지 탭에 즉시 꽂아버립니다!
+		add_journal_entry = { type = je_dhe_northern_expansion }
+		add_journal_entry = { type = je_dhe_southern_expansion }
+		add_journal_entry = { type = je_dhe_great_korea_conquest }
+	}
+}
+
+namespace = dhe_independence
+
+# ==========================================================
+# [전운 고조] 게이지 100 달성 시 결전 버프 획득
+# ==========================================================
+dhe_independence.1 = {
+	type = country_event
+	placement = root
+	title = dhe_independence.1.t
+	desc = dhe_independence.1.d
+	icon = "gfx/interface/icons/event_icons/event_military_camp.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_independence.1.a
+		
+		# 1. 2년간 엄청난 독립군 버프 부여 (이때 외교전을 걸면 됩니다!)
+		add_modifier = {
+			name = dhe_mod_independence_war_buff
+			months = 24
+		}
+		
+		# 2. 외교전을 바로 걸 수 있도록 청나라와의 관계도를 최악으로 만듦
+		if = {
+			limit = { exists = c:CHI }
+			c:CHI = { set_relations = { country = ROOT value = -50 } }
+		}
+	}
+}
+
+# ==========================================================
+# [독립 쟁취] 마침내 청나라를 꺾고 자주독립국이 되었을 때 피날레!
+# ==========================================================
+dhe_independence.2 = {
+	type = country_event
+	placement = root
+	title = dhe_independence.2.t
+	desc = dhe_independence.2.d
+	icon = "gfx/interface/icons/event_icons/event_victory.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_independence.2.a
+		
+		# 1. 대한제국의 위신 폭발 및 독립 버프
+		add_prestige = 50
+		add_modifier = {
+			name = dhe_mod_true_independence
+			months = 120
+		}
+		
+		# 💥 2. [신규] 대청제국의 붕괴: 만주 전역에 행정 마비 디버프 살포!
+		every_scope_state = {
+			limit = {
+				OR = {
+					state_region = s:STATE_SHENGJING
+					state_region = s:STATE_SOUTHERN_MANCHURIA
+					state_region = s:STATE_NORTHERN_MANCHURIA
+					state_region = s:STATE_AMUR
+					state_region = s:STATE_JIANDAO
+					state_region = s:STATE_JILIN
+					state_region = s:STATE_REHE
+				}
+			}
+			# 만주 땅에 10년(120개월) 동안 무법지대 디버프가 박힙니다.
+			add_modifier = {
+				name = dhe_mod_unmanaged_manchuria
+				months = 120
+			}
+		}
+	}
+}
+
+namespace = dhe_imo
+
+# ==========================================================
+# [위기 폭발] 임오군란 발생!
+# ==========================================================
+dhe_imo.1 = {
+	type = country_event
+	placement = root
+	title = dhe_imo.1.t
+	desc = dhe_imo.1.d
+	icon = "gfx/interface/icons/event_icons/event_city_on_fire.dds"
+	is_triggered_only = yes
+
+	# ⚔️ 선택지 A: 무자비한 강경 진압 (국가 마비, 급진파 폭발)
+	option = {
+		name = dhe_imo.1.a 
+		
+		# 군부(장교단)가 극대노하고, 한성에 시체가 산을 이룸
+		ig:ig_armed_forces = { add_modifier = { name = ig_approval_angry_temp months = 36 } }
+		add_radicals = 100000
+		
+		# 진압 과정에서 한성(서울)의 인프라와 경제 마비
+		random_scope_state = {
+			limit = { state_region = s:STATE_SEOUL }
+			add_modifier = { name = dhe_mod_seoul_on_fire months = 24 }
+		}
+		set_variable = dhe_imo_mutiny_resolved
+	}
+	
+	# 🏳️ 선택지 B: 반란군에 굴복 (개혁 롤백, 위신 추락)
+	option = {
+		name = dhe_imo.1.b 
+		
+		# 급진파는 달래지지만, 강제로 구식 군대 법안(농민 징집병 등)으로 회귀!
+		add_loyalists = 20000
+		add_prestige = -30
+		activate_law = law_type:law_peasant_levies 
+		
+		# 반동 양반 세력의 힘이 다시 강해짐
+		ig:ig_landowners = { add_approval = 10 }
+		
+		set_variable = dhe_imo_mutiny_resolved
+	}
+
+	# 🗡️ 선택지 C: 부패 관료 척결 (꼬리 자르기)
+	option = {
+		name = dhe_imo.1.c 
+		
+		# 지주(양반) 세력의 지도자를 썩은 쌀을 배급한 죄를 물어 처형!
+		ig:ig_landowners = {
+			leader = { kill_character = yes }
+			add_modifier = { name = ig_approval_angry_temp months = 60 }
+		}
+		
+		# 지도자가 죽은 대가로 반란은 가라앉지만 국가 행정력이 일시 마비됨
+		add_modifier = { name = dhe_bureaucracy_cost_temp months = 12 }
+		set_variable = dhe_imo_mutiny_resolved
 	}
 }
