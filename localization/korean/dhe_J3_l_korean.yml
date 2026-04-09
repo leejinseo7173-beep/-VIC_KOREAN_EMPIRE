@@ -1,0 +1,244 @@
+﻿l_korean: 
+building_gyeongbokgung: "경복궁"
+ building_gyeongbokgung_desc: "조선의 법궁이자 대한제국의 황궁입니다. 국가의 권위와 위신을 드높이고 수많은 관료들이 국정을 돌보는 제국의 심장입니다."
+
+ # [2] 경복궁 생산 방식(효과) 현지화
+ pmg_gyeongbokgung: "황궁 관리"
+ pm_gyeongbokgung_active: "황궁 운영"
+ pm_gyeongbokgung_active_desc: "황궁을 정상적으로 운영하여 국가의 위신과 권위를 높입니다."
+
+ dhe_mod_gyeongbokgung_reconstruction: "경복궁 중건 준비 중"
+ 
+ dhe_rebuild_gyeongbokgung_decision: "경복궁 중건 준비"
+ dhe_rebuild_gyeongbokgung_decision_desc: "임진왜란 이후 폐허로 남았던 경복궁을 대한제국의 위상에 걸맞은 정궁으로 중건하기 위한 대대적인 기초 작업에 착수합니다. 전국에서 자재를 모으고 부지를 정리하는 데 1년이 소요될 것입니다."
+ 
+ je_dhe_rebuild_gyeongbokgung: "경복궁 중건 준비"
+ je_dhe_rebuild_gyeongbokgung_reason: "경복궁을 제국의 위엄에 걸맞게 재건하기 위해 전국에서 자재와 인력을 모으고 터를 닦고 있습니다. 1년의 준비 기간이 끝나면 본격적인 공사를 시작할 수 있습니다."
+ 
+ dhe_gyeongbokgung.1.t: "경복궁 중건 준비 완료!"
+ dhe_gyeongbokgung.1.d: "1년간의 피나는 노력 끝에, 마침내 경복궁 중건을 위한 모든 기초 작업이 끝났습니다. 터가 반듯하게 닦이고 훌륭한 목재와 석재가 산더미처럼 쌓였습니다. 이제 국가의 역량을 총동원하여 본격적으로 웅장한 황궁을 건설할 때입니다!"
+ dhe_gyeongbokgung.1.f: "천하의 중심을 세울 터가 마련되었도다."
+ dhe_gyeongbokgung.1.a: "즉각 건설을 명하라!"
+ 
+ dhe_gyeongbokgung_unlock_tt: "일지를 통해 경복궁 중건 준비(1년)가 완료되어야 합니다."
+
+ building_jongmyo: "종묘"
+ building_jongmyo_desc: "조선 역대 왕과 왕비의 신위를 모신 유교 사당입니다. 국가의 근본이자 왕실의 정통성을 상징하는 가장 신성한 공간입니다."
+ 
+ pmg_jongmyo: "종묘제례"
+ pm_jongmyo_active: "종묘제례 봉행"
+ pm_jongmyo_active_desc: "정기적으로 웅장한 종묘제례를 거행하여 왕실의 정통성과 국가의 기강을 확고히 다집니다."
+ building_sungkyunkwan: "성균관"
+ building_sungkyunkwan_desc: "조선 최고의 교육 기관이자 국가 인재 양성의 요람입니다. 수많은 유생들이 이곳에서 학문에 정진하며 국가의 미래와 혁신을 이끌어갈 동량으로 성장합니다."
+ 
+ pmg_sungkyunkwan: "성균관 운영"
+ pm_sungkyunkwan_active: "대과 준비 및 학문 연구"
+ pm_sungkyunkwan_active_desc: "성균관 유생들이 학문에 정진하여 국가의 전반적인 혁신 수치와 교육 수준을 크게 끌어올립니다."
+ 
+building_wonsoobu: "원수부"
+ building_wonsoobu_desc: "대한제국 황제 직속의 최고 군사 통수 기관입니다. 육해군을 총괄하며 신식 군대인 시위대와 진위대의 육성을 주도합니다."
+ 
+ pmg_wonsoobu: "원수부 운영"
+ pm_wonsoobu_active: "황제 통수권 확립"
+ pm_wonsoobu_active_desc: "원수부가 활성화되어 제국군의 지휘 체계가 일원화되고, 전군의 전투력과 군사적 위상이 크게 상승합니다."
+ 
+ dhe_wonsoobu_unlock_tt: "기초 군사 개혁을 완료하여 §Y원수부 창설§! 잠금이 해제되어야 합니다."
+
+ # 1단계 완료 이벤트
+ dhe_infra_event.1.t: "기초 기반시설 확충 완료"
+ dhe_infra_event.1.d: "전국 주요 도시에 철도와 항구가 들어서며, 제국의 근대적 물류망 기초가 닦였습니다. 이제 한성에 거대한 중앙역을 건설하고, 한반도를 종단하는 대규모 철도망을 완성하여 천하의 물자를 제국으로 모아들일 차례입니다."
+ dhe_infra_event.1.f: "길이 뚫리면 부와 힘이 따라오는 법입니다."
+ dhe_infra_event.1.a: "제국의 대동맥을 완성하라!"
+
+ # 이벤트 툴팁
+ dhe_infra_event_1_tt: "경성역 및 철도망 심화 일지 해금"
+ dhe_infra_event_1_desc_tt: "한성에 거대한 랜드마크인 §Y[경성역]§!을 건설할 수 있게 되며, 일지 탭에 §Y[제국 철도망 완성]§! 심화 미션이 추가됩니다."
+
+ # 심화 일지
+ je_dhe_gwangmu_railway_network: "제국 철도망 완성 (경부·경의선)"
+ je_dhe_gwangmu_railway_network_reason: "제국의 남쪽 끝 부산에서 북쪽 끝 평양까지 잇는 거대한 철도망을 부설해야 합니다. 강철 객차를 도입하고, 한성을 중심으로 §Y충청, 양호, 부산(경부선)§! 및 §Y해서, 평양(경의선)§! 지역에 철도를 3레벨 이상 건설하십시오."
+
+ # 랜드마크 (경성역)
+ building_seoul_station: "경성역 (서울역)"
+ building_seoul_station_desc: "대한제국 철도망의 심장이자, 수많은 여행객과 물자가 오가는 거대한 중앙 역사입니다. 이 웅장한 건물은 제국 근대화의 상징과도 같습니다."
+ dhe_seoul_station_unlock_tt: "기초 인프라 정비를 완료하여 §Y경성역 건설§! 잠금이 해제되어야 합니다."
+ pmg_seoul_station: "중앙 역사 운영"
+ pm_seoul_station_active: "제국 교통의 심장"
+ pm_seoul_station_active_desc: "경성역이 본격적으로 운영되며 한성의 기반시설이 폭발적으로 증가하고 전국의 물류가 원활해집니다."
+
+ company_daehan_cheonil_bank: "대한천일은행"
+ company_daehan_cheonil_bank_flavor: "1899년 고종 황제의 내탕금(황실 자본)을 기반으로 설립된 제국 최초의 민족 은행입니다. '하늘 아래 첫째가는 은행'이라는 자부심 아래, 외세의 경제 침탈에 맞서 국고를 관리하고 상권 지키기에 앞장서고 있습니다."
+
+ min:0 "민"
+ yeong_hwan:0 "영환"
+ ahn:0 "안"
+ jung_geun:0 "중근"
+# 인물 이름 현지화
+ park:0 "박"
+ chung_hee:0 "정희"
+
+ # 이벤트 텍스트
+ dhe_character_event.1.t: "구국의 영웅들, 궐기하다"
+ dhe_character_event.1.d: "군제 개혁이 성공적으로 완수되고 제국군의 위용이 하늘을 찌르자, 재야에 숨어 있던 걸출한 인재들이 황제의 부름을 받고 속속 모여들고 있습니다.\n\n특히 투철한 충성심으로 무장한 관료 [scope_min.GetFullName]과, 혈서로 구국의 의지를 다진 청년 장교 [scope_ahn.GetFullName]이 직접 군문을 두드리며 제국군의 선봉에 설 것을 맹세했습니다!"
+ dhe_character_event.1.f: "국가의 위기 앞에 영웅이 탄생하는 법이다. 이들이 이끄는 제국군은 결코 패배하지 않을 것이다."
+ dhe_character_event.1.a: "제국의 검과 방패가 되어 열강을 징벌하라!"
+# 박정희 등장 이벤트 텍스트
+ dhe_character_event.2.t: "구국의 결단"
+ dhe_event.2.d: "제국의 정치가 부패와 무능으로 혼란에 빠진 가운데, 군부 내에서 강력한 결단력을 지닌 청년 장교들이 궐기했습니다.\n\n그 중심에는 야심만만하고 냉혹한 현실주의자, 박정희 장군이 있습니다. 그는 무능한 기존 정치인들을 모두 몰아내고 군부를 장악했으며, 제국의 최우선 과제는 오직 '강력한 국가 주도의 조국 근대화'뿐이라고 일갈했습니다. 그의 등장에 정계는 숨을 죽였고, 제국의 용광로는 더욱 뜨겁게 타오를 준비를 마쳤습니다."
+ dhe_character_event.2.a: "내 일생 조국과 민족을 위하여!"'
+# 특성 추가
+# 이념
+ ideology_developmental_autocrat:0 "조국 근대화 (개발독재)"
+ ideology_developmental_autocrat_desc:0 "이 이념을 따르는 지도자는 국가의 모든 역량을 총동원하여 급진적인 경제 성장과 산업화를 이룩해야 한다고 굳게 믿으며, 이를 방해하는 어떠한 정치적 반대나 민주적 절차도 철권통치로 억압할 것입니다."
+
+ # 특성
+ trait_miracle_on_the_han:0 "조국 근대화의 설계자"
+ trait_miracle_on_the_han_desc:0 "이 인물은 낙후된 국가를 뜯어고쳐 강력한 산업 국가로 탈바꿈시킬 원대한 비전과 추진력을 가지고 있습니다."
+ trait_iron_fisted_ruler:0 "철권통치"
+ trait_iron_fisted_ruler_desc:0 "이 인물은 반대파를 무자비하게 탄압하고 국가 권력을 철저히 장악하여 절대적인 질서를 유지합니다." 
+trait_saemaul_undong:0 "새마을 운동"
+ trait_saemaul_undong_desc:0 "'근면, 자조, 협동'의 정신을 바탕으로 낙후된 농촌을 개혁하고 제국 전역의 인프라를 현대화하는 범국가적 캠페인을 주도합니다."
+ trait_for_the_nation:0 "내 일생 조국과 민족을 위하여"
+ trait_for_the_nation_desc:0 "이 지도자는 자신의 모든 삶과 체력을 국가의 부국강병을 위해 남김없이 불태우고 있으며, 이러한 헌신은 국민들에게 압도적인 카리스마와 결속력을 이끌어냅니다."
+trait_export_oriented:0 "수출입국 (輸出立國)"
+ trait_export_oriented_desc:0 "국내의 좁은 시장을 넘어 세계로 뻗어나가는 강력한 수출 주도형 경제를 설계하여, 기술 발전과 국부 창출을 극대화합니다."
+ trait_self_reliant_defense:0 "자주국방 (自主國防)"
+ trait_self_reliant_defense_desc:0 "열강의 군사적 위협에 굴복하지 않고, 우리 손으로 직접 첨단 무기를 개발하여 압도적인 포병 화력과 군사력을 구축합니다."
+
+ # ==========================================
+ # 북방 고토 회복 (만주 수복) 텍스트
+ # ==========================================
+ # 일지
+ je_dhe_northern_expansion: "북방 고토 회복 (만주 수복)"
+ je_dhe_northern_expansion_reason: "과거 고구려와 발해가 호령했던 만주의 드넓은 영토를 되찾아야 합니다. 청나라와 러시아의 간섭을 물리치고 §Y성경, 남만주, 북만주, 아무르§!를 비롯해 §Y간도, 길림, 열하§! 등 북방의 핵심 주 전체를 수복하여 제국의 영토로 편입하십시오."
+ 
+ # 이벤트
+ dhe_conquest_event.1.t: "북방의 패자"
+ dhe_conquest_event.1.d: "마침내 압록강과 두만강을 넘어, 잃어버렸던 북방의 드넓은 고토가 다시 대한제국의 품으로 돌아왔습니다! 대륙을 호령하던 선조들의 영광이 천 년의 세월을 뛰어넘어 다시금 이 땅에 울려 퍼지고 있습니다."
+ dhe_conquest_event.1.f: "만주벌판을 내달리는 제국 기병대의 말발굽 소리가 대지를 진동시킵니다."
+ dhe_conquest_event.1.a: "단군의 옛 영광을 되찾았도다!"
+ 
+ # 커스텀 툴팁
+ dhe_conquest_event_1_tt: "만주 지역 본토 편입"
+ dhe_conquest_event_1_desc_tt: "성경, 아무르 등 기존 만주 일대와 수복된 §Y간도, 길림, 열하§! 지역이 모두 §Y한국인 본토(Homeland)§!로 편입되며, 강력한 국가 위신과 동화 속도 버프를 영구적으로 얻습니다."
+ 
+
+ 
+ dhe_great_korea_ambition:0 "황실의 원대한 야망"
+ dhe_great_korea_ambition_desc:0 "한반도는 너무 좁다. 북으로는 잃어버린 고토를 수복하여 대륙으로 뻗어나가고, 남으로는 왜구의 본거지를 정벌하여 동아시아의 진정한 패자가 되어야 한다."
+ dhe_great_korea_ambition_tooltip:0 "만주와 일본, 대만 전역에 대한 [concept_claim]을 획득합니다."
+
+ # 11. 일지 - 대동아 정복
+ je_dhe_great_korea_conquest:0 "대동아 통합 전쟁"
+ je_dhe_great_korea_conquest_desc:0 "만주와 일본 열도, 대만을 우리의 영토로 편입하여 동아시아의 패권을 확립한다.\n\n[concept_sovereignty]를 완전히 장악해야 한다."
+ je_dhe_great_korea_conquest_goal:0 "만주 4개 주, 일본 9개 주, 대만 1개 주를 모두 완전 점령"
+ je_dhe_great_korea_conquest_reason:0 "만주와 일본 열도, 대만을 우리의 영토로 편입하여 동아시아의 패권을 확립한다.\n\n[concept_sovereignty]를 완전히 장악해야 한다."
+
+
+# ==========================================
+ # 남방 정벌 (일본 및 대만 제패) 텍스트
+ # ==========================================
+ # 일지
+ je_dhe_southern_expansion: "동아시아 제해권 장악 (열도 제패)"
+ je_dhe_southern_expansion_reason: "과거 임진년의 원한과 수많은 침탈을 일삼았던 섬나라를 완전히 제압할 때가 왔습니다. 일본 열도의 모든 주와 대만을 점령하여, 태평양으로 뻗어나가는 제국의 발판을 마련하십시오."
+ 
+ # 이벤트
+ dhe_conquest_event.2.t: "동해의 떠오르는 태양"
+ dhe_conquest_event.2.d: "마침내 제국의 함대가 도쿄만에 닻을 내렸고, 일본 열도 전역이 대한제국의 깃발 아래 무릎을 꿇었습니다! 수백 년간 이어져 온 악연의 고리를 끊어내고, 이제 동아시아의 진정한 제해권은 오직 우리 황실의 손아귀에 있습니다."
+ dhe_conquest_event.2.f: "과거의 치욕을 백 배, 천 배로 되갚아 주었노라."
+ dhe_conquest_event.2.a: "태평양은 이제 제국의 내해(內海)다!"
+ 
+ # 커스텀 툴팁
+ dhe_conquest_event_2_tt: "열도 및 대만 지역 본토 편입"
+ dhe_conquest_event_2_desc_tt: "간토, 간사이 등 일본 열도 전역과 §Y포르모사(대만)§! 지역이 모두 §Y한국인 본토(Homeland)§!로 편입되며, 해군력과 외교적 위상을 대폭 높여주는 영구 버프를 얻습니다."
+ 
+ dhe_university.1.t: "근대 교육의 요람"
+ dhe_university.1.d: "광무개혁의 일환으로 추진된 전국적인 학제 개편과 소학교 설립이 마침내 성공적인 궤도에 올랐습니다. 수많은 인재들이 깨어나고 있으며, 이제 이들을 이끌어갈 국가 최고 학부가 필요하다는 목소리가 커지고 있습니다."
+ dhe_university.1.f: "기초를 다졌으니, 이제 제국의 지성을 완성할 거대한 상아탑을 세울 차례입니다."
+ dhe_university.1.a: "제국대학 설립을 추진하라!"
+
+ je_dhe_seoul_national_university: "한성제국대학(서울대학교) 설립"
+ je_dhe_seoul_national_university_reason: "국가의 백년대계를 이끌어갈 최고 인재를 양성하기 위해, 한성(서울)에 대규모 국립 대학을 설립해야 합니다. [concept_technology] '학술'을 연구하고, 한성에 [concept_university]를 5레벨 이상 건설하십시오."
+ 
+ dhe_university.2.t: "서울대학교 설립 완료"
+ dhe_university.2.d: "마침내 한성 한복판에 웅장한 대학 건물이 들어섰습니다. 전국 각지에서 모여든 수재들이 조국의 근대화와 부국강병을 위해 밤낮없이 학문에 매진하고 있습니다. 이곳은 명실상부한 제국 최고의 지성소가 될 것입니다!"
+ dhe_university.2.f: "진리는 나의 빛 (Veritas Lux Mea)"
+ dhe_university.2.a: "조선의 미래가 이곳에 있다!"
+ 
+
+ # 13. 수정자(Modifier)
+ dhe_imperial_prestige:0 "황제의 위엄"
+ dhe_imperial_prestige_desc:0 "제국 선포로 인한 위신과 권위 상승"
+ 
+ 
+ dhe_gwangmu_reform_success:0 "광무개혁의 성공"
+ dhe_gwangmu_reform_success_desc:0 "근대화 개혁을 성공적으로 완수함"
+
+ # 한글 교육 모디파이어
+ dhe_mod_hangeul_edu_preparation_20y:0 "한글 교육 실행"
+ dhe_mod_hangeul_edu_preparation_20y_desc:0 "국가 주도의 한글 교육 제도를 정비하고 교재와 교원을 양성하는 과도기 단계입니다."
+
+ dhe_mod_hangeul_edu_completed:0 "한글 교육 완수"
+ dhe_mod_hangeul_edu_completed_desc:0 "한글이 전 사회에 보급되어, 문해력과 국가 통합이 비약적으로 향상되었습니다."
+
+ # 1단계 군사/기반시설 완료 버프
+ dhe_mod_military_reform_success: "근대적 제국군의 탄생"
+ dhe_mod_military_reform_success_desc: "구식 군대를 탈피하고 근대적 교리와 화기로 무장한 제국의 신식 군대가 탄생했습니다."
+ 
+ dhe_mod_infrastructure_reform_success: "제국 기반시설 확충"
+ dhe_mod_infrastructure_reform_success_desc: "항만과 철도의 기초가 닦여 국가 전반의 물류와 건설 효율이 상승했습니다."
+
+ modifier_capital_developing: "수도권 대개조 총력전"
+ modifier_capital_completed: "황국의 빛나는 심장"
+
+ modifier_south_developing: "삼남 근대화의 물결"
+ modifier_south_completed: "풍요로운 제국의 젖줄"
+
+ modifier_busan_developing: "용광로와 조선(造船)의 불꽃"
+ modifier_busan_completed: "태평양을 호령하는 거항"
+
+ modifier_north_developing: "북부 자원 채굴 총력전"
+ modifier_north_completed: "강철과 석탄의 요람"
+
+  # 모디파이어(버프)
+ dhe_mod_northern_expansion_success: "북방의 패자"
+ dhe_mod_northern_expansion_success_desc: "만주의 광활한 영토와 풍부한 자원을 확보한 제국은 대륙 세력으로서의 압도적인 국력과 군사적 안정성을 자랑합니다."
+
+ dhe_manifest_destiny_completed:0 "대동아 천명 완수"
+ dhe_manifest_destiny_completed_desc:0 "동아시아의 패권을 확립한 위업"
+
+  # 모디파이어(버프)
+ dhe_mod_southern_expansion_success: "태평양의 지배자"
+ dhe_mod_southern_expansion_success_desc: "일본과 대만을 손에 넣은 제국은 이제 압도적인 해군력과 무역망을 바탕으로 동아시아의 절대적인 해양 패권국으로 군림하고 있습니다."
+
+ # 2단계 보상 모디파이어
+ dhe_mod_railway_network_success: "한반도 십자 철도망 구축"
+ dhe_mod_railway_network_success_desc: "경부선과 경의선을 비롯한 전국적인 철도망이 완벽하게 이어져, 제국 전역의 시장이 하나로 통합되고 엄청난 물류 혁신이 일어났습니다."
+# ==========================================
+ # 행정 및 사회 심화 보상 모디파이어
+ # ==========================================
+ dhe_mod_admin_reform_advanced_success: "근대적 중앙집권체제 확립"
+ dhe_mod_admin_reform_advanced_success_desc: "한 치의 오차도 없는 완벽한 행정망과 조세 제도가 제국 전역에 뿌리내려, 국가의 통치력과 효율성이 극대화되었습니다."
+
+ dhe_mod_society_reform_advanced_success: "문명화된 제국 시민"
+ dhe_mod_society_reform_advanced_success_desc: "서구 열강을 뛰어넘는 보편적 인권과 풍족한 생활 수준을 누리게 된 백성들은 제국 황실에 무한한 충성을 바치고 있습니다."
+
+ dhe_mod_seoul_national_university: "국립 서울대학교"
+ dhe_mod_seoul_national_university_desc: "국가 최고 학부의 존재로 인해 이 지역의 대학교는 타의 추종을 불허하는 엄청난 연구 성과와 엘리트 인재를 배출해 냅니다."
+
+ state_trait_han_river: "한강유역"
+ state_trait_unsan_mine: "운산 금광지대"
+ state_trait_taebaek_sierra: "태백산맥"
+ state_trait_nakdong_river: "낙동강유역"
+ state_trait_kep_gold_river: "금강유역"
+ state_trait_bongsan_mine: "봉산탄전"
+ state_trait_hanseong_capital: "조선의 심장, 한성"
+
+ state_trait_Songnun_Plain: "송눈평원"
+ state_trait_Samgang_Plain: "삼강평원"
+ state_trait_Yoha_Plain: "요하평원"
+ 
+ state_trait_Hinggan_Weji: "힝안 웨지"
+ state_trait_Kurka_Weji: "쿠르카 웨지"
+ state_trait_Warka_Weji: "와르카 웨지"
+

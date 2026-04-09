@@ -1,0 +1,376 @@
+﻿# Encoding: UTF-8 with BOM
+# File: common/on_actions/dhe_on_actions.txt
+# 매월 조선/대한제국에 랜덤 이벤트를 분배하는 라우터
+# 각 Phase는 독립 if 블록 → 동시 활성 가능
+
+on_monthly_pulse_country = {
+	effect = {
+		if = {
+			limit = {
+				exists = c:KOR
+				c:KOR ?= THIS
+			}
+
+			# ============================================
+			# [A] 세도정치 타파 (왕권 회복)
+			# ============================================
+			if = {
+				limit = {
+					has_journal_entry = je_dhe_sedo_politics_reform
+					NOT = { has_variable = dhe_sedo_resolved }
+				}
+				random_list = {
+					60 = { }
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_ra1 } }
+						trigger_event = { id = dhe_random.1 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_ra2 } }
+						trigger_event = { id = dhe_random.2 }
+					}
+					8 = {
+						trigger = {
+							NOT = { has_variable = dhe_cd_ra3 }
+							ig:ig_landowners = { clout >= 0.25 }
+						}
+						trigger_event = { id = dhe_random.3 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_ra4 } }
+						trigger_event = { id = dhe_random.4 }
+					}
+					8 = {
+						trigger = {
+							NOT = { has_variable = dhe_cd_ra5 }
+							ig:ig_intelligentsia = { clout >= 0.1 }
+						}
+						trigger_event = { id = dhe_random.5 }
+					}
+				}
+			}
+
+			# ============================================
+			# [B] 양전 사업
+			# ============================================
+			if = {
+				limit = {
+					has_journal_entry = je_dhe_yangjeon
+					has_variable = dhe_yangjeon_active
+				}
+				random_list = {
+					60 = { }
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_rb1 } }
+						trigger_event = { id = dhe_random.6 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_rb2 } }
+						trigger_event = { id = dhe_random.7 }
+					}
+					8 = {
+						trigger = {
+							NOT = { has_variable = dhe_cd_rb3 }
+							ig:ig_landowners = { clout >= 0.2 }
+						}
+						trigger_event = { id = dhe_random.8 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_rb4 } }
+						trigger_event = { id = dhe_random.9 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_rb5 } }
+						trigger_event = { id = dhe_random.10 }
+					}
+				}
+			}
+
+			# ============================================
+			# [C] 은결 색출
+			# ============================================
+			if = {
+				limit = {
+					has_journal_entry = je_dhe_eungyeol
+					has_variable = dhe_eungyeol_active
+				}
+				random_list = {
+					60 = { }
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_rc1 } }
+						trigger_event = { id = dhe_random.11 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_rc2 } }
+						trigger_event = { id = dhe_random.12 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_rc3 } }
+						trigger_event = { id = dhe_random.13 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_rc4 } }
+						trigger_event = { id = dhe_random.14 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_rc5 } }
+						trigger_event = { id = dhe_random.15 }
+					}
+				}
+			}
+
+			# ============================================
+			# [D] 군정 개혁
+			# ============================================
+			if = {
+				limit = {
+					has_journal_entry = je_dhe_samjeong_gunjeong
+					NOT = { has_variable = dhe_gunjeong_resolved }
+				}
+				random_list = {
+					60 = { }
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_rd1 } }
+						trigger_event = { id = dhe_random.16 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_rd2 } }
+						trigger_event = { id = dhe_random.17 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_rd3 } }
+						trigger_event = { id = dhe_random.18 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_rd4 } }
+						trigger_event = { id = dhe_random.19 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_rd5 } }
+						trigger_event = { id = dhe_random.20 }
+					}
+				}
+			}
+
+			# ============================================
+			# [E] 환곡 타파
+			# ============================================
+			if = {
+				limit = {
+					has_journal_entry = je_dhe_samjeong_hwangok
+					NOT = { has_variable = dhe_hwangok_resolved }
+				}
+				random_list = {
+					60 = { }
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_re1 } }
+						trigger_event = { id = dhe_random.21 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_re2 } }
+						trigger_event = { id = dhe_random.22 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_re3 } }
+						trigger_event = { id = dhe_random.23 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_re4 } }
+						trigger_event = { id = dhe_random.24 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_re5 } }
+						trigger_event = { id = dhe_random.25 }
+					}
+				}
+			}
+
+			# ============================================
+			# [F] 자주독립
+			# ============================================
+			if = {
+				limit = {
+					has_journal_entry = je_dhe_road_to_independence
+					is_subject = yes
+				}
+				random_list = {
+					60 = { }
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_rf1 } }
+						trigger_event = { id = dhe_random.26 }
+					}
+					8 = {
+						trigger = {
+							NOT = { has_variable = dhe_cd_rf2 }
+							exists = c:CHI
+							c:CHI = { OR = { has_civil_war = yes is_at_war = yes } }
+						}
+						trigger_event = { id = dhe_random.27 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_rf3 } }
+						trigger_event = { id = dhe_random.28 }
+					}
+					8 = {
+						trigger = { NOT = { has_variable = dhe_cd_rf4 } }
+						trigger_event = { id = dhe_random.29 }
+					}
+					8 = {
+						trigger = {
+							NOT = { has_variable = dhe_cd_rf5 }
+							exists = c:JAP
+						}
+						trigger_event = { id = dhe_random.30 }
+					}
+				}
+			}
+
+			# ============================================
+			# [G] 임오군란 위기
+			# ============================================
+			if = {
+				limit = {
+					has_journal_entry = je_dhe_imo_mutiny
+					NOT = { has_variable = dhe_imo_mutiny_resolved }
+				}
+				random_list = {
+					55 = { }
+					9 = {
+						trigger = { NOT = { has_variable = dhe_cd_rg1 } }
+						trigger_event = { id = dhe_random.31 }
+					}
+					9 = {
+						trigger = { NOT = { has_variable = dhe_cd_rg2 } }
+						trigger_event = { id = dhe_random.32 }
+					}
+					9 = {
+						trigger = { NOT = { has_variable = dhe_cd_rg3 } }
+						trigger_event = { id = dhe_random.33 }
+					}
+					9 = {
+						trigger = { NOT = { has_variable = dhe_cd_rg4 } }
+						trigger_event = { id = dhe_random.34 }
+					}
+					9 = {
+						trigger = { NOT = { has_variable = dhe_cd_rg5 } }
+						trigger_event = { id = dhe_random.35 }
+					}
+				}
+			}
+
+			# ============================================
+			# [H] 광무개혁 (20개 이벤트)
+			# ============================================
+			if = {
+				limit = {
+					has_variable = dhe_gwangmu_reform_started
+					NOT = { has_variable = dhe_gwangmu_reform_completed }
+				}
+				random_list = {
+					43 = { }
+					3 = {
+						trigger = { NOT = { has_variable = dhe_cd_rh1 } }
+						trigger_event = { id = dhe_random.36 }
+					}
+					3 = {
+						trigger = {
+							NOT = { has_variable = dhe_cd_rh2 }
+							ig:ig_landowners = { clout >= 0.15 }
+						}
+						trigger_event = { id = dhe_random.37 }
+					}
+					3 = {
+						trigger = { NOT = { has_variable = dhe_cd_rh3 } }
+						trigger_event = { id = dhe_random.38 }
+					}
+					3 = {
+						trigger = {
+							NOT = { has_variable = dhe_cd_rh4 }
+							NOT = { has_variable = dhe_gwangmu_education_done }
+						}
+						trigger_event = { id = dhe_random.39 }
+					}
+					3 = {
+						trigger = {
+							NOT = { has_variable = dhe_cd_rh5 }
+							NOT = { has_variable = dhe_gwangmu_infrastructure_done }
+						}
+						trigger_event = { id = dhe_random.40 }
+					}
+					3 = {
+						trigger = { NOT = { has_variable = dhe_cd_rh6 } }
+						trigger_event = { id = dhe_random.41 }
+					}
+					2 = {
+						trigger = { NOT = { has_variable = dhe_cd_rh7 } }
+						trigger_event = { id = dhe_random.42 }
+					}
+					3 = {
+						trigger = { NOT = { has_variable = dhe_cd_rh8 } }
+						trigger_event = { id = dhe_random.43 }
+					}
+					2 = {
+						trigger = { NOT = { has_variable = dhe_cd_rh9 } }
+						trigger_event = { id = dhe_random.44 }
+					}
+					3 = {
+						trigger = {
+							NOT = { has_variable = dhe_cd_rh10 }
+							NOT = { has_variable = dhe_gwangmu_military_done }
+						}
+						trigger_event = { id = dhe_random.45 }
+					}
+					3 = {
+						trigger = { NOT = { has_variable = dhe_cd_rh11 } }
+						trigger_event = { id = dhe_random.46 }
+					}
+					3 = {
+						trigger = { NOT = { has_variable = dhe_cd_rh12 } }
+						trigger_event = { id = dhe_random.47 }
+					}
+					3 = {
+						trigger = {
+							NOT = { has_variable = dhe_cd_rh13 }
+							NOT = { has_variable = dhe_gwangmu_education_done }
+						}
+						trigger_event = { id = dhe_random.48 }
+					}
+					3 = {
+						trigger = { NOT = { has_variable = dhe_cd_rh14 } }
+						trigger_event = { id = dhe_random.49 }
+					}
+					3 = {
+						trigger = {
+							NOT = { has_variable = dhe_cd_rh15 }
+							NOT = { has_variable = dhe_gwangmu_admin_done }
+						}
+						trigger_event = { id = dhe_random.50 }
+					}
+					3 = {
+						trigger = { NOT = { has_variable = dhe_cd_rh16 } }
+						trigger_event = { id = dhe_random.51 }
+					}
+					3 = {
+						trigger = {
+							NOT = { has_variable = dhe_cd_rh17 }
+							NOT = { has_variable = dhe_gwangmu_military_done }
+						}
+						trigger_event = { id = dhe_random.52 }
+					}
+					2 = {
+						trigger = { NOT = { has_variable = dhe_cd_rh18 } }
+						trigger_event = { id = dhe_random.53 }
+					}
+					3 = {
+						trigger = { NOT = { has_variable = dhe_cd_rh19 } }
+						trigger_event = { id = dhe_random.54 }
+					}
+					3 = {
+						trigger = { NOT = { has_variable = dhe_cd_rh20 } }
+						trigger_event = { id = dhe_random.55 }
+					}
+				}
+			}
+		}
+	}
+}

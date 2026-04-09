@@ -1,124 +1,211 @@
 ﻿# Encoding: UTF-8 with BOM
+# File: common/scripted_progress_bars/dhe_progress_bars2.txt
+# [리워크] 겹침 제거 + 난이도 상향 + 고유 조건 강화
+# 광무개혁 bar, 간도, 연해주는 변경 없음
 
+# ==========================================================
+# 👑 왕권 회복 (세도정치 타파)
+# 고유 열쇠: 지주 약화 + 정통성 + 검열 폐지
+# 목표: 3~5년  |  최악: -10/월  |  최선: +6/월
+# ==========================================================
 dhe_progress_bar_royal_authority = {
 	name = "dhe_progress_bar_royal_authority"
 	desc = "dhe_progress_bar_royal_authority_desc"
-
-	# [핵심 수술 1] 바닐라 표준 진행도 스킨. 이게 있어야 UI가 매달 움직입니다!
-	default = yes 
+	default = yes
 
 	start_value = 0
 	min_value = 0
 	max_value = 100
 
 	monthly_progress = {
-		# 1. 기본 감소치
+
+		# ── [기본] 세도 정치의 관성 ──
 		if = {
 			limit = { always = yes }
-			subtract = {
-				desc = "dhe_royal_auth_base"
-				value = 2.0
-			}
+			subtract = { desc = "dhe_royal_auth_base" value = 4.0 }
 		}
-		
-		# 2. 지주 세력 강함 (패널티) - [핵심 수술 2] 불필요한 owner 껍데기 제거
+
+		# ── [페널티] 지주 clout 30% 이상: 조정 장악 ──
+		if = {
+			limit = { owner = { ig:ig_landowners = { clout >= 0.3 } } }
+			subtract = { desc = "dhe_royal_auth_landowners_dominant" value = 3.0 }
+		}
+
+		# ── [페널티] 세습 관료제: 양반 세습 체제 ──
+		if = {
+			limit = { owner = { has_law = law_type:law_hereditary_bureaucrats } }
+			subtract = { desc = "dhe_royal_auth_hereditary" value = 2.0 }
+		}
+
+		# ── [페널티] 농노제: 구체제의 무게 ──
+		if = {
+			limit = { owner = { has_law = law_type:law_serfdom } }
+			subtract = { desc = "dhe_royal_auth_serfdom" value = 1.0 }
+		}
+
+		# ── [보너스] 지주 clout 20% 미만: 양반 약화 (★ 고유 핵심) ──
 		if = {
 			limit = {
-				ig:ig_landowners = { clout >= 0.3 }
+				owner = {
+					ig:ig_landowners = { clout < 0.2 }
+					NOT = { ig:ig_landowners = { clout < 0.1 } }
+				}
 			}
-			subtract = {
-				desc = "dhe_royal_auth_landowners_high"
-				value = 2.0
-			}
+			add = { desc = "dhe_royal_auth_landowners_weak" value = 3.0 }
 		}
-		
-		# 3. 지주 세력 약함 (보너스)
+
+		# ── [보너스] 지주 clout 10% 미만: 양반 궤멸 (★ 고유 핵심) ──
 		if = {
-			limit = {
-				ig:ig_landowners = { clout <= 0.2 }
-			}
-			add = {
-				desc = "dhe_royal_auth_landowners_low"
-				value = 4.0
-			}
+			limit = { owner = { ig:ig_landowners = { clout < 0.1 } } }
+			add = { desc = "dhe_royal_auth_landowners_crushed" value = 2.0 }
 		}
-		
-		# 4. 정통성 높음 (보너스)
+
+		# ── [보너스] 정통성 50 이상: 왕권 안정 (★ 고유 핵심) ──
 		if = {
-			limit = {
-				government_legitimacy >= 50
-			}
-			add = {
-				desc = "dhe_royal_auth_bureaucracy_good"
-				value = 2.0
-			}
+			limit = { owner = { government_legitimacy >= 50 } }
+			add = { desc = "dhe_royal_auth_legitimacy_stable" value = 2.0 }
+		}
+
+		# ── [보너스] 정통성 75 이상: 왕권 절대 ──
+		if = {
+			limit = { owner = { government_legitimacy >= 75 } }
+			add = { desc = "dhe_royal_auth_legitimacy_supreme" value = 1.0 }
+		}
+
+		# ── [보너스] 지식인 clout 15% 이상: 개화파 지원 ──
+		if = {
+			limit = { owner = { ig:ig_intelligentsia = { clout >= 0.15 } } }
+			add = { desc = "dhe_royal_auth_intelligentsia" value = 1.0 }
+		}
+
+		# ── [보너스] 검열 폐지: 여론 동원 (★ 왕권 전용) ──
+		if = {
+			limit = { owner = { NOT = { has_law = law_type:law_censorship } } }
+			add = { desc = "dhe_royal_auth_free_press" value = 1.0 }
 		}
 	}
 }
+
 # ==========================================================
-# 📜 서브 일지 A: 팔도 양전 사업 진행도
+# 📜 팔도 양전 사업
+# 고유 열쇠: 임명직 관료제 + 행정력 + 식자율
+# 목표: 2~4년  |  최악: -8/월  |  최선: +7/월
 # ==========================================================
 dhe_progress_bar_yangjeon = {
 	name = "dhe_progress_bar_yangjeon"
 	desc = "dhe_progress_bar_yangjeon_desc"
-	default = yes 
+	default = yes
 
 	start_value = 0
 	min_value = 0
 	max_value = 100
 
 	monthly_progress = {
+
+		# ── [기본] 지방 향리의 방해 공작 ──
 		if = {
 			limit = { always = yes }
-			subtract = { desc = "dhe_yj_base_decay" value = 1.0 }
+			subtract = { desc = "dhe_yj_base_decay" value = 3.0 }
 		}
+
+		# ── [페널티] 지주 clout 25% 이상: 토지대장 은폐 ──
 		if = {
-			# [수정] owner 스코프로 안전하게 감싸기!
-			limit = { owner = { ig:ig_landowners = { clout >= 0.2 } } }
-			subtract = { desc = "dhe_yj_landowners_high" value = 1.0 }
+			limit = { owner = { ig:ig_landowners = { clout >= 0.25 } } }
+			subtract = { desc = "dhe_yj_landowners_obstruct" value = 1.0 }
 		}
+
+		# ── [페널티] 세습 관료제: 향리 세습 ──
 		if = {
 			limit = { owner = { has_law = law_type:law_hereditary_bureaucrats } }
-			subtract = { desc = "dhe_yj_hereditary_bureaucrats" value = 1.0 }
+			subtract = { desc = "dhe_yj_hereditary" value = 2.0 }
 		}
+
+		# ── [페널티] 토지세 유지: 구 조세 체계 저항 ──
+		if = {
+			limit = { owner = { has_law = law_type:law_land_based_taxation } }
+			subtract = { desc = "dhe_yj_old_tax" value = 2.0 }
+		}
+
+		# ── [보너스] 임명직 관료제 (★ 양전 핵심: +3) ──
 		if = {
 			limit = { owner = { has_law = law_type:law_appointed_bureaucrats } }
-			add = { desc = "dhe_yj_appointed_bureaucrats" value = 2.0 }
+			add = { desc = "dhe_yj_appointed" value = 3.0 }
 		}
+
+		# ── [보너스] 행정력 200 이상 (★ 양전 고유) ──
+		if = {
+			limit = { owner = { bureaucracy >= 200 } }
+			add = { desc = "dhe_yj_bureaucracy_good" value = 1.0 }
+		}
+
+		# ── [보너스] 행정력 500 이상 (★ 양전 고유) ──
+		if = {
+			limit = { owner = { bureaucracy >= 500 } }
+			add = { desc = "dhe_yj_bureaucracy_great" value = 1.0 }
+		}
+
+		# ── [보너스] 지식인 clout 15%+ ──
 		if = {
 			limit = { owner = { ig:ig_intelligentsia = { clout >= 0.15 } } }
-			add = { desc = "dhe_yj_intelligentsia_high" value = 1.0 }
+			add = { desc = "dhe_yj_intelligentsia" value = 1.0 }
+		}
+
+		# ── [보너스] 식자율 20% 이상 (★ 양전 고유: 측량 이해 능력) ──
+		if = {
+			limit = { owner = { literacy_rate >= 0.2 } }
+			add = { desc = "dhe_yj_literacy" value = 1.0 }
+		}
+
+		# ── [연동] 세도정치 해결 시: 정치 장벽 제거 ──
+		if = {
+			limit = { owner = { has_variable = dhe_sedo_resolved } }
+			add = { desc = "dhe_yj_sedo_cleared" value = 2.0 }
 		}
 	}
 }
 
 # ==========================================================
-# 🗡️ 서브 일지 B: 은결 색출 장악도
+# 🗡️ 은결 색출 (암투전)
+# 고유 열쇠: 경찰 법률 + 양전 완료 연동 + 지주 궤멸
+# 목표: 2~4년  |  최악: -10/월  |  최선: +9/월
 # ==========================================================
 dhe_progress_bar_eungyeol = {
 	name = "dhe_progress_bar_eungyeol"
 	desc = "dhe_progress_bar_eungyeol_desc"
-	default = yes 
+	default = yes
 
 	start_value = 0
 	min_value = 0
 	max_value = 100
 
 	monthly_progress = {
+
+		# ── [기본] 은닉 토지의 자연 은폐 ──
 		if = {
 			limit = { always = yes }
-			subtract = { desc = "dhe_eg_base_decay" value = 2.0 }
+			subtract = { desc = "dhe_eg_base_decay" value = 4.0 }
 		}
+
+		# ── [페널티] 지주 clout 30% 이상: 조직적 은폐 (★ 은결 핵심 페널티) ──
 		if = {
 			limit = { owner = { ig:ig_landowners = { clout >= 0.3 } } }
-			subtract = { desc = "dhe_eg_landowners_high" value = 2.0 }
+			subtract = { desc = "dhe_eg_landowners_dominant" value = 3.0 }
 		}
+
+		# ── [페널티] 지방 경찰: 향리와 유착 ──
 		if = {
 			limit = { owner = { has_law = law_type:law_local_police_force } }
-			subtract = { desc = "dhe_eg_local_police" value = 1.0 }
+			subtract = { desc = "dhe_eg_local_police_corrupt" value = 1.0 }
 		}
+
+		# ── [페널티] 전통주의: 토지 장부 미비 ──
 		if = {
-			# [수정] OR 구문도 owner 안에서 묶어주어야 합니다!
+			limit = { owner = { has_law = law_type:law_traditionalism } }
+			subtract = { desc = "dhe_eg_traditionalism" value = 2.0 }
+		}
+
+		# ── [보너스] 국가/비밀 경찰 (★ 은결 핵심: +3) ──
+		if = {
 			limit = {
 				owner = {
 					OR = {
@@ -127,96 +214,376 @@ dhe_progress_bar_eungyeol = {
 					}
 				}
 			}
-			add = { desc = "dhe_eg_state_police" value = 2.0 }
+			add = { desc = "dhe_eg_state_police" value = 3.0 }
 		}
+
+		# ── [보너스] 지주 clout 10% 미만: 은폐 능력 상실 (★ 은결 핵심) ──
 		if = {
 			limit = { owner = { ig:ig_landowners = { clout < 0.1 } } }
-			add = { desc = "dhe_eg_landowners_low" value = 3.0 }
+			add = { desc = "dhe_eg_landowners_crushed" value = 3.0 }
+		}
+
+		# ── [보너스] 지주 clout 20% 미만: 은폐 약화 ──
+		if = {
+			limit = {
+				owner = {
+					ig:ig_landowners = { clout < 0.2 }
+					NOT = { ig:ig_landowners = { clout < 0.1 } }
+				}
+			}
+			add = { desc = "dhe_eg_landowners_weakened" value = 1.0 }
+		}
+
+		# ── [보너스] 임명직 관료제: 향리 교체 (★ 약화: +1만) ──
+		if = {
+			limit = { owner = { has_law = law_type:law_appointed_bureaucrats } }
+			add = { desc = "dhe_eg_appointed" value = 1.0 }
+		}
+
+		# ── [보너스] 행정력 500 이상 ──
+		if = {
+			limit = { owner = { bureaucracy >= 500 } }
+			add = { desc = "dhe_eg_bureaucracy" value = 1.0 }
+		}
+
+		# ── [연동] 양전 사업 완료: 토지 대장 확보 (★ 핵심 연동) ──
+		if = {
+			limit = { owner = { has_variable = dhe_yangjeon_completed } }
+			add = { desc = "dhe_eg_yangjeon_done" value = 3.0 }
 		}
 	}
 }
 
 # ==========================================================
-# 군정(군포) 개혁 진척도
+# ⚔️ 군정 개혁
+# 고유 열쇠: 직업 군인제 + 지주 정부 퇴출 + 군대 규모
+# 목표: 3~5년  |  최악: -9/월  |  최선: +7/월
 # ==========================================================
 dhe_progress_bar_gunjeong = {
 	name = "dhe_progress_bar_gunjeong"
 	desc = "dhe_progress_bar_gunjeong_desc"
-	default = yes 
+	default = yes
 
 	start_value = 0
 	min_value = 0
 	max_value = 100
 
 	monthly_progress = {
-		# 1. 기본 감소 (양반들의 지속적인 조세 저항)
+
+		# ── [기본] 양반의 군포 저항 ──
 		if = {
 			limit = { always = yes }
-			subtract = { desc = "dhe_gj_base_decay" value = 1.0 }
+			subtract = { desc = "dhe_gj_base_decay" value = 3.0 }
 		}
-		
-		# 2. 정부 정통성이 50~74일 때 (안정적)
+
+		# ── [페널티] 농민 징집제: 구식 군제 (★ 군정 핵심 페널티) ──
 		if = {
-			limit = { 
-				owner = { 
-					legitimacy >= 50 
-					legitimacy < 75 
-				} 
-			}
-			add = { desc = "dhe_gj_legitimacy_mid" value = 1.0 }
+			limit = { owner = { has_law = law_type:law_peasant_levies } }
+			subtract = { desc = "dhe_gj_peasant_levies" value = 2.0 }
 		}
-		
-		# 3. 정부 정통성이 75 이상일 때 (매우 안정적)
+
+		# ── [페널티] 지주가 정부에 참여: 호포법 방해 (★ 군정 고유) ──
 		if = {
-			limit = { owner = { legitimacy >= 75 } }
-			add = { desc = "dhe_gj_legitimacy_high" value = 2.0 }
+			limit = { owner = { ig:ig_landowners = { is_in_government = yes } } }
+			subtract = { desc = "dhe_gj_yangban_in_gov" value = 2.0 }
 		}
-		
-		# 4. '직업 군인' 법률 제정 시 개혁 가속화
+
+		# ── [페널티] 정통성 30 미만: 왕명 불복종 ──
+		if = {
+			limit = { owner = { government_legitimacy < 30 } }
+			subtract = { desc = "dhe_gj_low_legitimacy" value = 2.0 }
+		}
+
+		# ── [보너스] 직업 군인제 (★ 군정 핵심: +3) ──
 		if = {
 			limit = { owner = { has_law = law_type:law_professional_army } }
-			add = { desc = "dhe_gj_professional_army" value = 2.0 }
+			add = { desc = "dhe_gj_professional_army" value = 3.0 }
+		}
+
+		# ── [보너스] 정통성 50 이상: 안정적 추진 ──
+		if = {
+			limit = { owner = { government_legitimacy >= 50 } }
+			add = { desc = "dhe_gj_legitimacy_mid" value = 1.0 }
+		}
+
+		# ── [보너스] 정통성 75 이상 ──
+		if = {
+			limit = { owner = { government_legitimacy >= 75 } }
+			add = { desc = "dhe_gj_legitimacy_high" value = 1.0 }
+		}
+
+		# ── [보너스] 군대 규모 20 이상 (★ 군정 고유: 무력 시위) ──
+		if = {
+			limit = { owner = { army_size >= 20 } }
+			add = { desc = "dhe_gj_army_display" value = 1.0 }
+		}
+
+		# ── [보너스] 지주가 정부 밖 (★ 군정 고유) ──
+		if = {
+			limit = { owner = { ig:ig_landowners = { is_in_government = no } } }
+			add = { desc = "dhe_gj_yangban_out" value = 1.0 }
+		}
+
+		# ── [연동] 세도 해결: 정치 장벽 제거 ──
+		if = {
+			limit = { owner = { has_variable = dhe_sedo_resolved } }
+			add = { desc = "dhe_gj_sedo_cleared" value = 2.0 }
 		}
 	}
 }
 
 # ==========================================================
-# 환곡 타파(사창제 도입) 진척도
+# 🌾 환곡 타파
+# 고유 열쇠: 환곡제 폐지 + 전정 연동 + 경찰
+# 목표: 2~4년  |  최악: -7/월  |  최선: +7/월
 # ==========================================================
 dhe_progress_bar_hwangok = {
 	name = "dhe_progress_bar_hwangok"
 	desc = "dhe_progress_bar_hwangok_desc"
-	default = yes 
+	default = yes
 
 	start_value = 0
 	min_value = 0
 	max_value = 100
 
 	monthly_progress = {
-		# 1. 기본 감소 (지방 향리들의 끊임없는 삥땅)
+
+		# ── [기본] 향리들의 끊임없는 삥땅 ──
 		if = {
 			limit = { always = yes }
-			subtract = { desc = "dhe_hg_base_decay" value = 1.0 }
+			subtract = { desc = "dhe_hg_base_decay" value = 3.0 }
 		}
-		
-		# 2. 임명직 관료제(Appointed Bureaucrats) 도입 시 (중앙 통제 강화)
+
+		# ── [페널티] 환곡제 유지: 악법이 살아있음 (★ 환곡 핵심 페널티) ──
+		if = {
+			limit = { owner = { has_law = law_type:law_hwangok_system } }
+			subtract = { desc = "dhe_hg_hwangok_law_active" value = 2.0 }
+		}
+
+		# ── [페널티] 지주 clout 25% 이상: 이권 수호 ──
+		if = {
+			limit = { owner = { ig:ig_landowners = { clout >= 0.25 } } }
+			subtract = { desc = "dhe_hg_landowners_protect" value = 1.0 }
+		}
+
+		# ── [페널티] 전통주의: 구 경제 체계 ──
+		if = {
+			limit = { owner = { has_law = law_type:law_traditionalism } }
+			subtract = { desc = "dhe_hg_traditionalism" value = 1.0 }
+		}
+
+		# ── [보너스] 환곡제 폐지 (★ 환곡 핵심: +3) ──
+		if = {
+			limit = { owner = { NOT = { has_law = law_type:law_hwangok_system } } }
+			add = { desc = "dhe_hg_law_abolished" value = 3.0 }
+		}
+
+		# ── [보너스] 임명직 관료제: 중앙 감사 (★ 약화: +1만) ──
 		if = {
 			limit = { owner = { has_law = law_type:law_appointed_bureaucrats } }
-			add = { desc = "dhe_hg_appointed_bureaucrats" value = 2.0 }
+			add = { desc = "dhe_hg_appointed" value = 1.0 }
 		}
-		
-		# 3. 행정력이 풍부할 때 (철저한 장부 감사)
+
+		# ── [보너스] 행정력 200 이상 ──
 		if = {
-			limit = { owner = { bureaucracy > 100 } }
-			add = { desc = "dhe_hg_high_bureaucracy" value = 1.0 }
+			limit = { owner = { bureaucracy >= 200 } }
+			add = { desc = "dhe_hg_bureaucracy_good" value = 1.0 }
+		}
+
+		# ── [보너스] 국가/비밀 경찰: 향리 감시 ──
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						has_law = law_type:law_dedicated_police_force
+						has_law = law_type:law_secret_police
+					}
+				}
+			}
+			add = { desc = "dhe_hg_state_police" value = 1.0 }
+		}
+
+		# ── [연동] 전정 해결: 조세 체계 안정화 (★ 핵심 연동) ──
+		if = {
+			limit = { owner = { has_variable = dhe_jeonjeong_resolved } }
+			add = { desc = "dhe_hg_jeonjeong_done" value = 2.0 }
 		}
 	}
 }
 
+# ==========================================================
+# ⚔️ 자주독립 준비도
+# 고유 열쇠: 군대 규모 + 청나라 상태 + 삼정 전부 해결
+# 목표: 4~6년  |  최악: -7/월  |  최선: +8/월
+# ==========================================================
+dhe_progress_bar_independence = {
+	name = "dhe_progress_bar_independence"
+	desc = "dhe_progress_bar_independence_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+
+		# ── [기본] 청나라의 지속적 압박 ──
+		if = {
+			limit = { always = yes }
+			subtract = { desc = "dhe_ind_base_decay" value = 3.0 }
+		}
+
+		# ── [페널티] 군대 10 미만: 독립할 힘이 없음 ──
+		if = {
+			limit = { owner = { NOT = { army_size >= 10 } } }
+			subtract = { desc = "dhe_ind_army_weak" value = 2.0 }
+		}
+
+		# ── [페널티] 정통성 30 미만: 내부 분열 ──
+		if = {
+			limit = { owner = { government_legitimacy < 30 } }
+			subtract = { desc = "dhe_ind_internal_chaos" value = 2.0 }
+		}
+
+		# ── [보너스] 군대 30 이상 (★ 독립 고유) ──
+		if = {
+			limit = { owner = { army_size >= 30 } }
+			add = { desc = "dhe_ind_army_strong" value = 1.0 }
+		}
+
+		# ── [보너스] 군대 50 이상 (★ 독립 고유) ──
+		if = {
+			limit = { owner = { army_size >= 50 } }
+			add = { desc = "dhe_ind_army_mighty" value = 1.0 }
+		}
+
+		# ── [보너스] 직업 군인제 ──
+		if = {
+			limit = { owner = { has_law = law_type:law_professional_army } }
+			add = { desc = "dhe_ind_professional" value = 2.0 }
+		}
+
+		# ── [보너스] 정통성 75 이상 ──
+		if = {
+			limit = { owner = { government_legitimacy >= 75 } }
+			add = { desc = "dhe_ind_legitimacy_high" value = 1.0 }
+		}
+
+		# ── [보너스] 청나라 내전 (★ 독립 핵심: +4) ──
+		if = {
+			limit = {
+				exists = c:CHI
+				c:CHI = { has_civil_war = yes }
+			}
+			add = { desc = "dhe_ind_qing_civil_war" value = 4.0 }
+		}
+
+		# ── [보너스] 청나라 전쟁 중 (내전 아님) ──
+		if = {
+			limit = {
+				exists = c:CHI
+				c:CHI = {
+					is_at_war = yes
+					NOT = { has_civil_war = yes }
+				}
+			}
+			add = { desc = "dhe_ind_qing_at_war" value = 2.0 }
+		}
+
+		# ── [연동] 삼정 모두 해결: 내정 완전 안정 (★ 독립 핵심 연동) ──
+		if = {
+			limit = {
+				owner = {
+					has_variable = dhe_sedo_resolved
+					has_variable = dhe_jeonjeong_resolved
+					has_variable = dhe_gunjeong_resolved
+					has_variable = dhe_hwangok_resolved
+				}
+			}
+			add = { desc = "dhe_ind_samjeong_all_done" value = 2.0 }
+		}
+	}
+}
+
+# ==========================================================
+# 💢 구식 군대의 분노 (임오군란 트리거)
+# 고유 열쇠: 삼정 부패 + 지주 정부 참여 + 군정 해결 연동
+# start_value=30  |  위험: 100 도달 시 군란
+# ==========================================================
+dhe_progress_bar_military_discontent = {
+	name = "dhe_progress_bar_military_discontent"
+	desc = "dhe_progress_bar_military_discontent_desc"
+	default = yes
+
+	start_value = 30
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+
+		# ── [상승] 삼정 부패 모디파이어 (★ 핵심 상승 요인) ──
+		if = {
+			limit = { owner = { has_modifier = modifier_samjeong_corruption } }
+			add = { desc = "dhe_mil_samjeong_rot" value = 2.0 }
+		}
+
+		# ── [상승] 농민 징집제: 구식 군대 불만 ──
+		if = {
+			limit = { owner = { has_law = law_type:law_peasant_levies } }
+			add = { desc = "dhe_mil_peasant_levies" value = 1.0 }
+		}
+
+		# ── [상승] 지주가 정부에 참여: 급료 중간 착복 (★ 임오 고유) ──
+		if = {
+			limit = { owner = { ig:ig_landowners = { is_in_government = yes } } }
+			add = { desc = "dhe_mil_yangban_skim" value = 2.0 }
+		}
+
+		# ── [상승] 전쟁 중: 병사 피로 누적 ──
+		if = {
+			limit = { owner = { is_at_war = yes } }
+			add = { desc = "dhe_mil_war_fatigue" value = 1.0 }
+		}
+
+		# ── [상승] 정통성 25 미만: 왕명 불신 ──
+		if = {
+			limit = { owner = { government_legitimacy < 25 } }
+			add = { desc = "dhe_mil_no_trust" value = 2.0 }
+		}
+
+		# ── [감소] 직업 군인제: 근대 군제 (★ 핵심 감소) ──
+		if = {
+			limit = { owner = { has_law = law_type:law_professional_army } }
+			subtract = { desc = "dhe_mil_reform_progress" value = 4.0 }
+		}
+
+		# ── [감소] 군정 해결: 근본 원인 제거 (★ 핵심 연동) ──
+		if = {
+			limit = { owner = { has_variable = dhe_gunjeong_resolved } }
+			subtract = { desc = "dhe_mil_gunjeong_done" value = 3.0 }
+		}
+
+		# ── [감소] 정통성 50 이상: 왕에 대한 충성 ──
+		if = {
+			limit = { owner = { government_legitimacy >= 50 } }
+			subtract = { desc = "dhe_mil_legitimacy_loyalty" value = 1.0 }
+		}
+
+		# ── [감소] 군대 30 이상: 신식 군대가 구식 압도 ──
+		if = {
+			limit = { owner = { army_size >= 30 } }
+			subtract = { desc = "dhe_mil_new_army" value = 1.0 }
+		}
+	}
+}
+
+# ==========================================================
+# 🗺️ 간도 진척도 — 순수 버튼/이벤트 구동 (변경 없음)
+# ==========================================================
 dhe_progress_bar_jiandao = {
 	name = "dhe_progress_bar_jiandao"
 	desc = "dhe_progress_bar_jiandao_desc"
-	default = yes 
+	default = yes
 
 	start_value = 0
 	min_value = 0
@@ -224,106 +591,31 @@ dhe_progress_bar_jiandao = {
 }
 
 # ==========================================================
-# 🗺️ 제국 팽창: 연해주 핵심 영토 수복 진척도
+# 🗺️ 연해주 진척도 — 순수 버튼/이벤트 구동 (변경 없음)
 # ==========================================================
 dhe_progress_bar_outer_manchuria = {
 	name = "dhe_progress_bar_outer_manchuria"
 	desc = "dhe_progress_bar_outer_manchuria_desc"
-	default = yes 
+	default = yes
 
 	start_value = 0
 	min_value = 0
-	max_value = 13 # 타일 13개를 모두 먹으면 끝!
+	max_value = 13
 }
 
 # ==========================================================
-# ⚔️ 자주독립 준비도 (대청제국으로부터의 독립)
-# ==========================================================
-dhe_progress_bar_independence = {
-	name = "dhe_progress_bar_independence"
-	desc = "dhe_progress_bar_independence_desc"
-	default = yes 
-
-	start_value = 0
-	min_value = 0
-	max_value = 100
-
-	monthly_progress = {
-		# 청나라의 압박으로 매달 조금씩 감소
-		if = {
-			limit = { always = yes }
-			subtract = { desc = "dhe_ind_base_decay" value = 1.0 }
-		}
-		
-		# 우리 군사력이 어느 정도 갖춰졌을 때 (육군 30대대 이상)
-		if = {
-			limit = { owner = { army_size >= 30 } }
-			add = { desc = "dhe_ind_army_strong" value = 1.0 }
-		}
-		
-		# 청나라가 내전 중이거나 약해졌을 때 (절호의 기회)
-		if = {
-			limit = { 
-				exists = c:CHI
-				c:CHI = { has_civil_war = yes }
-			}
-			add = { desc = "dhe_ind_qing_civil_war" value = 3.0 }
-		}
-	}
-}
-
-# ==========================================================
-# 💢 구식 군대의 분노 (임오군란 트리거)
-# ==========================================================
-dhe_progress_bar_military_discontent = {
-	name = "dhe_progress_bar_military_discontent"
-	desc = "dhe_progress_bar_military_discontent_desc"
-	default = yes 
-
-	start_value = 30 # 시작부터 이미 뿔이 나 있습니다.
-	min_value = 0
-	max_value = 100
-
-	monthly_progress = {
-		# 1. 삼정의 문란(군정)이 해결 안 된 상태라면 매달 분노 상승
-		if = {
-			limit = { has_modifier = modifier_samjeong_corruption }
-			add = { desc = "dhe_mil_corruption" value = 2.0 }
-		}
-		
-		# 2. 군사 지출(월급)을 짜게 줄 때 분노 상승
-		if = {
-			limit = { owner = { military_spending_level <= 2 } }
-			add = { desc = "dhe_mil_low_pay" value = 2.0 }
-		}
-
-		# 3. 양반(지주)들이 정부에 있으면 중간 착복으로 인해 분노 상승
-		if = {
-			limit = { owner = { ig:ig_landowners = { is_in_government = yes } } }
-			add = { desc = "dhe_mil_yangban_corruption" value = 1.0 }
-		}
-
-		# 4. 반대로, 직업 군인제 등 군사 개혁을 이뤄내면 서서히 감소
-		if = {
-			limit = { has_law = law_type:law_professional_army }
-			subtract = { desc = "dhe_mil_reform_progress" value = 3.0 }
-		}
-	}
-}
-# ==========================================================
-# ⚙️ 광무개혁 (하위 일지 연동형 진척도 바)
+# ⚙️ 광무개혁 — 변경 없음 (유저 지시)
 # ==========================================================
 dhe_progress_bar_gwangmu = {
 	name = "dhe_progress_bar_gwangmu"
 	desc = "dhe_progress_bar_gwangmu_desc"
-	default = yes 
+	default = yes
 
 	start_value = 0
 	min_value = 0
 	max_value = 200
 
 	monthly_progress = {
-		# 하위 일지 클리어와 버튼으로만 오르도록 세팅
 		if = {
 			limit = { always = yes }
 			add = { desc = "dhe_gwangmu_base_manual" value = 0 }
