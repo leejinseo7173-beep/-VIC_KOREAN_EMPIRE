@@ -3,13 +3,13 @@
 # 7개 일지 × 5개 = 35개 랜덤 이벤트
 # 모든 키는 기존 파일에서 검증됨
 namespace = dhe_random
-
+ 
 # ==============================================================
 # ═══════════════════════════════════════════════════════════════
 # [A] 세도정치 타파 (왕권 회복) — dhe_random.1 ~ 5
 # ═══════════════════════════════════════════════════════════════
 # ==============================================================
-
+ 
 # A-1: 양반 대신의 횡포
 dhe_random.1 = {
 	type = country_event
@@ -19,11 +19,12 @@ dhe_random.1 = {
 	flavor = dhe_random.1.f
 	icon = "gfx/interface/icons/event_icons/event_bureaucracy.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_ra1 months = 4 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_ra1 months = 4 } }
+ 
 	option = {
 		name = dhe_random.1.a
+		custom_tooltip = dhe_random_1_a_tt
 		default_option = yes
 		add_authority = -50
 		je:je_dhe_sedo_politics_reform ?= {
@@ -33,13 +34,14 @@ dhe_random.1 = {
 	}
 	option = {
 		name = dhe_random.1.b
+		custom_tooltip = dhe_random_1_b_tt
 		je:je_dhe_sedo_politics_reform ?= {
 			add_progress = { value = -3 name = dhe_progress_bar_royal_authority }
 		}
 		ig:ig_landowners = { add_ig_approval = 1 }
 	}
 }
-
+ 
 # A-2: 비밀 상소문 발견
 dhe_random.2 = {
 	type = country_event
@@ -49,11 +51,12 @@ dhe_random.2 = {
 	flavor = dhe_random.2.f
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_ra2 months = 5 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_ra2 months = 5 } }
+ 
 	option = {
 		name = dhe_random.2.a
+		custom_tooltip = dhe_random_2_a_tt
 		default_option = yes
 		je:je_dhe_sedo_politics_reform ?= {
 			add_progress = { value = 8 name = dhe_progress_bar_royal_authority }
@@ -62,11 +65,12 @@ dhe_random.2 = {
 	}
 	option = {
 		name = dhe_random.2.b
+		custom_tooltip = dhe_random_2_b_tt
 		add_treasury = -10000
 		add_loyalists = { value = 0.01 }
 	}
 }
-
+ 
 # A-3: 양반 가문의 집단 사직 위협 (지주 25%+ 전용)
 dhe_random.3 = {
 	type = country_event
@@ -76,13 +80,15 @@ dhe_random.3 = {
 	flavor = dhe_random.3.f
 	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_ra3 months = 6 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_ra3 months = 6 } }
+ 
 	option = {
 		name = dhe_random.3.a
+		custom_tooltip = dhe_random_3_a_tt
 		default_option = yes
 		add_authority = -100
+		add_modifier = { name = dhe_mod_royal_resolve months = 12 }
 		je:je_dhe_sedo_politics_reform ?= {
 			add_progress = { value = 10 name = dhe_progress_bar_royal_authority }
 		}
@@ -90,6 +96,7 @@ dhe_random.3 = {
 	}
 	option = {
 		name = dhe_random.3.b
+		custom_tooltip = dhe_random_3_b_tt
 		je:je_dhe_sedo_politics_reform ?= {
 			add_progress = { value = -8 name = dhe_progress_bar_royal_authority }
 		}
@@ -97,6 +104,7 @@ dhe_random.3 = {
 	}
 	option = {
 		name = dhe_random.3.c
+		custom_tooltip = dhe_random_3_c_tt
 		trigger = { ig:ig_intelligentsia = { clout >= 0.15 } }
 		je:je_dhe_sedo_politics_reform ?= {
 			add_progress = { value = 5 name = dhe_progress_bar_royal_authority }
@@ -105,7 +113,7 @@ dhe_random.3 = {
 		ig:ig_landowners = { add_ig_approval = -1 }
 	}
 }
-
+ 
 # A-4: 충신의 간언
 dhe_random.4 = {
 	type = country_event
@@ -115,11 +123,12 @@ dhe_random.4 = {
 	flavor = dhe_random.4.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_ra4 months = 5 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_ra4 months = 5 } }
+ 
 	option = {
 		name = dhe_random.4.a
+		custom_tooltip = dhe_random_4_a_tt
 		default_option = yes
 		je:je_dhe_sedo_politics_reform ?= {
 			add_progress = { value = 3 name = dhe_progress_bar_royal_authority }
@@ -128,10 +137,11 @@ dhe_random.4 = {
 	}
 	option = {
 		name = dhe_random.4.b
+		custom_tooltip = dhe_random_4_b_tt
 		add_authority = 30
 	}
 }
-
+ 
 # A-5: 개화파 유생의 건백서 (지식인 10%+ 전용)
 dhe_random.5 = {
 	type = country_event
@@ -141,12 +151,14 @@ dhe_random.5 = {
 	flavor = dhe_random.5.f
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_ra5 months = 6 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_ra5 months = 6 } }
+ 
 	option = {
 		name = dhe_random.5.a
+		custom_tooltip = dhe_random_5_a_tt
 		default_option = yes
+		add_modifier = { name = dhe_mod_wind_of_reform months = 12 }
 		je:je_dhe_sedo_politics_reform ?= {
 			add_progress = { value = 6 name = dhe_progress_bar_royal_authority }
 		}
@@ -155,17 +167,18 @@ dhe_random.5 = {
 	}
 	option = {
 		name = dhe_random.5.b
+		custom_tooltip = dhe_random_5_b_tt
 		ig:ig_landowners = { add_ig_approval = 1 }
 		add_authority = 20
 	}
 }
-
+ 
 # ==============================================================
 # ═══════════════════════════════════════════════════════════════
 # [B] 양전 사업 — dhe_random.6 ~ 10
 # ═══════════════════════════════════════════════════════════════
 # ==============================================================
-
+ 
 # B-1: 측량관의 보고
 dhe_random.6 = {
 	type = country_event
@@ -175,11 +188,12 @@ dhe_random.6 = {
 	flavor = dhe_random.6.f
 	icon = "gfx/interface/icons/event_icons/event_bureaucracy.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rb1 months = 4 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rb1 months = 4 } }
+ 
 	option = {
 		name = dhe_random.6.a
+		custom_tooltip = dhe_random_6_a_tt
 		default_option = yes
 		add_treasury = -10000
 		je:je_dhe_yangjeon ?= {
@@ -188,12 +202,13 @@ dhe_random.6 = {
 	}
 	option = {
 		name = dhe_random.6.b
+		custom_tooltip = dhe_random_6_b_tt
 		je:je_dhe_yangjeon ?= {
 			add_progress = { value = 2 name = dhe_progress_bar_yangjeon }
 		}
 	}
 }
-
+ 
 # B-2: 향리의 방해 공작
 dhe_random.7 = {
 	type = country_event
@@ -203,11 +218,12 @@ dhe_random.7 = {
 	flavor = dhe_random.7.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rb2 months = 4 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rb2 months = 4 } }
+ 
 	option = {
 		name = dhe_random.7.a
+		custom_tooltip = dhe_random_7_a_tt
 		default_option = yes
 		add_authority = -40
 		je:je_dhe_yangjeon ?= {
@@ -216,12 +232,13 @@ dhe_random.7 = {
 	}
 	option = {
 		name = dhe_random.7.b
+		custom_tooltip = dhe_random_7_b_tt
 		je:je_dhe_yangjeon ?= {
 			add_progress = { value = -5 name = dhe_progress_bar_yangjeon }
 		}
 	}
 }
-
+ 
 # B-3: 토호의 무력 위협 (지주 20%+ 전용)
 dhe_random.8 = {
 	type = country_event
@@ -231,13 +248,15 @@ dhe_random.8 = {
 	flavor = dhe_random.8.f
 	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rb3 months = 6 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rb3 months = 6 } }
+ 
 	option = {
 		name = dhe_random.8.a
+		custom_tooltip = dhe_random_8_a_tt
 		default_option = yes
 		add_authority = -80
+		add_modifier = { name = dhe_mod_iron_survey months = 12 }
 		je:je_dhe_yangjeon ?= {
 			add_progress = { value = 8 name = dhe_progress_bar_yangjeon }
 		}
@@ -245,13 +264,14 @@ dhe_random.8 = {
 	}
 	option = {
 		name = dhe_random.8.b
+		custom_tooltip = dhe_random_8_b_tt
 		je:je_dhe_yangjeon ?= {
 			add_progress = { value = -6 name = dhe_progress_bar_yangjeon }
 		}
 		ig:ig_landowners = { add_ig_approval = 1 }
 	}
 }
-
+ 
 # B-4: 백성들의 자발적 협조
 dhe_random.9 = {
 	type = country_event
@@ -261,11 +281,12 @@ dhe_random.9 = {
 	flavor = dhe_random.9.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rb4 months = 5 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rb4 months = 5 } }
+ 
 	option = {
 		name = dhe_random.9.a
+		custom_tooltip = dhe_random_9_a_tt
 		default_option = yes
 		je:je_dhe_yangjeon ?= {
 			add_progress = { value = 4 name = dhe_progress_bar_yangjeon }
@@ -273,7 +294,7 @@ dhe_random.9 = {
 		add_loyalists = { value = 0.01 }
 	}
 }
-
+ 
 # B-5: 새 측량 기술 도입
 dhe_random.10 = {
 	type = country_event
@@ -283,31 +304,34 @@ dhe_random.10 = {
 	flavor = dhe_random.10.f
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rb5 months = 8 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rb5 months = 8 } }
+ 
 	option = {
 		name = dhe_random.10.a
+		custom_tooltip = dhe_random_10_a_tt
 		default_option = yes
 		add_treasury = -15000
+		add_modifier = { name = dhe_mod_modern_survey months = 18 }
 		je:je_dhe_yangjeon ?= {
 			add_progress = { value = 10 name = dhe_progress_bar_yangjeon }
 		}
 	}
 	option = {
 		name = dhe_random.10.b
+		custom_tooltip = dhe_random_10_b_tt
 		je:je_dhe_yangjeon ?= {
 			add_progress = { value = 3 name = dhe_progress_bar_yangjeon }
 		}
 	}
 }
-
+ 
 # ==============================================================
 # ═══════════════════════════════════════════════════════════════
 # [C] 은결 색출 — dhe_random.11 ~ 15
 # ═══════════════════════════════════════════════════════════════
 # ==============================================================
-
+ 
 # C-1: 내부 제보자 출현
 dhe_random.11 = {
 	type = country_event
@@ -317,11 +341,12 @@ dhe_random.11 = {
 	flavor = dhe_random.11.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rc1 months = 4 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rc1 months = 4 } }
+ 
 	option = {
 		name = dhe_random.11.a
+		custom_tooltip = dhe_random_11_a_tt
 		default_option = yes
 		je:je_dhe_eungyeol ?= {
 			add_progress = { value = 8 name = dhe_progress_bar_eungyeol }
@@ -330,11 +355,12 @@ dhe_random.11 = {
 	}
 	option = {
 		name = dhe_random.11.b
+		custom_tooltip = dhe_random_11_b_tt
 		add_treasury = 10000
 		ig:ig_landowners = { add_ig_approval = 1 }
 	}
 }
-
+ 
 # C-2: 위조 장부 발각
 dhe_random.12 = {
 	type = country_event
@@ -344,11 +370,12 @@ dhe_random.12 = {
 	flavor = dhe_random.12.f
 	icon = "gfx/interface/icons/event_icons/event_bureaucracy.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rc2 months = 5 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rc2 months = 5 } }
+ 
 	option = {
 		name = dhe_random.12.a
+		custom_tooltip = dhe_random_12_a_tt
 		default_option = yes
 		add_authority = -60
 		je:je_dhe_eungyeol ?= {
@@ -357,13 +384,14 @@ dhe_random.12 = {
 	}
 	option = {
 		name = dhe_random.12.b
+		custom_tooltip = dhe_random_12_b_tt
 		je:je_dhe_eungyeol ?= {
 			add_progress = { value = -3 name = dhe_progress_bar_eungyeol }
 		}
 		add_treasury = 5000
 	}
 }
-
+ 
 # C-3: 은닉지 소유자의 협박
 dhe_random.13 = {
 	type = country_event
@@ -373,13 +401,15 @@ dhe_random.13 = {
 	flavor = dhe_random.13.f
 	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rc3 months = 6 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rc3 months = 6 } }
+ 
 	option = {
 		name = dhe_random.13.a
+		custom_tooltip = dhe_random_13_a_tt
 		default_option = yes
 		add_authority = -80
+		add_modifier = { name = dhe_mod_inspector_authority months = 12 }
 		je:je_dhe_eungyeol ?= {
 			add_progress = { value = 7 name = dhe_progress_bar_eungyeol }
 		}
@@ -387,12 +417,14 @@ dhe_random.13 = {
 	}
 	option = {
 		name = dhe_random.13.b
+		custom_tooltip = dhe_random_13_b_tt
 		je:je_dhe_eungyeol ?= {
 			add_progress = { value = -5 name = dhe_progress_bar_eungyeol }
 		}
 	}
 	option = {
 		name = dhe_random.13.c
+		custom_tooltip = dhe_random_13_c_tt
 		add_treasury = -20000
 		je:je_dhe_eungyeol ?= {
 			add_progress = { value = 12 name = dhe_progress_bar_eungyeol }
@@ -400,7 +432,7 @@ dhe_random.13 = {
 		ig:ig_landowners = { add_ig_approval = -4 }
 	}
 }
-
+ 
 # C-4: 마을 주민의 증언
 dhe_random.14 = {
 	type = country_event
@@ -410,11 +442,12 @@ dhe_random.14 = {
 	flavor = dhe_random.14.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rc4 months = 4 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rc4 months = 4 } }
+ 
 	option = {
 		name = dhe_random.14.a
+		custom_tooltip = dhe_random_14_a_tt
 		default_option = yes
 		je:je_dhe_eungyeol ?= {
 			add_progress = { value = 4 name = dhe_progress_bar_eungyeol }
@@ -422,7 +455,7 @@ dhe_random.14 = {
 		add_loyalists = { value = 0.01 }
 	}
 }
-
+ 
 # C-5: 암행어사의 함정 수사
 dhe_random.15 = {
 	type = country_event
@@ -432,11 +465,12 @@ dhe_random.15 = {
 	flavor = dhe_random.15.f
 	icon = "gfx/interface/icons/event_icons/event_bureaucracy.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rc5 months = 8 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rc5 months = 8 } }
+ 
 	option = {
 		name = dhe_random.15.a
+		custom_tooltip = dhe_random_15_a_tt
 		default_option = yes
 		random_list = {
 			60 = {
@@ -444,29 +478,32 @@ dhe_random.15 = {
 					add_progress = { value = 15 name = dhe_progress_bar_eungyeol }
 				}
 				add_treasury = 20000
+				add_modifier = { name = dhe_mod_grand_exposure months = 12 }
 			}
 			40 = {
 				je:je_dhe_eungyeol ?= {
 					add_progress = { value = -8 name = dhe_progress_bar_eungyeol }
 				}
 				add_authority = -50
+				add_modifier = { name = dhe_mod_investigation_exposed months = 6 }
 			}
 		}
 	}
 	option = {
 		name = dhe_random.15.b
+		custom_tooltip = dhe_random_15_b_tt
 		je:je_dhe_eungyeol ?= {
 			add_progress = { value = 3 name = dhe_progress_bar_eungyeol }
 		}
 	}
 }
-
+ 
 # ==============================================================
 # ═══════════════════════════════════════════════════════════════
 # [D] 군정 개혁 — dhe_random.16 ~ 20
 # ═══════════════════════════════════════════════════════════════
 # ==============================================================
-
+ 
 # D-1: 암행어사 군영 실태 보고
 dhe_random.16 = {
 	type = country_event
@@ -476,11 +513,12 @@ dhe_random.16 = {
 	flavor = dhe_random.16.f
 	icon = "gfx/interface/icons/event_icons/event_bureaucracy.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rd1 months = 5 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rd1 months = 5 } }
+ 
 	option = {
 		name = dhe_random.16.a
+		custom_tooltip = dhe_random_16_a_tt
 		default_option = yes
 		add_authority = -50
 		je:je_dhe_samjeong_gunjeong ?= {
@@ -489,6 +527,7 @@ dhe_random.16 = {
 	}
 	option = {
 		name = dhe_random.16.b
+		custom_tooltip = dhe_random_16_b_tt
 		if = {
 			limit = { has_journal_entry = je_dhe_imo_mutiny }
 			je:je_dhe_imo_mutiny ?= {
@@ -497,7 +536,7 @@ dhe_random.16 = {
 		}
 	}
 }
-
+ 
 # D-2: 호포법 공론 반발
 dhe_random.17 = {
 	type = country_event
@@ -507,13 +546,15 @@ dhe_random.17 = {
 	flavor = dhe_random.17.f
 	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rd2 months = 6 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rd2 months = 6 } }
+ 
 	option = {
 		name = dhe_random.17.a
+		custom_tooltip = dhe_random_17_a_tt
 		default_option = yes
 		add_authority = -100
+		add_modifier = { name = dhe_mod_hopo_dawn months = 18 }
 		je:je_dhe_samjeong_gunjeong ?= {
 			add_progress = { value = 10 name = dhe_progress_bar_gunjeong }
 		}
@@ -522,13 +563,14 @@ dhe_random.17 = {
 	}
 	option = {
 		name = dhe_random.17.b
+		custom_tooltip = dhe_random_17_b_tt
 		je:je_dhe_samjeong_gunjeong ?= {
 			add_progress = { value = -5 name = dhe_progress_bar_gunjeong }
 		}
 		ig:ig_landowners = { add_ig_approval = 2 }
 	}
 }
-
+ 
 # D-3: 신식 군대 훈련 성과
 dhe_random.18 = {
 	type = country_event
@@ -538,13 +580,15 @@ dhe_random.18 = {
 	flavor = dhe_random.18.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rd3 months = 5 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rd3 months = 5 } }
+ 
 	option = {
 		name = dhe_random.18.a
+		custom_tooltip = dhe_random_18_a_tt
 		default_option = yes
 		add_treasury = -15000
+		add_modifier = { name = dhe_mod_byeolgiying_pride months = 12 }
 		je:je_dhe_samjeong_gunjeong ?= {
 			add_progress = { value = 7 name = dhe_progress_bar_gunjeong }
 		}
@@ -552,12 +596,13 @@ dhe_random.18 = {
 	}
 	option = {
 		name = dhe_random.18.b
+		custom_tooltip = dhe_random_18_b_tt
 		je:je_dhe_samjeong_gunjeong ?= {
 			add_progress = { value = 3 name = dhe_progress_bar_gunjeong }
 		}
 	}
 }
-
+ 
 # D-4: 군포 횡령 현장 포착
 dhe_random.19 = {
 	type = country_event
@@ -567,11 +612,12 @@ dhe_random.19 = {
 	flavor = dhe_random.19.f
 	icon = "gfx/interface/icons/event_icons/event_bureaucracy.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rd4 months = 4 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rd4 months = 4 } }
+ 
 	option = {
 		name = dhe_random.19.a
+		custom_tooltip = dhe_random_19_a_tt
 		default_option = yes
 		je:je_dhe_samjeong_gunjeong ?= {
 			add_progress = { value = 5 name = dhe_progress_bar_gunjeong }
@@ -580,6 +626,7 @@ dhe_random.19 = {
 	}
 	option = {
 		name = dhe_random.19.b
+		custom_tooltip = dhe_random_19_b_tt
 		add_treasury = 5000
 		if = {
 			limit = { has_journal_entry = je_dhe_imo_mutiny }
@@ -589,7 +636,7 @@ dhe_random.19 = {
 		}
 	}
 }
-
+ 
 # D-5: 지방 무관의 탄원
 dhe_random.20 = {
 	type = country_event
@@ -599,11 +646,12 @@ dhe_random.20 = {
 	flavor = dhe_random.20.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rd5 months = 5 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rd5 months = 5 } }
+ 
 	option = {
 		name = dhe_random.20.a
+		custom_tooltip = dhe_random_20_a_tt
 		default_option = yes
 		add_authority = -30
 		je:je_dhe_samjeong_gunjeong ?= {
@@ -612,16 +660,17 @@ dhe_random.20 = {
 	}
 	option = {
 		name = dhe_random.20.b
+		custom_tooltip = dhe_random_20_b_tt
 		add_loyalists = { value = 0.01 }
 	}
 }
-
+ 
 # ==============================================================
 # ═══════════════════════════════════════════════════════════════
 # [E] 환곡 타파 — dhe_random.21 ~ 25
 # ═══════════════════════════════════════════════════════════════
 # ==============================================================
-
+ 
 # E-1: 밀곡 거래 적발
 dhe_random.21 = {
 	type = country_event
@@ -631,11 +680,12 @@ dhe_random.21 = {
 	flavor = dhe_random.21.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_re1 months = 5 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_re1 months = 5 } }
+ 
 	option = {
 		name = dhe_random.21.a
+		custom_tooltip = dhe_random_21_a_tt
 		default_option = yes
 		je:je_dhe_samjeong_hwangok ?= {
 			add_progress = { value = 6 name = dhe_progress_bar_hwangok }
@@ -644,13 +694,14 @@ dhe_random.21 = {
 	}
 	option = {
 		name = dhe_random.21.b
+		custom_tooltip = dhe_random_21_b_tt
 		ig:ig_landowners = { add_ig_approval = 1 }
 		je:je_dhe_samjeong_hwangok ?= {
 			add_progress = { value = -3 name = dhe_progress_bar_hwangok }
 		}
 	}
 }
-
+ 
 # E-2: 기근 지역 환곡 고리대 폭로
 dhe_random.22 = {
 	type = country_event
@@ -660,13 +711,15 @@ dhe_random.22 = {
 	flavor = dhe_random.22.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_re2 months = 4 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_re2 months = 4 } }
+ 
 	option = {
 		name = dhe_random.22.a
+		custom_tooltip = dhe_random_22_a_tt
 		default_option = yes
 		add_treasury = -15000
+		add_modifier = { name = dhe_mod_royal_grace months = 12 }
 		je:je_dhe_samjeong_hwangok ?= {
 			add_progress = { value = 8 name = dhe_progress_bar_hwangok }
 		}
@@ -674,13 +727,14 @@ dhe_random.22 = {
 	}
 	option = {
 		name = dhe_random.22.b
+		custom_tooltip = dhe_random_22_b_tt
 		add_radicals = { value = 0.02 }
 		je:je_dhe_samjeong_hwangok ?= {
 			add_progress = { value = -2 name = dhe_progress_bar_hwangok }
 		}
 	}
 }
-
+ 
 # E-3: 사창제 시범 마을의 성과
 dhe_random.23 = {
 	type = country_event
@@ -690,11 +744,12 @@ dhe_random.23 = {
 	flavor = dhe_random.23.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_re3 months = 6 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_re3 months = 6 } }
+ 
 	option = {
 		name = dhe_random.23.a
+		custom_tooltip = dhe_random_23_a_tt
 		default_option = yes
 		je:je_dhe_samjeong_hwangok ?= {
 			add_progress = { value = 5 name = dhe_progress_bar_hwangok }
@@ -702,7 +757,7 @@ dhe_random.23 = {
 		add_loyalists = { value = 0.01 }
 	}
 }
-
+ 
 # E-4: 향리의 장부 소각 사건
 dhe_random.24 = {
 	type = country_event
@@ -712,13 +767,15 @@ dhe_random.24 = {
 	flavor = dhe_random.24.f
 	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_re4 months = 5 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_re4 months = 5 } }
+ 
 	option = {
 		name = dhe_random.24.a
+		custom_tooltip = dhe_random_24_a_tt
 		default_option = yes
 		add_authority = -60
+		add_modifier = { name = dhe_mod_audit_blade months = 12 }
 		je:je_dhe_samjeong_hwangok ?= {
 			add_progress = { value = 7 name = dhe_progress_bar_hwangok }
 		}
@@ -726,12 +783,13 @@ dhe_random.24 = {
 	}
 	option = {
 		name = dhe_random.24.b
+		custom_tooltip = dhe_random_24_b_tt
 		je:je_dhe_samjeong_hwangok ?= {
 			add_progress = { value = -8 name = dhe_progress_bar_hwangok }
 		}
 	}
 }
-
+ 
 # E-5: 내탕금 구휼 호소
 dhe_random.25 = {
 	type = country_event
@@ -741,11 +799,12 @@ dhe_random.25 = {
 	flavor = dhe_random.25.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_re5 months = 4 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_re5 months = 4 } }
+ 
 	option = {
 		name = dhe_random.25.a
+		custom_tooltip = dhe_random_25_a_tt
 		default_option = yes
 		add_treasury = -20000
 		je:je_dhe_samjeong_hwangok ?= {
@@ -755,16 +814,17 @@ dhe_random.25 = {
 	}
 	option = {
 		name = dhe_random.25.b
+		custom_tooltip = dhe_random_25_b_tt
 		add_radicals = { value = 0.01 }
 	}
 }
-
+ 
 # ==============================================================
 # ═══════════════════════════════════════════════════════════════
 # [F] 자주독립 — dhe_random.26 ~ 30
 # ═══════════════════════════════════════════════════════════════
 # ==============================================================
-
+ 
 # F-1: 청 사신의 오만
 dhe_random.26 = {
 	type = country_event
@@ -774,11 +834,12 @@ dhe_random.26 = {
 	flavor = dhe_random.26.f
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rf1 months = 4 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rf1 months = 4 } }
+ 
 	option = {
 		name = dhe_random.26.a
+		custom_tooltip = dhe_random_26_a_tt
 		je:je_dhe_road_to_independence ?= {
 			add_progress = { name = dhe_progress_bar_independence value = 5 }
 		}
@@ -786,6 +847,7 @@ dhe_random.26 = {
 	}
 	option = {
 		name = dhe_random.26.b
+		custom_tooltip = dhe_random_26_b_tt
 		default_option = yes
 		je:je_dhe_road_to_independence ?= {
 			add_progress = { name = dhe_progress_bar_independence value = 12 }
@@ -797,7 +859,7 @@ dhe_random.26 = {
 		add_loyalists = { value = 0.02 }
 	}
 }
-
+ 
 # F-2: 청나라 내란 기회 (청 약화 시 전용)
 dhe_random.27 = {
 	type = country_event
@@ -807,12 +869,14 @@ dhe_random.27 = {
 	flavor = dhe_random.27.f
 	icon = "gfx/interface/icons/event_icons/event_map.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rf2 months = 12 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rf2 months = 12 } }
+ 
 	option = {
 		name = dhe_random.27.a
+		custom_tooltip = dhe_random_27_a_tt
 		default_option = yes
+		add_modifier = { name = dhe_mod_independence_flame months = 24 }
 		je:je_dhe_road_to_independence ?= {
 			add_progress = { name = dhe_progress_bar_independence value = 20 }
 		}
@@ -821,12 +885,13 @@ dhe_random.27 = {
 	}
 	option = {
 		name = dhe_random.27.b
+		custom_tooltip = dhe_random_27_b_tt
 		je:je_dhe_road_to_independence ?= {
 			add_progress = { name = dhe_progress_bar_independence value = 8 }
 		}
 	}
 }
-
+ 
 # F-3: 밀사 파견 제안
 dhe_random.28 = {
 	type = country_event
@@ -836,11 +901,12 @@ dhe_random.28 = {
 	flavor = dhe_random.28.f
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rf3 months = 8 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rf3 months = 8 } }
+ 
 	option = {
 		name = dhe_random.28.a
+		custom_tooltip = dhe_random_28_a_tt
 		default_option = yes
 		add_treasury = -20000
 		je:je_dhe_road_to_independence ?= {
@@ -849,10 +915,11 @@ dhe_random.28 = {
 	}
 	option = {
 		name = dhe_random.28.b
+		custom_tooltip = dhe_random_28_b_tt
 		add_authority = 20
 	}
 }
-
+ 
 # F-4: 독립 의지를 시험하는 사건
 dhe_random.29 = {
 	type = country_event
@@ -862,13 +929,15 @@ dhe_random.29 = {
 	flavor = dhe_random.29.f
 	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rf4 months = 6 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rf4 months = 6 } }
+ 
 	option = {
 		name = dhe_random.29.a
+		custom_tooltip = dhe_random_29_a_tt
 		default_option = yes
 		add_authority = -80
+		add_modifier = { name = dhe_mod_self_reliance months = 18 }
 		je:je_dhe_road_to_independence ?= {
 			add_progress = { name = dhe_progress_bar_independence value = 8 }
 		}
@@ -876,13 +945,14 @@ dhe_random.29 = {
 	}
 	option = {
 		name = dhe_random.29.b
+		custom_tooltip = dhe_random_29_b_tt
 		je:je_dhe_road_to_independence ?= {
 			add_progress = { name = dhe_progress_bar_independence value = -5 }
 		}
 		add_radicals = { value = 0.02 }
 	}
 }
-
+ 
 # F-5: 일본의 이간질 (일본 존재 시 전용)
 dhe_random.30 = {
 	type = country_event
@@ -892,11 +962,12 @@ dhe_random.30 = {
 	flavor = dhe_random.30.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rf5 months = 8 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rf5 months = 8 } }
+ 
 	option = {
 		name = dhe_random.30.a
+		custom_tooltip = dhe_random_30_a_tt
 		default_option = yes
 		je:je_dhe_road_to_independence ?= {
 			add_progress = { name = dhe_progress_bar_independence value = 5 }
@@ -908,6 +979,7 @@ dhe_random.30 = {
 	}
 	option = {
 		name = dhe_random.30.b
+		custom_tooltip = dhe_random_30_b_tt
 		if = {
 			limit = { exists = c:JAP }
 			c:JAP = { change_relations = { country = ROOT value = 10 } }
@@ -917,13 +989,13 @@ dhe_random.30 = {
 		}
 	}
 }
-
+ 
 # ==============================================================
 # ═══════════════════════════════════════════════════════════════
 # [G] 임오군란 위기 — dhe_random.31 ~ 35
 # ═══════════════════════════════════════════════════════════════
 # ==============================================================
-
+ 
 # G-1: 병영 소란
 dhe_random.31 = {
 	type = country_event
@@ -933,11 +1005,12 @@ dhe_random.31 = {
 	flavor = dhe_random.31.f
 	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rg1 months = 3 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rg1 months = 3 } }
+ 
 	option = {
 		name = dhe_random.31.a
+		custom_tooltip = dhe_random_31_a_tt
 		default_option = yes
 		add_treasury = -10000
 		je:je_dhe_imo_mutiny ?= {
@@ -946,19 +1019,21 @@ dhe_random.31 = {
 	}
 	option = {
 		name = dhe_random.31.b
+		custom_tooltip = dhe_random_31_b_tt
 		je:je_dhe_imo_mutiny ?= {
 			add_progress = { value = 8 name = dhe_progress_bar_military_discontent }
 		}
 	}
 	option = {
 		name = dhe_random.31.c
+		custom_tooltip = dhe_random_31_c_tt
 		add_authority = -60
 		je:je_dhe_imo_mutiny ?= {
 			add_progress = { value = -12 name = dhe_progress_bar_military_discontent }
 		}
 	}
 }
-
+ 
 # G-2: 선혜청 비리 발각
 dhe_random.32 = {
 	type = country_event
@@ -968,11 +1043,12 @@ dhe_random.32 = {
 	flavor = dhe_random.32.f
 	icon = "gfx/interface/icons/event_icons/event_bureaucracy.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rg2 months = 5 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rg2 months = 5 } }
+ 
 	option = {
 		name = dhe_random.32.a
+		custom_tooltip = dhe_random_32_a_tt
 		default_option = yes
 		je:je_dhe_imo_mutiny ?= {
 			add_progress = { value = -10 name = dhe_progress_bar_military_discontent }
@@ -987,12 +1063,13 @@ dhe_random.32 = {
 	}
 	option = {
 		name = dhe_random.32.b
+		custom_tooltip = dhe_random_32_b_tt
 		je:je_dhe_imo_mutiny ?= {
 			add_progress = { value = 12 name = dhe_progress_bar_military_discontent }
 		}
 	}
 }
-
+ 
 # G-3: 구식 군인들의 투서
 dhe_random.33 = {
 	type = country_event
@@ -1002,11 +1079,12 @@ dhe_random.33 = {
 	flavor = dhe_random.33.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rg3 months = 4 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rg3 months = 4 } }
+ 
 	option = {
 		name = dhe_random.33.a
+		custom_tooltip = dhe_random_33_a_tt
 		default_option = yes
 		add_treasury = -5000
 		je:je_dhe_imo_mutiny ?= {
@@ -1015,13 +1093,14 @@ dhe_random.33 = {
 	}
 	option = {
 		name = dhe_random.33.b
+		custom_tooltip = dhe_random_33_b_tt
 		je:je_dhe_imo_mutiny ?= {
 			add_progress = { value = 5 name = dhe_progress_bar_military_discontent }
 		}
 		add_radicals = { value = 0.01 }
 	}
 }
-
+ 
 # G-4: 신식 군대와 구식 군대의 충돌
 dhe_random.34 = {
 	type = country_event
@@ -1031,13 +1110,15 @@ dhe_random.34 = {
 	flavor = dhe_random.34.f
 	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rg4 months = 6 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rg4 months = 6 } }
+ 
 	option = {
 		name = dhe_random.34.a
+		custom_tooltip = dhe_random_34_a_tt
 		default_option = yes
 		add_authority = -80
+		add_modifier = { name = dhe_mod_military_discipline months = 12 }
 		je:je_dhe_imo_mutiny ?= {
 			add_progress = { value = -10 name = dhe_progress_bar_military_discontent }
 		}
@@ -1045,12 +1126,15 @@ dhe_random.34 = {
 	}
 	option = {
 		name = dhe_random.34.b
+		custom_tooltip = dhe_random_34_b_tt
+		add_modifier = { name = dhe_mod_divided_barracks months = 12 }
 		je:je_dhe_imo_mutiny ?= {
 			add_progress = { value = 10 name = dhe_progress_bar_military_discontent }
 		}
 	}
 	option = {
 		name = dhe_random.34.c
+		custom_tooltip = dhe_random_34_c_tt
 		add_treasury = -20000
 		add_authority = -40
 		je:je_dhe_imo_mutiny ?= {
@@ -1058,7 +1142,7 @@ dhe_random.34 = {
 		}
 	}
 }
-
+ 
 # G-5: 무기고 습격 미수
 dhe_random.35 = {
 	type = country_event
@@ -1068,13 +1152,15 @@ dhe_random.35 = {
 	flavor = dhe_random.35.f
 	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-
-	immediate = { set_variable = { name = dhe_cd_rg5 months = 8 } }
-
+ 
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rg5 months = 8 } }
+ 
 	option = {
 		name = dhe_random.35.a
+		custom_tooltip = dhe_random_35_a_tt
 		default_option = yes
 		add_authority = -100
+		add_modifier = { name = dhe_mod_iron_military_law months = 12 }
 		je:je_dhe_imo_mutiny ?= {
 			add_progress = { value = -15 name = dhe_progress_bar_military_discontent }
 		}
@@ -1083,17 +1169,23 @@ dhe_random.35 = {
 	}
 	option = {
 		name = dhe_random.35.b
+		custom_tooltip = dhe_random_35_b_tt
 		je:je_dhe_imo_mutiny ?= {
 			add_progress = { value = 15 name = dhe_progress_bar_military_discontent }
 		}
 	}
 }
+ 
+# Encoding: UTF-8 with BOM
+# File: events/dhe_random_gwangmu.txt
+# 광무개혁 랜덤 이벤트 20개 (dhe_random.36~55)
+ 
 # ==============================================================
 # ═══════════════════════════════════════════════════════════════
 # [H] 광무개혁 — dhe_random.36 ~ 55
 # ═══════════════════════════════════════════════════════════════
 # ==============================================================
-
+ 
 # ==============================================================
 # H-1: 열강의 기술 원조 제안
 # ==============================================================
@@ -1105,10 +1197,11 @@ dhe_random.36 = {
 	flavor = dhe_random.36.f
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh1 months = 6 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh1 months = 6 } }
+ 
 	option = {
 		name = dhe_random.36.a
+		custom_tooltip = dhe_random_36_a_tt
 		default_option = yes
 		add_treasury = -15000
 		je:je_dhe_gwangmu_reform_main ?= {
@@ -1118,10 +1211,12 @@ dhe_random.36 = {
 	}
 	option = {
 		name = dhe_random.36.b
+		custom_tooltip = dhe_random_36_b_tt
 		add_loyalists = { value = 0.02 }
 	}
 	option = {
 		name = dhe_random.36.c
+		custom_tooltip = dhe_random_36_c_tt
 		add_treasury = -5000
 		add_authority = -30
 		je:je_dhe_gwangmu_reform_main ?= {
@@ -1129,7 +1224,7 @@ dhe_random.36 = {
 		}
 	}
 }
-
+ 
 # ==============================================================
 # H-2: 수구파의 개혁 저지 음모
 # ==============================================================
@@ -1141,10 +1236,11 @@ dhe_random.37 = {
 	flavor = dhe_random.37.f
 	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh2 months = 5 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh2 months = 5 } }
+ 
 	option = {
 		name = dhe_random.37.a
+		custom_tooltip = dhe_random_37_a_tt
 		default_option = yes
 		add_authority = -120
 		ig:ig_landowners = { add_ig_approval = -4 }
@@ -1152,6 +1248,7 @@ dhe_random.37 = {
 	}
 	option = {
 		name = dhe_random.37.b
+		custom_tooltip = dhe_random_37_b_tt
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = -8 name = dhe_progress_bar_gwangmu }
 		}
@@ -1159,12 +1256,14 @@ dhe_random.37 = {
 	}
 	option = {
 		name = dhe_random.37.c
+		custom_tooltip = dhe_random_37_c_tt
 		random_list = {
 			50 = {
 				je:je_dhe_gwangmu_reform_main ?= {
 					add_progress = { value = 10 name = dhe_progress_bar_gwangmu }
 				}
 				ig:ig_landowners = { add_ig_approval = -6 }
+				add_modifier = { name = dhe_mod_reform_blitz months = 12 }
 			}
 			50 = {
 				je:je_dhe_gwangmu_reform_main ?= {
@@ -1175,7 +1274,7 @@ dhe_random.37 = {
 		}
 	}
 }
-
+ 
 # ==============================================================
 # H-3: 공장 건설 투자 기회
 # ==============================================================
@@ -1187,10 +1286,11 @@ dhe_random.38 = {
 	flavor = dhe_random.38.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh3 months = 6 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh3 months = 6 } }
+ 
 	option = {
 		name = dhe_random.38.a
+		custom_tooltip = dhe_random_38_a_tt
 		default_option = yes
 		add_treasury = -30000
 		je:je_dhe_gwangmu_reform_main ?= {
@@ -1199,6 +1299,7 @@ dhe_random.38 = {
 	}
 	option = {
 		name = dhe_random.38.b
+		custom_tooltip = dhe_random_38_b_tt
 		add_treasury = -10000
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 2 name = dhe_progress_bar_gwangmu }
@@ -1206,10 +1307,11 @@ dhe_random.38 = {
 	}
 	option = {
 		name = dhe_random.38.c
+		custom_tooltip = dhe_random_38_c_tt
 		add_authority = 20
 	}
 }
-
+ 
 # ==============================================================
 # H-4: 유학생 귀국 보고 (교육 미완료 시)
 # ==============================================================
@@ -1221,10 +1323,11 @@ dhe_random.39 = {
 	flavor = dhe_random.39.f
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh4 months = 8 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh4 months = 8 } }
+ 
 	option = {
 		name = dhe_random.39.a
+		custom_tooltip = dhe_random_39_a_tt
 		default_option = yes
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 5 name = dhe_progress_bar_gwangmu }
@@ -1234,13 +1337,14 @@ dhe_random.39 = {
 	}
 	option = {
 		name = dhe_random.39.b
+		custom_tooltip = dhe_random_39_b_tt
 		add_authority = 30
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 1 name = dhe_progress_bar_gwangmu }
 		}
 	}
 }
-
+ 
 # ==============================================================
 # H-5: 철도 건설 사고 (인프라 미완료 시)
 # ==============================================================
@@ -1252,22 +1356,24 @@ dhe_random.40 = {
 	flavor = dhe_random.40.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh5 months = 5 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh5 months = 5 } }
+ 
 	option = {
 		name = dhe_random.40.a
+		custom_tooltip = dhe_random_40_a_tt
 		default_option = yes
 		add_treasury = -20000
 	}
 	option = {
 		name = dhe_random.40.b
+		custom_tooltip = dhe_random_40_b_tt
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = -5 name = dhe_progress_bar_gwangmu }
 		}
 		add_radicals = { value = 0.01 }
 	}
 }
-
+ 
 # ==============================================================
 # H-6: 외국 자본 유치 제안
 # ==============================================================
@@ -1279,10 +1385,11 @@ dhe_random.41 = {
 	flavor = dhe_random.41.f
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh6 months = 8 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh6 months = 8 } }
+ 
 	option = {
 		name = dhe_random.41.a
+		custom_tooltip = dhe_random_41_a_tt
 		default_option = yes
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 8 name = dhe_progress_bar_gwangmu }
@@ -1291,6 +1398,7 @@ dhe_random.41 = {
 	}
 	option = {
 		name = dhe_random.41.b
+		custom_tooltip = dhe_random_41_b_tt
 		add_treasury = -10000
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 4 name = dhe_progress_bar_gwangmu }
@@ -1298,10 +1406,11 @@ dhe_random.41 = {
 	}
 	option = {
 		name = dhe_random.41.c
+		custom_tooltip = dhe_random_41_c_tt
 		add_loyalists = { value = 0.02 }
 	}
 }
-
+ 
 # ==============================================================
 # H-7: 한성 전등 가설 성공
 # ==============================================================
@@ -1313,10 +1422,11 @@ dhe_random.42 = {
 	flavor = dhe_random.42.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh7 months = 12 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh7 months = 12 } }
+ 
 	option = {
 		name = dhe_random.42.a
+		custom_tooltip = dhe_random_42_a_tt
 		default_option = yes
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 6 name = dhe_progress_bar_gwangmu }
@@ -1324,7 +1434,7 @@ dhe_random.42 = {
 		add_loyalists = { value = 0.02 }
 	}
 }
-
+ 
 # ==============================================================
 # H-8: 근대화 반발 농민 시위
 # ==============================================================
@@ -1336,15 +1446,17 @@ dhe_random.43 = {
 	flavor = dhe_random.43.f
 	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh8 months = 4 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh8 months = 4 } }
+ 
 	option = {
 		name = dhe_random.43.a
+		custom_tooltip = dhe_random_43_a_tt
 		add_authority = -60
 		add_radicals = { value = 0.03 }
 	}
 	option = {
 		name = dhe_random.43.b
+		custom_tooltip = dhe_random_43_b_tt
 		default_option = yes
 		add_treasury = -15000
 		je:je_dhe_gwangmu_reform_main ?= {
@@ -1354,12 +1466,13 @@ dhe_random.43 = {
 	}
 	option = {
 		name = dhe_random.43.c
+		custom_tooltip = dhe_random_43_c_tt
 		add_treasury = -5000
 		add_authority = -30
 		ig:ig_intelligentsia = { add_ig_approval = 1 }
 	}
 }
-
+ 
 # ==============================================================
 # H-9: 만국박람회 참가 제안
 # ==============================================================
@@ -1371,10 +1484,11 @@ dhe_random.44 = {
 	flavor = dhe_random.44.f
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh9 months = 12 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh9 months = 12 } }
+ 
 	option = {
 		name = dhe_random.44.a
+		custom_tooltip = dhe_random_44_a_tt
 		default_option = yes
 		add_treasury = -25000
 		je:je_dhe_gwangmu_reform_main ?= {
@@ -1384,6 +1498,7 @@ dhe_random.44 = {
 	}
 	option = {
 		name = dhe_random.44.b
+		custom_tooltip = dhe_random_44_b_tt
 		add_treasury = -8000
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 3 name = dhe_progress_bar_gwangmu }
@@ -1391,10 +1506,11 @@ dhe_random.44 = {
 	}
 	option = {
 		name = dhe_random.44.c
+		custom_tooltip = dhe_random_44_c_tt
 		add_authority = 10
 	}
 }
-
+ 
 # ==============================================================
 # H-10: 군수 공장 화재 (군사 미완료 시)
 # ==============================================================
@@ -1406,10 +1522,11 @@ dhe_random.45 = {
 	flavor = dhe_random.45.f
 	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh10 months = 6 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh10 months = 6 } }
+ 
 	option = {
 		name = dhe_random.45.a
+		custom_tooltip = dhe_random_45_a_tt
 		default_option = yes
 		add_treasury = -25000
 		je:je_dhe_gwangmu_reform_main ?= {
@@ -1418,19 +1535,20 @@ dhe_random.45 = {
 	}
 	option = {
 		name = dhe_random.45.b
+		custom_tooltip = dhe_random_45_b_tt
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = -7 name = dhe_progress_bar_gwangmu }
 		}
 		add_radicals = { value = 0.02 }
 	}
 }
-
+ 
 # ==============================================================
 # ═══════════════════════════════════════════════════════════════
 # [H 확장] 광무개혁 추가 이벤트 — dhe_random.46 ~ 55
 # ═══════════════════════════════════════════════════════════════
 # ==============================================================
-
+ 
 # ==============================================================
 # H-11: 독립신문 창간 (1회성 대형)
 # ==============================================================
@@ -1442,13 +1560,15 @@ dhe_random.46 = {
 	flavor = dhe_random.46.f
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh11 months = 24 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh11 months = 24 } }
+ 
 	# A: 적극 후원 — 광무 +8, 지식인 대폭 지지
 	option = {
 		name = dhe_random.46.a
+		custom_tooltip = dhe_random_46_a_tt
 		default_option = yes
 		add_treasury = -10000
+		add_modifier = { name = dhe_mod_press_revolution months = 24 }
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 8 name = dhe_progress_bar_gwangmu }
 		}
@@ -1458,6 +1578,7 @@ dhe_random.46 = {
 	# B: 묵인 — 광무 +3
 	option = {
 		name = dhe_random.46.b
+		custom_tooltip = dhe_random_46_b_tt
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 3 name = dhe_progress_bar_gwangmu }
 		}
@@ -1465,12 +1586,13 @@ dhe_random.46 = {
 	# C: 탄압 — 지식인 반발, 수구파 환심
 	option = {
 		name = dhe_random.46.c
+		custom_tooltip = dhe_random_46_c_tt
 		ig:ig_intelligentsia = { add_ig_approval = -5 }
 		ig:ig_landowners = { add_ig_approval = 2 }
 		add_radicals = { value = 0.02 }
 	}
 }
-
+ 
 # ==============================================================
 # H-12: 전신선(電信線) 개통
 # ==============================================================
@@ -1482,10 +1604,11 @@ dhe_random.47 = {
 	flavor = dhe_random.47.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh12 months = 12 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh12 months = 12 } }
+ 
 	option = {
 		name = dhe_random.47.a
+		custom_tooltip = dhe_random_47_a_tt
 		default_option = yes
 		add_treasury = -12000
 		je:je_dhe_gwangmu_reform_main ?= {
@@ -1495,12 +1618,13 @@ dhe_random.47 = {
 	}
 	option = {
 		name = dhe_random.47.b
+		custom_tooltip = dhe_random_47_b_tt
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 2 name = dhe_progress_bar_gwangmu }
 		}
 	}
 }
-
+ 
 # ==============================================================
 # H-13: 양반 자제의 근대 학교 거부 (교육 미완료 시)
 # ==============================================================
@@ -1512,11 +1636,12 @@ dhe_random.48 = {
 	flavor = dhe_random.48.f
 	icon = "gfx/interface/icons/event_icons/event_bureaucracy.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh13 months = 6 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh13 months = 6 } }
+ 
 	# A: 의무교육 강제 — 광무 +4, 지주 반발
 	option = {
 		name = dhe_random.48.a
+		custom_tooltip = dhe_random_48_a_tt
 		default_option = yes
 		add_authority = -60
 		je:je_dhe_gwangmu_reform_main ?= {
@@ -1527,6 +1652,7 @@ dhe_random.48 = {
 	# B: 설득 캠페인 — 광무 +2, 비용
 	option = {
 		name = dhe_random.48.b
+		custom_tooltip = dhe_random_48_b_tt
 		add_treasury = -8000
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 2 name = dhe_progress_bar_gwangmu }
@@ -1535,12 +1661,13 @@ dhe_random.48 = {
 	# C: 방관 — 광무 -3
 	option = {
 		name = dhe_random.48.c
+		custom_tooltip = dhe_random_48_c_tt
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = -3 name = dhe_progress_bar_gwangmu }
 		}
 	}
 }
-
+ 
 # ==============================================================
 # H-14: 외국인 기술자 분쟁
 # ==============================================================
@@ -1552,16 +1679,18 @@ dhe_random.49 = {
 	flavor = dhe_random.49.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh14 months = 5 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh14 months = 5 } }
+ 
 	# A: 외국인 편 — 광무 유지, 급진파
 	option = {
 		name = dhe_random.49.a
+		custom_tooltip = dhe_random_49_a_tt
 		add_radicals = { value = 0.02 }
 	}
 	# B: 조선인 편 — 광무 -4, 충성파
 	option = {
 		name = dhe_random.49.b
+		custom_tooltip = dhe_random_49_b_tt
 		default_option = yes
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = -4 name = dhe_progress_bar_gwangmu }
@@ -1571,13 +1700,14 @@ dhe_random.49 = {
 	# C: 중재 — 비용, 약간 후퇴
 	option = {
 		name = dhe_random.49.c
+		custom_tooltip = dhe_random_49_c_tt
 		add_treasury = -8000
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = -1 name = dhe_progress_bar_gwangmu }
 		}
 	}
 }
-
+ 
 # ==============================================================
 # H-15: 양지아문(量地衙門) 토지 측량 보고 (행정 미완료 시)
 # ==============================================================
@@ -1589,11 +1719,12 @@ dhe_random.50 = {
 	flavor = dhe_random.50.f
 	icon = "gfx/interface/icons/event_icons/event_bureaucracy.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh15 months = 8 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh15 months = 8 } }
+ 
 	# A: 전국 확대 — 광무 +6, 국고 소모, 지주 반발
 	option = {
 		name = dhe_random.50.a
+		custom_tooltip = dhe_random_50_a_tt
 		default_option = yes
 		add_treasury = -20000
 		je:je_dhe_gwangmu_reform_main ?= {
@@ -1604,12 +1735,13 @@ dhe_random.50 = {
 	# B: 현 범위 유지 — 광무 +2
 	option = {
 		name = dhe_random.50.b
+		custom_tooltip = dhe_random_50_b_tt
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 2 name = dhe_progress_bar_gwangmu }
 		}
 	}
 }
-
+ 
 # ==============================================================
 # H-16: 한성 상수도 공사
 # ==============================================================
@@ -1621,11 +1753,12 @@ dhe_random.51 = {
 	flavor = dhe_random.51.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh16 months = 10 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh16 months = 10 } }
+ 
 	# A: 대규모 투자 — 광무 +7, 충성파
 	option = {
 		name = dhe_random.51.a
+		custom_tooltip = dhe_random_51_a_tt
 		default_option = yes
 		add_treasury = -25000
 		je:je_dhe_gwangmu_reform_main ?= {
@@ -1636,6 +1769,7 @@ dhe_random.51 = {
 	# B: 소규모 — 광무 +3
 	option = {
 		name = dhe_random.51.b
+		custom_tooltip = dhe_random_51_b_tt
 		add_treasury = -8000
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 3 name = dhe_progress_bar_gwangmu }
@@ -1644,10 +1778,11 @@ dhe_random.51 = {
 	# C: 보류
 	option = {
 		name = dhe_random.51.c
+		custom_tooltip = dhe_random_51_c_tt
 		add_authority = 10
 	}
 }
-
+ 
 # ==============================================================
 # H-17: 외국 군사 교관단 초빙 제안 (군사 미완료 시)
 # ==============================================================
@@ -1659,11 +1794,12 @@ dhe_random.52 = {
 	flavor = dhe_random.52.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh17 months = 8 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh17 months = 8 } }
+ 
 	# A: 수용 — 광무 +5, 비용
 	option = {
 		name = dhe_random.52.a
+		custom_tooltip = dhe_random_52_a_tt
 		default_option = yes
 		add_treasury = -15000
 		je:je_dhe_gwangmu_reform_main ?= {
@@ -1673,6 +1809,7 @@ dhe_random.52 = {
 	# B: 자력 양성 — 광무 +2, 시간 필요
 	option = {
 		name = dhe_random.52.b
+		custom_tooltip = dhe_random_52_b_tt
 		add_authority = -40
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 2 name = dhe_progress_bar_gwangmu }
@@ -1681,10 +1818,11 @@ dhe_random.52 = {
 	# C: 거부 — 충성파
 	option = {
 		name = dhe_random.52.c
+		custom_tooltip = dhe_random_52_c_tt
 		add_loyalists = { value = 0.01 }
 	}
 }
-
+ 
 # ==============================================================
 # H-18: 화폐 개혁 시도
 # ==============================================================
@@ -1696,13 +1834,15 @@ dhe_random.53 = {
 	flavor = dhe_random.53.f
 	icon = "gfx/interface/icons/event_icons/event_bureaucracy.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh18 months = 10 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh18 months = 10 } }
+ 
 	# A: 전면 시행 — 광무 +8, 국고 대량 소모, 급진파
 	option = {
 		name = dhe_random.53.a
+		custom_tooltip = dhe_random_53_a_tt
 		default_option = yes
 		add_treasury = -30000
+		add_modifier = { name = dhe_mod_modern_currency months = 24 }
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 8 name = dhe_progress_bar_gwangmu }
 		}
@@ -1711,6 +1851,7 @@ dhe_random.53 = {
 	# B: 점진적 시행 — 광무 +3
 	option = {
 		name = dhe_random.53.b
+		custom_tooltip = dhe_random_53_b_tt
 		add_treasury = -10000
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 3 name = dhe_progress_bar_gwangmu }
@@ -1719,10 +1860,11 @@ dhe_random.53 = {
 	# C: 보류 — 안전
 	option = {
 		name = dhe_random.53.c
+		custom_tooltip = dhe_random_53_c_tt
 		add_authority = 20
 	}
 }
-
+ 
 # ==============================================================
 # H-19: 개화파 vs 수구파 조정 논쟁
 # ==============================================================
@@ -1734,12 +1876,14 @@ dhe_random.54 = {
 	flavor = dhe_random.54.f
 	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh19 months = 4 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh19 months = 4 } }
+ 
 	# A: 개화파 지지 — 광무 +5, 지식인 호감, 지주 반발
 	option = {
 		name = dhe_random.54.a
+		custom_tooltip = dhe_random_54_a_tt
 		default_option = yes
+		add_modifier = { name = dhe_mod_reform_acceleration months = 12 }
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 5 name = dhe_progress_bar_gwangmu }
 		}
@@ -1749,6 +1893,8 @@ dhe_random.54 = {
 	# B: 수구파 지지 — 광무 -5, 지주 호감
 	option = {
 		name = dhe_random.54.b
+		custom_tooltip = dhe_random_54_b_tt
+		add_modifier = { name = dhe_mod_conservative_stability months = 12 }
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = -5 name = dhe_progress_bar_gwangmu }
 		}
@@ -1758,12 +1904,13 @@ dhe_random.54 = {
 	# C: 중립 — 아무도 만족 못함
 	option = {
 		name = dhe_random.54.c
+		custom_tooltip = dhe_random_54_c_tt
 		add_authority = -30
 		ig:ig_landowners = { add_ig_approval = -1 }
 		ig:ig_intelligentsia = { add_ig_approval = -1 }
 	}
 }
-
+ 
 # ==============================================================
 # H-20: 근대 병원(광혜원) 설립 제안
 # ==============================================================
@@ -1775,11 +1922,12 @@ dhe_random.55 = {
 	flavor = dhe_random.55.f
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 	event_image = { video = "ep1_donghak_rebellion" }
-	immediate = { set_variable = { name = dhe_cd_rh20 months = 12 } }
-
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rh20 months = 12 } }
+ 
 	# A: 국비 설립 — 광무 +6, 충성파, 비용
 	option = {
 		name = dhe_random.55.a
+		custom_tooltip = dhe_random_55_a_tt
 		default_option = yes
 		add_treasury = -20000
 		je:je_dhe_gwangmu_reform_main ?= {
@@ -1790,6 +1938,7 @@ dhe_random.55 = {
 	# B: 선교사 병원 허가 — 광무 +4, 급진파 소폭
 	option = {
 		name = dhe_random.55.b
+		custom_tooltip = dhe_random_55_b_tt
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { value = 4 name = dhe_progress_bar_gwangmu }
 		}
@@ -1798,6 +1947,395 @@ dhe_random.55 = {
 	# C: 보류
 	option = {
 		name = dhe_random.55.c
+		custom_tooltip = dhe_random_55_c_tt
 		add_authority = 10
+	}
+}
+ 
+ 
+# ==============================================================
+# [I] 간도 확장 — dhe_random.56 ~ 60
+# ==============================================================
+ 
+dhe_random.56 = {
+	type = country_event
+	placement = root
+	title = dhe_random.56.t
+	desc = dhe_random.56.d
+	flavor = dhe_random.56.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	event_image = { video = "ep1_donghak_rebellion" }
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_ri1 months = 6 } }
+	option = {
+		name = dhe_random.56.a
+		custom_tooltip = dhe_random_56_a_tt
+		default_option = yes
+		add_treasury = 10000
+		add_modifier = { name = dhe_mod_jiandao_harvest months = 12 }
+		add_loyalists = { value = 0.02 }
+	}
+	option = {
+		name = dhe_random.56.b
+		custom_tooltip = dhe_random_56_b_tt
+		add_treasury = 20000
+	}
+}
+ 
+dhe_random.57 = {
+	type = country_event
+	placement = root
+	title = dhe_random.57.t
+	desc = dhe_random.57.d
+	flavor = dhe_random.57.f
+	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
+	event_image = { video = "ep1_donghak_rebellion" }
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_ri2 months = 5 } }
+	option = {
+		name = dhe_random.57.a
+		custom_tooltip = dhe_random_57_a_tt
+		default_option = yes
+		add_modifier = { name = dhe_mod_border_tension months = 12 }
+		if = {
+			limit = { exists = c:CHI }
+			c:CHI = { change_relations = { country = ROOT value = -15 } }
+		}
+		add_loyalists = { value = 0.02 }
+	}
+	option = {
+		name = dhe_random.57.b
+		custom_tooltip = dhe_random_57_b_tt
+		if = {
+			limit = { exists = c:CHI }
+			c:CHI = { change_relations = { country = ROOT value = 5 } }
+		}
+	}
+	option = {
+		name = dhe_random.57.c
+		custom_tooltip = dhe_random_57_c_tt
+		add_treasury = -10000
+		add_modifier = { name = dhe_mod_jiandao_fortification months = 18 }
+	}
+}
+ 
+dhe_random.58 = {
+	type = country_event
+	placement = root
+	title = dhe_random.58.t
+	desc = dhe_random.58.d
+	flavor = dhe_random.58.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	event_image = { video = "ep1_donghak_rebellion" }
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_ri3 months = 8 } }
+	option = {
+		name = dhe_random.58.a
+		custom_tooltip = dhe_random_58_a_tt
+		default_option = yes
+		add_treasury = -12000
+		add_modifier = { name = dhe_mod_jiandao_education months = 24 }
+	}
+	option = {
+		name = dhe_random.58.b
+		custom_tooltip = dhe_random_58_b_tt
+		add_loyalists = { value = 0.01 }
+	}
+}
+ 
+dhe_random.59 = {
+	type = country_event
+	placement = root
+	title = dhe_random.59.t
+	desc = dhe_random.59.d
+	flavor = dhe_random.59.f
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+	event_image = { video = "ep1_donghak_rebellion" }
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_ri4 months = 12 } }
+	option = {
+		name = dhe_random.59.a
+		custom_tooltip = dhe_random_59_a_tt
+		default_option = yes
+		add_treasury = -20000
+		add_modifier = { name = dhe_mod_jiandao_gold_rush months = 24 }
+	}
+	option = {
+		name = dhe_random.59.b
+		custom_tooltip = dhe_random_59_b_tt
+		add_treasury = 15000
+	}
+}
+ 
+dhe_random.60 = {
+	type = country_event
+	placement = root
+	title = dhe_random.60.t
+	desc = dhe_random.60.d
+	flavor = dhe_random.60.f
+	icon = "gfx/interface/icons/event_icons/event_bureaucracy.dds"
+	event_image = { video = "ep1_donghak_rebellion" }
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_ri5 months = 6 } }
+	option = {
+		name = dhe_random.60.a
+		custom_tooltip = dhe_random_60_a_tt
+		default_option = yes
+		add_authority = -50
+		add_modifier = { name = dhe_mod_jiandao_autonomy months = 12 }
+		add_loyalists = { value = 0.02 }
+	}
+	option = {
+		name = dhe_random.60.b
+		custom_tooltip = dhe_random_60_b_tt
+		add_authority = 30
+		add_radicals = { value = 0.02 }
+	}
+}
+ 
+# ==============================================================
+# [J] 연해주 확장 — dhe_random.61 ~ 65
+# ==============================================================
+ 
+dhe_random.61 = {
+	type = country_event
+	placement = root
+	title = dhe_random.61.t
+	desc = dhe_random.61.d
+	flavor = dhe_random.61.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	event_image = { video = "ep1_donghak_rebellion" }
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rj1 months = 6 } }
+	option = {
+		name = dhe_random.61.a
+		custom_tooltip = dhe_random_61_a_tt
+		default_option = yes
+		add_treasury = -8000
+		add_modifier = { name = dhe_mod_manchuria_trade months = 12 }
+	}
+	option = {
+		name = dhe_random.61.b
+		custom_tooltip = dhe_random_61_b_tt
+		add_radicals = { value = 0.01 }
+		add_modifier = { name = dhe_mod_manchuria_subjugation months = 12 }
+	}
+}
+ 
+dhe_random.62 = {
+	type = country_event
+	placement = root
+	title = dhe_random.62.t
+	desc = dhe_random.62.d
+	flavor = dhe_random.62.f
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+	event_image = { video = "ep1_donghak_rebellion" }
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rj2 months = 5 } }
+	option = {
+		name = dhe_random.62.a
+		custom_tooltip = dhe_random_62_a_tt
+		default_option = yes
+		add_treasury = -15000
+		add_loyalists = { value = 0.02 }
+	}
+	option = {
+		name = dhe_random.62.b
+		custom_tooltip = dhe_random_62_b_tt
+		add_modifier = { name = dhe_mod_frozen_frontier months = 12 }
+		add_radicals = { value = 0.02 }
+	}
+}
+ 
+dhe_random.63 = {
+	type = country_event
+	placement = root
+	title = dhe_random.63.t
+	desc = dhe_random.63.d
+	flavor = dhe_random.63.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	event_image = { video = "ep1_donghak_rebellion" }
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rj3 months = 8 } }
+	option = {
+		name = dhe_random.63.a
+		custom_tooltip = dhe_random_63_a_tt
+		default_option = yes
+		add_modifier = { name = dhe_mod_russian_trade months = 18 }
+		add_treasury = -5000
+	}
+	option = {
+		name = dhe_random.63.b
+		custom_tooltip = dhe_random_63_b_tt
+		add_loyalists = { value = 0.01 }
+	}
+}
+ 
+dhe_random.64 = {
+	type = country_event
+	placement = root
+	title = dhe_random.64.t
+	desc = dhe_random.64.d
+	flavor = dhe_random.64.f
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+	event_image = { video = "ep1_donghak_rebellion" }
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rj4 months = 10 } }
+	option = {
+		name = dhe_random.64.a
+		custom_tooltip = dhe_random_64_a_tt
+		default_option = yes
+		add_treasury = -15000
+		add_modifier = { name = dhe_mod_manchuria_timber months = 24 }
+	}
+	option = {
+		name = dhe_random.64.b
+		custom_tooltip = dhe_random_64_b_tt
+		add_treasury = 10000
+	}
+}
+ 
+dhe_random.65 = {
+	type = country_event
+	placement = root
+	title = dhe_random.65.t
+	desc = dhe_random.65.d
+	flavor = dhe_random.65.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	event_image = { video = "ep1_donghak_rebellion" }
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rj5 months = 12 } }
+	option = {
+		name = dhe_random.65.a
+		custom_tooltip = dhe_random_65_a_tt
+		default_option = yes
+		add_treasury = -20000
+		add_modifier = { name = dhe_mod_outpost_established months = 24 }
+		add_loyalists = { value = 0.03 }
+	}
+	option = {
+		name = dhe_random.65.b
+		custom_tooltip = dhe_random_65_b_tt
+		add_treasury = -8000
+		add_modifier = { name = dhe_mod_outpost_established months = 12 }
+	}
+}
+ 
+# ==============================================================
+# [K] 북방 마스터 — dhe_random.66 ~ 70
+# ==============================================================
+ 
+dhe_random.66 = {
+	type = country_event
+	placement = root
+	title = dhe_random.66.t
+	desc = dhe_random.66.d
+	flavor = dhe_random.66.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	event_image = { video = "ep1_donghak_rebellion" }
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rk1 months = 8 } }
+	option = {
+		name = dhe_random.66.a
+		custom_tooltip = dhe_random_66_a_tt
+		default_option = yes
+		add_treasury = -20000
+		add_modifier = { name = dhe_mod_black_soil_development months = 24 }
+	}
+	option = {
+		name = dhe_random.66.b
+		custom_tooltip = dhe_random_66_b_tt
+		add_treasury = -8000
+		add_modifier = { name = dhe_mod_black_soil_development months = 12 }
+	}
+}
+ 
+dhe_random.67 = {
+	type = country_event
+	placement = root
+	title = dhe_random.67.t
+	desc = dhe_random.67.d
+	flavor = dhe_random.67.f
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+	event_image = { video = "ep1_donghak_rebellion" }
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rk2 months = 8 } }
+	option = {
+		name = dhe_random.67.a
+		custom_tooltip = dhe_random_67_a_tt
+		default_option = yes
+		add_modifier = { name = dhe_mod_manchu_integration months = 24 }
+		add_loyalists = { value = 0.02 }
+	}
+	option = {
+		name = dhe_random.67.b
+		custom_tooltip = dhe_random_67_b_tt
+		add_radicals = { value = 0.02 }
+		add_modifier = { name = dhe_mod_manchu_suppression months = 12 }
+	}
+}
+ 
+dhe_random.68 = {
+	type = country_event
+	placement = root
+	title = dhe_random.68.t
+	desc = dhe_random.68.d
+	flavor = dhe_random.68.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	event_image = { video = "ep1_donghak_rebellion" }
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rk3 months = 10 } }
+	option = {
+		name = dhe_random.68.a
+		custom_tooltip = dhe_random_68_a_tt
+		default_option = yes
+		add_treasury = -30000
+		add_modifier = { name = dhe_mod_northern_railway months = 24 }
+	}
+	option = {
+		name = dhe_random.68.b
+		custom_tooltip = dhe_random_68_b_tt
+		add_treasury = -10000
+		add_modifier = { name = dhe_mod_northern_railway months = 12 }
+	}
+	option = {
+		name = dhe_random.68.c
+		custom_tooltip = dhe_random_68_c_tt
+		add_authority = 20
+	}
+}
+ 
+dhe_random.69 = {
+	type = country_event
+	placement = root
+	title = dhe_random.69.t
+	desc = dhe_random.69.d
+	flavor = dhe_random.69.f
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+	event_image = { video = "ep1_donghak_rebellion" }
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rk4 months = 8 } }
+	option = {
+		name = dhe_random.69.a
+		custom_tooltip = dhe_random_69_a_tt
+		default_option = yes
+		add_treasury = -25000
+		add_modifier = { name = dhe_mod_continental_garrison months = 24 }
+	}
+	option = {
+		name = dhe_random.69.b
+		custom_tooltip = dhe_random_69_b_tt
+		add_treasury = -10000
+		add_modifier = { name = dhe_mod_continental_garrison months = 12 }
+	}
+}
+ 
+dhe_random.70 = {
+	type = country_event
+	placement = root
+	title = dhe_random.70.t
+	desc = dhe_random.70.d
+	flavor = dhe_random.70.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	event_image = { video = "ep1_donghak_rebellion" }
+	immediate = { set_variable = { name = dhe_cd_random_master months = 2 } set_variable = { name = dhe_cd_rk5 months = 12 } }
+	option = {
+		name = dhe_random.70.a
+		custom_tooltip = dhe_random_70_a_tt
+		default_option = yes
+		add_treasury = -15000
+		add_modifier = { name = dhe_mod_goguryeo_heritage months = 36 }
+		add_loyalists = { value = 0.05 }
+	}
+	option = {
+		name = dhe_random.70.b
+		custom_tooltip = dhe_random_70_b_tt
+		add_loyalists = { value = 0.02 }
 	}
 }

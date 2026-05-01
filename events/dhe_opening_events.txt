@@ -563,26 +563,29 @@ dhe_independence.2 = {
 			name = dhe_mod_true_independence
 			months = 120
 		}
-		
-		# 💥 2. [신규] 대청제국의 붕괴: 만주 전역에 행정 마비 디버프 살포!
-		every_scope_state = {
-			limit = {
-				OR = {
-					state_region = s:STATE_SHENGJING
-					state_region = s:STATE_SOUTHERN_MANCHURIA
-					state_region = s:STATE_NORTHERN_MANCHURIA
-					state_region = s:STATE_AMUR
-					state_region = s:STATE_JIANDAO
-					state_region = s:STATE_JILIN
-					state_region = s:STATE_REHE
-				}
-			}
-			# 만주 땅에 10년(120개월) 동안 무법지대 디버프가 박힙니다.
-			add_modifier = {
-				name = dhe_mod_unmanaged_manchuria
-				months = 120
-			}
-		}
+ 		
+   if = {
+    limit = { exists = c:CHI }
+    c:CHI = {
+        every_scope_state = {
+            limit = {
+                OR = {
+                    state_region = s:STATE_SHENGJING
+                    state_region = s:STATE_SOUTHERN_MANCHURIA
+                    state_region = s:STATE_NORTHERN_MANCHURIA
+                    state_region = s:STATE_AMUR
+                    state_region = s:STATE_JIANDAO
+                    state_region = s:STATE_JILIN
+                    state_region = s:STATE_REHE
+                }
+            }
+            add_modifier = {
+                name = dhe_mod_unmanaged_manchuria
+                months = 120
+            }
+        }
+    }
+}
 	}
 }
 
