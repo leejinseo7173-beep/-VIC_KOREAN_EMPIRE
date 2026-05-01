@@ -575,8 +575,8 @@ dhe_independence.2 = {
                     state_region = s:STATE_NORTHERN_MANCHURIA
                     state_region = s:STATE_AMUR
                     state_region = s:STATE_JIANDAO
-                    state_region = s:STATE_JILIN
-                    state_region = s:STATE_REHE
+                    # state_region = s:STATE_JILIN
+                    # state_region = s:STATE_REHE
                 }
             }
             add_modifier = {

@@ -1,0 +1,296 @@
+﻿
+
+STATE_SEOUL = {
+    #Gyeonggi
+    traits = { "state_trait_han_river""state_trait_hanseong_capital"}
+    id = 536
+    subsistence_building = "building_subsistence_rice_farm"
+    provinces = { "x305000" "x7B6E17" "xA0E2EE" "xB05000" }
+
+    city = "xA0E2EE"
+    port = "xB05000"
+    farm = "xB05000"
+    mine = "x7B6E17"
+    wood = "xA0E2EE"
+    arable_land = 120
+    arable_resources = { "building_rice_farm" "building_livestock_ranch" "building_cotton_plantation" "building_silk_plantation" "building_tobacco_plantation" }
+    capped_resources = {
+        building_iron_mine = 30
+        building_lead_mine = 76
+        building_logging_camp = 140
+        building_whaling_station = 4
+        building_fishing_wharf = 8
+        building_rubber_plantation = 50
+        building_gold_mine = 50
+    }
+    naval_exit_id = 3057
+}
+
+STATE_BUSAN = {
+    #Yeongnam
+    traits = { "state_trait_nakdong_river"  }
+    id = 537
+    subsistence_building = "building_subsistence_rice_farm"
+    provinces = { "x076864" "x305080" "x31D000" "x806A04" "x9BA8B5" "xA00BB8" "xC3F34F" "xBC0C5A" "xF09080" }
+    city = "x31D000"
+    port = "xC3F34F"
+    farm = "x806A04"
+    mine = "x806A04"
+    wood = "x9BA8B5"
+    arable_land = 103
+    arable_resources = { "building_rice_farm" "building_livestock_ranch" "building_cotton_plantation" "building_silk_plantation" "building_tobacco_plantation" "building_dye_plantation" "building_tea_plantation" }
+    capped_resources = {
+        building_coal_mine = 40
+        building_logging_camp = 12
+        building_whaling_station = 23
+        building_fishing_wharf = 20
+    }
+    naval_exit_id = 3058
+}
+
+STATE_YANGHO = {
+    id = 690
+    subsistence_building = "building_subsistence_rice_farm"
+    provinces = { "x8ACAAA" "xAE0221" "xC81C12" "xD42CA8" "xF91D98" "xB0D080" }
+    traits = { "state_trait_honam_plain" }
+    city = "xF91D98"
+    port = "x8ACAAA"
+    farm = "x8ACAAA"
+    mine = "xC81C12"
+    wood = "xF91D98"
+    arable_land = 110
+    arable_resources = { "building_rice_farm" "building_livestock_ranch" "building_cotton_plantation" "building_silk_plantation" "building_tobacco_plantation" "building_dye_plantation" "building_tea_plantation"  }
+    capped_resources = {
+        building_coal_mine = 12
+        building_sulfur_mine = 13
+        building_logging_camp = 70
+        building_whaling_station = 5
+        building_fishing_wharf = 7
+    }
+    naval_exit_id = 3058
+}
+
+STATE_SARIWON = {
+    #Gwanbuk
+    id = 538
+    subsistence_building = "building_subsistence_rice_farm"
+    provinces = { "x00227F" "x08C343" "x21D080" "x4C743B" "x4FC1C9" "x701101" "x8B0207" "x8FC58D" "x92D8ED" "xA0987D" "xA0D080" "xBD9C6F" "xCF9212" "xEDB9A8" }
+    traits = { "state_trait_taebaek_sierra" "state_trait_bongsan_mine" }
+    city = "x08C343"
+    port = "x21D080"
+    farm = "xEDB9A8"
+    mine = "x00227F"
+    wood = "xBD9C6F"
+    arable_land = 75
+    arable_resources = { "building_rice_farm" "building_livestock_ranch" "building_cotton_plantation" "building_silk_plantation" "building_tobacco_plantation" }
+    capped_resources = {
+        building_coal_mine = 86
+        building_iron_mine = 83
+        building_lead_mine = 89
+        building_sulfur_mine = 88
+        building_logging_camp = 11
+        building_fishing_wharf = 6
+    }
+    resource = {
+        type = "building_gold_field"
+        depleted_type = "building_gold_mine"
+        undiscovered_amount = 2
+    }
+    naval_exit_id = 3059
+}
+
+STATE_PYONGYANG = {
+    #Yangseo
+    id = 539
+    subsistence_building = "building_subsistence_rice_farm"
+    provinces = { "x12BC01" "x47D537" "x5204B8" "x605101" "x808E39" "x880F26" "xA2DB51" "xB8F465" "xC5EF9A" "xDD6252" "xEAF581" "xF01000" }
+    traits = { "state_trait_unsan_mine" }
+    city = "xDD6252"
+    port = "xDD6252"
+    farm = "x5204B8"
+    mine = "x880F26"
+    wood = "x47D537"
+    arable_land = 75
+    arable_resources = { "building_rice_farm" "building_livestock_ranch" "building_cotton_plantation" "building_silk_plantation" "building_tobacco_plantation" }
+     capped_resources = {
+        building_coal_mine = 44
+        building_iron_mine = 29
+        building_lead_mine = 27
+        building_logging_camp = 120
+        building_fishing_wharf = 8
+        building_sulfur_mine = 16
+        building_oil_rig = 10
+        building_gold_mine = 100
+    }
+    resource = {
+        type = "building_gold_field"
+        depleted_type = "building_gold_mine"
+        undiscovered_amount = 4
+    }
+    naval_exit_id = 3057
+}
+###korea new state
+
+STATE_GWANDONG = {
+    id = 9001
+    traits = { "state_trait_unsan_mine" "state_trait_taebaek_sierra" }
+    subsistence_building = "building_subsistence_rice_farm"
+    provinces = { "x03EAAF" "xA84864" "xACB4D5" "x70EFC0" "x71770E" "xFD1E20" "x709080" "xE0D3E4" }
+    city = "xACB4D5"
+    port = "x03EAAF"
+    farm = "x70EFC0"
+    mine = "x709080"
+    wood = "xE0D3E4"
+    arable_land = 90
+    arable_resources = { "building_rice_farm" "building_livestock_ranch" "building_cotton_plantation" "building_silk_plantation" "building_tobacco_plantation" }
+    capped_resources = {
+        building_iron_mine = 200
+        building_lead_mine = 19
+        building_logging_camp = 140
+        building_whaling_station = 4
+        building_fishing_wharf = 8
+        building_gold_mine = 300
+    }
+    resource = {
+        type = "building_gold_field"
+        depleted_type = "building_gold_mine"
+        undiscovered_amount = 2
+    }
+    naval_exit_id = 3057
+}
+
+STATE_CHNGCHEONG = {
+    
+    id = 9002
+    subsistence_building = "building_subsistence_rice_farm"
+    provinces = { "x34B782" "xB0D000" "xA48A8B" }
+    traits = { "state_trait_kep_gold_river" }
+    city = "x34B782"
+    port = "x34B782"
+    farm = "xA48A8B"
+    mine = "x34B782"
+    wood = "xB0D000"
+    arable_land = 100
+    arable_resources = { "building_rice_farm" "building_livestock_ranch" "building_cotton_plantation" "building_silk_plantation" "building_tobacco_plantation" }
+    capped_resources = {
+        building_coal_mine = 140
+        building_sulfur_mine = 10
+        building_logging_camp = 12
+        building_whaling_station = 2
+        building_fishing_wharf = 6
+    }
+    naval_exit_id = 3057
+}
+
+STATE_HAESEO = {
+    id = 9003
+    subsistence_building = "building_subsistence_rice_farm"
+    provinces = { "x096D79" "x7BEA9E" "x640C37" "xF01180" "x11044D" "x913CAF" "x701180" }
+     traits = { "state_trait_unsan_mine" }
+    city = "x7BEA9E"
+    port = "x11044D"
+    farm = "x913CAF"
+    mine = "x640C37"
+    wood = "x701180"
+    arable_land = 120
+    arable_resources = { "building_rice_farm" "building_livestock_ranch" "building_cotton_plantation" "building_silk_plantation" "building_tobacco_plantation" }
+    capped_resources = {
+        building_coal_mine = 26
+        building_iron_mine = 16
+        building_lead_mine = 11
+        building_logging_camp = 18
+        building_fishing_wharf = 8
+         building_oil_rig = 50
+         building_gold_mine = 250
+    }
+    resource = {
+        type = "building_gold_field"
+        depleted_type = "building_gold_mine"
+        undiscovered_amount = 2
+    }
+    naval_exit_id = 3057
+}
+STATE_JIANDAO = {
+    id = 9004
+    subsistence_building = "building_subsistence_rice_farm"
+    provinces = { "x031AD1" "x76800C" "xA05162" "xA05646" "xDF828B" "xE43B63" "xF956C5" "x3F61E8" "x5D6142" }
+    city = "xA05162"
+    farm = "x76800C"
+    mine = "x031AD1"
+    wood = "xDF828B"
+    arable_land = 35
+    arable_resources = { "building_wheat_farm" "building_livestock_ranch" "building_cotton_plantation" "building_silk_plantation" }
+    capped_resources = {
+        building_coal_mine = 11
+        building_iron_mine = 17
+        building_lead_mine = 16
+        building_logging_camp = 11
+    }
+}
+STATE_SOUTHERN_MANCHURIA = {
+    id = 489
+    subsistence_building = "building_subsistence_rice_farm"
+    provinces = { "x03AD32" "x03E1AF" "x06053B" "x08DC34" "x09233D" "x129A7C" "x13A54F" "x158FFA" "x174290" "x1BD261" "x1E8BA3" "x220872" "x265F85" "x292695" "x2C04E5" "x301D5F" "x30FE34" "x35396E" "x385E45" "x38C135" "x3B5528" "x3F61E8" "x484F86" "x4CA710" "x4FB11C" "x50B15B" "x5496F2" "x54B71E" "x54C0A3" "x54DA79" "x559CBD" "x5BA3EB" "x5E4035" "x5EDEC1" "x67F10C" "x6AA436" "x6C9779" "x6DA92B" "x6F8CA9" "x733A27" "x7486DB" "x74C59F" "x778CFB" "x78B1C2" "x7A9295" "x7CDF50" "x7D7703" "x7F7474" "x80A14D" "x83F3FD" "x840BF0" "x842782" "x867862" "x8908A3" "x8BA6E3" "x8CAF49" "x8D3DE0" "x912C9D" "x92D43D" "x9B511F" "x9F89D1" "xA05180" "xA0D225" "xA107B9" "xA13E33" "xA495CD" "xA638A8" "xA7C578" "xA83478" "xA8ABC1" "xABD7B4" "xBAD550" "xBE86F0" "xBF39F0" "xC3FFC1" "xC4B939" "xC8415B" "xCD1CCD" "xCD5324" "xD0B04D" "xD44AC1" "xD5000E" "xD5886D" "xD6BB53" "xD8BB0E" "xDA5747" "xDB90DD" "xDD15CE" "xE2D5E0" "xEB92A2" "xEBCD20" "xEC981A" "xEE0F4A" "xF0D8D0" "xF2E062" "xF471D5" "xF6B0F3" "xF7C217" }
+    city = "x09233D"
+    farm = "x385E45"
+    mine = "x7D7703"
+    wood = "xD0B04D"
+    arable_land = 200
+    arable_resources = { "building_wheat_farm" "building_livestock_ranch" "building_cotton_plantation" "building_silk_plantation" }
+    capped_resources = {
+        building_coal_mine = 60
+        building_iron_mine = 75
+        building_lead_mine = 45
+        building_logging_camp = 25
+        building_fishing_wharf = 8
+    }
+}
+
+
+STATE_SHENGJING = {
+    id = 680
+    subsistence_building = "building_subsistence_rice_farm"
+    provinces = { "x167EE8" "x169772" "x311D9E" "x474AF5" "x5C7F26" "x5DC943" "x61D001" "x709001" "x7E008D" "x7F79DA" "x964A4F" "xA202E9" "xC7B981" "xCD72A9" "xCEB565" "xCF4570" "xD0B789" "xE7363A" "xE9E896" "xE9FEDB" "xEFCA02" "xF6155A" "xb75c7a" }
+    traits = { "state_trait_dalian_bay" }
+    city = "xA202E9"
+    port = "x709001"
+    farm = "x474AF5"
+    mine = "x311D9E"
+    wood = "xE9FEDB"
+    arable_land = 75
+    arable_resources = { "building_wheat_farm" "building_livestock_ranch" "building_cotton_plantation" "building_silk_plantation" "building_tea_plantation" "building_tobacco_plantation" }
+    capped_resources = {
+        building_coal_mine = 97
+        building_lead_mine = 68
+        building_iron_mine = 104
+        building_logging_camp = 12
+        building_fishing_wharf = 3
+    }
+    resource = {
+        type = "building_oil_rig"
+        undiscovered_amount = 20
+    }
+    naval_exit_id = 3057
+}
+
+STATE_BEIJING = {
+    id = 487
+    subsistence_building = "building_subsistence_rice_farm"
+    provinces = { "x038690" "x0DC804" "x0E8D56" "x0F5604" "x0F88C8" "x132B15" "x15C9C0" "x166F01" "x1DE6DF" "x1E1B11" "x20642C" "x2167D8" "x231686" "x248784" "x2AD313" "x2BA1CE" "x2C0AC4" "x2F7E73" "x3A340B" "x3C6EFC" "x3CFF20" "x3E9C33" "x3F46FB" "x49C04A" "x4BECCA" "x4ED08B" "x58AFAC" "x5D4C2D" "x5F795B" "x61E0DD" "x6376AC" "x6583A6" "x6A5736" "x6AB0FB" "x74A475" "x74DF28" "x762B45" "x777A4F" "x84B446" "x88FF71" "x89DBF2" "x8D47D0" "x9BB46B" "xA0662C" "xA8C9D2" "xAA031A" "xAF5387" "xB00D9D" "xB17E6B" "xB6039C" "xB9FF8C" "xBCF72D" "xBDC299" "xC7BB4D" "xC905ED" "xCC917E" "xCDCDEE" "xD13996" "xD1BFAF" "xD4E0E8" "xE60560" "xED840A" "xF151F1" "xF1EF03" "xF4B72A" "xFBDEDF" "x04FCF3" "x20E6F2" "x6707A1" "x68FAEC" "x8D1556" "x955331" "xD7F9BA" "xE01101" "xE05101" }
+    traits = { "state_trait_kaiping_coalfield" }
+    city = "x9BB46B"
+    port = "xB00D9D"
+    farm = "xB00D9D"
+    mine = "x0F5604"
+    wood = "xA0662C"
+    arable_land = 340
+    arable_resources = { "building_wheat_farm" "building_livestock_ranch" "building_cotton_plantation" "building_silk_plantation" "building_tea_plantation" "building_tobacco_plantation" }
+    capped_resources = {
+        building_coal_mine = 28
+        building_iron_mine = 30
+        building_lead_mine = 15
+        building_logging_camp = 2
+        building_fishing_wharf = 3
+    }
+    naval_exit_id = 3057
+}

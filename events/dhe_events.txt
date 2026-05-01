@@ -327,8 +327,8 @@ dhe_conquest_event.1 = {
 		
 		# 추가된 고토 지역 본토 편입
 		s:STATE_JIANDAO = { add_homeland = cu:korean }
-		s:STATE_JILIN = { add_homeland = cu:korean }
-		s:STATE_REHE = { add_homeland = cu:korean }
+		# s:STATE_JILIN = { add_homeland = cu:korean }
+		# s:STATE_REHE = { add_homeland = cu:korean }
 		
 		# 충성파 10% 증가 및 만주 수복 영구 버프 획득
 		add_loyalists = { value = 0.1 }

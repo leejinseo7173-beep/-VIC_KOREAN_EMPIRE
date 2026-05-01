@@ -1,0 +1,28 @@
+﻿l_korean:
+#KOREA
+
+ STATE_SEOUL: "경기"
+ STATE_BUSAN: "경상"
+ STATE_SARIWON: "함경"
+ STATE_PYONGYANG: "평안"
+ STATE_YANGHO: "전라"
+
+##NEW STATE
+
+ STATE_CHNGCHEONG: "충청"
+ STATE_GWANDONG: "강원"
+ STATE_HAESEO: "황해"
+ STATE_JIANDAO: "간도"
+ STATE_JIANDAO_korean: "간도"
+ 
+ 
+ 
+ 
+ #HINGGAN
+ #beijing
+ 
+ 
+
+  
+  
+ 

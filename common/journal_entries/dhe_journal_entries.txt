@@ -597,19 +597,19 @@ je_dhe_great_korea_conquest = {
 
 	complete = {
 		owns_entire_state_region = STATE_SHENGJING
-		owns_entire_state_region = STATE_SOUTHERN_MANCHURIA
-		owns_entire_state_region = STATE_AMUR
-		owns_entire_state_region = STATE_NORTHERN_MANCHURIA
-		owns_entire_state_region = STATE_KYUSHU
-		owns_entire_state_region = STATE_KANSAI
-		owns_entire_state_region = STATE_HOKKAIDO
-		owns_entire_state_region = STATE_TOHOKU
-		owns_entire_state_region = STATE_KANTO
-		owns_entire_state_region = STATE_CHUBU
-		owns_entire_state_region = STATE_CHUGOKU
-		owns_entire_state_region = STATE_SHIKOKU
-		owns_entire_state_region = STATE_RYUKYU_ISLANDS
-		owns_entire_state_region = STATE_FORMOSA
+		#owns_entire_state_region = STATE_SOUTHERN_MANCHURIA
+		#owns_entire_state_region = STATE_AMUR
+		#owns_entire_state_region = STATE_NORTHERN_MANCHURIA
+		#owns_entire_state_region = STATE_KYUSHU
+		#owns_entire_state_region = STATE_KANSAI
+		#owns_entire_state_region = STATE_HOKKAIDO
+		#owns_entire_state_region = STATE_TOHOKU
+		#owns_entire_state_region = STATE_KANTO
+		#owns_entire_state_region = STATE_CHUBU
+		#owns_entire_state_region = STATE_CHUGOKU
+		#owns_entire_state_region = STATE_SHIKOKU
+		#owns_entire_state_region = STATE_RYUKYU_ISLANDS
+		#owns_entire_state_region = STATE_FORMOSA
 	}
 
 	on_complete = {
@@ -703,13 +703,13 @@ je_dhe_northern_expansion = {
 		has_variable = dhe_great_korea_ambition_taken
 	}
 	complete = {
+		owns_entire_state_region = STATE_JIANDAO
 		owns_entire_state_region = STATE_SHENGJING
 		owns_entire_state_region = STATE_SOUTHERN_MANCHURIA
 		owns_entire_state_region = STATE_NORTHERN_MANCHURIA
 		owns_entire_state_region = STATE_AMUR
-		owns_entire_state_region = STATE_JIANDAO
-		owns_entire_state_region = STATE_JILIN
-		owns_entire_state_region = STATE_REHE
+		# owns_entire_state_region = STATE_JILIN
+		# owns_entire_state_region = STATE_REHE
 	}
 	on_complete = {
 		set_variable = dhe_northern_expansion_done
@@ -728,16 +728,16 @@ je_dhe_southern_expansion = {
 		has_variable = dhe_great_korea_ambition_taken
 	}
 	complete = {
-		owns_entire_state_region = STATE_KYUSHU
-		owns_entire_state_region = STATE_KANSAI
-		owns_entire_state_region = STATE_HOKKAIDO
-		owns_entire_state_region = STATE_TOHOKU
-		owns_entire_state_region = STATE_KANTO
-		owns_entire_state_region = STATE_CHUBU
-		owns_entire_state_region = STATE_CHUGOKU
-		owns_entire_state_region = STATE_SHIKOKU
-		owns_entire_state_region = STATE_RYUKYU_ISLANDS
-		owns_entire_state_region = STATE_FORMOSA
+        owns_entire_state_region = STATE_KYUSHU
+		#owns_entire_state_region = STATE_KANSAI
+		#owns_entire_state_region = STATE_HOKKAIDO
+		#owns_entire_state_region = STATE_TOHOKU
+		#owns_entire_state_region = STATE_KANTO
+		#owns_entire_state_region = STATE_CHUBU
+		#owns_entire_state_region = STATE_CHUGOKU
+		#owns_entire_state_region = STATE_SHIKOKU
+		#owns_entire_state_region = STATE_RYUKYU_ISLANDS
+		#owns_entire_state_region = STATE_FORMOSA
 	}
 	on_complete = {
 		set_variable = dhe_southern_expansion_done
