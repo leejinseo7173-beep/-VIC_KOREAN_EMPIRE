@@ -12,8 +12,10 @@ dhe_event.100 = {
 	flavor = dhe_event.100.f
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 
-	immediate = {
-		# 1. 일지 등장 스위치 ON
+	option = {
+		name = dhe_event.100.a
+		default_option = yes
+				# 1. 일지 등장 스위치 ON
 		set_variable = dhe_hermit_kingdom_broken
 		
 		# 2. 영구 디버프 부여 (months를 안 적어야 영구 지속됩니다!)
@@ -30,12 +32,13 @@ dhe_event.100 = {
 		#아래 두개는 지우기 확인용
 		add_journal_entry = { type = je_dhe_road_to_independence }
 		add_journal_entry = { type = je_dhe_outer_manchuria }
-	}
-
-	option = {
-		name = dhe_event.100.a
-		default_option = yes
 		trigger_event = { id = dhe_event.102 popup = yes}
+	}
+		option = {
+		name = dhe_event.100.b
+		set_variable = dhe_hermit_kingdom_broken
+		set_variable = dhe_sedo_resolved
+		add_journal_entry = { type = je_dhe_road_to_independence }
 	}
 }
 
@@ -64,6 +67,7 @@ dhe_event.101 = {
 		add_loyalists = { value = 0.1 }
 	}
 }
+
 # ==========================================================
 # [프롤로그 연계] 천재 소년왕의 각성 (1836)
 # ==========================================================
@@ -606,9 +610,24 @@ dhe_imo.1 = {
 	option = {
 		name = dhe_imo.1.a 
 		
-		# 군부(장교단)가 극대노하고, 한성에 시체가 산을 이룸
+		# 군부(장교단)가 극대노하고, 임오 전용 정치운동만 격화됨
 		ig:ig_armed_forces = { add_modifier = { name = ig_approval_angry_temp months = 36 } }
-		add_radicals = 100000
+		if = {
+			limit = {
+				NOT = {
+					any_political_movement = {
+						is_political_movement_type = movement_dhe_imo_reactionary
+					}
+				}
+			}
+			create_political_movement = { type = movement_dhe_imo_reactionary }
+		}
+		random_political_movement = {
+			limit = {
+				is_political_movement_type = movement_dhe_imo_reactionary
+			}
+			add_modifier = { name = dhe_mod_imo_movement_fury months = 12 }
+		}
 		
 		# 진압 과정에서 한성(서울)의 인프라와 경제 마비
 		random_scope_state = {
@@ -646,5 +665,89 @@ dhe_imo.1 = {
 		# 지도자가 죽은 대가로 반란은 가라앉지만 국가 행정력이 일시 마비됨
 		add_modifier = { name = dhe_bureaucracy_cost_temp months = 12 }
 		set_variable = dhe_imo_mutiny_resolved
+	}
+}
+
+dhe_imo.2 = {
+	type = country_event
+	placement = root
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_variable = dhe_imo_civil_war_forced
+			}
+			random_political_movement = {
+				limit = {
+					is_political_movement_type = movement_dhe_imo_reactionary
+				}
+				remove_modifier = dhe_mod_imo_movement_fury
+			}
+			random_scope_state = {
+				limit = { state_region = s:STATE_SEOUL }
+				remove_modifier = dhe_mod_imo_gyeonggi_revolt
+			}
+		}
+		else_if = {
+			limit = {
+				any_civil_war = {
+					is_civil_war_type = revolution
+					political_movement = {
+						is_political_movement_type = movement_dhe_imo_reactionary
+					}
+				}
+			}
+			set_variable = dhe_imo_civil_war_forced
+			random_political_movement = {
+				limit = {
+					is_political_movement_type = movement_dhe_imo_reactionary
+				}
+				remove_modifier = dhe_mod_imo_movement_fury
+			}
+			random_scope_state = {
+				limit = { state_region = s:STATE_SEOUL }
+				remove_modifier = dhe_mod_imo_gyeonggi_revolt
+			}
+			random_civil_war = {
+				limit = {
+					is_civil_war_type = revolution
+					political_movement = {
+						is_political_movement_type = movement_dhe_imo_reactionary
+					}
+				}
+				add_civil_war_progress = 1
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					NOT = {
+						any_political_movement = {
+							is_political_movement_type = movement_dhe_imo_reactionary
+						}
+					}
+				}
+				create_political_movement = { type = movement_dhe_imo_reactionary }
+			}
+			random_political_movement = {
+				limit = {
+					is_political_movement_type = movement_dhe_imo_reactionary
+				}
+				add_modifier = { name = dhe_mod_imo_movement_fury months = 12 }
+			}
+			random_scope_state = {
+				limit = { state_region = s:STATE_SEOUL }
+				add_modifier = { name = dhe_mod_imo_gyeonggi_revolt months = 12 }
+			}
+			ig:ig_armed_forces ?= {
+				add_modifier = { name = ig_approval_angry_temp months = 36 }
+			}
+			ig:ig_landowners ?= {
+				add_modifier = { name = ig_approval_angry_temp months = 36 }
+			}
+			trigger_event = { id = dhe_imo.2 days = 1 }
+		}
 	}
 }

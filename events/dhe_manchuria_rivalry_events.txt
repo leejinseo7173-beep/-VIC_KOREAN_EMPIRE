@@ -1,0 +1,321 @@
+namespace = dhe_manchuria_rivalry
+
+dhe_manchuria_rivalry.1 = {
+	type = country_event
+	placement = root
+	title = dhe_manchuria_rivalry.1.t
+	desc = dhe_manchuria_rivalry.1.d
+	flavor = dhe_manchuria_rivalry.1.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_manchuria_rivalry.1.a
+		default_option = yes
+		add_authority = -50
+		set_variable = { name = dhe_cd_manchuria_scouts days = 180 }
+		set_variable = { name = dhe_manchuria_scout_network days = 365 }
+		c:CHI = { change_relations = { country = ROOT value = -5 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 2 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.1.b
+		trigger = { authority >= 80 }
+		add_authority = -80
+		set_variable = { name = dhe_cd_manchuria_scouts days = 240 }
+		set_variable = { name = dhe_manchuria_scout_network days = 540 }
+		set_variable = { name = dhe_manchuria_qing_alarm days = 365 }
+		c:CHI = { change_relations = { country = ROOT value = -15 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 4 }
+		}
+	}
+}
+
+dhe_manchuria_rivalry.2 = {
+	type = country_event
+	placement = root
+	title = dhe_manchuria_rivalry.2.t
+	desc = dhe_manchuria_rivalry.2.d
+	flavor = dhe_manchuria_rivalry.2.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_manchuria_rivalry.2.a
+		default_option = yes
+		add_treasury = -30000
+		set_variable = { name = dhe_cd_manchuria_settlers days = 360 }
+		set_variable = { name = dhe_manchuria_settlement_network days = 540 }
+		c:CHI = { change_relations = { country = ROOT value = -10 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 3 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.2.b
+		trigger = { authority >= 50 }
+		add_authority = -50
+		add_treasury = -60000
+		set_variable = { name = dhe_cd_manchuria_settlers days = 540 }
+		set_variable = { name = dhe_manchuria_settlement_network days = 720 }
+		set_variable = { name = dhe_manchuria_qing_alarm days = 540 }
+		c:CHI = { change_relations = { country = ROOT value = -20 } }
+		ig:ig_landowners ?= { add_ig_approval = -3 }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 5 }
+		}
+	}
+}
+
+dhe_manchuria_rivalry.3 = {
+	type = country_event
+	placement = root
+	title = dhe_manchuria_rivalry.3.t
+	desc = dhe_manchuria_rivalry.3.d
+	flavor = dhe_manchuria_rivalry.3.f
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_manchuria_rivalry.3.a
+		default_option = yes
+		add_authority = -80
+		add_treasury = -50000
+		set_variable = { name = dhe_cd_manchuria_officials days = 540 }
+		set_variable = { name = dhe_manchuria_official_network days = 720 }
+		c:CHI = { change_relations = { country = ROOT value = -15 } }
+		ig:ig_landowners ?= { add_ig_approval = -2 }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 4 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.3.b
+		trigger = { authority >= 100 }
+		add_authority = -100
+		add_treasury = -80000
+		set_variable = { name = dhe_cd_manchuria_officials days = 720 }
+		set_variable = { name = dhe_manchuria_official_network days = 900 }
+		set_variable = { name = dhe_manchuria_qing_alarm days = 720 }
+		c:CHI = { change_relations = { country = ROOT value = -25 } }
+		ig:ig_landowners ?= { add_ig_approval = -5 }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 6 }
+		}
+	}
+}
+
+dhe_manchuria_rivalry.4 = {
+	type = country_event
+	placement = root
+	title = dhe_manchuria_rivalry.4.t
+	desc = dhe_manchuria_rivalry.4.d
+	flavor = dhe_manchuria_rivalry.4.f
+	icon = "gfx/interface/icons/event_icons/event_eagle.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_manchuria_rivalry.4.a
+		default_option = yes
+	}
+}
+
+dhe_manchuria_rivalry.5 = {
+	type = country_event
+	placement = root
+	title = dhe_manchuria_rivalry.5.t
+	desc = dhe_manchuria_rivalry.5.d
+	flavor = dhe_manchuria_rivalry.5.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	is_triggered_only = yes
+
+	trigger = {
+		has_journal_entry = je_dhe_manchuria_rivalry
+		exists = c:CHI
+		has_variable = dhe_manchuria_scout_network
+		NOT = { has_variable = dhe_manchuria_incident_cd }
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.5.a
+		default_option = yes
+		add_authority = -25
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 2 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.5.b
+		add_treasury = -15000
+		set_variable = { name = dhe_manchuria_qing_alarm days = 180 }
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = -10 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 4 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.5.c
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = 5 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = -3 }
+		}
+	}
+}
+
+dhe_manchuria_rivalry.6 = {
+	type = country_event
+	placement = root
+	title = dhe_manchuria_rivalry.6.t
+	desc = dhe_manchuria_rivalry.6.d
+	flavor = dhe_manchuria_rivalry.6.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	is_triggered_only = yes
+
+	trigger = {
+		has_journal_entry = je_dhe_manchuria_rivalry
+		exists = c:CHI
+		has_variable = dhe_manchuria_settlement_network
+		NOT = { has_variable = dhe_manchuria_incident_cd }
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.6.a
+		default_option = yes
+		add_treasury = -25000
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 2 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.6.b
+		add_authority = -40
+		change_infamy = 2
+		set_variable = { name = dhe_manchuria_qing_alarm days = 240 }
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = -15 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 5 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.6.c
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = 10 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = -4 }
+		}
+	}
+}
+
+dhe_manchuria_rivalry.7 = {
+	type = country_event
+	placement = root
+	title = dhe_manchuria_rivalry.7.t
+	desc = dhe_manchuria_rivalry.7.d
+	flavor = dhe_manchuria_rivalry.7.f
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+	is_triggered_only = yes
+
+	trigger = {
+		has_journal_entry = je_dhe_manchuria_rivalry
+		exists = c:CHI
+		has_variable = dhe_manchuria_official_network
+		NOT = { has_variable = dhe_manchuria_incident_cd }
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.7.a
+		default_option = yes
+		add_treasury = -20000
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 3 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.7.b
+		change_infamy = 2
+		set_variable = { name = dhe_manchuria_qing_alarm days = 300 }
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = -20 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 6 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.7.c
+		remove_variable = dhe_manchuria_official_network
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = 5 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = -3 }
+		}
+	}
+}
+
+dhe_manchuria_rivalry.8 = {
+	type = country_event
+	placement = root
+	title = dhe_manchuria_rivalry.8.t
+	desc = dhe_manchuria_rivalry.8.d
+	flavor = dhe_manchuria_rivalry.8.f
+	icon = "gfx/interface/icons/event_icons/event_red_cross.dds"
+	is_triggered_only = yes
+
+	trigger = {
+		has_journal_entry = je_dhe_manchuria_rivalry
+		has_variable = dhe_manchuria_qing_alarm
+		NOT = { has_variable = dhe_manchuria_incident_cd }
+		exists = c:CHI
+		c:CHI = { NOT = { has_civil_war = yes } }
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.8.a
+		default_option = yes
+		add_authority = -30
+		remove_variable = dhe_manchuria_qing_alarm
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = 10 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = -3 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.8.b
+		change_infamy = 3
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = -15 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 3 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.8.c
+		trigger = { authority >= 60 }
+		add_authority = -60
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = -20 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 5 }
+		}
+	}
+}

@@ -1,0 +1,93 @@
+### DHE custom journal widgets
+
+flowcontainer = {
+	name = "widget_je_dhe_manchuria_rivalry_header"
+	ignoreinvisible = yes
+	direction = vertical
+	parentanchor = hcenter
+	spacing = 8
+
+	widget = {
+		size = { 520 82 }
+		parentanchor = hcenter
+		tooltip = "dhe_manchuria_widget_tt"
+
+		background = {
+			using = entry_bg
+		}
+
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			margin = { 12 10 }
+			spacing = 12
+
+			vbox = {
+				layoutpolicy_horizontal = growing
+				layoutpolicy_vertical = expanding
+				spacing = 4
+				tooltip = "dhe_manchuria_widget_korea_desc"
+
+				large_flag = {
+					datacontext = "[JournalEntry.GetCountry]"
+					parentanchor = hcenter
+				}
+
+				textbox = {
+					text = "dhe_manchuria_widget_korea"
+					align = center|nobaseline
+					autoresize = yes
+					multiline = yes
+					maximumsize = { 150 -1 }
+					parentanchor = hcenter
+					default_format = "#title"
+				}
+			}
+
+			vbox = {
+				layoutpolicy_horizontal = growing
+				layoutpolicy_vertical = expanding
+				spacing = 5
+				tooltip = "dhe_manchuria_widget_frontier_desc"
+
+				icon = {
+					texture = "gfx/interface/icons/lens_toolbar_icons/rivalry.dds"
+					size = { 42 42 }
+					parentanchor = hcenter
+				}
+
+				textbox = {
+					text = "dhe_manchuria_widget_frontier"
+					align = center|nobaseline
+					autoresize = yes
+					multiline = yes
+					maximumsize = { 155 -1 }
+					parentanchor = hcenter
+					default_format = "#header"
+				}
+			}
+
+			vbox = {
+				layoutpolicy_horizontal = growing
+				layoutpolicy_vertical = expanding
+				spacing = 4
+				tooltip = "dhe_manchuria_widget_qing_desc"
+
+				large_flag = {
+					datacontext = "[JournalEntry.GetCountry.MakeScope.Var('dhe_manchuria_qing_country').GetCountry]"
+					parentanchor = hcenter
+				}
+
+				textbox = {
+					text = "dhe_manchuria_widget_qing"
+					align = center|nobaseline
+					autoresize = yes
+					multiline = yes
+					maximumsize = { 150 -1 }
+					parentanchor = hcenter
+					default_format = "#title"
+				}
+			}
+		}
+	}
+}
