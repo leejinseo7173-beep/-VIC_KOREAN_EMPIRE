@@ -74,7 +74,9 @@ je_dhe_gwangmu_reform_main = {
 			tooltip = je_dhe_gwangmu_infrastructure_done_desc_tt
 			has_variable = dhe_gwangmu_infrastructure_done
 		}
-		"scripted_bar_progress(dhe_progress_bar_gwangmu)" >= 100
+		je:je_dhe_gwangmu_reform_main = {
+				"scripted_bar_progress(dhe_progress_bar_gwangmu)" >= 100
+			}
 	}
 	
 	on_complete = {
@@ -185,7 +187,6 @@ je_korea_south_industry = {
 			any_scope_building = { is_building_type = building_food_industry level >= 5 }
 			any_scope_building = { is_building_type = building_furniture_manufactory level >= 5 } # 가구 공장
 			any_scope_building = { is_building_type = building_cotton_plantation level >= 5 }
-			any_scope_building = { is_building_type = building_dye_plantation level >= 5 } # 염료 농장
 		}
 		any_scope_state = {
 			state_region = s:STATE_YANGHO
@@ -247,7 +248,6 @@ je_korea_busan_industry = {
 			state_region = s:STATE_BUSAN
 			owner = ROOT
 			any_scope_building = { is_building_type = building_shipyard level >= 5 }
-			any_scope_building = { is_building_type = building_military_shipyard level >= 3 } # 해군 조선소
 			any_scope_building = { is_building_type = building_motor_industry level >= 5 }
 			any_scope_building = { is_building_type = building_steel_mill level >= 5 }
 			any_scope_building = { is_building_type = building_tooling_workshop level >= 5 }  # 공구 공장
@@ -324,7 +324,6 @@ je_korea_north_industry = {
 			state_region = s:STATE_GWANDONG
 			owner = ROOT
 			any_scope_building = { is_building_type = building_logging_camp level >= 10 }
-			any_scope_building = { is_building_type = building_coal_mine level >= 5 }
 			any_scope_building = { is_building_type = building_whaling_station level >= 3 }   # 포경 기지
 		}
 	}
@@ -375,11 +374,10 @@ je_dhe_gwangmu_military = {
 		has_technology_researched = napoleonic_warfare
 		has_technology_researched = power_of_the_purse
 		army_size >= 100
-		navy_size >= 15
 
 		any_scope_building = { is_building_type = building_arms_industry level >= 3 }
 		any_scope_building = { is_building_type = building_artillery_foundry level >= 3 }
-		any_scope_building = { is_building_type = building_military_shipyard level >= 2 }
+		any_scope_building = { is_building_type = building_shipyard level >= 2 }
     }
 
 	on_complete = {
@@ -597,10 +595,10 @@ je_dhe_great_korea_conquest = {
 
 	complete = {
 		owns_entire_state_region = STATE_SHENGJING
-		#owns_entire_state_region = STATE_SOUTHERN_MANCHURIA
+	owns_entire_state_region = STATE_SOUTHERN_MANCHURIA
 		#owns_entire_state_region = STATE_AMUR
 		#owns_entire_state_region = STATE_NORTHERN_MANCHURIA
-		#owns_entire_state_region = STATE_KYUSHU
+		owns_entire_state_region = STATE_KYUSHU
 		#owns_entire_state_region = STATE_KANSAI
 		#owns_entire_state_region = STATE_HOKKAIDO
 		#owns_entire_state_region = STATE_TOHOKU
@@ -737,7 +735,7 @@ je_dhe_southern_expansion = {
 		#owns_entire_state_region = STATE_CHUGOKU
 		#owns_entire_state_region = STATE_SHIKOKU
 		#owns_entire_state_region = STATE_RYUKYU_ISLANDS
-		#owns_entire_state_region = STATE_FORMOSA
+		owns_entire_state_region = STATE_FORMOSA
 	}
 	on_complete = {
 		set_variable = dhe_southern_expansion_done

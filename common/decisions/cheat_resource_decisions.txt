@@ -1,0 +1,890 @@
+﻿##############################################
+#open & close
+
+cheat_resource_decisions_open = {
+	is_shown = {
+		is_player = yes
+		NOT = { has_variable = resource_cheat_opened }
+	}
+
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		set_variable = resource_cheat_opened
+	}
+}
+
+cheat_resource_decisions_close = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_opened
+	}
+
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		remove_variable = resource_cheat_opened
+	}
+}
+
+cheat_resource_decisions_capped_open = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_opened
+		NOT = { has_variable = resource_cheat_capped_opened }
+	}
+
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		set_variable = resource_cheat_capped_opened
+	}
+}
+
+cheat_resource_decisions_capped_close = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_capped_opened
+	}
+
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		remove_variable = resource_cheat_capped_opened
+	}
+}
+
+cheat_resource_decisions_agro_open = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_opened
+		NOT = { has_variable = resource_cheat_agro_opened }
+	}
+
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		set_variable = resource_cheat_agro_opened
+	}
+}
+
+cheat_resource_decisions_agro_close = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_agro_opened
+	}
+
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		remove_variable = resource_cheat_agro_opened
+	}
+}
+
+cheat_resource_decisions_plantation_open = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_opened
+		NOT = { has_variable = resource_cheat_plantation_opened }
+	}
+
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		set_variable = resource_cheat_plantation_opened
+	}
+}
+
+cheat_resource_decisions_plantation_close = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_plantation_opened
+	}
+
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		remove_variable = resource_cheat_plantation_opened
+	}
+}
+
+cheat_resource_decisions_TR_open = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_opened
+		NOT = { has_variable = resource_cheat_TR_opened }
+	}
+
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		set_variable = resource_cheat_TR_opened
+	}
+}
+
+cheat_resource_decisions_TR_close = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_TR_opened
+	}
+
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		remove_variable = resource_cheat_TR_opened
+	}
+}
+
+##############################################
+#capped resources
+
+cheat_resource_decision_iron = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_capped_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_iron_mine
+					amount = 50
+				}
+			}
+		}
+	}
+}
+
+cheat_resource_decision_coal = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_capped_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_coal_mine
+					amount = 50
+				}
+			}
+		}
+	}
+}
+
+cheat_resource_decision_sulfur = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_capped_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_sulfur_mine
+					amount = 50
+				}
+			}
+		}
+	}
+}
+
+cheat_resource_decision_lead = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_capped_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_lead_mine
+					amount = 50
+				}
+			}
+		}
+	}
+}
+
+cheat_resource_decision_gold = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_capped_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_gold_mine
+					amount = 50
+				}
+			}
+		}
+	}
+}
+
+cheat_resource_decision_rubber = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_capped_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_rubber_plantation
+					amount = 50
+				}
+			}
+		}
+	}
+}
+
+cheat_resource_decision_oil = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_capped_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_oil_rig
+					amount = 50
+				}
+			}
+		}
+	}
+}
+
+cheat_resource_decision_logging = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_capped_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_logging_camp
+					amount = 50
+				}
+			}
+		}
+	}
+}
+
+cheat_resource_decision_fish = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_capped_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_fishing_wharf
+					amount = 50
+				}
+			}
+		}
+	}
+}
+
+cheat_resource_decision_whale = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_capped_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_whaling_station
+					amount = 50
+				}
+			}
+		}
+	}
+}
+
+####################################################################################################################
+#add arable land
+
+cheat_resource_decision_arable_land = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				add_arable_land = 50
+			}
+		}
+	}
+}
+
+####################################################################################################################
+#add agro buildings
+
+cheat_resource_decision_rye = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_agro_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				add_resource_potential = building_rye_farm
+			}
+		}
+	}
+}
+
+cheat_resource_decision_rice = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_agro_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				add_resource_potential = building_rice_farm
+			}
+		}
+	}
+}
+
+cheat_resource_decision_millet = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_agro_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				add_resource_potential = building_millet_farm
+			}
+		}
+	}
+}
+
+cheat_resource_decision_wheat = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_agro_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				add_resource_potential = building_wheat_farm
+			}
+		}
+	}
+}
+
+cheat_resource_decision_maize = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_agro_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				add_resource_potential = building_maize_farm
+			}
+		}
+	}
+}
+
+cheat_resource_decision_livestock = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_agro_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				add_resource_potential = building_livestock_ranch
+			}
+		}
+	}
+}
+
+cheat_resource_decision_vineyard = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_agro_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				add_resource_potential = building_vineyard
+			}
+		}
+	}
+}
+
+####################################################################################################################
+#add plantations
+
+cheat_resource_decision_coffee = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_plantation_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				add_resource_potential = building_coffee_plantation
+			}
+		}
+	}
+}
+
+cheat_resource_decision_cotton = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_plantation_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				add_resource_potential = building_cotton_plantation
+			}
+		}
+	}
+}
+
+cheat_resource_decision_dye = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_plantation_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				add_resource_potential = building_dye_plantation
+			}
+		}
+	}
+}
+
+cheat_resource_decision_opium = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_plantation_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				add_resource_potential = building_opium_plantation
+			}
+		}
+	}
+}
+
+cheat_resource_decision_tea = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_plantation_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				add_resource_potential = building_tea_plantation
+			}
+		}
+	}
+}
+
+cheat_resource_decision_tobacco = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_plantation_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				add_resource_potential = building_tobacco_plantation
+			}
+		}
+	}
+}
+
+cheat_resource_decision_sugar = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_plantation_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				add_resource_potential = building_sugar_plantation
+			}
+		}
+	}
+}
+
+cheat_resource_decision_banana = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_plantation_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				add_resource_potential = building_banana_plantation
+			}
+		}
+	}
+}
+
+cheat_resource_decision_silk = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_plantation_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				add_resource_potential = building_silk_plantation
+			}
+		}
+	}
+}
+
+#########################################
+#T&R
+
+cheat_resource_decision_water = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_TR_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_water_plant
+					amount = 50
+				}
+			}
+		}
+	}
+}
+
+cheat_resource_decision_copper = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_TR_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_copper_mine
+					amount = 50
+				}
+			}
+		}
+	}
+}
+
+cheat_resource_decision_bauxite = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_TR_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_bauxite_mine
+					amount = 50
+				}
+			}
+		}
+	}
+}
+
+cheat_resource_decision_commonores = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_TR_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_commonores_mine
+					amount = 50
+				}
+			}
+		}
+	}
+}
+
+cheat_resource_decision_advancedores = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_TR_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_advancedores_mine
+					amount = 50
+				}
+			}
+		}
+	}
+}
+
+cheat_resource_decision_gas = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_TR_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_natural_gas_rig
+					amount = 50
+				}
+			}
+		}
+	}
+}
+
+cheat_resource_decision_rare_earth = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_TR_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_rare_earths_mine
+					amount = 50
+				}
+			}
+		}
+	}
+}
+
+cheat_resource_decision_uranium = {
+	is_shown = {
+		is_player = yes
+		has_variable = resource_cheat_TR_opened
+	}
+	possible = {
+		is_player = yes
+	}
+
+	when_taken = {
+		every_scope_state = {
+			limit = { has_decree = decree_resource_cheat_target }
+			state_region = {
+				change_resource_potential = {
+					type = building_uranium_mine
+					amount = 50
+				}
+			}
+		}
+	}
+}

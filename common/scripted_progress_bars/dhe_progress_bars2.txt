@@ -578,6 +578,128 @@ dhe_progress_bar_military_discontent = {
 }
 
 # ==========================================================
+# 🐉 만주 영향력 경쟁 — 청나라 정세와 조선의 준비 상태에 따라 월간 변동
+# ==========================================================
+dhe_progress_bar_manchuria_rivalry = {
+	name = "dhe_progress_bar_manchuria_rivalry"
+	desc = "dhe_progress_bar_manchuria_rivalry_desc"
+	double_sided_bad = yes
+
+	start_value = 0
+	min_value = -40
+	max_value = 40
+
+	monthly_progress = {
+		if = {
+			limit = {
+				c:KOR ?= { has_variable = dhe_manchuria_scout_network }
+			}
+			add = { desc = "dhe_manchuria_inf_scout_network" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				c:KOR ?= { has_variable = dhe_manchuria_settlement_network }
+			}
+			add = { desc = "dhe_manchuria_inf_settlement_network" value = 1.5 }
+		}
+
+		if = {
+			limit = {
+				c:KOR ?= { has_variable = dhe_manchuria_official_network }
+			}
+			add = { desc = "dhe_manchuria_inf_official_network" value = 2.0 }
+		}
+
+		if = {
+			limit = {
+				c:KOR ?= { has_variable = dhe_manchuria_qing_alarm }
+				exists = c:CHI
+				c:CHI = { NOT = { has_civil_war = yes } }
+			}
+			subtract = { desc = "dhe_manchuria_inf_qing_alarm" value = 3.0 }
+		}
+
+		if = {
+			limit = {
+				exists = c:CHI
+				c:CHI = {
+					NOT = { has_civil_war = yes }
+					is_at_war = no
+					army_size >= 100
+				}
+			}
+			subtract = { desc = "dhe_manchuria_inf_qing_garrisons" value = 2.0 }
+		}
+
+		if = {
+			limit = {
+				exists = c:CHI
+				c:CHI = {
+					NOT = { has_civil_war = yes }
+					government_legitimacy >= 50
+				}
+			}
+			subtract = { desc = "dhe_manchuria_inf_qing_court" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				exists = c:CHI
+				c:CHI = {
+					NOT = { has_civil_war = yes }
+					bureaucracy >= 200
+				}
+			}
+			subtract = { desc = "dhe_manchuria_inf_qing_bureaucrats" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				c:KOR ?= { "relations(c:CHI)" <= -20 }
+				exists = c:CHI
+				c:CHI = { NOT = { has_civil_war = yes } }
+			}
+			subtract = { desc = "dhe_manchuria_inf_qing_hostility" value = 1.0 }
+		}
+
+		if = {
+			limit = { c:KOR ?= { army_size >= 30 } }
+			add = { desc = "dhe_manchuria_inf_border_army" value = 1.0 }
+		}
+
+		if = {
+			limit = { c:KOR ?= { army_size >= 50 } }
+			add = { desc = "dhe_manchuria_inf_army_dominance" value = 1.0 }
+		}
+
+		if = {
+			limit = { c:KOR ?= { bureaucracy >= 200 } }
+			add = { desc = "dhe_manchuria_inf_administration" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				exists = c:CHI
+				c:CHI = { has_civil_war = yes }
+			}
+			add = { desc = "dhe_manchuria_inf_qing_civil_war" value = 4.0 }
+		}
+
+		if = {
+			limit = {
+				exists = c:CHI
+				c:CHI = {
+					is_at_war = yes
+					NOT = { has_civil_war = yes }
+				}
+			}
+			add = { desc = "dhe_manchuria_inf_qing_at_war" value = 2.0 }
+		}
+	}
+}
+
+# ==========================================================
 # 🗺️ 간도 진척도 — 순수 버튼/이벤트 구동 (변경 없음)
 # ==========================================================
 dhe_progress_bar_jiandao = {
@@ -587,7 +709,7 @@ dhe_progress_bar_jiandao = {
 
 	start_value = 0
 	min_value = 0
-	max_value = 6
+	max_value = 9
 }
 
 # ==========================================================

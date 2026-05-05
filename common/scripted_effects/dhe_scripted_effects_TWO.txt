@@ -41,10 +41,34 @@ dhe_transfer_next_jiandao_province = {
 			TAKER = ROOT
 		}
 	}
-		else_if = {
+	else_if = {
 		limit = { p:xA05646 = { owner = c:CHI } }
 		transfer_province = {
 			PROVINCE = xA05646
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xF956C5 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xF956C5
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:x3F61E8 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x3F61E8
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:x5D6142 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x5D6142
 			GIVER = c:CHI
 			TAKER = ROOT
 		}
@@ -94,6 +118,27 @@ dhe_count_korean_jiandao_provinces = {
 	}
 	if = {
 		limit = { p:xE43B63 = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+	if = {
+		limit = { p:xF956C5 = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+	if = {
+		limit = { p:x3F61E8 = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+	if = {
+		limit = { p:x5D6142 = { owner = ROOT } }
 		change_variable = {
 			name = dhe_jiandao_korean_province_count
 			add = 1

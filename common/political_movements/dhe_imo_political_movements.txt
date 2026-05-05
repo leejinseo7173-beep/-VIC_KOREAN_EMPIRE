@@ -1,0 +1,119 @@
+# Encoding: UTF-8 with BOM
+
+movement_dhe_imo_reactionary = {
+	category = movement_category_ideological
+
+	ideology = ideology_reactionary_movement
+	character_ideologies = {
+		ideology_traditionalist
+		ideology_protectionist
+		ideology_authoritarian
+		ideology_luddite
+	}
+
+	creation_trigger = {
+		c:KOR ?= THIS
+		has_variable = dhe_imo_mutiny_resolved
+	}
+
+	creation_weight = {
+		value = 0
+	}
+
+	character_support_trigger = {
+		OR = {
+			has_ideology = ideology:ideology_traditionalist
+			has_ideology = ideology:ideology_protectionist
+			has_ideology = ideology:ideology_authoritarian
+			has_ideology = ideology:ideology_luddite
+			has_ideology = ideology:ideology_jingoist_leader
+			scope:interest_group ?= {
+				OR = {
+					has_ideology = ideology:ideology_reactionary
+					has_ideology = ideology:ideology_patriarchal
+				}
+			}
+		}
+	}
+
+	character_support_weight = {
+		value = 500
+		if = {
+			limit = {
+				OR = {
+					has_ideology = ideology:ideology_protectionist
+					has_ideology = ideology:ideology_traditionalist
+					has_ideology = ideology:ideology_luddite
+				}
+			}
+			multiply = 5
+		}
+	}
+
+	pop_support_trigger = {
+		NOT = {
+			is_pop_type = slaves
+		}
+	}
+
+	pop_support_factors = {
+		movement_support_aristocrats
+		movement_support_clergymen
+		movement_support_shopkeepers
+		movement_support_farmers
+		movement_support_soldiers
+		movement_support_peasants
+	}
+
+	pop_support_weight = {
+		add = {
+			value = 10
+			desc = "POP_BASE_SUPPORT"
+		}
+		if = {
+			limit = {
+				OR = {
+					is_pop_type = aristocrats
+					is_pop_type = clergymen
+					is_pop_type = soldiers
+					is_pop_type = peasants
+				}
+			}
+			add = {
+				value = 100
+				desc = "dhe_imo_old_order_support"
+			}
+		}
+	}
+
+	revolution = {
+		possible = {
+			political_movement_support >= 0.01
+		}
+
+		weight = {
+			value = 10000
+		}
+
+		state_weight = {
+			value = 0
+			if = {
+				limit = {
+					state_region = s:STATE_SEOUL
+				}
+				add = 1000
+			}
+		}
+
+		target_fraction_of_states = {
+			value = 0.10
+		}
+	}
+
+	additional_radicalism_factors = {
+		add = {
+			value = 2
+			desc = "dhe_imo_reactionary_fury"
+		}
+	}
+}

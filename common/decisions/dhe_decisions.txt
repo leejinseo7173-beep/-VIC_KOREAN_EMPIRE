@@ -1,6 +1,4 @@
-﻿# File: common/decisions/korea_decisions.txt
-# (디시전을 누를 때 일지 활성화 + 각 지역에 모디파이어를 동시에 뿌립니다)
-
+﻿
 # 2. 황실의 원대한 야망
 dhe_great_korea_ambition = {
 is_shown = {
@@ -13,6 +11,10 @@ NOT = { has_variable = dhe_great_korea_ambition_taken }
 possible = {
 is_subject = no
 army_size >= 30
+custom_tooltip = {
+text = dhe_manchuria_influence_resolved_tt
+has_variable = dhe_manchuria_influence_resolved
+}
 }
 
 

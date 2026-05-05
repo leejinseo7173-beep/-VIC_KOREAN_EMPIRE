@@ -1,5 +1,4 @@
 ﻿
-
 # =============================================================================
 # [프롤로그 0] 타이머: 조용한 은자의 나라
 # =============================================================================
@@ -7,22 +6,24 @@ je_dhe_hermit_kingdom = {
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 	group = dhe_reforms
 	is_shown_when_inactive = {
-		exists = c:KOR
-		this = c:KOR
-	}
+
+        exists = c:KOR
+         this = c:KOR
+}
 	possible = {
 		c:KOR ?= THIS
 		NOT = { has_variable = dhe_hermit_kingdom_broken }
 	}
+	
+	# ★ 일지가 시작된 후 1개월이 지나면 자동으로 완료됨
 	complete = {
-		# ★ 빅토리아 3 바닐라 전용 타이머! (일지가 활성화된 지 1개월이 지나면 완료)
 		game_date >= 1836.2.1
 	}
+	
 	on_complete = {
 		trigger_event = { id = dhe_event.100 popup = yes }
 	}
 }
-
 # =============================================================================
 # [프롤로그 1] 메인: 도탄에 빠진 왕조 (4개의 세부 일지를 모두 깨야 완료)
 # =============================================================================
@@ -74,8 +75,6 @@ je_dhe_sedo_politics_reform = {
 	scripted_progress_bar = dhe_progress_bar_royal_authority
 	scripted_button = dhe_button_purge_corrupt_officials
 	scripted_button = dhe_button_abolish_seowon
-
-scripted_button = dhe_button_test_northern_manchuria
 
 	possible = {
 		c:KOR ?= THIS
@@ -277,6 +276,183 @@ je_dhe_samjeong_hwangok = {
 		set_variable = dhe_hwangok_resolved
 	}
 }
+# =============================================================================
+# ⚔️ 메인 일지: 자주독립의 길 (대청제국 종속국 탈피)
+# =============================================================================
+je_dhe_road_to_independence = {
+	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
+	group = dhe_reforms
+	
+	possible = {
+		c:KOR ?= THIS
+		# 조선을 구원한 이후이고, 아직 누군가의 종속국(조공국)일 때
+		has_variable = dhe_joseon_saved
+		is_subject = yes
+	}
+
+	immediate = {
+		scope:journal_entry ?= {
+			add_progress = { name = dhe_progress_bar_independence value = 0 }
+		}
+	}
+
+	scripted_progress_bar = dhe_progress_bar_independence
+	scripted_button = dhe_button_refuse_tribute
+	scripted_button = dhe_button_independence_parade
+	scripted_button = dhe_button_trigger_independence_war
+
+	# 💥 클리어 조건: 외교전을 통해 청나라로부터 진짜 '독립(is_subject = no)'을 쟁취했을 때!
+	complete = {
+		is_subject = no
+	}
+	
+	on_complete = {
+		set_variable = dhe_independence_achieved
+		add_journal_entry = { type = je_dhe_manchuria_rivalry }
+		trigger_event = { id = dhe_independence.2 popup = yes }
+	}
+}
+
+# =============================================================================
+# 🧨 위기 일지: 임오(壬午)의 붉은 불길 (임오군란)
+# =============================================================================
+je_dhe_imo_mutiny = {
+	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
+	group = dhe_reforms
+	
+	possible = {
+		c:KOR ?= THIS
+		has_variable = dhe_hermit_kingdom_broken
+		NOT = { has_variable = dhe_imo_mutiny_resolved } # 이벤트 터지면 일지 닫힘
+	}
+
+	scripted_progress_bar = dhe_progress_bar_military_discontent
+	scripted_button = dhe_button_pay_soldiers
+	scripted_button = dhe_button_punish_supply_officers
+
+	# 🟢 평화적 해결: 직업 군인제 도입 + 분노 0 유지
+	complete = {
+		has_law = law_type:law_professional_army
+		# 💥 [수정됨] 일지 스코프 지정
+		je:je_dhe_imo_mutiny ?= {
+			"scripted_bar_progress(dhe_progress_bar_military_discontent)" <= 0
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_imo_mutiny_resolved
+		add_modifier = { name = dhe_mod_loyal_army months = 120 }
+	}
+
+	# 🔴 위기 대폭발: 분노 100 도달 시 일지 실패 -> 군란 이벤트 발생!
+	fail = {
+		# 💥 [수정됨] 일지 스코프 지정
+		je:je_dhe_imo_mutiny ?= {
+			"scripted_bar_progress(dhe_progress_bar_military_discontent)" >= 100
+		}
+	}
+
+	on_fail = {
+		set_variable = dhe_imo_mutiny_resolved
+		if = {
+			limit = {
+				NOT = {
+					any_political_movement = {
+						is_political_movement_type = movement_dhe_imo_reactionary
+					}
+				}
+			}
+			create_political_movement = { type = movement_dhe_imo_reactionary }
+		}
+		random_political_movement = {
+			limit = {
+				is_political_movement_type = movement_dhe_imo_reactionary
+			}
+			add_modifier = { name = dhe_mod_imo_movement_fury months = 12 }
+		}
+		random_scope_state = {
+			limit = { state_region = s:STATE_SEOUL }
+			add_modifier = { name = dhe_mod_imo_gyeonggi_revolt months = 12 }
+		}
+		ig:ig_armed_forces ?= {
+			add_modifier = { name = ig_approval_angry_temp months = 36 }
+		}
+		ig:ig_landowners ?= {
+			add_modifier = { name = ig_approval_angry_temp months = 36 }
+		}
+		trigger_event = { id = dhe_imo.2 days = 1 }
+		trigger_event = { id = dhe_imo.1 popup = yes }
+	}
+}
+
+# =============================================================================
+# 🐉 만주 영향력 경쟁: 대청제국의 북방 장악력 흔들기
+# =============================================================================
+je_dhe_manchuria_rivalry = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	group = dhe_conquest
+
+	is_shown_in_lobby = {
+		c:KOR ?= THIS
+	}
+	possible = {
+		c:KOR ?= THIS
+		is_subject = no
+		exists = c:CHI
+		has_variable = dhe_independence_achieved
+		NOT = { has_variable = dhe_manchuria_influence_resolved }
+		NOT = { has_variable = dhe_great_korea_ambition_taken }
+	}
+
+	immediate = {
+		c:CHI ?= {
+			save_temporary_scope_as = dhe_manchuria_qing_scope
+		}
+		set_variable = {
+			name = dhe_manchuria_qing_country
+			value = scope:dhe_manchuria_qing_scope
+		}
+		scope:journal_entry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 0 }
+		}
+	}
+
+	widget = {
+		gui = "gui/journal_entry_widgets/dhe_manchuria_widgets.gui"
+		name = "widget_je_dhe_manchuria_rivalry_header"
+		container = "custom_widget_container_3"
+	}
+
+	scripted_progress_bar = dhe_progress_bar_manchuria_rivalry
+	scripted_button = dhe_button_manchuria_scouts
+	scripted_button = dhe_button_manchuria_settlers
+	scripted_button = dhe_button_manchuria_officials
+
+	on_monthly_pulse = {
+		random_events = {
+			200 = 0
+			15 = dhe_manchuria_rivalry.5
+			15 = dhe_manchuria_rivalry.6
+			15 = dhe_manchuria_rivalry.7
+			10 = dhe_manchuria_rivalry.8
+		}
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_manchuria_influence_korea_victory_tt
+			je:je_dhe_manchuria_rivalry ?= {
+				"scripted_bar_progress(dhe_progress_bar_manchuria_rivalry)" >= 40
+			}
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_manchuria_influence_resolved
+		add_prestige = 25
+		trigger_event = { id = dhe_manchuria_rivalry.4 popup = yes }
+	}
+}
 
 je_dhe_jiandao_expansion = {
 	icon = "gfx/interface/icons/event_icons/event_map.dds"
@@ -292,13 +468,13 @@ je_dhe_jiandao_expansion = {
 	scripted_button = dhe_button_expand_jiandao
 	scripted_button = dhe_button_jiandao_immigration
 	
-	# 진행도 바가 6(타일 6개)에 도달하면 완료!
+	# 진행도 바가 9(간도 프로빈스 9개)에 도달하면 완료!
 	complete = {
 		custom_tooltip = {
 			text = dhe_jiandao_max_tt
 			tooltip = dhe_jiandao_max_desc_tt
 			je:je_dhe_jiandao_expansion ?= {
-				"scripted_bar_progress(dhe_progress_bar_jiandao)" >= 6
+				"scripted_bar_progress(dhe_progress_bar_jiandao)" >= 9
 			}
 		}
 	}
@@ -371,77 +547,3 @@ je_dhe_grand_northern_expansion = {
 	}
 }
 
-# =============================================================================
-# ⚔️ 메인 일지: 자주독립의 길 (대청제국 종속국 탈피)
-# =============================================================================
-je_dhe_road_to_independence = {
-	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
-	group = dhe_reforms
-	
-	possible = {
-		c:KOR ?= THIS
-		# 조선을 구원한 이후이고, 아직 누군가의 종속국(조공국)일 때
-		has_variable = dhe_joseon_saved
-		is_subject = yes
-	}
-
-	immediate = {
-		scope:journal_entry ?= {
-			add_progress = { name = dhe_progress_bar_independence value = 0 }
-		}
-	}
-
-	scripted_progress_bar = dhe_progress_bar_independence
-	scripted_button = dhe_button_refuse_tribute
-	scripted_button = dhe_button_independence_parade
-	scripted_button = dhe_button_trigger_independence_war
-
-	# 💥 클리어 조건: 외교전을 통해 청나라로부터 진짜 '독립(is_subject = no)'을 쟁취했을 때!
-	complete = {
-		is_subject = no
-	}
-	
-	on_complete = {
-		set_variable = dhe_independence_achieved
-		trigger_event = { id = dhe_independence.2 popup = yes }
-	}
-}
-
-# =============================================================================
-# 🧨 위기 일지: 임오(壬午)의 붉은 불길 (임오군란)
-# =============================================================================
-je_dhe_imo_mutiny = {
-	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
-	group = dhe_reforms
-	
-	possible = {
-		c:KOR ?= THIS
-		has_variable = dhe_hermit_kingdom_broken
-		NOT = { has_variable = dhe_imo_mutiny_resolved } # 이벤트 터지면 일지 닫힘
-	}
-
-	scripted_progress_bar = dhe_progress_bar_military_discontent
-	scripted_button = dhe_button_pay_soldiers
-	scripted_button = dhe_button_punish_supply_officers
-
-	# 🟢 평화적 해결: 직업 군인제 도입 + 분노 0 유지
-	complete = {
-		has_law = law_type:law_professional_army
-		"scripted_bar_progress(dhe_progress_bar_military_discontent)" <= 0
-	}
-
-	on_complete = {
-		set_variable = dhe_imo_mutiny_resolved
-		add_modifier = { name = dhe_mod_loyal_army months = 120 }
-	}
-
-	# 🔴 위기 대폭발: 분노 100 도달 시 일지 실패 -> 군란 이벤트 발생!
-	fail = {
-		"scripted_bar_progress(dhe_progress_bar_military_discontent)" >= 100
-	}
-
-	on_fail = {
-		set_variable = dhe_imo_mutiny_resolved
-		trigger_event = { id = dhe_imo.1 popup = yes }
-	}
-}

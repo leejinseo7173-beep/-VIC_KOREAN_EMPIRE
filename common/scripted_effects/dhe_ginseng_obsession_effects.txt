@@ -1,0 +1,37 @@
+# DHE ginseng cultural obsessions.
+# Vanilla v1.13 uses culture scopes such as cu:yankee with add_cultural_obsession.
+
+dhe_add_ginseng_obsessions_effect = {
+	if = {
+		limit = {
+			cu:korean = {
+				NOT = { has_cultural_obsession = ginseng }
+			}
+		}
+		cu:korean = {
+			add_cultural_obsession = ginseng
+		}
+	}
+
+	if = {
+		limit = {
+			cu:han = {
+				NOT = { has_cultural_obsession = ginseng }
+			}
+		}
+		cu:han = {
+			add_cultural_obsession = ginseng
+		}
+	}
+
+	if = {
+		limit = {
+			cu:japanese = {
+				NOT = { has_cultural_obsession = ginseng }
+			}
+		}
+		cu:japanese = {
+			add_cultural_obsession = ginseng
+		}
+	}
+}

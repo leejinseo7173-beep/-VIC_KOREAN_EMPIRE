@@ -59,3 +59,45 @@ company_daehan_cheonil_bank = {
 		building_tooling_workshop_throughput_add = 0.10
 	}
 }
+
+# 개성인삼상회 (대한제국 특산품 수출 회사)
+company_gaeseong_ginseng = {
+    icon = "gfx/interface/icons/company_icons/basic_colonial_plantations_2.dds"
+    background = "gfx/interface/icons/company_icons/company_backgrounds/comp_illu_plantation.dds"
+
+	category = shopkeeper_owned
+	flavored_company = yes
+    preferred_headquarters = { STATE_SEOUL }
+
+	building_types = {
+		building_ginseng_plantation
+		building_hanyak_workshop
+	}
+
+	extension_building_types = {
+		building_trade_center
+		building_port
+	}
+
+	potential = {
+		country_has_primary_culture = cu:korean
+	}
+
+	possible = {
+		has_technology_researched = enclosure
+		any_scope_state = {
+            state_region = s:STATE_SEOUL
+			is_incorporated = yes
+			any_scope_building = {
+				is_building_type = building_ginseng_plantation
+				level >= 3
+			}
+		}
+	}
+
+	prosperity_modifier = {
+		building_ginseng_plantation_throughput_add = 0.15
+		building_hanyak_workshop_throughput_add = 0.10
+		state_trade_advantage_mult = 0.05
+	}
+}

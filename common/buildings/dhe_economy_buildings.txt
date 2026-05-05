@@ -1,0 +1,73 @@
+# DHE economy buildings.
+# Add future industry, commerce, and specialty-goods buildings here.
+
+building_ginseng_plantation = {
+	building_group = bg_plantations
+	icon = "gfx/interface/icons/building_icons/tea_plantation.dds"
+	required_construction = construction_cost_low
+
+	unlocking_technologies = {
+		enclosure
+	}
+
+	city_type = farm
+	levels_per_mesh = 50
+
+	production_method_groups = {
+		pmg_base_building_ginseng_plantation
+		pmg_train_automation_building_ginseng_plantation
+	}
+
+	potential = {
+		OR = {
+			state_region = s:STATE_SEOUL
+			state_region = s:STATE_BUSAN
+			state_region = s:STATE_YANGHO
+			state_region = s:STATE_SARIWON
+			state_region = s:STATE_PYONGYANG
+			state_region = s:STATE_GWANDONG
+			state_region = s:STATE_CHNGCHEONG
+			state_region = s:STATE_HAESEO
+		}
+	}
+
+	ownership_type = self
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_plantations.dds"
+
+	ai_value = {
+		value = 1000
+	}
+}
+
+building_hanyak_workshop = {
+	building_group = bg_light_industry
+	icon = "gfx/interface/icons/building_icons/food_industry.dds"
+	city_type = city
+	levels_per_mesh = 50
+
+	unlocking_technologies = {
+		manufacturies
+	}
+
+	production_method_groups = {
+		pmg_base_building_hanyak_workshop
+		pmg_hanyak_packaging
+	}
+
+	required_construction = construction_cost_high
+
+	possible = {
+		owner = {
+			NOT = {
+				has_law_or_variant = law_type:law_industry_banned
+			}
+		}
+	}
+
+	ownership_type = self
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_light_industry.dds"
+
+	ai_value = {
+		value = 1000
+	}
+}

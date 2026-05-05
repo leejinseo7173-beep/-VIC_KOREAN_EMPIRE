@@ -103,6 +103,22 @@ dhe_mod_loyal_army = {
 	ig_armed_forces_approval_add = 5          # 군부 지지도 상승
 }
 
+# 임오군란 전용 정치운동에만 적용되는 분노
+dhe_mod_imo_movement_fury = {
+	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
+	political_movement_radicalism_add = 2
+	political_movement_pop_attraction_mult = 2
+	political_movement_activism_growth_mult = 5
+}
+
+# 경기도에서 임오군란 혁명군이 일어나도록 지역 지지와 동원 가중치를 높임
+dhe_mod_imo_gyeonggi_revolt = {
+	icon = "gfx/interface/icons/event_icons/event_city_on_fire.dds"
+	state_radicals_from_political_movements_mult = 2
+	state_pop_pol_str_mult = 1
+	state_conscription_rate_add = 0.5
+}
+
 # ==========================================================
 # 🏗️ 5. 광무개혁 (인프라 1단계 보상) 누락분
 # ==========================================================

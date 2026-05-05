@@ -60,7 +60,7 @@ state_trait_bongsan_mine = { #봉산탄전
 	}
 }
 state_trait_hanseong_capital = {
-	icon = "gfx/interface/icons/modifier_icons/modifier_default.dds"
+	icon = "gfx/interface/icons/modifier_icons/dhe_seoul.dds"
 	modifier = {
     state_building_throughput_mult = 0.3       # 모든 건물 처리율 +30% (공장, 농장 효율이 미쳐 날뜁니다)
 		state_construction_mult = 0.5              # 주 건설 속도 +50% (건물을 클릭하자마자 뚝딱 지어집니다)

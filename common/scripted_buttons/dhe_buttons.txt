@@ -60,15 +60,6 @@ dhe_button_abolish_seowon = {
 	}
 }
 
-# 북만주 테스트 버튼 (기존 유지)
-dhe_button_test_northern_manchuria = {
-	name = "dhe_button_test_northern_manchuria"
-	desc = "dhe_button_test_northern_manchuria_desc"
-	visible = { always = no }
-	possible = { always = no }
-	effect = { }
-}
-
 # ==========================================================
 # [B] 전정 — 어명 하사 버튼 (서브 일지 시작)
 # ==========================================================
@@ -140,7 +131,6 @@ dhe_button_yangjeon_punish = {
 
 	effect = {
 		ig:ig_landowners = { add_ig_approval = -3 }
-		ig:ig_bureaucrats = { add_ig_approval = -1 }
 		je:je_dhe_yangjeon ?= { add_progress = { value = 8 name = dhe_progress_bar_yangjeon } }
 		add_authority = -40
 		custom_tooltip = dhe_button_yangjeon_punish_tt
@@ -305,6 +295,7 @@ dhe_button_refuse_tribute = {
 	effect = {
 		set_variable = { name = dhe_cd_refuse_tribute days = 360 }
 		c:CHI = { change_relations = { country = ROOT value = -20 } }
+		add_liberty_desire = 10
 		je:je_dhe_road_to_independence ?= {
 			add_progress = { name = dhe_progress_bar_independence value = 12 }
 		}
@@ -327,6 +318,7 @@ dhe_button_independence_parade = {
 		set_variable = { name = dhe_cd_independence_parade days = 360 }
 		add_treasury = -25000
 		add_authority = -50
+		add_liberty_desire = 15
 		je:je_dhe_road_to_independence ?= {
 			add_progress = { name = dhe_progress_bar_independence value = 10 }
 		}
@@ -436,8 +428,55 @@ dhe_button_gwangmu_mission = {
 }
 
 # ==========================================================
-# [H] 간도/연해주 버튼 (기존 유지 — 이벤트 호출형)
+# [H] 만주 영향력 경쟁 / 간도 / 연해주 버튼
 # ==========================================================
+dhe_button_manchuria_scouts = {
+	name = "dhe_button_manchuria_scouts"
+	desc = "dhe_button_manchuria_scouts_desc"
+	visible = {
+		c:KOR ?= this
+		has_journal_entry = je_dhe_manchuria_rivalry
+	}
+	possible = {
+		NOT = { has_variable = dhe_cd_manchuria_scouts }
+		authority >= 50
+	}
+	effect = {
+		trigger_event = { id = dhe_manchuria_rivalry.1 popup = yes }
+	}
+}
+
+dhe_button_manchuria_settlers = {
+	name = "dhe_button_manchuria_settlers"
+	desc = "dhe_button_manchuria_settlers_desc"
+	visible = {
+		c:KOR ?= this
+		has_journal_entry = je_dhe_manchuria_rivalry
+	}
+	possible = {
+		NOT = { has_variable = dhe_cd_manchuria_settlers }
+	}
+	effect = {
+		trigger_event = { id = dhe_manchuria_rivalry.2 popup = yes }
+	}
+}
+
+dhe_button_manchuria_officials = {
+	name = "dhe_button_manchuria_officials"
+	desc = "dhe_button_manchuria_officials_desc"
+	visible = {
+		c:KOR ?= this
+		has_journal_entry = je_dhe_manchuria_rivalry
+	}
+	possible = {
+		NOT = { has_variable = dhe_cd_manchuria_officials }
+		authority >= 80
+	}
+	effect = {
+		trigger_event = { id = dhe_manchuria_rivalry.3 popup = yes }
+	}
+}
+
 dhe_button_expand_jiandao = {
 	name = "dhe_button_expand_jiandao"
 	desc = "dhe_button_expand_jiandao_desc"
@@ -468,7 +507,7 @@ dhe_button_outer_manchuria_expansion = {
 		je:je_dhe_outer_manchuria ?= {
 			NOT = { "scripted_bar_progress(dhe_progress_bar_outer_manchuria)" >= 13 }
 		}
-		NOT = { has_variable = dhe_cd_outer_manchuria }
+		 NOT = { has_variable = dhe_cd_outer_manchuria }
 	}
 	effect = { trigger_event = { id = dhe_expansion.1 popup = yes } }
 }
