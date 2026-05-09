@@ -28,6 +28,7 @@ building_ginseng_plantation = {
 			state_region = s:STATE_GWANDONG
 			state_region = s:STATE_CHNGCHEONG
 			state_region = s:STATE_HAESEO
+			state_region = s:STATE_JIANDAO
 		}
 	}
 

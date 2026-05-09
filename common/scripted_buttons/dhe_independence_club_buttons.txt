@@ -1,0 +1,269 @@
+﻿# Encoding: UTF-8 with BOM
+# File: common/scripted_buttons/dhe_independence_club_buttons.txt
+
+dhe_button_ic_public_speech = {
+	name = "dhe_button_ic_public_speech"
+	desc = "dhe_button_ic_public_speech_desc"
+
+	visible = {
+		has_journal_entry = je_dhe_independence_club
+	}
+
+	possible = {
+		authority >= 50
+		ig:ig_intelligentsia = { clout >= 0.10 }
+		NOT = { has_variable = dhe_cool_ic_public_speech }
+	}
+
+	effect = {
+		add_authority = -50
+		je:je_dhe_independence_club ?= {
+			add_progress = { value = 6 name = dhe_progress_bar_constitutional_pressure }
+		}
+		set_variable = { name = dhe_cool_ic_public_speech days = 180 }
+		set_variable = { name = dhe_ic_public_network days = 365 }
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+	}
+}
+
+dhe_button_ic_police_supervision = {
+	name = "dhe_button_ic_police_supervision"
+	desc = "dhe_button_ic_police_supervision_desc"
+
+	visible = {
+		has_journal_entry = je_dhe_independence_club
+	}
+
+	possible = {
+		authority >= 50
+		government_legitimacy >= 40
+		NOT = { has_variable = dhe_cool_ic_police_supervision }
+	}
+
+	effect = {
+		add_authority = -50
+		je:je_dhe_independence_club ?= {
+			add_progress = { value = -6 name = dhe_progress_bar_constitutional_pressure }
+		}
+		set_variable = { name = dhe_cool_ic_police_supervision days = 180 }
+		set_variable = { name = dhe_ic_palace_guard days = 365 }
+		ig:ig_landowners = { add_ig_approval = 1 }
+		ig:ig_intelligentsia = { add_ig_approval = -1 }
+	}
+}
+
+dhe_button_ic_imperial_crackdown = {
+	name = "dhe_button_ic_imperial_crackdown"
+	desc = "dhe_button_ic_imperial_crackdown_desc"
+
+	visible = {
+		has_journal_entry = je_dhe_independence_club
+	}
+
+	possible = {
+		authority >= 100
+		government_legitimacy >= 50
+		NOT = { has_variable = dhe_cool_ic_imperial_crackdown }
+	}
+
+	effect = {
+		add_authority = -100
+		je:je_dhe_independence_club ?= {
+			add_progress = { value = -12 name = dhe_progress_bar_constitutional_pressure }
+		}
+		set_variable = { name = dhe_cool_ic_imperial_crackdown days = 365 }
+		set_variable = { name = dhe_ic_royalist_press days = 540 }
+		ig:ig_landowners = { add_ig_approval = 2 }
+		ig:ig_intelligentsia = { add_ig_approval = -2 }
+	}
+}
+
+dhe_button_ic_constitutional_compromise = {
+	name = "dhe_button_ic_constitutional_compromise"
+	desc = "dhe_button_ic_constitutional_compromise_desc"
+
+	visible = {
+		has_journal_entry = je_dhe_independence_club
+	}
+
+	possible = {
+		authority >= 100
+		ig:ig_intelligentsia = { clout >= 0.15 }
+		literacy_rate >= 0.35
+		NOT = { has_variable = dhe_cool_ic_constitutional_compromise }
+	}
+
+	effect = {
+		add_authority = -100
+		je:je_dhe_independence_club ?= {
+			add_progress = { value = 12 name = dhe_progress_bar_constitutional_pressure }
+		}
+		set_variable = { name = dhe_cool_ic_constitutional_compromise days = 365 }
+		set_variable = { name = dhe_ic_constitutional_petition days = 540 }
+		ig:ig_intelligentsia = { add_ig_approval = 2 }
+		ig:ig_landowners = { add_ig_approval = -1 }
+	}
+}
+
+# Encoding: UTF-8 with BOM
+# File: common/scripted_buttons/dhe_constitutional_reform_buttons.txt
+
+dhe_button_constitution_public_hearings = {
+	name = "dhe_button_constitution_public_hearings"
+	desc = "dhe_button_constitution_public_hearings_desc"
+
+	visible = {
+		has_journal_entry = je_dhe_constitutional_reform
+	}
+
+	possible = {
+		authority >= 50
+		NOT = { has_variable = dhe_cool_constitution_public_hearings }
+	}
+
+	effect = {
+		add_authority = -50
+		je:je_dhe_constitutional_reform ?= {
+			add_progress = { value = 10 name = dhe_progress_bar_constitutional_settlement }
+		}
+		set_variable = { name = dhe_cool_constitution_public_hearings days = 180 }
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+	}
+}
+
+dhe_button_constitution_publish_draft = {
+	name = "dhe_button_constitution_publish_draft"
+	desc = "dhe_button_constitution_publish_draft_desc"
+
+	visible = {
+		has_journal_entry = je_dhe_constitutional_reform
+	}
+
+	possible = {
+		authority >= 75
+		government_legitimacy >= 50
+		NOT = { has_variable = dhe_cool_constitution_publish_draft }
+		NOT = { has_variable = dhe_constitution_imperial_council_solution }
+		NOT = { has_variable = dhe_constitution_limited_assembly_solution }
+	}
+
+	effect = {
+		add_authority = -75
+		je:je_dhe_constitutional_reform ?= {
+			add_progress = { value = 20 name = dhe_progress_bar_constitutional_settlement }
+		}
+		set_variable = { name = dhe_cool_constitution_publish_draft days = 360 }
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		ig:ig_landowners = { add_ig_approval = -1 }
+	}
+}
+
+dhe_button_constitution_imperial_council = {
+	name = "dhe_button_constitution_imperial_council"
+	desc = "dhe_button_constitution_imperial_council_desc"
+
+	visible = {
+		has_journal_entry = je_dhe_constitutional_reform
+	}
+
+	possible = {
+		authority >= 100
+		government_legitimacy >= 50
+		NOT = { has_variable = dhe_constitution_limited_assembly_solution }
+	}
+
+	effect = {
+		add_authority = -100
+		set_variable = dhe_constitution_imperial_council_solution
+	}
+}
+
+dhe_button_constitution_limited_assembly = {
+	name = "dhe_button_constitution_limited_assembly"
+	desc = "dhe_button_constitution_limited_assembly_desc"
+
+	visible = {
+		has_journal_entry = je_dhe_constitutional_reform
+	}
+
+	possible = {
+		authority >= 100
+		has_law = law_type:law_appointed_bureaucrats
+		ig:ig_intelligentsia = { clout >= 0.15 }
+		NOT = { has_variable = dhe_constitution_imperial_council_solution }
+	}
+
+	effect = {
+		add_authority = -100
+		set_variable = dhe_constitution_limited_assembly_solution
+	}
+}
+
+# 간도 경작지 확장
+dhe_button_jiandao_arable_land = {
+	name = "dhe_button_jiandao_arable_land"
+	desc = "dhe_button_jiandao_arable_land_desc"
+
+	cooldown = {
+		days = 1095
+	}
+
+	visible = {
+		has_journal_entry = je_dhe_jiandao_arable_expansion
+		var:dhe_jiandao_arable_counter_var < 3
+	}
+
+	possible = {
+		gold_reserves >= 25000
+		owns_entire_state_region = STATE_JIANDAO
+	}
+
+	effect = {
+		change_variable = {
+			name = dhe_jiandao_arable_counter_var
+			add = 1
+		}
+		je:je_dhe_jiandao_arable_expansion ?= {
+			add_progress = { name = dhe_progress_bar_jiandao_arable value = 1 }
+		}
+		trigger_event = { id = dhe_jiandao.5 popup = yes }
+		show_as_tooltip = {
+			s:STATE_JIANDAO.region_state:KOR = {
+				state_region = {
+					add_arable_land = 10
+				}
+			}
+		}
+	}
+
+	ai_chance = {
+		value = 10
+	}
+}
+
+dhe_button_jiandao_crop_potential = {
+	name = "dhe_button_jiandao_crop_potential"
+	desc = "dhe_button_jiandao_crop_potential_desc"
+
+	cooldown = {
+		days = 1825
+	}
+
+	visible = {
+		has_journal_entry = je_dhe_jiandao_arable_expansion
+		var:dhe_jiandao_crop_counter_var < 4
+	}
+
+	possible = {
+		gold_reserves >= 15000
+		owns_entire_state_region = STATE_JIANDAO
+	}
+
+	effect = {
+		trigger_event = { id = dhe_jiandao.6 popup = yes }
+	}
+
+	ai_chance = {
+		value = 10
+	}
+}

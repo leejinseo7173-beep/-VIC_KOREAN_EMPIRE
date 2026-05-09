@@ -1,0 +1,148 @@
+﻿# Encoding: UTF-8 with BOM
+# File: common/journal_entries/dhe_independence_club_journal_entries.txt
+
+je_dhe_independence_club = {
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	group = dhe_reforms
+
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
+
+	is_shown_when_inactive = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = dhe_independence_club_resolved }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	possible = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = dhe_independence_club_resolved }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	scripted_progress_bar = dhe_progress_bar_constitutional_pressure
+	scripted_button = dhe_button_ic_public_speech
+	scripted_button = dhe_button_ic_police_supervision
+	scripted_button = dhe_button_ic_imperial_crackdown
+	scripted_button = dhe_button_ic_constitutional_compromise
+
+	immediate = {
+		trigger_event = { id = dhe_independence_club.1 popup = yes }
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_ic_independence_club_victory_tt
+			je:je_dhe_independence_club ?= {
+				"scripted_bar_progress(dhe_progress_bar_constitutional_pressure)" >= 40
+			}
+		}
+	}
+
+	fail = {
+		custom_tooltip = {
+			text = dhe_ic_royalist_victory_tt
+			je:je_dhe_independence_club ?= {
+				"scripted_bar_progress(dhe_progress_bar_constitutional_pressure)" <= -40
+			}
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_independence_club_resolved
+		set_variable = dhe_manhmin_movement_success
+		trigger_event = { id = dhe_independence_club.4 popup = yes }
+
+		if = {
+			limit = {
+				has_variable = dhe_gwangmu_society_done
+				NOT = { has_variable = dhe_constitutional_reform_started }
+				NOT = { has_variable = dhe_constitutional_reform_resolved }
+			}
+			set_variable = dhe_constitutional_reform_started
+			add_journal_entry = { type = je_dhe_constitutional_reform }
+		}
+	}
+
+	on_fail = {
+		set_variable = dhe_independence_club_resolved
+		set_variable = dhe_ic_imperial_solution
+		trigger_event = { id = dhe_independence_club.3 popup = yes }
+	}
+}
+
+# Encoding: UTF-8 with BOM
+# File: common/journal_entries/dhe_constitutional_reform_journal_entries.txt
+
+je_dhe_constitutional_reform = {
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	group = dhe_reforms
+
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
+
+	is_shown_when_inactive = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_constitutional_reform_started
+		NOT = { has_variable = dhe_constitutional_reform_resolved }
+	}
+
+	possible = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_constitutional_reform_started
+	}
+
+	scripted_progress_bar = dhe_progress_bar_constitutional_settlement
+	scripted_button = dhe_button_constitution_public_hearings
+	scripted_button = dhe_button_constitution_publish_draft
+	scripted_button = dhe_button_constitution_imperial_council
+	scripted_button = dhe_button_constitution_limited_assembly
+
+	immediate = {
+		trigger_event = { id = dhe_constitutional_reform.1 popup = yes }
+	}
+
+	complete = {
+		OR = {
+			has_variable = dhe_constitution_imperial_council_solution
+			has_variable = dhe_constitution_limited_assembly_solution
+			je:je_dhe_constitutional_reform ?= {
+				"scripted_bar_progress(dhe_progress_bar_constitutional_settlement)" >= 100
+			}
+		}
+	}
+
+	fail = {
+		has_variable = dhe_ic_imperial_solution
+	}
+
+	on_complete = {
+		set_variable = dhe_constitutional_reform_resolved
+		remove_variable = dhe_constitutional_reform_started
+
+		if = {
+			limit = { has_variable = dhe_constitution_imperial_council_solution }
+			trigger_event = { id = dhe_constitutional_reform.2 popup = yes }
+		}
+		else_if = {
+			limit = { has_variable = dhe_constitution_limited_assembly_solution }
+			trigger_event = { id = dhe_constitutional_reform.3 popup = yes }
+		}
+		else = {
+			trigger_event = { id = dhe_constitutional_reform.4 popup = yes }
+		}
+	}
+
+	on_fail = {
+		set_variable = dhe_constitutional_reform_resolved
+		remove_variable = dhe_constitutional_reform_started
+	}
+}

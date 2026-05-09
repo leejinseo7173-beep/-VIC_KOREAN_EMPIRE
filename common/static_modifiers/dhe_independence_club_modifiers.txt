@@ -1,0 +1,44 @@
+﻿# Encoding: UTF-8 with BOM
+# File: common/static_modifiers/dhe_independence_club_modifiers.txt
+
+dhe_mod_imperial_absolutism_reaffirmed = {
+	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	country_authority_add = 100
+	country_prestige_add = 25
+}
+
+dhe_mod_constitutional_experiment = {
+	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	country_bureaucracy_add = 100
+	country_prestige_add = 25
+}
+
+dhe_mod_manhmin_unrest = {
+	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	country_authority_add = -100
+	country_prestige_add = -25
+}
+
+# Encoding: UTF-8 with BOM
+# File: common/static_modifiers/dhe_constitutional_reform_modifiers.txt
+
+dhe_mod_imperial_constitution = {
+	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	country_authority_add = 75
+	country_legitimacy_base_add = 5
+	country_prestige_add = 25
+}
+
+dhe_mod_limited_constitutional_monarchy = {
+	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	country_bureaucracy_add = 150
+	country_legitimacy_base_add = 10
+	country_prestige_add = 25
+}
+
+dhe_mod_constitutional_charter = {
+	icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	country_bureaucracy_add = 75
+	country_legitimacy_base_add = 5
+	country_prestige_add = 15
+}

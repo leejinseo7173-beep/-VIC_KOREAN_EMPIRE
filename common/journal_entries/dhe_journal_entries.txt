@@ -507,13 +507,11 @@ je_dhe_gwangmu_society = {
 		NOT = { has_variable = dhe_gwangmu_reform_failed }
 	}
 
+	immediate = {
+		add_journal_entry = { type = je_dhe_independence_club }
+	}
+
 	complete = {
-		OR = {
-			has_law = law_type:law_freedom_of_conscience
-			has_law = law_type:law_right_of_assembly
-			has_law = law_type:law_censorship
-			has_law = law_type:law_protected_speech
-		}
 		has_technology_researched = egalitarianism
 		has_technology_researched = labor_movement
 		has_technology_researched = human_rights
@@ -528,6 +526,15 @@ je_dhe_gwangmu_society = {
 		# 💥 [신규] 메인 일지에 진척도 20 쏴주기!
 		je:je_dhe_gwangmu_reform_main ?= {
 			add_progress = { name = dhe_progress_bar_gwangmu value = 20 }
+		}
+		if = {
+			limit = {
+				has_variable = dhe_manhmin_movement_success
+				NOT = { has_variable = dhe_constitutional_reform_started }
+				NOT = { has_variable = dhe_constitutional_reform_resolved }
+			}
+			set_variable = dhe_constitutional_reform_started
+			add_journal_entry = { type = je_dhe_constitutional_reform }
 		}
 	}
 }

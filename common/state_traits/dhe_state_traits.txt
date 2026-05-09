@@ -59,6 +59,47 @@ state_trait_bongsan_mine = { #봉산탄전
 		building_coal_mine_throughput_add = 0.2
 	}
 }
+
+state_trait_gaeseong_ginseng = { #개성 인삼 산지
+	icon = "gfx/interface/icons/state_trait_icons/resources_exotic.dds"
+
+	modifier = {
+		building_ginseng_plantation_throughput_add = 0.15
+		building_hanyak_workshop_throughput_add = 0.05
+	}
+}
+
+state_trait_busanpo = { #부산포
+	icon = "gfx/interface/icons/state_trait_icons/natural_harbors.dds"
+
+	modifier = {
+		building_shipyard_throughput_add = 0.1
+		building_port_throughput_add = 0.1
+		state_trade_capacity_mult = 0.15
+		state_market_access_price_impact = 0.05
+	}
+}
+
+state_trait_taedong_river_basin = { #대동강 유역
+	icon = "gfx/interface/icons/state_trait_icons/river.dds"
+
+	modifier = {
+		state_infrastructure_add = 10
+		state_trade_capacity_mult = 0.1
+		building_group_bg_agriculture_throughput_add = 0.05
+	}
+}
+
+state_trait_south_sea_archipelago = { #남해 다도해
+	icon = "gfx/interface/icons/state_trait_icons/resources_fish.dds"
+
+	modifier = {
+		building_group_bg_fishing_throughput_add = 0.15
+		building_group_bg_whaling_throughput_add = 0.1
+		building_port_throughput_add = 0.05
+	}
+}
+
 state_trait_hanseong_capital = {
 	icon = "gfx/interface/icons/modifier_icons/dhe_seoul.dds"
 	modifier = {

@@ -481,7 +481,94 @@ je_dhe_jiandao_expansion = {
 	
 	on_complete = {
 		set_variable = dhe_jiandao_resolved 
+		add_journal_entry = { type = je_dhe_jiandao_arable_expansion }
 		trigger_event = { id = dhe_jiandao.2 popup = yes }
+	}
+}
+
+# =============================================================================
+# 간도 경작지 확장
+# =============================================================================
+je_dhe_jiandao_arable_expansion = {
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+	group = dhe_conquest
+
+	is_shown_in_lobby = { c:KOR ?= THIS }
+
+	is_shown_when_inactive = {
+		c:KOR ?= THIS
+		has_variable = dhe_jiandao_resolved
+		NOT = { has_variable = dhe_jiandao_arable_resolved }
+		owns_entire_state_region = STATE_JIANDAO
+	}
+
+	possible = {
+		c:KOR ?= THIS
+		has_variable = dhe_jiandao_resolved
+		NOT = { has_variable = dhe_jiandao_arable_resolved }
+		owns_entire_state_region = STATE_JIANDAO
+	}
+
+	immediate = {
+		trigger_event = { id = dhe_jiandao.8 popup = yes }
+		s:STATE_JIANDAO = {
+			random_scope_state = {
+				limit = {
+					owner = root
+				}
+				save_scope_as = dhe_jiandao_state_scope
+			}
+		}
+		set_variable = {
+			name = dhe_jiandao_arable_counter_var
+			value = 0
+		}
+		set_variable = {
+			name = dhe_jiandao_crop_counter_var
+			value = 0
+		}
+	}
+
+	scripted_progress_bar = dhe_progress_bar_jiandao_arable
+	scripted_button = dhe_button_jiandao_arable_land
+	scripted_button = dhe_button_jiandao_crop_potential
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_jiandao_settlement_goal_tt
+			s:STATE_JIANDAO.region_state:KOR = {
+				state_population > 100000
+				gdp > 100000
+			}
+		}
+		custom_tooltip = {
+			text = dhe_jiandao_arable_land_goal_tt
+			je:je_dhe_jiandao_arable_expansion ?= {
+				"scripted_bar_progress(dhe_progress_bar_jiandao_arable)" >= 3
+			}
+		}
+		custom_tooltip = {
+			text = dhe_jiandao_crop_potential_goal_tt
+			exists = var:dhe_jiandao_crop_counter_var
+			var:dhe_jiandao_crop_counter_var >= 4
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_jiandao_arable_resolved
+		s:STATE_JIANDAO.region_state:KOR = {
+			add_modifier = {
+				name = dhe_mod_black_soil_development
+				months = 120
+			}
+		}
+		remove_variable = dhe_jiandao_arable_counter_var
+		remove_variable = dhe_jiandao_crop_counter_var
+		remove_variable = dhe_jiandao_rice_trial_var
+		remove_variable = dhe_jiandao_dye_trial_var
+		remove_variable = dhe_jiandao_tobacco_trial_var
+		remove_variable = dhe_jiandao_ginseng_trial_var
+		trigger_event = { id = dhe_jiandao.7 popup = yes }
 	}
 }
 
