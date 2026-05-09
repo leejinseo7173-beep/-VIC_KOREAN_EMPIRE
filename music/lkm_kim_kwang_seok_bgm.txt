@@ -1,0 +1,217 @@
+﻿lkm_kim_kwang_seok_mood_tr_01 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/to_you.ogg"
+    name = "to_you"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_02 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/sad_song.ogg"
+    name = "sad_song"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_03 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/not_posted_letter_2.ogg"
+    name = "not_posted_letter_2"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_04 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/not_posted_letter.ogg"
+    name = "not_posted_letter"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_05 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/on_the_street.ogg"
+    name = "on_the_street"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_06 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/My_love_I_couldnt_tell_you.ogg"
+    name = "My_love_I_couldnt_tell_you"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_07 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/a_stump.ogg"
+    name = "a_stump"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_08 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/Please_wait_for_me.ogg"
+    name = "Please_wait_for_me"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_09 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/Write_letter_cloudy_autumn_sky.ogg"
+    name = "Write_letter_cloudy_autumn_sky"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_10 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/sound_of_your_laughter.ogg"
+    name = "sound_of_your_laughter"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_11 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/in_the_wilderness.ogg"
+    name = "in_the_wilderness"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_12 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/i_loved_you.ogg"
+    name = "i_loved_you"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_13 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/a_love_that_hurts_so_much_wasnt_love.ogg"
+    name = "a_love_that_hurts_so_much_wasnt_love"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_14 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/a_story_of_an_old_couple_in_their_60s.ogg"
+    name = "a_story_of_an_old_couple_in_their_60s"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_15 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/my_man.ogg"
+    name = "my_man"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_16 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/standup.ogg"
+    name = "standup"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_17 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/with_a_burning_thirst.ogg"
+    name = "with_a_burning_thirst"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_18 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/where_the_wind_blows.ogg"
+    name = "where_the_wind_blows"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_19 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/my_song.ogg"
+    name = "my_song"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_20 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/become_dust.ogg"
+    name = "become_dust"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_21 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/two_wheeled_car.ogg"
+    name = "two_wheeled_car"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_22 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/unlucky_guy.ogg"
+    name = "unlucky_guy"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_23 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/alone_night.ogg"
+    name = "alone_night"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_24 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/letter_private_2.ogg"
+    name = "letter_private_2"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_25 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/the_days.ogg"
+    name = "the_days"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_26 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/heart_of_missing.ogg"
+    name = "heart_of_missing"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_kim_kwang_seok_mood_tr_27 = {
+    music = "file:/soundtrack/lkm_kim_kwang_seok_music/around_thirty.ogg"
+    name = "around_thirty"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+

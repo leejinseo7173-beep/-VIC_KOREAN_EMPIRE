@@ -1,0 +1,129 @@
+﻿lkm_lee_moon_sae_mood_tr_01 = {
+    music = "file:/soundtrack/lkm_lee_moon_sae_music/I_couldnt_say_anything.ogg"
+    name = "I_couldnt_say_anything"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_lee_moon_sae_mood_tr_02 = {
+    music = "file:/soundtrack/lkm_lee_moon_sae_music/I_dont_know_yet.ogg"
+    name = "I_dont_know_yet"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_lee_moon_sae_mood_tr_03 = {
+    music = "file:/soundtrack/lkm_lee_moon_sae_music/Wild_horse.ogg"
+    name = "Wild_horse"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_lee_moon_sae_mood_tr_04 = {
+    music = "file:/soundtrack/lkm_lee_moon_sae_music/in_the_rain.ogg"
+    name = "in_the_rain"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_lee_moon_sae_mood_tr_05 = {
+    music = "file:/soundtrack/lkm_lee_moon_sae_music/On_a_night_alone_its_raining.ogg"
+    name = "On_a_night_alone_its_raining"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_lee_moon_sae_mood_tr_06 = {
+    music = "file:/soundtrack/lkm_lee_moon_sae_music/whistle.ogg"
+    name = "whistle"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_lee_moon_sae_mood_tr_07 = {
+    music = "file:/soundtrack/lkm_lee_moon_sae_music/A_Girl.ogg"
+    name = "A_Girl"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_lee_moon_sae_mood_tr_08 = {
+    music = "file:/soundtrack/lkm_lee_moon_sae_music/white_feeling.ogg"
+    name = "white_feeling"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_lee_moon_sae_mood_tr_09 = {
+    music = "file:/soundtrack/lkm_lee_moon_sae_music/You_and_forever.ogg"
+    name = "You_and_forever"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_lee_moon_sae_mood_tr_10 = {
+    music = "file:/soundtrack/lkm_lee_moon_sae_music/Gwanghwamun_love_song.ogg"
+    name = "guanghwamun"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_lee_moon_sae_mood_tr_11 = {
+    music = "file:/soundtrack/lkm_lee_moon_sae_music/red_sunset.ogg"
+    name = "red_sunset"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_lee_moon_sae_mood_tr_12 = {
+    music = "file:/soundtrack/lkm_lee_moon_sae_music/only_her_laughter.ogg"
+    name = "only_her_laughter"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_lee_moon_sae_mood_tr_13 = {
+    music = "file:/soundtrack/lkm_lee_moon_sae_music/standing_under_the_shades_of_a_street_tree.ogg"
+    name = "standing_under_the_shades_of_a_street_tree"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_lee_moon_sae_mood_tr_14 = {
+    music = "file:/soundtrack/lkm_lee_moon_sae_music/flying_through_the_night.ogg"
+    name = "flying_through_the_night"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_lee_moon_sae_mood_tr_15 = {
+    music = "file:/soundtrack/lkm_lee_moon_sae_music/when_love_passes.ogg"
+    name = "when_love_passes"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+lkm_lee_moon_sae_mood_tr_16 = {
+    music = "file:/soundtrack/lkm_lee_moon_sae_music/old_love.ogg"
+    name = "old_love"
+    pause_factor = 0
+    mood = yes
+    can_be_interrupted = yes
+}
+
+

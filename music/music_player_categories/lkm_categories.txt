@@ -1,0 +1,58 @@
+﻿category = {
+    id = "lkm_bgm_category_00"
+    name = "lkm_kim_kwang_seok_bgm"
+    tracks = {
+        "lkm_kim_kwang_seok_mood_tr_01"
+        "lkm_kim_kwang_seok_mood_tr_02"
+        "lkm_kim_kwang_seok_mood_tr_03"
+        "lkm_kim_kwang_seok_mood_tr_04"
+        "lkm_kim_kwang_seok_mood_tr_05"
+        "lkm_kim_kwang_seok_mood_tr_06"
+        "lkm_kim_kwang_seok_mood_tr_07"
+        "lkm_kim_kwang_seok_mood_tr_08"
+        "lkm_kim_kwang_seok_mood_tr_09"
+        "lkm_kim_kwang_seok_mood_tr_10"
+        "lkm_kim_kwang_seok_mood_tr_11"
+        "lkm_kim_kwang_seok_mood_tr_12"
+        "lkm_kim_kwang_seok_mood_tr_13"
+        "lkm_kim_kwang_seok_mood_tr_14"
+        "lkm_kim_kwang_seok_mood_tr_15"
+        "lkm_kim_kwang_seok_mood_tr_16"
+        "lkm_kim_kwang_seok_mood_tr_17"
+        "lkm_kim_kwang_seok_mood_tr_18"
+        "lkm_kim_kwang_seok_mood_tr_19"
+        "lkm_kim_kwang_seok_mood_tr_20"
+        "lkm_kim_kwang_seok_mood_tr_21"
+        "lkm_kim_kwang_seok_mood_tr_22"
+        "lkm_kim_kwang_seok_mood_tr_23"
+        "lkm_kim_kwang_seok_mood_tr_24"
+        "lkm_kim_kwang_seok_mood_tr_25"
+        "lkm_kim_kwang_seok_mood_tr_26"
+        "lkm_kim_kwang_seok_mood_tr_27"
+    }
+}
+
+category = {
+    id = "lkm_bgm_category_01"
+    name = "lkm_lee_moon_sae_bgm"
+    tracks = {
+        "lkm_lee_moon_sae_mood_tr_01"
+        "lkm_lee_moon_sae_mood_tr_02"
+        "lkm_lee_moon_sae_mood_tr_03"
+        "lkm_lee_moon_sae_mood_tr_04"
+        "lkm_lee_moon_sae_mood_tr_05"
+        "lkm_lee_moon_sae_mood_tr_06"
+        "lkm_lee_moon_sae_mood_tr_07"
+        "lkm_lee_moon_sae_mood_tr_08"
+        "lkm_lee_moon_sae_mood_tr_09"
+        "lkm_lee_moon_sae_mood_tr_10"
+        "lkm_lee_moon_sae_mood_tr_11"
+        "lkm_lee_moon_sae_mood_tr_12"
+        "lkm_lee_moon_sae_mood_tr_13"
+        "lkm_lee_moon_sae_mood_tr_14"
+        "lkm_lee_moon_sae_mood_tr_15"
+        "lkm_lee_moon_sae_mood_tr_16"
+    }
+}
+
+
