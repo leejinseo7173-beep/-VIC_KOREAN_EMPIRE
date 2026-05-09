@@ -92,7 +92,7 @@
  # 9. 일지 - 사회 개혁
  je_dhe_gwangmu_society:0 "사회 개혁"
  je_dhe_gwangmu_society_desc:0 "법과 제도를 손질해 사회의 근간을 다진다."
- je_dhe_gwangmu_society_goal:0 "공교육 법안 통과"
+ je_dhe_gwangmu_society_goal:0 "사회 개혁 관련 기술을 연구할 것"
  je_dhe_gwangmu_society_reason:0 "법과 제도를 손질해 사회의 근간을 다진다."
 
  # 10. 일지 - 기반시설 정비
@@ -192,5 +192,5 @@
  je_dhe_gwangmu_military_done_desc_tt: "군제 개혁 일지의 모든 조건을 만족해야 합니다."
  je_dhe_gwangmu_education_done_desc_tt: "교육 개혁 일지의 모든 조건을 만족해야 합니다."
  je_dhe_gwangmu_admin_done_desc_tt: "행정 개혁 일지의 모든 조건을 만족해야 합니다."
- je_dhe_gwangmu_society_done_desc_tt: "사회 개혁 일지의 모든 조건을 만족해야 합니다."
+ je_dhe_gwangmu_society_done_desc_tt: "사회 개혁 일지의 기술 연구 조건을 모두 만족해야 합니다."
  je_dhe_gwangmu_infrastructure_done_desc_tt: "기반시설 정비 일지의 모든 조건을 만족해야 합니다."

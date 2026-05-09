@@ -101,6 +101,7 @@ pm_hanyak_bottled_tonics_desc: "유리병에 담긴 인삼 강장제를 생산�
 
 company_gaeseong_ginseng: "개성인삼상회"
 company_gaeseong_ginseng_flavor: "개성의 인삼 상인과 대한제국의 수출 상단이 결합한 특산품 회사입니다. 엄격한 선별과 포장을 통해 인삼을 제국의 대표 수출품으로 키워냅니다."
+prestige_good_gaeseong_ginseng: "개성인삼"
 goods_output_ginseng_add: "@ginseng! 인삼 산출량"
 goods_output_ginseng_add_desc: "건물에서 생산하는 @ginseng! 인삼의 양"
 goods_input_ginseng_add: "@ginseng! 인삼 투입량"
@@ -113,6 +114,10 @@ building_ginseng_plantation_throughput_add: "$building_ginseng_plantation$ 건�
 building_ginseng_plantation_throughput_add_desc: "$building_ginseng_plantation$의 투입량과 산출량 양측에 대한 보너스 또는 불이익"
 building_hanyak_workshop_throughput_add: "$building_hanyak_workshop$ 건물 [concept_throughput]"
 building_hanyak_workshop_throughput_add_desc: "$building_hanyak_workshop$의 투입량과 산출량 양측에 대한 보너스 또는 불이익"
+state_trait_gaeseong_ginseng: "개성 인삼 산지"
+state_trait_busanpo: "부산포"
+state_trait_taedong_river_basin: "대동강 유역"
+state_trait_south_sea_archipelago: "남해 다도해"
 
  min:0 "민"
  yeong_hwan:0 "영환"

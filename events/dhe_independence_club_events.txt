@@ -1,0 +1,292 @@
+﻿# Encoding: UTF-8 with BOM
+# File: events/dhe_independence_club_events.txt
+
+namespace = dhe_independence_club
+
+dhe_independence_club.1 = {
+	type = country_event
+	placement = root
+	title = dhe_independence_club.1.t
+	desc = dhe_independence_club.1.d
+	flavor = dhe_independence_club.1.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	option = {
+		name = dhe_independence_club.1.a
+		ig:ig_intelligentsia = { add_ig_approval = 2 }
+	}
+}
+
+dhe_independence_club.3 = {
+	type = country_event
+	placement = root
+	title = dhe_independence_club.3.t
+	desc = dhe_independence_club.3.d
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	option = {
+		name = dhe_independence_club.3.a
+		add_modifier = { name = dhe_mod_imperial_absolutism_reaffirmed months = 120 }
+		ig:ig_landowners = { add_ig_approval = 3 }
+		ig:ig_intelligentsia = { add_ig_approval = -3 }
+	}
+}
+
+dhe_independence_club.4 = {
+	type = country_event
+	placement = root
+	title = dhe_independence_club.4.t
+	desc = dhe_independence_club.4.d
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	option = {
+		name = dhe_independence_club.4.a
+		add_modifier = { name = dhe_mod_constitutional_experiment months = 120 }
+		ig:ig_intelligentsia = { add_ig_approval = 4 }
+		ig:ig_landowners = { add_ig_approval = -2 }
+	}
+}
+
+dhe_independence_club.5 = {
+	type = country_event
+	placement = root
+	title = dhe_independence_club.5.t
+	desc = dhe_independence_club.5.d
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	option = {
+		name = dhe_independence_club.5.a
+		add_modifier = { name = dhe_mod_manhmin_unrest months = 60 }
+	}
+}
+
+# Encoding: UTF-8 with BOM
+# File: events/dhe_constitutional_reform_events.txt
+
+namespace = dhe_constitutional_reform
+
+dhe_constitutional_reform.1 = {
+	type = country_event
+	placement = root
+	title = dhe_constitutional_reform.1.t
+	desc = dhe_constitutional_reform.1.d
+	flavor = dhe_constitutional_reform.1.f
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	option = {
+		name = dhe_constitutional_reform.1.a
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		ig:ig_landowners = { add_ig_approval = -1 }
+	}
+}
+
+dhe_constitutional_reform.2 = {
+	type = country_event
+	placement = root
+	title = dhe_constitutional_reform.2.t
+	desc = dhe_constitutional_reform.2.d
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	option = {
+		name = dhe_constitutional_reform.2.a
+		add_modifier = { name = dhe_mod_imperial_constitution months = 120 }
+		ig:ig_landowners = { add_ig_approval = 2 }
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+	}
+}
+
+dhe_constitutional_reform.3 = {
+	type = country_event
+	placement = root
+	title = dhe_constitutional_reform.3.t
+	desc = dhe_constitutional_reform.3.d
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	option = {
+		name = dhe_constitutional_reform.3.a
+		add_modifier = { name = dhe_mod_limited_constitutional_monarchy months = 120 }
+		ig:ig_intelligentsia = { add_ig_approval = 4 }
+		ig:ig_landowners = { add_ig_approval = -2 }
+		if = {
+			limit = {
+				NOR = {
+					has_law = law_type:law_wealth_voting
+					has_law = law_type:law_census_voting
+					has_law = law_type:law_universal_suffrage
+				}
+			}
+			activate_law = law_type:law_wealth_voting
+		}
+	}
+}
+
+dhe_constitutional_reform.4 = {
+	type = country_event
+	placement = root
+	title = dhe_constitutional_reform.4.t
+	desc = dhe_constitutional_reform.4.d
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	option = {
+		name = dhe_constitutional_reform.4.a
+		add_modifier = { name = dhe_mod_constitutional_charter months = 120 }
+		ig:ig_intelligentsia = { add_ig_approval = 2 }
+	}
+}
+
+namespace = dhe_jiandao
+
+# [간도 경작지 확장] 시작
+dhe_jiandao.8 = {
+	type = country_event
+	placement = root
+	title = dhe_jiandao.8.t
+	desc = dhe_jiandao.8.d
+	flavor = dhe_jiandao.8.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jiandao.8.a
+	}
+}
+
+# [간도 경작지 확장] 개간 사업
+dhe_jiandao.5 = {
+	type = country_event
+	placement = scope:dhe_jiandao_state_scope
+	title = dhe_jiandao.5.t
+	desc = dhe_jiandao.5.d
+	flavor = dhe_jiandao.5.f
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jiandao.5.a
+		add_treasury = -25000
+		s:STATE_JIANDAO.region_state:KOR = {
+			state_region = {
+				add_arable_land = 10
+			}
+			add_modifier = {
+				name = dhe_mod_black_soil_development
+				months = 36
+			}
+		}
+	}
+}
+
+# [간도 경작지 확장] 작물 도입
+dhe_jiandao.6 = {
+	type = country_event
+	placement = scope:dhe_jiandao_state_scope
+	title = dhe_jiandao.6.t
+	desc = dhe_jiandao.6.d
+	flavor = dhe_jiandao.6.f
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jiandao.6.a
+		trigger = {
+			NOT = { has_variable = dhe_jiandao_rice_trial_var }
+		}
+		set_variable = dhe_jiandao_rice_trial_var
+		change_variable = {
+			name = dhe_jiandao_crop_counter_var
+			add = 1
+		}
+		add_treasury = -15000
+		s:STATE_JIANDAO = {
+			add_resource_potential = building_rice_farm
+		}
+		s:STATE_JIANDAO.region_state:KOR = {
+			add_modifier = {
+				name = dhe_mod_black_soil_development
+				months = 36
+			}
+		}
+	}
+
+	option = {
+		name = dhe_jiandao.6.b
+		trigger = {
+			NOT = { has_variable = dhe_jiandao_dye_trial_var }
+		}
+		set_variable = dhe_jiandao_dye_trial_var
+		change_variable = {
+			name = dhe_jiandao_crop_counter_var
+			add = 1
+		}
+		add_treasury = -15000
+		s:STATE_JIANDAO = {
+			add_resource_potential = building_dye_plantation
+		}
+		s:STATE_JIANDAO.region_state:KOR = {
+			add_modifier = {
+				name = dhe_mod_black_soil_development
+				months = 36
+			}
+		}
+	}
+
+	option = {
+		name = dhe_jiandao.6.c
+		trigger = {
+			NOT = { has_variable = dhe_jiandao_tobacco_trial_var }
+		}
+		set_variable = dhe_jiandao_tobacco_trial_var
+		change_variable = {
+			name = dhe_jiandao_crop_counter_var
+			add = 1
+		}
+		add_treasury = -15000
+		s:STATE_JIANDAO = {
+			add_resource_potential = building_tobacco_plantation
+		}
+		s:STATE_JIANDAO.region_state:KOR = {
+			add_modifier = {
+				name = dhe_mod_black_soil_development
+				months = 36
+			}
+		}
+	}
+
+	option = {
+		name = dhe_jiandao.6.e
+		trigger = {
+			NOT = { has_variable = dhe_jiandao_ginseng_trial_var }
+		}
+		set_variable = dhe_jiandao_ginseng_trial_var
+		change_variable = {
+			name = dhe_jiandao_crop_counter_var
+			add = 1
+		}
+		add_treasury = -15000
+		s:STATE_JIANDAO = {
+			add_resource_potential = building_ginseng_plantation
+		}
+		s:STATE_JIANDAO.region_state:KOR = {
+			add_modifier = {
+				name = dhe_mod_black_soil_development
+				months = 36
+			}
+		}
+	}
+}
+
+# [간도 경작지 확장] 완료
+dhe_jiandao.7 = {
+	type = country_event
+	placement = root
+	title = dhe_jiandao.7.t
+	desc = dhe_jiandao.7.d
+	flavor = dhe_jiandao.7.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jiandao.7.a
+		add_prestige = 10
+	}
+}
