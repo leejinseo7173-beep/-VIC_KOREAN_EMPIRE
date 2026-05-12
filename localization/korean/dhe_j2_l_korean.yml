@@ -2,9 +2,9 @@
  # ====================================================================
  # [0] 폭풍 전야 일지 및 디버프 모디파이어
  # ====================================================================
- je_dhe_hermit_kingdom:0 "조용한 은자의 나라"
+ je_dhe_hermit_kingdom:0 "#v 조용한 은자의 나라#!"
  je_dhe_hermit_kingdom_reason:0 "조선은 수백 년간 외부의 거친 파도를 피하며 평화로운 고립을 유지해왔습니다. 겉보기엔 그 어느 때보다 고요하지만, 무언가 불길한 폭풍이 다가오고 있습니다..."
- dhe_hermit_timer_tt:0 "1836년 2월 1일이 되면 기나긴 평화가 깨집니다."
+ dhe_hermit_timer_tt:0 "#v 1836년 2월 1일#!이 되면 기나긴 평화가 깨집니다."
 
  modifier_sedo_politics:0 "세도정치 (勢道政治)"
  modifier_sedo_politics_desc:0 "소수의 외척 가문이 국가의 모든 권력을 독점하고 있습니다. 왕권은 허수아비로 전락했고, 매관매직이 판을 치며, 썩어빠진 조정은 세상이 바뀌는 것도 모른 채 권력 투쟁에만 몰두하고 있습니다."
@@ -36,21 +36,21 @@
  # ====================================================================
  # [2] 일지 이름 및 기본 UI 텍스트
  # ====================================================================
- je_dhe_save_joseon:0 "도탄에 빠진 왕조"
- je_dhe_save_joseon_reason:0 "조선을 갉아먹는 세도정치와 삼정의 문란을 모두 타파해야만 새로운 시대로 나아갈 수 있습니다."
+ je_dhe_save_joseon:0 "#n 도탄에 빠진 왕조#!"
+ je_dhe_save_joseon_reason:0 "조선을 갉아먹는 #n 세도정치#!와 #n 삼정의 문란#!을 모두 타파해야만 새로운 시대로 나아갈 수 있습니다."
  
- je_dhe_sedo_politics_reform:0 "세도정치 타파"
- je_dhe_sedo_politics_reform_reason:0 "부패한 세도 가문들에게서 왕권을 되찾고 국가 기강을 바로잡아야 합니다."
- je_dhe_sedo_politics_reform_progress:0 "현재 왕권의 위엄을 회복하고 있습니다."
+ je_dhe_sedo_politics_reform:0 "#gold 세도정치 타파#!"
+ je_dhe_sedo_politics_reform_reason:0 "부패한 세도 가문들에게서 #gold 왕권#!을 되찾고 국가 기강을 바로잡아야 합니다."
+ je_dhe_sedo_politics_reform_progress:0 "현재 #gold 왕권의 위엄#!을 회복하고 있습니다."
 
- je_dhe_samjeong_jeonjeong:0 "전정(田政)의 문란 타파"
- je_dhe_samjeong_jeonjeong_reason:0 "조선의 토지 조세 제도는 부패한 관리들과 세도 가문의 농간으로 완전히 형해화되었습니다. 이를 근본적으로 바로잡기 위해서는, 공식적인 '양전 사업'과 은밀한 '은결 색출'이라는 두 가지 과제를 동시에 완수해야만 합니다."
+ je_dhe_samjeong_jeonjeong:0 "#gold 전정(田政)의 문란 타파#!"
+ je_dhe_samjeong_jeonjeong_reason:0 "조선의 토지 조세 제도는 부패한 관리들과 세도 가문의 농간으로 완전히 형해화되었습니다. 이를 근본적으로 바로잡기 위해서는, 공식적인 #v 양전 사업#!과 은밀한 #v 은결 색출#!이라는 두 가지 과제를 동시에 완수해야만 합니다."
  
- je_dhe_samjeong_gunjeong:0 "군정(軍政)의 문란 타파"
- je_dhe_samjeong_gunjeong_reason:0 "죽은 자와 어린아이에게까지 군포를 징수하는 끔찍한 제도를 철폐하고 근대적인 군사 제도를 도입해야 합니다."
+ je_dhe_samjeong_gunjeong:0 "#gold 군정(軍政)의 문란 타파#!"
+ je_dhe_samjeong_gunjeong_reason:0 "죽은 자와 어린아이에게까지 군포를 징수하는 끔찍한 제도를 철폐하고 #p 근대적인 군사 제도#!를 도입해야 합니다."
  
- je_dhe_samjeong_hwangok:0 "환곡(還穀)의 문란 타파"
- je_dhe_samjeong_hwangok_reason:0 "고리대금업으로 전락한 빈민 구제 제도를 혁파하고, 국가의 치안과 교육망을 확충하여 무너진 행정력을 정상화해야 합니다."
+ je_dhe_samjeong_hwangok:0 "#gold 환곡(還穀)의 문란 타파#!"
+ je_dhe_samjeong_hwangok_reason:0 "고리대금업으로 전락한 빈민 구제 제도를 혁파하고, 국가의 #v 치안#!과 #v 교육망#!을 확충하여 무너진 행정력을 정상화해야 합니다."
 
  # ====================================================================
  # [3] 전정의 문란 / 군정 / 환곡 상세 텍스트
@@ -58,21 +58,21 @@
  dhe_button_start_jeonjeong_reform:0 "팔도 양전(量田) 어명 내리기"
  dhe_button_start_jeonjeong_reform_desc:0 "공식적으로는 조선 팔도의 토지를 재측량하라는 어명을 내립니다. 하지만 이 어명의 이면에는, 기득권의 비자금 줄을 끊어버리려는 9살 천재 후계자의 무자비한 칼날이 숨겨져 있습니다.\n\n@warning_icon! #R 주의: 이 버튼을 누르면 막대한 자원 관리를 요구하는 2개의 하위 일지가 동시에 시작됩니다.#!"
 
- je_dhe_yangjeon:0 "팔도 양전(量田) 사업"
- je_dhe_yangjeon_reason:0 "행정력을 총동원하여 조선 팔도의 토지를 재측량하고 공식적인 조세 대장을 완성해야 합니다. 지방 수령들의 지독한 태업과 방해를 뚫고 진척도를 100까지 채우십시오."
+ je_dhe_yangjeon:0 "#v 팔도 양전(量田) 사업#!"
+ je_dhe_yangjeon_reason:0 "행정력을 총동원하여 조선 팔도의 토지를 재측량하고 공식적인 조세 대장을 완성해야 합니다. 지방 수령들의 지독한 태업과 방해를 뚫고 진척도를 #v 100#!까지 채우십시오."
  
- je_dhe_eungyeol:0 "장막 뒤의 칼날: 은결(隱結) 색출"
- je_dhe_eungyeol_reason:0 "어린 세자의 '지도 퍼즐 놀이'를 가장하여, 안동 김씨와 토호들이 교묘하게 숨겨둔 알짜배기 영지(은결)들을 샅샅이 찾아내야 합니다. 기득권의 맹렬한 은폐 공작을 뚫고 장악도를 100까지 채우십시오."
+ je_dhe_eungyeol:0 "#v 장막 뒤의 칼날#!: 은결(隱結) 색출"
+ je_dhe_eungyeol_reason:0 "어린 세자의 #v 지도 퍼즐 놀이#!를 가장하여, 안동 김씨와 토호들이 교묘하게 숨겨둔 알짜배기 영지(은결)들을 샅샅이 찾아내야 합니다. 기득권의 맹렬한 은폐 공작을 뚫고 장악도를 #v 100#!까지 채우십시오."
 
  dhe_progress_bar_royal_authority:0 "왕권(王權)의 위엄"
- dhe_progress_bar_royal_authority_desc:0 "외척과 지주들에게 빼앗긴 왕의 권력을 되찾아야 합니다. 이 수치가 100에 도달해야 진정한 개혁을 시작할 수 있습니다."
+ dhe_progress_bar_royal_authority_desc:0 "왕권 #v [JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|0]#!/#v 100#! (#v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#!)"
  dhe_royal_auth_base:0 "기본 왕권 약화"
  dhe_royal_auth_landowners_high:0 "강력한 양반 세력의 횡포"
  dhe_royal_auth_landowners_low:0 "지주 세력 약화로 인한 왕권 회복"
  dhe_royal_auth_bureaucracy_good:0 "국가 행정망 정상화"
 
  dhe_progress_bar_yangjeon:0 "양전 진척도"
- dhe_progress_bar_yangjeon_desc:0 "조선 팔도의 토지를 얼마나 재측량하여 대장에 등록했는지 나타냅니다. 진행도가 100에 도달하면 양전 사업이 완료됩니다."
+ dhe_progress_bar_yangjeon_desc:0 "양전 #v [JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|0]#!/#v 100#! (#v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#!)"
  dhe_yj_base_decay:0 "수령들의 기본 태업"
  dhe_yj_landowners_high:0 "지주 세력의 방해 공작"
  dhe_yj_hereditary_bureaucrats:0 "세습 관료제의 한계"
@@ -80,7 +80,7 @@
  dhe_yj_intelligentsia_high:0 "실학자들의 적극적인 측량"
 
  dhe_progress_bar_eungyeol:0 "은결 장악도"
- dhe_progress_bar_eungyeol_desc:0 "토호들이 숨겨둔 불법 영지(은결)를 얼마나 찾아내어 국가의 통제하에 두었는지 나타냅니다. 진행도가 100에 도달하면 은결 색출이 완료됩니다."
+ dhe_progress_bar_eungyeol_desc:0 "은결 #v [JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|0]#!/#v 100#! (#v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#!)"
  dhe_eg_base_decay:0 "안동 김씨의 교묘한 장부 은폐"
  dhe_eg_landowners_high:0 "지주들의 극렬한 무장 저항"
  dhe_eg_local_police:0 "지역 경찰의 토호 유착"
@@ -164,7 +164,7 @@
  dhe_trait_master_of_deception_desc:0 "자신을 힘없고 철없는 아이로 포장하는 데 천재적입니다. 늙은 대신들과 외세가 조선의 후계자를 '만만한 허수아비'로 착각하게 만든 뒤, 결정적인 순간에 비수를 꽂을 준비를 마쳤습니다."
 
  dhe_progress_bar_gunjeong:0 "군역 정상화 진척도"
- dhe_progress_bar_gunjeong_desc:0 "양반들의 조세 회피를 타파하고 호포제를 실시하기 위한 정치적 기반입니다."
+ dhe_progress_bar_gunjeong_desc:0 "군역 #v [JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|0]#!/#v 100#! (#v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#!)"
  je_dhe_gunjeong_law_tt:0 "농민 징집병 법률 폐지"
  dhe_gunjeong_max_tt:0 "기득권의 조세 저항 제압"
  dhe_gunjeong_max_desc_tt:0 "진척도를 100까지 채워 지주들의 저항을 완전히 꺾어야 합니다."
@@ -196,7 +196,7 @@
  dhe_hwangok_law_tt:0 "문란한 환곡제 폐지"
 
  dhe_progress_bar_hwangok:0 "사창제(社倉制) 정착 진척도"
- dhe_progress_bar_hwangok_desc:0 "마 마을 단위의 자치적인 곡식 대여 제도인 사창제를 도입하여 환곡의 적폐를 씻어냅니다."
+ dhe_progress_bar_hwangok_desc:0 "사창제 #v [JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|0]#!/#v 100#! (#v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#!)"
  dhe_hwangok_max_tt:0 "사창제 완전 정착"
  dhe_hwangok_max_desc_tt:0 "진척도를 100까지 채워 마을 단위의 자치 구휼 제도를 완성해야 합니다."
  
@@ -229,10 +229,10 @@
  dhe_ambition.1.f:0 "\"저 굽이치는 압록과 두만의 푸른 물결 너머, 잃어버린 옛 땅이 우리를 부르고 있다.\""
  dhe_ambition.1.a:0 "제국의 진군은 결코 멈추지 않을 것이다!"
 
- je_dhe_manchuria_rivalry:0 "만주 영향력 경쟁"
- je_dhe_manchuria_rivalry_reason:0 "독립을 쟁취했지만 북방의 길은 아직 열리지 않았습니다. 만주는 여전히 대청제국의 행정망과 군사적 위신 아래 놓여 있으며, 섣부른 북진은 외교적 고립과 국경 충돌을 부를 것입니다.\n\n국경 정찰망, 이주 기반, 변방 관리와의 비공식 접촉을 차근차근 넓혀 청나라의 만주 장악력을 흔들어야 합니다. 영향력 경쟁에서 우위를 확보하면 황실은 마침내 북방 경영을 선포할 수 있습니다."
+ je_dhe_manchuria_rivalry:0 "#gold 만주 영향력 경쟁#!"
+ je_dhe_manchuria_rivalry_reason:0 "독립을 쟁취했지만 #gold 북방#!의 길은 아직 열리지 않았습니다. 만주는 여전히 #n 대청제국#!의 행정망과 군사적 위신 아래 놓여 있으며, 섣부른 북진은 외교적 고립과 국경 충돌을 부를 것입니다.\n\n국경 정찰망, 이주 기반, 변방 관리와의 비공식 접촉을 차근차근 넓혀 청나라의 만주 장악력을 흔들어야 합니다. 영향력 경쟁에서 #p 우위#!를 확보하면 황실은 마침내 북방 경영을 선포할 수 있습니다."
  dhe_progress_bar_manchuria_rivalry:0 "만주 경쟁"
- dhe_progress_bar_manchuria_rivalry_desc:0 "만주 국경 지대의 영향력 균형입니다. 0은 조선과 청나라가 맞서는 균형점이며, +40에 도달하면 조선이 만주 주도권을 확보합니다. 청나라가 안정되어 있고 국경 단속을 유지할수록 진행도는 -40 방향으로 밀립니다."
+ dhe_progress_bar_manchuria_rivalry_desc:0 "영향력 #v [JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|0]#! (#v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#!)"
  dhe_manchuria_widget_tt:0 "만주 영향력 경쟁은 한 줄의 점수바로 표시됩니다. 왼쪽은 대한의 북방 진출, 오른쪽은 청나라의 기존 질서를 뜻합니다."
  dhe_manchuria_widget_korea:0 "대한제국"
  dhe_manchuria_widget_korea_desc:0 "정탐망, 이주망, 변방 관리를 통해 주도권을 넓힙니다."
@@ -307,10 +307,10 @@
  dhe_manchuria_rivalry.8.b:0 "내정 간섭이라며 일축하라."
  dhe_manchuria_rivalry.8.c:0 "국경 주둔군을 전진 배치하라."
 
- je_dhe_jiandao_expansion:0 "북방 영토 수복"
- je_dhe_jiandao_expansion_reason:0 "두만강 너머의 간도는 예로부터 조선 백성들의 삶의 터전이었습니다. 청나라의 영향력이 미치지 않는 틈을 타, 비밀리에 개척민들을 보내 실질적인 지배력을 확립해야 합니다."
+ je_dhe_jiandao_expansion:0 "#gold 북방 영토 수복#!"
+ je_dhe_jiandao_expansion_reason:0 "두만강 너머의 #gold 간도#!는 예로부터 조선 백성들의 삶의 터전이었습니다. 청나라의 영향력이 미치지 않는 틈을 타, 비밀리에 개척민들을 보내 실질적인 지배력을 확립해야 합니다."
  dhe_progress_bar_jiandao:0 "간도 점유율"
- dhe_progress_bar_jiandao_desc:0 "간도의 총 9개 구역(프로빈스) 중 몇 곳을 조선이 장악했는지 나타냅니다."
+ dhe_progress_bar_jiandao_desc:0 "간도 #v [JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|0]#!/#v 9#! (#v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#!)"
  dhe_jiandao_max_tt:0 "간도 전역 장악"
  dhe_jiandao_max_desc_tt:0 "진행도를 9까지 채워 간도의 모든 프로빈스를 장악해야 합니다."
  
@@ -332,10 +332,10 @@
  dhe_jiandao.4.a:0 "이 땅에 조선 백성의 뿌리를 깊게 내리리라!"
  dhe_modifier_jiandao_settlement:0 "간도 개척 지원 사업"
 
- je_dhe_outer_manchuria:0 "고토 수복: 연해주 개척"
- je_dhe_outer_manchuria_reason:0 "과거 발해의 영토였던 연해주의 주요 거점들을 수복할 기회가 왔습니다. 대청제국의 혼란을 틈타 개척단과 군대를 파견하여 국경을 점진적으로 북상시켜야 합니다."
+ je_dhe_outer_manchuria:0 "#gold 고토 수복#!: 연해주 개척"
+ je_dhe_outer_manchuria_reason:0 "과거 발해의 영토였던 #gold 연해주#!의 주요 거점들을 수복할 기회가 왔습니다. #n 대청제국의 혼란#!을 틈타 개척단과 군대를 파견하여 국경을 점진적으로 북상시켜야 합니다."
  dhe_progress_bar_outer_manchuria:0 "연해주 편입 진척도"
- dhe_progress_bar_outer_manchuria_desc:0 "연해주 핵심 국경 지대의 13개 주요 거점을 차례대로 장악하고 있습니다."
+ dhe_progress_bar_outer_manchuria_desc:0 "연해주 #v [JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|0]#!/#v 13#! (#v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#!)"
  
  dhe_button_outer_manchuria_expansion:0 "무장 개척단 파견"
  dhe_button_outer_manchuria_expansion_desc:0 "연해주의 핵심 거점으로 무장 개척단과 군대를 파견합니다.\n\n#flavor (주의: 대청제국과의 관계도가 악화되며 약간의 악명이 발생합니다. 파견 후 180일의 재정비 기간이 필요합니다.)#!"
@@ -357,29 +357,29 @@
  dhe_modifier_state_sponsored_migration:0 "국가 주도 이주 사업"
  dhe_modifier_state_sponsored_migration_desc:0 "정부의 막대한 정착 지원금과 토지 분배 약속 덕분에 수많은 개척민들이 이 지역으로 몰려들고 있습니다."
 
- je_dhe_grand_northern_expansion:0 "북방 경영: 잃어버린 제국의 영토"
- je_dhe_grand_northern_expansion_reason:0 "과거 우리 선조들이 호령하던 만주의 광활한 대지가 대청제국의 쇠락과 함께 무주공산이 되어가고 있습니다. 간도와 연해주를 모두 장악하여 한민족의 생활권을 압록강과 두만강 너머로 뻗어나가게 해야 합니다."
+ je_dhe_grand_northern_expansion:0 "#gold 북방 경영#!: 잃어버린 제국의 영토"
+ je_dhe_grand_northern_expansion_reason:0 "과거 우리 선조들이 호령하던 #gold 만주#!의 광활한 대지가 #n 대청제국의 쇠락#!과 함께 무주공산이 되어가고 있습니다. #v 간도#!와 #v 연해주#!를 모두 장악하여 한민족의 생활권을 압록강과 두만강 너머로 뻗어나가게 해야 합니다."
  dhe_expansion.4.t:0 "압록강을 넘어, 두만강을 건너"
  dhe_expansion.4.d:0 "간도와 연해주의 척박한 땅이 마침내 우리의 굳건한 영토로 완전히 편입되었습니다!\n\n수백 년 전, 철령 이북의 땅을 두고 눈물을 머금고 회군해야 했던 역사는 이제 끝났습니다. 우리의 군대와 개척민들이 일궈낸 이 거대한 북방 영토는 대한제국이 아시아의 진정한 패권국으로 거듭나는 튼튼한 요새이자 끝없는 식량 창고가 될 것입니다.\n\n이제 북방의 국경을 튼튼히 다졌으니, 진정한 대제국의 영광을 되찾기 위해 만주 전역과 열도를 향해 시선을 돌릴 때입니다!"
  dhe_expansion.4.a:0 "대동아의 패권은 우리의 것이다!"
 
- je_dhe_road_to_independence:0 "자주독립의 길"
- je_dhe_road_to_independence_reason:0 "조선은 수백 년간 대청제국의 조공국으로 살아왔습니다. 진정한 제국으로 거듭나기 위해서는 이 굴욕적인 사대(事大)의 사슬을 끊어내야 합니다. 독립 준비도를 100까지 채워 전군을 무장시키고, 청나라를 상대로 '독립 외교전'을 선포하여 승리하십시오!"
+ je_dhe_road_to_independence:0 "#gold 자주독립의 길#!"
+ je_dhe_road_to_independence_reason:0 "조선은 수백 년간 #n 대청제국#!의 조공국으로 살아왔습니다. 진정한 제국으로 거듭나기 위해서는 이 굴욕적인 사대(事大)의 사슬을 끊어내야 합니다. 독립 준비도를 #v 100#!까지 채워 전군을 무장시키고, 청나라를 상대로 #gold 독립 외교전#!을 선포하여 승리하십시오!"
  
  dhe_progress_bar_independence:0 "독립 준비도"
- dhe_progress_bar_independence_desc:0 "청나라와의 전쟁을 불사할 국가적 의지와 군사적 준비 상태입니다. 100을 달성하면 강력한 결전 버프를 획득할 수 있습니다."
+ dhe_progress_bar_independence_desc:0 "독립 #v [JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|0]#!/#v 100#! (#v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#!)"
  dhe_ind_base_decay:0 "청나라의 지속적인 외교적 압박"
  dhe_ind_army_strong:0 "든든한 제국군의 위용"
  dhe_ind_qing_civil_war:0 "대청제국의 내전과 혼란"
 
  dhe_button_refuse_tribute:0 "조공 삭감 거부"
- dhe_button_refuse_tribute_desc:0 "연례적으로 보내던 조공 사절단을 취소하고 청나라 사신을 문전박대합니다. 청나라와의 관계도가 크게 악화되지만, 독립 준비도와 종속국 독립 열망이 함께 상승합니다. (쿨다운 360일)"
+ dhe_button_refuse_tribute_desc:0 "연례적으로 보내던 조공 사절단을 취소하고 청나라 사신을 문전박대합니다. 청나라와의 관계도는 #n 크게 악화#!되지만, #p 독립 준비도#!와 #p 종속국 독립 열망#!이 함께 상승합니다.\n\n#v 쿨다운: 360일#!"
  
  dhe_button_independence_parade:0 "신식 군대 무력시위"
- dhe_button_independence_parade_desc:0 "압록강 국경 지대에서 우리 군대의 화력을 과시하는 대규모 훈련을 벌여 청나라를 도발합니다. 막대한 국고가 소모되지만, 독립 준비도와 종속국 독립 열망이 크게 상승합니다. (쿨다운 360일)"
+ dhe_button_independence_parade_desc:0 "압록강 국경 지대에서 우리 군대의 화력을 과시하는 대규모 훈련을 벌여 청나라를 도발합니다. #n 막대한 국고#!가 소모되지만, #p 독립 준비도#!와 #p 종속국 독립 열망#!이 크게 상승합니다.\n\n#v 쿨다운: 360일#!"
  
  dhe_button_trigger_independence_war:0 "독립군 결사대 출정 (버프 획득)"
- dhe_button_trigger_independence_war_desc:0 "마침내 때가 왔습니다! 전군에 비상계엄을 선포하고 청나라와의 결전을 준비합니다.\n\n@warning_icon! #R 이 버튼을 누르면 2년간 압도적인 군사 버프(공/방 +25%)를 얻으며, 청나라와의 관계가 최악으로 치달아 즉시 [외교전: 독립]을 선포할 수 있게 됩니다!#!"
+ dhe_button_trigger_independence_war_desc:0 "마침내 때가 왔습니다! 전군에 비상계엄을 선포하고 청나라와의 결전을 준비합니다.\n\n@warning_icon! #R 이 버튼을 누르면 #v 2년#!간 압도적인 군사 버프(#p 공/방 +25%#!)를 얻으며, 청나라와의 관계가 최악으로 치달아 즉시 [외교전: 독립]을 선포할 수 있게 됩니다!#!"
 
  dhe_independence.1.t:0 "결전의 시간"
  dhe_independence.1.d:0 "전국 방방곡곡에서 의병과 신식 군대가 태극기를 휘날리며 집결하고 있습니다. 수백 년의 굴욕을 씻어낼 시간이 왔습니다. 이제 북경을 향해 우리의 독립을 당당히 요구하고, 그들이 거부한다면 총칼로 쟁취할 것입니다!"
@@ -396,20 +396,20 @@
  dhe_mod_unmanaged_manchuria:0 "통제 잃은 변방"
  dhe_mod_unmanaged_manchuria_desc:0 "대청제국의 권위가 실추되면서 변방인 만주 일대의 행정력이 완전히 붕괴되었습니다. 치안이 마비되고 조세 장부가 불태워지는 무법지대로 전락했습니다."
 
- je_dhe_imo_mutiny:0 "임오(壬午)의 붉은 불길"
- je_dhe_imo_mutiny_reason:0 "신식 군대인 별기군만이 온갖 우대를 받는 동안, 구식 군인들은 13개월째 단 한 푼의 급료도 받지 못하고 굶주리고 있습니다.\n\n그러던 중 마침내 선혜청에서 밀린 달의 쌀을 내어주었으나, 쌀가마니 안에는 먹을 수 없는 모래와 겨가 절반 이상 섞여 있었습니다! 누군가 중간에서 급료를 착복한 것입니다. 굶주림이 분노로, 분노가 살의로 바뀌어 도성에 붉은 불길이 번지기 전에 이들을 막아야 합니다."
+ je_dhe_imo_mutiny:0 "#n 임오(壬午)의 붉은 불길#!"
+ je_dhe_imo_mutiny_reason:0 "신식 군대인 별기군만이 온갖 우대를 받는 동안, 구식 군인들은 #n 13개월째#! 단 한 푼의 급료도 받지 못하고 굶주리고 있습니다.\n\n그러던 중 마침내 선혜청에서 밀린 달의 쌀을 내어주었으나, 쌀가마니 안에는 먹을 수 없는 모래와 겨가 절반 이상 섞여 있었습니다! 누군가 중간에서 급료를 착복한 것입니다. 굶주림이 분노로, 분노가 살의로 바뀌어 도성에 붉은 불길이 번지기 전에 이들을 막아야 합니다."
  
  dhe_progress_bar_military_discontent:0 "구식 군대의 분노"
- dhe_progress_bar_military_discontent_desc:0 "이 수치가 100에 도달하면 무장한 군인들이 대궐로 진격하고, 군부와 보수 세력이 정부에 맞서 실제 내전을 일으킵니다."
+ dhe_progress_bar_military_discontent_desc:0 "분노 #v [JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|0]#!/#n 100#! (#v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#!)"
  dhe_mil_corruption:0 "해결되지 않은 삼정의 문란"
  dhe_mil_low_pay:0 "지독하게 낮은 군인 처우 (군사 지출 낮음)"
  dhe_mil_yangban_corruption:0 "선혜청 당상과 양반들의 급료 횡령"
  dhe_mil_reform_progress:0 "군사 제도의 성공적인 현대화"
 
  dhe_button_pay_soldiers:0 "내탕금으로 밀린 급료 지급"
- dhe_button_pay_soldiers_desc:0 "황실의 비자금을 털어 군인들의 체납된 급료를 당장 현금으로 지불합니다. 국고가 텅 비겠지만, 당장의 불은 끌 수 있습니다."
+ dhe_button_pay_soldiers_desc:0 "황실의 비자금을 털어 군인들의 체납된 급료를 당장 현금으로 지불합니다. #n 국고가 텅 비겠지만#!, 당장의 불은 끌 수 있습니다."
  dhe_button_punish_supply_officers:0 "선혜청 당상 엄벌"
- dhe_button_punish_supply_officers_desc:0 "군인들의 쌀을 착복한 부패한 관리들을 광화문 네거리에 매달아 군인들의 분노를 달랩니다. 양반들의 반발이 빗발칠 것입니다."
+ dhe_button_punish_supply_officers_desc:0 "군인들의 쌀을 착복한 부패한 관리들을 광화문 네거리에 매달아 군인들의 분노를 달랩니다. #n 양반들의 반발#!이 빗발칠 것입니다."
 
  dhe_imo.1.t:0 "도성이 불타다 (임오군란 발생)"
  dhe_imo.1.d:0 "마침내 터질 것이 터지고 말았습니다!\n\n모래가 섞인 쌀을 배급받은 구식 군인들이 몽둥이와 조총을 들고 선혜청을 습격했습니다. 오랫동안 양반들의 수탈에 신음하던 빈민들까지 합세하여 폭동은 걷잡을 수 없이 커졌고, 도성 곳곳의 대갓집들이 불길에 휩싸였습니다.\n\n분노한 반란군이 별기군 교관을 참살하고 대궐 담장을 부수며 진격해 오고 있습니다. 군부와 보수 세력은 이제 정부를 상대로 무기를 들었고, 조선은 실제 내전의 문턱에 섰습니다."
@@ -430,10 +430,12 @@
  dhe_imo_reactionary_fury:0 "임오군란의 분노"
 
  dhe_progress_bar_gwangmu:0 "광무개혁 진행도"
- dhe_progress_bar_gwangmu_desc:0 "분야별 하위 개혁 일지를 하나 완수할 때마다 진척도가 20씩 크게 차오릅니다. 이 수치가 100에 도달하면 제국의 근대화가 성공적으로 완수되며, 영구적이고 강력한 '광무개혁 완수' 버프를 획득합니다."
+ dhe_progress_bar_gwangmu_desc:0 "광무 #v [JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|0]#!/#v 100#! (#v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#!)"
  dhe_gwangmu_base_manual:0 "분야별 개혁과 황실의 결단"
 
  dhe_button_gwangmu_fund:0 "황실 비자금(내탕금) 투입"
- dhe_button_gwangmu_fund_desc:0 "하위 개혁을 달성하기 어렵다면, 황실의 비자금을 대거 방출하여 억지로라도 개혁에 속도를 붙일 수 있습니다. 국고가 텅 비겠지만 진척도가 오릅니다. (진척도 +10, 국고 5만 소모)"
+ dhe_button_gwangmu_fund_desc:0 "하위 개혁을 달성하기 어렵다면, 황실의 비자금을 대거 방출하여 억지로라도 개혁에 속도를 붙일 수 있습니다. #n 국고가 텅 비겠지만#! 진척도가 오릅니다.\n\n효과: 진척도 #p +10#!\n비용: 국고 #n 50,000#!"
  dhe_button_gwangmu_mission:0 "구미(歐美) 시찰단 파견"
- dhe_button_gwangmu_mission_desc:0 "서양 열강의 선진 문물을 배우기 위해 대규모 특명전권대사들을 파견합니다. 국가의 행정력과 통제력이 소모되지만 개혁에 큰 보탬이 됩니다. (진척도 +10, 권위 100 소모)"
+ dhe_button_gwangmu_mission_desc:0 "서양 열강의 선진 문물을 배우기 위해 대규모 특명전권대사들을 파견합니다. 국가의 행정력과 통제력이 소모되지만 개혁에 큰 보탬이 됩니다.\n\n효과: 진척도 #p +10#!\n비용: 권위 #n 100#!"
+ dhe_button_gwangmu_start_mission:0 "#gold 수신사와 보빙사 파견 준비#!"
+ dhe_button_gwangmu_start_mission_desc:0 "광무개혁 메인 일지에서 외국 시찰 사절단 일지를 시작합니다. 일본, 청국, 서구 열강을 직접 살피는 별도 일지가 열립니다.\n\n효과: #v 수신사와 보빙사#! 일지 시작\n비용: 국고 #n 10,000#!"

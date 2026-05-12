@@ -8,7 +8,8 @@ flowcontainer = {
 	spacing = 8
 
 	widget = {
-		size = { 520 82 }
+		size = { 500 74 }
+		maximumsize = { 500 74 }
 		parentanchor = hcenter
 		tooltip = "dhe_manchuria_widget_tt"
 
@@ -19,8 +20,8 @@ flowcontainer = {
 		hbox = {
 			layoutpolicy_horizontal = expanding
 			layoutpolicy_vertical = expanding
-			margin = { 12 10 }
-			spacing = 12
+			margin = { 10 8 }
+			spacing = 10
 
 			vbox = {
 				layoutpolicy_horizontal = growing
@@ -30,17 +31,19 @@ flowcontainer = {
 
 				large_flag = {
 					datacontext = "[JournalEntry.GetCountry]"
+					size = { 38 38 }
 					parentanchor = hcenter
 				}
 
 				textbox = {
 					text = "dhe_manchuria_widget_korea"
 					align = center|nobaseline
-					autoresize = yes
-					multiline = yes
-					maximumsize = { 150 -1 }
+					size = { 135 22 }
+					maximumsize = { 135 22 }
 					parentanchor = hcenter
-					default_format = "#title"
+					default_format = "#v"
+					using = fontsize_medium
+					elide = right
 				}
 			}
 
@@ -52,18 +55,19 @@ flowcontainer = {
 
 				icon = {
 					texture = "gfx/interface/icons/lens_toolbar_icons/rivalry.dds"
-					size = { 42 42 }
+					size = { 38 38 }
 					parentanchor = hcenter
 				}
 
 				textbox = {
 					text = "dhe_manchuria_widget_frontier"
 					align = center|nobaseline
-					autoresize = yes
-					multiline = yes
-					maximumsize = { 155 -1 }
+					size = { 140 22 }
+					maximumsize = { 140 22 }
 					parentanchor = hcenter
 					default_format = "#header"
+					using = fontsize_medium
+					elide = right
 				}
 			}
 
@@ -75,17 +79,117 @@ flowcontainer = {
 
 				large_flag = {
 					datacontext = "[JournalEntry.GetCountry.MakeScope.Var('dhe_manchuria_qing_country').GetCountry]"
+					size = { 38 38 }
 					parentanchor = hcenter
 				}
 
 				textbox = {
 					text = "dhe_manchuria_widget_qing"
 					align = center|nobaseline
-					autoresize = yes
-					multiline = yes
-					maximumsize = { 150 -1 }
+					size = { 135 22 }
+					maximumsize = { 135 22 }
 					parentanchor = hcenter
-					default_format = "#title"
+					default_format = "#v"
+					using = fontsize_medium
+					elide = right
+				}
+			}
+		}
+	}
+}
+
+flowcontainer = {
+	name = "widget_je_dhe_independence_club_header"
+	ignoreinvisible = yes
+	direction = vertical
+	parentanchor = hcenter
+	spacing = 8
+
+	widget = {
+		size = { 500 74 }
+		maximumsize = { 500 74 }
+		parentanchor = hcenter
+		tooltip = "dhe_ic_widget_tt"
+
+		background = {
+			using = entry_bg
+		}
+
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			margin = { 10 8 }
+			spacing = 10
+
+			vbox = {
+				layoutpolicy_horizontal = growing
+				layoutpolicy_vertical = expanding
+				spacing = 4
+				tooltip = "dhe_ic_widget_royalist_desc"
+
+				icon = {
+					texture = "gfx/interface/icons/law_icons/monarchy.dds"
+					size = { 38 38 }
+					parentanchor = hcenter
+				}
+
+				textbox = {
+					text = "dhe_ic_widget_royalist"
+					align = center|nobaseline
+					size = { 135 22 }
+					maximumsize = { 135 22 }
+					parentanchor = hcenter
+					default_format = "#v"
+					using = fontsize_medium
+					elide = right
+				}
+			}
+
+			vbox = {
+				layoutpolicy_horizontal = growing
+				layoutpolicy_vertical = expanding
+				spacing = 5
+				tooltip = "dhe_ic_widget_court_desc"
+
+				icon = {
+					texture = "gfx/interface/icons/lens_toolbar_icons/rivalry.dds"
+					size = { 38 38 }
+					parentanchor = hcenter
+				}
+
+				textbox = {
+					text = "dhe_ic_widget_court"
+					align = center|nobaseline
+					size = { 140 22 }
+					maximumsize = { 140 22 }
+					parentanchor = hcenter
+					default_format = "#header"
+					using = fontsize_medium
+					elide = right
+				}
+			}
+
+			vbox = {
+				layoutpolicy_horizontal = growing
+				layoutpolicy_vertical = expanding
+				spacing = 4
+				tooltip = "dhe_ic_widget_independence_club_desc"
+
+				icon = {
+					texture = "gfx/interface/icons/event_icons/event_newspaper.dds"
+					size = { 38 38 }
+					parentanchor = hcenter
+				}
+
+				textbox = {
+					text = "dhe_ic_widget_independence_club"
+					align = center|nobaseline
+					size = { 135 22 }
+					maximumsize = { 135 22 }
+					parentanchor = hcenter
+					default_format = "#v"
+					using = fontsize_medium
+					elide = right
 				}
 			}
 		}

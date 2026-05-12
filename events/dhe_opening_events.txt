@@ -31,19 +31,21 @@ dhe_event.100 = {
 		add_journal_entry = { type = je_dhe_imo_mutiny }
 		#아래 두개는 지우기 확인용
 		add_journal_entry = { type = je_dhe_road_to_independence }
-		add_journal_entry = { type = je_dhe_outer_manchuria }
 		trigger_event = { id = dhe_event.102 popup = yes}
 	}
 	option = {
 		name = dhe_event.100.b
 		set_variable = dhe_hermit_kingdom_broken
 		set_variable = dhe_sedo_resolved
-		# 임시 테스트: 시작 이벤트 2번째 선택지에서 사회개혁/만민공동회 일지 확인용
-		set_variable = dhe_gwangmu_reform_started
-		add_journal_entry = { type = je_dhe_gwangmu_society }
-		add_journal_entry = { type = je_dhe_independence_club }
+		set_variable = dhe_gwangmu_military_done
 		add_journal_entry = { type = je_dhe_road_to_independence }
-		add_journal_entry = { type = je_dhe_jiandao_arable_expansion }
+		if = {
+			limit = {
+				NOT = { has_journal_entry = je_dhe_imperial_combined_fleet }
+				NOT = { has_variable = dhe_imperial_combined_fleet_done }
+			}
+			add_journal_entry = { type = je_dhe_imperial_combined_fleet }
+		}
 
 	}
 }
@@ -757,3 +759,4 @@ dhe_imo.2 = {
 		}
 	}
 }
+

@@ -12,8 +12,8 @@ building_gyeongbokgung: "경복궁"
  dhe_rebuild_gyeongbokgung_decision: "경복궁 중건 준비"
  dhe_rebuild_gyeongbokgung_decision_desc: "임진왜란 이후 폐허로 남았던 경복궁을 대한제국의 위상에 걸맞은 정궁으로 중건하기 위한 대대적인 기초 작업에 착수합니다. 전국에서 자재를 모으고 부지를 정리하는 데 1년이 소요될 것입니다."
  
- je_dhe_rebuild_gyeongbokgung: "경복궁 중건 준비"
- je_dhe_rebuild_gyeongbokgung_reason: "경복궁을 제국의 위엄에 걸맞게 재건하기 위해 전국에서 자재와 인력을 모으고 터를 닦고 있습니다. 1년의 준비 기간이 끝나면 본격적인 공사를 시작할 수 있습니다."
+ je_dhe_rebuild_gyeongbokgung: "#gold 경복궁 중건 준비#!"
+ je_dhe_rebuild_gyeongbokgung_reason: "#gold 경복궁#!을 제국의 위엄에 걸맞게 재건하기 위해 전국에서 자재와 인력을 모으고 터를 닦고 있습니다. #v 1년#!의 준비 기간이 끝나면 본격적인 공사를 시작할 수 있습니다."
  
  dhe_gyeongbokgung.1.t: "경복궁 중건 준비 완료!"
  dhe_gyeongbokgung.1.d: "1년간의 피나는 노력 끝에, 마침내 경복궁 중건을 위한 모든 기초 작업이 끝났습니다. 터가 반듯하게 닦이고 훌륭한 목재와 석재가 산더미처럼 쌓였습니다. 이제 국가의 역량을 총동원하여 본격적으로 웅장한 황궁을 건설할 때입니다!"
@@ -42,7 +42,7 @@ building_wonsoobu: "원수부"
  pm_wonsoobu_active: "황제 통수권 확립"
  pm_wonsoobu_active_desc: "원수부가 활성화되어 제국군의 지휘 체계가 일원화되고, 전군의 전투력과 군사적 위상이 크게 상승합니다."
  
- dhe_wonsoobu_unlock_tt: "기초 군사 개혁을 완료하여 §Y원수부 창설§! 잠금이 해제되어야 합니다."
+ dhe_wonsoobu_unlock_tt: "기초 군사 개혁을 완료하여 #gold 원수부 창설#! 잠금이 해제되어야 합니다."
 
  # 1단계 완료 이벤트
  dhe_infra_event.1.t: "기초 기반시설 확충 완료"
@@ -52,16 +52,16 @@ building_wonsoobu: "원수부"
 
  # 이벤트 툴팁
  dhe_infra_event_1_tt: "경성역 및 철도망 심화 일지 해금"
- dhe_infra_event_1_desc_tt: "한성에 거대한 랜드마크인 §Y[경성역]§!을 건설할 수 있게 되며, 일지 탭에 §Y[제국 철도망 완성]§! 심화 미션이 추가됩니다."
+ dhe_infra_event_1_desc_tt: "한성에 거대한 랜드마크인 #gold [경성역]#!을 건설할 수 있게 되며, 일지 탭에 #v [제국 철도망 완성]#! 심화 미션이 추가됩니다."
 
  # 심화 일지
- je_dhe_gwangmu_railway_network: "제국 철도망 완성 (경부·경의선)"
- je_dhe_gwangmu_railway_network_reason: "제국의 남쪽 끝 부산에서 북쪽 끝 평양까지 잇는 거대한 철도망을 부설해야 합니다. 강철 객차를 도입하고, 한성을 중심으로 §Y충청, 양호, 부산(경부선)§! 및 §Y해서, 평양(경의선)§! 지역에 철도를 3레벨 이상 건설하십시오."
+ je_dhe_gwangmu_railway_network: "#gold 제국 철도망 완성#! (경부·경의선)"
+ je_dhe_gwangmu_railway_network_reason: "제국의 남쪽 끝 #v 부산#!에서 북쪽 끝 #v 평양#!까지 잇는 거대한 철도망을 부설해야 합니다. 강철 객차를 도입하고, 한성을 중심으로 #v 충청, 양호, 부산(경부선)#! 및 #v 해서, 평양(경의선)#! 지역에 철도를 #v 3레벨#! 이상 건설하십시오."
 
  # 랜드마크 (경성역)
  building_seoul_station: "경성역 (서울역)"
  building_seoul_station_desc: "대한제국 철도망의 심장이자, 수많은 여행객과 물자가 오가는 거대한 중앙 역사입니다. 이 웅장한 건물은 제국 근대화의 상징과도 같습니다."
- dhe_seoul_station_unlock_tt: "기초 인프라 정비를 완료하여 §Y경성역 건설§! 잠금이 해제되어야 합니다."
+ dhe_seoul_station_unlock_tt: "기초 인프라 정비를 완료하여 #gold 경성역 건설#! 잠금이 해제되어야 합니다."
  pmg_seoul_station: "중앙 역사 운영"
  pm_seoul_station_active: "제국 교통의 심장"
  pm_seoul_station_active_desc: "경성역이 본격적으로 운영되며 한성의 기반시설이 폭발적으로 증가하고 전국의 물류가 원활해집니다."
@@ -159,8 +159,8 @@ trait_export_oriented:0 "수출입국 (輸出立國)"
  # 북방 고토 회복 (만주 수복) 텍스트
  # ==========================================
  # 일지
- je_dhe_northern_expansion: "북방 고토 회복 (만주 수복)"
- je_dhe_northern_expansion_reason: "과거 고구려와 발해가 호령했던 만주의 드넓은 영토를 되찾아야 합니다. 청나라와 러시아의 간섭을 물리치고 §Y성경, 남만주, 북만주, 아무르§!를 비롯해 §Y간도, 길림, 열하§! 등 북방의 핵심 주 전체를 수복하여 제국의 영토로 편입하십시오."
+ je_dhe_northern_expansion: "#gold 북방 고토 회복#! (만주 수복)"
+ je_dhe_northern_expansion_reason: "과거 고구려와 발해가 호령했던 #gold 만주#!의 드넓은 영토를 되찾아야 합니다. 청나라와 러시아의 간섭을 물리치고 #v 성경, 남만주, 북만주, 아무르#!를 비롯해 #v 간도, 길림, 열하#! 등 북방의 핵심 주 전체를 수복하여 제국의 영토로 편입하십시오."
  
  # 이벤트
  dhe_conquest_event.1.t: "북방의 패자"
@@ -170,7 +170,7 @@ trait_export_oriented:0 "수출입국 (輸出立國)"
  
  # 커스텀 툴팁
  dhe_conquest_event_1_tt: "만주 지역 본토 편입"
- dhe_conquest_event_1_desc_tt: "성경, 아무르 등 기존 만주 일대와 수복된 §Y간도, 길림, 열하§! 지역이 모두 §Y한국인 본토(Homeland)§!로 편입되며, 강력한 국가 위신과 동화 속도 버프를 영구적으로 얻습니다."
+ dhe_conquest_event_1_desc_tt: "성경, 아무르 등 기존 만주 일대와 수복된 #v 간도, 길림, 열하#! 지역이 모두 #gold 한국인 본토(Homeland)#!로 편입되며, 강력한 국가 위신과 동화 속도 버프를 영구적으로 얻습니다."
  
 
  
@@ -179,18 +179,18 @@ trait_export_oriented:0 "수출입국 (輸出立國)"
  dhe_great_korea_ambition_tooltip:0 "만주와 일본, 대만 전역에 대한 [concept_claim]을 획득합니다."
 
  # 11. 일지 - 대동아 정복
- je_dhe_great_korea_conquest:0 "대동아 통합 전쟁"
- je_dhe_great_korea_conquest_desc:0 "만주와 일본 열도, 대만을 우리의 영토로 편입하여 동아시아의 패권을 확립한다.\n\n[concept_sovereignty]를 완전히 장악해야 한다."
- je_dhe_great_korea_conquest_goal:0 "만주 4개 주, 일본 9개 주, 대만 1개 주를 모두 완전 점령"
- je_dhe_great_korea_conquest_reason:0 "만주와 일본 열도, 대만을 우리의 영토로 편입하여 동아시아의 패권을 확립한다.\n\n[concept_sovereignty]를 완전히 장악해야 한다."
+ je_dhe_great_korea_conquest:0 "#gold 대동아 통합 전쟁#!"
+ je_dhe_great_korea_conquest_desc:0 "#v 만주#!와 #v 일본 열도#!, #v 대만#!을 우리의 영토로 편입하여 동아시아의 패권을 확립한다.\n\n[concept_sovereignty]를 #gold 완전히 장악#!해야 한다."
+ je_dhe_great_korea_conquest_goal:0 "만주 #v 4개 주#!, 일본 #v 9개 주#!, 대만 #v 1개 주#!를 모두 완전 점령"
+ je_dhe_great_korea_conquest_reason:0 "#v 만주#!와 #v 일본 열도#!, #v 대만#!을 우리의 영토로 편입하여 동아시아의 패권을 확립한다.\n\n[concept_sovereignty]를 #gold 완전히 장악#!해야 한다."
 
 
 # ==========================================
  # 남방 정벌 (일본 및 대만 제패) 텍스트
  # ==========================================
  # 일지
- je_dhe_southern_expansion: "동아시아 제해권 장악 (열도 제패)"
- je_dhe_southern_expansion_reason: "과거 임진년의 원한과 수많은 침탈을 일삼았던 섬나라를 완전히 제압할 때가 왔습니다. 일본 열도의 모든 주와 대만을 점령하여, 태평양으로 뻗어나가는 제국의 발판을 마련하십시오."
+ je_dhe_southern_expansion: "#gold 동아시아 제해권 장악#! (열도 제패)"
+ je_dhe_southern_expansion_reason: "과거 임진년의 원한과 수많은 침탈을 일삼았던 섬나라를 완전히 제압할 때가 왔습니다. #v 일본 열도의 모든 주#!와 #v 대만#!을 점령하여, 태평양으로 뻗어나가는 제국의 발판을 마련하십시오."
  
  # 이벤트
  dhe_conquest_event.2.t: "동해의 떠오르는 태양"
@@ -200,15 +200,15 @@ trait_export_oriented:0 "수출입국 (輸出立國)"
  
  # 커스텀 툴팁
  dhe_conquest_event_2_tt: "열도 및 대만 지역 본토 편입"
- dhe_conquest_event_2_desc_tt: "간토, 간사이 등 일본 열도 전역과 §Y포르모사(대만)§! 지역이 모두 §Y한국인 본토(Homeland)§!로 편입되며, 해군력과 외교적 위상을 대폭 높여주는 영구 버프를 얻습니다."
+ dhe_conquest_event_2_desc_tt: "간토, 간사이 등 일본 열도 전역과 #v 포르모사(대만)#! 지역이 모두 #gold 한국인 본토(Homeland)#!로 편입되며, 해군력과 외교적 위상을 대폭 높여주는 영구 버프를 얻습니다."
  
  dhe_university.1.t: "근대 교육의 요람"
  dhe_university.1.d: "광무개혁의 일환으로 추진된 전국적인 학제 개편과 소학교 설립이 마침내 성공적인 궤도에 올랐습니다. 수많은 인재들이 깨어나고 있으며, 이제 이들을 이끌어갈 국가 최고 학부가 필요하다는 목소리가 커지고 있습니다."
  dhe_university.1.f: "기초를 다졌으니, 이제 제국의 지성을 완성할 거대한 상아탑을 세울 차례입니다."
  dhe_university.1.a: "제국대학 설립을 추진하라!"
 
- je_dhe_seoul_national_university: "한성제국대학(서울대학교) 설립"
- je_dhe_seoul_national_university_reason: "국가의 백년대계를 이끌어갈 최고 인재를 양성하기 위해, 한성(서울)에 대규모 국립 대학을 설립해야 합니다. [concept_technology] '학술'을 연구하고, 한성에 [concept_university]를 5레벨 이상 건설하십시오."
+ je_dhe_seoul_national_university: "#gold 한성제국대학#!(서울대학교) 설립"
+ je_dhe_seoul_national_university_reason: "국가의 백년대계를 이끌어갈 최고 인재를 양성하기 위해, #gold 한성#!(서울)에 대규모 국립 대학을 설립해야 합니다. [concept_technology] #v 학술#!을 연구하고, 한성에 [concept_university]를 #v 5레벨#! 이상 건설하십시오."
  
  dhe_university.2.t: "서울대학교 설립 완료"
  dhe_university.2.d: "마침내 한성 한복판에 웅장한 대학 건물이 들어섰습니다. 전국 각지에서 모여든 수재들이 조국의 근대화와 부국강병을 위해 밤낮없이 학문에 매진하고 있습니다. 이곳은 명실상부한 제국 최고의 지성소가 될 것입니다!"
@@ -234,6 +234,70 @@ trait_export_oriented:0 "수출입국 (輸出立國)"
  # 1단계 군사/기반시설 완료 버프
  dhe_mod_military_reform_success: "근대적 제국군의 탄생"
  dhe_mod_military_reform_success_desc: "구식 군대를 탈피하고 근대적 교리와 화기로 무장한 제국의 신식 군대가 탄생했습니다."
+ dhe_mod_military_reform_advanced_success: "원수부와 제국군 개편"
+ dhe_mod_military_reform_advanced_success_desc: "원수부와 참모국, 군수공업, 신식 장교단이 결합되어 대한제국군이 독자적 작전 능력을 갖춘 근대군으로 완성되었습니다."
+ dhe_mod_imperial_general_staff: "원수부 참모국"
+ dhe_mod_imperial_general_staff_desc: "황제 직속 참모국이 작전계획과 장교 인사를 통제하며 군의 조직력을 끌어올립니다."
+ dhe_mod_foreign_military_mission: "외국 군사고문단"
+ dhe_mod_foreign_military_mission_desc: "외국 군사고문단이 장교 교육과 훈련 교범을 정비하고 있습니다."
+ dhe_mod_imperial_guard_division: "제국 시위대 재편"
+ dhe_mod_imperial_guard_division_desc: "수도 시위대와 지방 진위대가 황제의 칙령 아래 새 편제로 재편되고 있습니다."
+ dhe_mod_military_procurement_drive: "군수 조달 규격화"
+ dhe_mod_military_procurement_drive_desc: "소총, 포, 탄약의 규격을 통일하기 위해 군수공업 전반에 국가 자금이 투입되고 있습니다."
+ dhe_mod_officer_corps_dispute: "장교단 파벌 갈등"
+ dhe_mod_officer_corps_dispute_desc: "구식 장교단과 신식 장교단 사이의 충돌이 군 조직력을 잠시 흔들고 있습니다."
+ dhe_mod_imperial_combined_fleet_success: "대한제국 연합함대"
+ dhe_mod_imperial_combined_fleet_success_desc: "해군성과 조선소, 철갑함 전력이 결합되어 대한제국의 독자적 연합함대가 창설되었습니다."
+ dhe_mod_imperial_admiralty_board: "제국 해군성"
+ dhe_mod_imperial_admiralty_board_desc: "해군성이 함대 행정, 군항 관리, 해군 예산을 통합하여 바다 위의 작전 능력을 끌어올립니다."
+ dhe_mod_imperial_dockyard_program: "제국 조선소 확장"
+ dhe_mod_imperial_dockyard_program_desc: "대형 독과 조선 설비 확장으로 철갑함과 순양함 건조 능력이 강화되고 있습니다."
+ dhe_mod_imperial_fleet_exercises: "연합함대 기동훈련"
+ dhe_mod_imperial_fleet_exercises_desc: "연합함대가 동해와 남해에서 기동훈련을 실시하며 실전 운용 능력을 다지고 있습니다."
+ dhe_mod_british_naval_advisers: "영국 해군 자문단"
+ dhe_mod_british_naval_advisers_desc: "영국 해군 장교와 기술 자문단이 해군성 조직, 조선 계약, 장교 교육을 점검하며 연합함대 창설을 돕고 있습니다."
+ dhe_mod_british_dockyard_blueprints: "영국식 조선소 도면"
+ dhe_mod_british_dockyard_blueprints_desc: "포츠머스와 클라이드 조선소에서 들여온 설계와 계약 방식이 제국 조선소의 건함 속도를 끌어올립니다."
+ dhe_mod_british_fleet_observers: "영국 함대 관찰단"
+ dhe_mod_british_fleet_observers_desc: "보빙사와 해군 장교들이 영국 함대의 기동훈련을 관찰하며 함대 운용과 해상 보급 지식을 축적하고 있습니다."
+ dhe_mod_geobuk_armor_design: "광무급 장갑 설계"
+ dhe_mod_geobuk_armor_design_desc: "대한제국 해군은 연안과 해협에서 오래 버틸 수 있는 중장갑 함선 설계를 표준으로 삼았습니다."
+ dhe_mod_hangang_cruiser_design: "한강급 순양 설계"
+ dhe_mod_hangang_cruiser_design_desc: "대한제국 해군은 빠른 정찰과 기동, 교역로 보호를 중시하는 순양함 설계를 표준으로 삼았습니다."
+ dhe_mod_jemulpo_coastal_design: "제물포 연안방어 설계"
+ dhe_mod_jemulpo_coastal_design_desc: "대한제국 해군은 항구, 해협, 연안 방어선을 중심으로 함대와 요새를 함께 운용하는 설계를 표준으로 삼았습니다."
+ dhe_mod_susinsa_bobingsa_active: "수신사와 보빙사의 파견"
+ dhe_mod_susinsa_bobingsa_active_desc: "해외 제도 조사와 번역 사업이 지식인 관료들의 정치적 발언권을 크게 키우고 있지만, 조정의 통제력에는 부담을 주고 있습니다."
+ dhe_mod_susinsa_japan_administration: "일본 관제 시찰"
+ dhe_mod_susinsa_japan_administration_desc: "수신사의 보고를 바탕으로 관청 문서, 예산, 임명 절차를 정비하고 있습니다."
+ dhe_mod_susinsa_japan_military: "일본 군제 시찰"
+ dhe_mod_susinsa_japan_military_desc: "수신사의 보고를 바탕으로 병영 행정과 근대 군제의 운용 방식을 연구하고 있습니다."
+ dhe_mod_qing_diplomatic_lessons: "청국 외교 관문 연구"
+ dhe_mod_qing_diplomatic_lessons_desc: "청국의 대외 교섭 경험을 분석하여 열강과의 협상 방식과 외교 문서를 정비하고 있습니다."
+ dhe_mod_qing_border_intelligence: "변경 행정 정보망"
+ dhe_mod_qing_border_intelligence_desc: "청국의 변경 행정과 국경 관리 사례를 참고하여 북방 정보망과 행정 문서를 정비하고 있습니다."
+ dhe_mod_bobingsa_western_industry: "서구 산업 시찰"
+ dhe_mod_bobingsa_western_industry_desc: "보빙사의 보고가 공장, 철도, 기계 공업의 제도적 기반을 이해하는 데 도움을 주고 있습니다."
+ dhe_mod_bobingsa_constitutional_study: "서구 헌정 연구"
+ dhe_mod_bobingsa_constitutional_study_desc: "보빙사의 보고를 바탕으로 의회, 법전, 공교육 제도의 운용 방식을 검토하고 있습니다."
+ dhe_mod_mission_reform_reports: "수신사와 보빙사의 보고"
+ dhe_mod_mission_reform_reports_desc: "외국 제도에 대한 사절단 보고서가 광무개혁의 실무 지침으로 정리되었습니다."
+ dhe_mod_mission_industrial_program: "사절단 산업 진흥안"
+ dhe_mod_mission_industrial_program_desc: "사절단의 보고가 산업 기술 도입과 근대 공장 제도 확립으로 이어지고 있습니다."
+ dhe_mod_mission_statecraft_program: "사절단 국정 운영안"
+ dhe_mod_mission_statecraft_program_desc: "사절단의 보고가 관료제와 헌정 논의를 제도적으로 정리하는 기반이 되었습니다."
+ dhe_mod_mission_diplomatic_program: "사절단 외교 확장안"
+ dhe_mod_mission_diplomatic_program_desc: "사절단의 보고가 대한제국의 외교망과 국제적 위신을 넓히는 데 활용되고 있습니다."
+ dhe_mod_british_technical_exchange: "영국 기술 교류"
+ dhe_mod_british_technical_exchange_desc: "영국과의 우호 관계를 바탕으로 조선, 항만, 산업 기술 교류가 활발해지고 있습니다."
+ dhe_mod_french_legal_exchange: "프랑스 법제 교류"
+ dhe_mod_french_legal_exchange_desc: "프랑스와의 우호 관계를 바탕으로 법전, 행정, 헌정 제도 연구가 진전되고 있습니다."
+ dhe_mod_american_education_exchange: "미국 교육 교류"
+ dhe_mod_american_education_exchange_desc: "미국과의 우호 관계를 바탕으로 학교, 대학, 실용 학문 교류가 확대되고 있습니다."
+ dhe_mod_russian_border_exchange: "러시아 변경 교류"
+ dhe_mod_russian_border_exchange_desc: "러시아와의 우호 관계를 바탕으로 북방 변경 행정과 외교 정보가 축적되고 있습니다."
+ dhe_mod_german_military_exchange: "독일권 군제 교류"
+ dhe_mod_german_military_exchange_desc: "독일권과의 우호 관계를 바탕으로 참모 제도와 장교 교육 연구가 진전되고 있습니다."
  
  dhe_mod_infrastructure_reform_success: "제국 기반시설 확충"
  dhe_mod_infrastructure_reform_success_desc: "항만과 철도의 기초가 닦여 국가 전반의 물류와 건설 효율이 상승했습니다."
