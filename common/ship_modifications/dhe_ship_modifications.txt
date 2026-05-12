@@ -1,0 +1,152 @@
+ship_mod_dhe_turtle_armor = {
+	type = ship_mod_slot_armor
+	icon = "gfx/interface/icons/military_icons/navy_icons/ship_designer_icons/ship_designer_armor_high.dds"
+	clicksound = "event:/SFX/UI/ShipDesigner/shipdesigner_modification_armor_heavy"
+
+	modifier = {
+		ship_armor_add = 560
+		ship_hit_points_max_add = 4200
+		ship_suffered_hull_damage_mult = -0.15
+		ship_visibility_add = 18
+		ship_vulnerability_add = 18
+	}
+
+	construction_goods = {
+		goods_input_steel_add = 180
+		goods_input_iron_add = 60
+		goods_input_engines_add = 25
+	}
+
+	unlocking_technologies = { dhe_korean_warship_module_armor }
+
+	ai_weight = {
+		value = 0.25
+		if = {
+			limit = { has_variable = dhe_korean_warship_design_unlocked }
+			add = 3
+		}
+	}
+}
+
+ship_mod_dhe_gwangmu_heavy_battery = {
+	type = ship_mod_slot_guns
+	icon = "gfx/interface/icons/military_icons/navy_icons/ship_designer_icons/ship_designer_guns_high.dds"
+	clicksound = "event:/SFX/UI/ShipDesigner/shipdesigner_modification_guns_heavy"
+
+	modifier = {
+		ship_hull_damage_add = 1200
+		ship_crew_damage_add = 480
+		ship_accuracy_add = 22
+		ship_critical_hit_chance_add = 0.4
+		ship_critical_hit_multiplier_add = 1.25
+		ship_vulnerability_add = 80
+	}
+
+	construction_goods = {
+		goods_input_artillery_add = 180
+		goods_input_steel_add = 130
+		goods_input_ammunition_add = 60
+		goods_input_explosives_add = 35
+	}
+
+	unlocking_technologies = { dhe_korean_warship_module_battery }
+
+	ai_weight = {
+		value = 0.25
+		if = {
+			limit = { has_variable = dhe_korean_warship_design_unlocked }
+			add = 3
+		}
+	}
+}
+
+ship_mod_dhe_hangang_propulsion = {
+	type = ship_mod_slot_propulsion
+	icon = "gfx/interface/icons/military_icons/navy_icons/ship_designer_icons/ship_designer_propulsion_high.dds"
+	clicksound = "event:/SFX/UI/ShipDesigner/shipdesigner_modification_propulsion_heavy"
+
+	modifier = {
+		ship_movement_speed_add = 24
+		ship_detection_add = 50
+		ship_readiness_gain_add = 14
+		ship_supply_efficiency_add = 0.3
+	}
+
+	construction_goods = {
+		goods_input_engines_add = 120
+		goods_input_oil_add = 45
+		goods_input_coal_add = 20
+		goods_input_steel_add = 35
+	}
+
+	unlocking_technologies = { dhe_korean_warship_module_propulsion }
+
+	ai_weight = {
+		value = 0.25
+		if = {
+			limit = { has_variable = dhe_korean_warship_design_unlocked }
+			add = 3
+		}
+	}
+}
+
+ship_mod_dhe_jemulpo_coastal_stores = {
+	type = ship_mod_slot_range
+	icon = "gfx/interface/icons/military_icons/navy_icons/ship_designer_icons/ship_designer_range_mid.dds"
+	clicksound = "event:/SFX/UI/ShipDesigner/shipdesigner_modification_range_medium"
+
+	modifier = {
+		ship_carrying_capacity_add = 0.75
+		ship_supply_capacity_add = 460
+		ship_marine_capacity_add = 0.35
+		ship_supply_efficiency_add = 0.35
+		ship_max_distance_to_port_add = 7
+		ship_blockade_strength_add = 180
+	}
+
+	construction_goods = {
+		goods_input_steel_add = 70
+		goods_input_groceries_add = 100
+		goods_input_oil_add = 25
+		goods_input_engines_add = 25
+	}
+
+	unlocking_technologies = { dhe_korean_warship_module_stores }
+
+	ai_weight = {
+		value = 0.25
+		if = {
+			limit = { has_variable = dhe_korean_warship_design_unlocked }
+			add = 3
+		}
+	}
+}
+
+utility_mod_dhe_integrated_damage_control = {
+	type = ship_mod_slot_utility_1
+	icon = "gfx/interface/icons/military_icons/navy_icons/armor_navy.dds"
+
+	modifier = {
+		ship_hit_points_max_mult = 0.3
+		ship_readiness_gain_mult = 0.25
+		ship_suffered_hull_damage_mult = -0.2
+		ship_suffered_crew_damage_mult = -0.15
+	}
+
+	construction_goods = {
+		goods_input_steel_add = 45
+		goods_input_tools_add = 35
+		goods_input_radios_add = 20
+		goods_input_engines_add = 15
+	}
+
+	unlocking_technologies = { dhe_korean_warship_module_armor }
+
+	ai_weight = {
+		value = 0.25
+		if = {
+			limit = { has_variable = dhe_korean_warship_design_unlocked }
+			add = 3
+		}
+	}
+}

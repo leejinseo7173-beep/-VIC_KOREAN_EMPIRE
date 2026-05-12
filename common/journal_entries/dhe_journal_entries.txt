@@ -27,6 +27,7 @@ je_dhe_gwangmu_reform_main = {
 	scripted_progress_bar = dhe_progress_bar_gwangmu
 	scripted_button = dhe_button_gwangmu_fund
 	scripted_button = dhe_button_gwangmu_mission
+	scripted_button = dhe_button_gwangmu_start_mission
 
 	complete = {
 		custom_tooltip = {
@@ -82,6 +83,241 @@ je_dhe_gwangmu_reform_main = {
 	on_complete = {
 		set_variable = dhe_gwangmu_reform_completed
 		trigger_event = { id = dhe_event.4 }
+	}
+}
+
+je_dhe_susinsa_bobingsa_mission = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	group = dhe_reforms
+
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
+
+	is_shown_when_inactive = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_gwangmu_reform_started
+		has_variable = dhe_susinsa_bobingsa_unlocked
+		NOT = { has_variable = dhe_susinsa_bobingsa_done }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	possible = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_gwangmu_reform_started
+		has_variable = dhe_susinsa_bobingsa_unlocked
+		NOT = { has_variable = dhe_susinsa_bobingsa_done }
+		NOT = { has_variable = dhe_gwangmu_reform_failed }
+	}
+
+	invalid = {
+		NOT = { has_variable = dhe_susinsa_bobingsa_unlocked }
+	}
+
+	scripted_progress_bar = dhe_progress_bar_susinsa_bobingsa
+
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = dhe_mission_status_returned_home
+				trigger = {
+					has_variable = dhe_mission_returned_home
+					exists = var:dhe_mission_leader_storage_var
+				}
+			}
+			triggered_desc = {
+				desc = dhe_mission_status_returning_home
+				trigger = {
+					has_variable = dhe_mission_en_route_home
+					exists = var:dhe_mission_leader_storage_var
+				}
+			}
+			triggered_desc = {
+				desc = dhe_mission_status_abroad
+				trigger = {
+					exists = var:dhe_mission_current_location_var
+					exists = var:dhe_mission_leader_storage_var
+				}
+			}
+			triggered_desc = {
+				desc = dhe_mission_status_abroad_no_leader
+				trigger = {
+					exists = var:dhe_mission_current_location_var
+					NOT = { exists = var:dhe_mission_leader_storage_var }
+				}
+			}
+			triggered_desc = {
+				desc = dhe_mission_status_leader_selected
+				trigger = {
+					exists = var:dhe_mission_leader_storage_var
+				}
+			}
+			triggered_desc = {
+				desc = dhe_mission_status_returned_home_no_leader
+				trigger = {
+					has_variable = dhe_mission_returned_home
+				}
+			}
+			triggered_desc = {
+				desc = dhe_mission_status_waiting
+				trigger = { always = yes }
+			}
+		}
+	}
+
+	immediate = {
+		add_modifier = { name = dhe_mod_susinsa_bobingsa_active months = -1 }
+		set_variable = { name = dhe_mission_learning_score value = 0 }
+		trigger_event = { id = dhe_mission_event.1 popup = yes }
+	}
+
+	on_monthly_pulse = {
+		effect = {
+			if = {
+				limit = {
+					has_variable = dhe_mission_current_location_var
+				}
+				change_variable = { name = dhe_mission_learning_score add = 2 }
+				je:je_dhe_susinsa_bobingsa_mission ?= {
+					add_progress = { name = dhe_progress_bar_susinsa_bobingsa value = 3 }
+				}
+			}
+			if = {
+				limit = {
+					exists = var:dhe_mission_current_location_var
+					var:dhe_mission_current_location_var.techs_researched > ROOT.techs_researched
+				}
+				change_variable = { name = dhe_mission_learning_score add = 2 }
+				je:je_dhe_susinsa_bobingsa_mission ?= {
+					add_progress = { name = dhe_progress_bar_susinsa_bobingsa value = 2 }
+				}
+			}
+			if = {
+				limit = {
+					exists = c:GBR
+					c:GBR = {
+						country_rank >= rank_value:major_power
+						relations:root >= relations_threshold:cordial
+					}
+				}
+				set_variable = { name = dhe_mission_british_exchange days = 45 }
+			}
+			if = {
+				limit = {
+					exists = c:FRA
+					c:FRA = {
+						country_rank >= rank_value:major_power
+						relations:root >= relations_threshold:cordial
+					}
+				}
+				set_variable = { name = dhe_mission_french_exchange days = 45 }
+			}
+			if = {
+				limit = {
+					exists = c:USA
+					c:USA = {
+						country_rank >= rank_value:major_power
+						relations:root >= relations_threshold:cordial
+					}
+				}
+				set_variable = { name = dhe_mission_american_exchange days = 45 }
+			}
+			if = {
+				limit = {
+					exists = c:RUS
+					c:RUS = {
+						country_rank >= rank_value:major_power
+						relations:root >= relations_threshold:cordial
+					}
+				}
+				set_variable = { name = dhe_mission_russian_exchange days = 45 }
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							exists = c:GER
+							c:GER = {
+								country_rank >= rank_value:major_power
+								relations:root >= relations_threshold:cordial
+							}
+						}
+						AND = {
+							exists = c:PRU
+							c:PRU = {
+								country_rank >= rank_value:major_power
+								relations:root >= relations_threshold:cordial
+							}
+						}
+					}
+				}
+				set_variable = { name = dhe_mission_german_exchange days = 45 }
+			}
+		}
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_mission_returned_home_tt
+			has_variable = dhe_mission_returned_home
+		}
+		custom_tooltip = {
+			text = dhe_mission_complete_report_tt
+			has_variable = dhe_mission_complete_report
+		}
+		custom_tooltip = {
+			text = dhe_mission_japan_report_tt
+			has_variable = dhe_mission_japan_report
+		}
+		custom_tooltip = {
+			text = dhe_mission_qing_report_tt
+			has_variable = dhe_mission_qing_report
+		}
+		custom_tooltip = {
+			text = dhe_mission_west_report_tt
+			has_variable = dhe_mission_west_report
+		}
+		custom_tooltip = {
+			text = dhe_mission_progress_complete_tt
+			je:je_dhe_susinsa_bobingsa_mission ?= {
+				"scripted_bar_progress(dhe_progress_bar_susinsa_bobingsa)" >= 100
+			}
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_susinsa_bobingsa_done
+		remove_modifier = dhe_mod_susinsa_bobingsa_active
+		var:dhe_mission_leader_storage_var ?= {
+			set_character_busy_and_immortal = no
+		}
+		add_modifier = { name = dhe_mod_mission_reform_reports months = 120 }
+		if = {
+			limit = { has_variable = dhe_mission_british_exchange }
+			add_modifier = { name = dhe_mod_british_technical_exchange months = 60 }
+		}
+		if = {
+			limit = { has_variable = dhe_mission_french_exchange }
+			add_modifier = { name = dhe_mod_french_legal_exchange months = 60 }
+		}
+		if = {
+			limit = { has_variable = dhe_mission_american_exchange }
+			add_modifier = { name = dhe_mod_american_education_exchange months = 60 }
+		}
+		if = {
+			limit = { has_variable = dhe_mission_russian_exchange }
+			add_modifier = { name = dhe_mod_russian_border_exchange months = 60 }
+		}
+		if = {
+			limit = { has_variable = dhe_mission_german_exchange }
+			add_modifier = { name = dhe_mod_german_military_exchange months = 60 }
+		}
+		trigger_event = { id = dhe_mission_event.5 popup = yes }
+		je:je_dhe_gwangmu_reform_main ?= {
+			add_progress = { name = dhe_progress_bar_gwangmu value = 10 }
+		}
 	}
 }
 # =============================================================================
@@ -657,21 +893,229 @@ je_dhe_seoul_national_university = {
 je_dhe_gwangmu_military_advanced = {
 	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
 	group = dhe_reforms
+	scripted_progress_bar = dhe_progress_bar_imperial_army_reform
+	scripted_button = dhe_button_imperial_army_general_staff
+	scripted_button = dhe_button_imperial_army_training_mission
+	scripted_button = dhe_button_imperial_army_guard_division
+
 	is_shown_in_lobby = { c:kor ?= THIS }
+
 	possible = {
 		exists = c:KOR
 		this = c:KOR
 		has_variable = dhe_gwangmu_military_done
+		NOT = { has_variable = dhe_gwangmu_military_advanced_done }
 	}
+
+	on_monthly_pulse = {
+		effect = {
+			if = {
+				limit = {
+					NOT = { has_journal_entry = je_dhe_imperial_combined_fleet }
+					NOT = { has_variable = dhe_imperial_combined_fleet_done }
+				}
+				add_journal_entry = { type = je_dhe_imperial_combined_fleet }
+			}
+		}
+		random_events = {
+			88 = 0
+			4 = dhe_military_event.3
+			4 = dhe_military_event.4
+			3 = dhe_military_event.5
+			1 = dhe_military_event.6
+		}
+	}
+
 	complete = {
-		has_technology_researched = trench_works
-		has_technology_researched = machine_guns
-		army_size >= 200
-		navy_size >= 50
-		any_scope_building = { is_building_type = building_munitions_plant level >= 5 }
+		custom_tooltip = {
+			text = dhe_imperial_army_progress_max_tt
+			tooltip = dhe_imperial_army_progress_max_desc_tt
+			je:je_dhe_gwangmu_military_advanced ?= {
+				"scripted_bar_progress(dhe_progress_bar_imperial_army_reform)" >= 100
+			}
+		}
+		has_technology_researched = general_staff
+		has_technology_researched = breech_loading_artillery
+		OR = {
+			has_law_or_variant = law_type:law_professional_army
+			has_law_or_variant = law_type:law_mass_conscription
+		}
+		army_size >= 150
+		any_scope_building = { is_building_type = building_arms_industry level >= 5 }
+		any_scope_building = { is_building_type = building_artillery_foundry level >= 3 }
+		any_scope_building = { is_building_type = building_munition_plant level >= 3 }
+		OR = {
+			country_army_unit_type_fraction = {
+				target = unit_type:combat_unit_type_skirmish_infantry
+				value >= 0.5
+			}
+			country_army_unit_type_fraction = {
+				target = unit_type:combat_unit_type_trench_infantry
+				value >= 0.5
+			}
+			country_army_unit_type_fraction = {
+				target = unit_type:combat_unit_type_squad_infantry
+				value >= 0.5
+			}
+			country_army_unit_type_fraction = {
+				target = unit_type:combat_unit_type_mechanized_infantry
+				value >= 0.5
+			}
+		}
 	}
+
 	on_complete = {
+		set_variable = dhe_gwangmu_military_advanced_done
 		add_modifier = { name = dhe_mod_military_reform_advanced_success months = -1 }
+		trigger_event = { id = dhe_military_event.2 popup = yes }
+	}
+}
+
+je_dhe_imperial_combined_fleet = {
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	group = dhe_reforms
+	scripted_progress_bar = dhe_progress_bar_imperial_combined_fleet
+	scripted_button = dhe_button_imperial_navy_admiralty
+	scripted_button = dhe_button_imperial_navy_dockyard
+	scripted_button = dhe_button_imperial_navy_fleet_exercises
+	scripted_button = dhe_button_imperial_navy_design_bureau
+
+	is_shown_in_lobby = { c:kor ?= THIS }
+
+	possible = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_gwangmu_military_done
+		NOT = { has_variable = dhe_imperial_combined_fleet_done }
+	}
+
+	on_monthly_pulse = {
+		random_events = {
+			88 = 0
+			4 = dhe_navy_event.2
+			4 = dhe_navy_event.3
+			2 = dhe_navy_event.4
+		}
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_imperial_combined_fleet_progress_max_tt
+			tooltip = dhe_imperial_combined_fleet_progress_max_desc_tt
+			je:je_dhe_imperial_combined_fleet ?= {
+				"scripted_bar_progress(dhe_progress_bar_imperial_combined_fleet)" >= 100
+			}
+		}
+		has_law_or_variant = law_type:law_professional_navy
+		has_technology_researched = ironclad_tech
+		has_technology_researched = gantry_cranes
+		has_technology_researched = dhe_korean_warship_design_3
+		navy_size >= 75
+		any_scope_building = { is_building_type = building_shipyard level >= 5 }
+		any_scope_building = { is_building_type = building_naval_administration level >= 4 }
+		any_scope_building = { is_building_type = building_port level >= 5 }
+	}
+
+	on_complete = {
+		set_variable = dhe_imperial_combined_fleet_done
+		add_modifier = { name = dhe_mod_imperial_combined_fleet_success months = -1 }
+		trigger_event = { id = dhe_navy_event.1 popup = yes }
+	}
+}
+
+je_dhe_naval_design_bureau = {
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	group = dhe_reforms
+	scripted_progress_bar = dhe_progress_bar_naval_design_bureau
+	scripted_button = dhe_button_gwangmu_hull_design_project
+	scripted_button = dhe_button_gwangmu_module_design_project
+
+	is_shown_in_lobby = { c:kor ?= THIS }
+
+	possible = {
+		exists = c:KOR
+		this = c:KOR
+		has_journal_entry = je_dhe_imperial_combined_fleet
+		NOT = { has_variable = dhe_naval_design_bureau_done }
+	}
+
+	on_monthly_pulse = {
+		effect = {
+			if = {
+				limit = {
+					NOT = { has_technology_researched = dhe_korean_warship_design_1 }
+					has_technology_researched = battleship_tech
+					any_scope_building = { is_building_type = building_shipyard level >= 5 }
+				}
+				je:je_dhe_naval_design_bureau ?= {
+					add_progress = { name = dhe_progress_bar_naval_design_bureau value = 2 }
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_technology_researched = dhe_korean_warship_design_1 }
+					any_scope_building = { is_building_type = building_shipyard level >= 10 }
+				}
+				je:je_dhe_naval_design_bureau ?= {
+					add_progress = { name = dhe_progress_bar_naval_design_bureau value = 2 }
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_technology_researched = dhe_korean_warship_design_1 }
+					any_scope_building = { is_building_type = building_steel_mill level >= 5 }
+				}
+				je:je_dhe_naval_design_bureau ?= {
+					add_progress = { name = dhe_progress_bar_naval_design_bureau value = 1 }
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_technology_researched = dhe_korean_warship_design_1 }
+					any_scope_building = { is_building_type = building_naval_administration level >= 2 }
+				}
+				je:je_dhe_naval_design_bureau ?= {
+					add_progress = { name = dhe_progress_bar_naval_design_bureau value = 1 }
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_technology_researched = dhe_korean_warship_design_1 }
+					any_scope_building = { is_building_type = building_artillery_foundry level >= 3 }
+					any_scope_building = { is_building_type = building_munition_plant level >= 3 }
+				}
+				je:je_dhe_naval_design_bureau ?= {
+					add_progress = { name = dhe_progress_bar_naval_design_bureau value = 1 }
+				}
+			}
+		}
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_naval_design_bureau_progress_max_tt
+			tooltip = dhe_naval_design_bureau_progress_max_desc_tt
+			je:je_dhe_naval_design_bureau ?= {
+				"scripted_bar_progress(dhe_progress_bar_naval_design_bureau)" >= 100
+			}
+		}
+		has_technology_researched = dhe_korean_warship_design_1
+		has_technology_researched = dhe_korean_warship_module_armor
+		has_technology_researched = dhe_korean_warship_module_battery
+		has_technology_researched = dhe_korean_warship_module_propulsion
+		has_technology_researched = dhe_korean_warship_module_stores
+		any_scope_building = { is_building_type = building_naval_administration level >= 4 }
+	}
+
+	on_complete = {
+		set_variable = dhe_naval_design_bureau_done
+		set_variable = dhe_korean_warship_design_unlocked
+		add_technology_researched = dhe_korean_warship_design_2
+		add_technology_researched = dhe_korean_warship_design_3
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 10 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 1 }
 	}
 }
 

@@ -21,6 +21,39 @@ dhe_progress_bar_constitutional_pressure = {
 			add = { desc = "dhe_ic_constitutional_petition" value = 1.5 }
 		}
 		if = {
+			limit = {
+				owner = {
+					any_political_movement = {
+						is_political_movement_type = movement_dhe_independence_club
+						political_movement_support >= 0.05
+					}
+				}
+			}
+			add = { desc = "dhe_ic_movement_minor_support" value = 1.0 }
+		}
+		if = {
+			limit = {
+				owner = {
+					any_political_movement = {
+						is_political_movement_type = movement_dhe_independence_club
+						political_movement_support >= 0.10
+					}
+				}
+			}
+			add = { desc = "dhe_ic_movement_growing_support" value = 1.0 }
+		}
+		if = {
+			limit = {
+				owner = {
+					any_political_movement = {
+						is_political_movement_type = movement_dhe_independence_club
+						political_movement_support >= 0.20
+					}
+				}
+			}
+			add = { desc = "dhe_ic_movement_mass_support" value = 2.0 }
+		}
+		if = {
 			limit = { owner = { ig:ig_intelligentsia = { clout >= 0.15 } } }
 			add = { desc = "dhe_ic_intelligentsia_support" value = 2.0 }
 		}
@@ -130,4 +163,103 @@ dhe_progress_bar_jiandao_arable = {
 	start_value = 0
 	min_value = 0
 	max_value = 3
+}
+
+
+# Encoding: UTF-8 with BOM
+# File: common/scripted_progress_bars/dhe_jungchuwon_progress_bars.txt
+
+dhe_progress_bar_jungchuwon_royalists = {
+	name = "dhe_progress_bar_jungchuwon_royalists"
+	desc = "dhe_progress_bar_jungchuwon_royalists_desc"
+	default_bad = yes
+
+	start_value = 135
+	min_value = 0
+	max_value = 300
+}
+
+dhe_progress_bar_jungchuwon_reformists = {
+	name = "dhe_progress_bar_jungchuwon_reformists"
+	desc = "dhe_progress_bar_jungchuwon_reformists_desc"
+	default = yes
+
+	start_value = 90
+	min_value = 0
+	max_value = 300
+}
+
+dhe_progress_bar_jungchuwon_provincials = {
+	name = "dhe_progress_bar_jungchuwon_provincials"
+	desc = "dhe_progress_bar_jungchuwon_provincials_desc"
+	default = yes
+
+	start_value = 75
+	min_value = 0
+	max_value = 300
+}
+
+dhe_progress_bar_jungchuwon_public_trust = {
+	name = "dhe_progress_bar_jungchuwon_public_trust"
+	desc = "dhe_progress_bar_jungchuwon_public_trust_desc"
+	default = yes
+
+	start_value = 40
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		if = {
+			limit = { owner = { government_legitimacy >= 65 } }
+			add = { desc = "dhe_jungchuwon_legitimate_government" value = 0.5 }
+		}
+		if = {
+			limit = { owner = { government_legitimacy < 50 } }
+			subtract = { desc = "dhe_jungchuwon_low_legitimacy" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { government_legitimacy < 35 } }
+			subtract = { desc = "dhe_jungchuwon_very_low_legitimacy" value = 1.5 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_jungchuwon_no_budget } }
+			subtract = { desc = "dhe_jungchuwon_no_budget" value = 2.5 }
+		}
+		if = {
+			limit = { owner = { has_law = law_type:law_protected_speech } }
+			add = { desc = "dhe_jungchuwon_open_debate" value = 0.5 }
+		}
+		if = {
+			limit = { owner = { has_law = law_type:law_censorship } }
+			subtract = { desc = "dhe_jungchuwon_censorship" value = 1.5 }
+		}
+		if = {
+			limit = { owner = { bureaucracy < 0 } }
+			subtract = { desc = "dhe_jungchuwon_bureaucratic_shortage" value = 1.0 }
+		}
+		if = {
+			limit = {
+				owner = {
+					any_scope_state = {
+						turmoil >= 0.20
+					}
+				}
+			}
+			subtract = { desc = "dhe_jungchuwon_public_turmoil" value = 1.0 }
+		}
+		if = {
+			limit = {
+				owner = {
+					je:je_dhe_jungchuwon_system ?= {
+						OR = {
+							"scripted_bar_progress(dhe_progress_bar_jungchuwon_royalists)" >= 225
+							"scripted_bar_progress(dhe_progress_bar_jungchuwon_reformists)" >= 225
+							"scripted_bar_progress(dhe_progress_bar_jungchuwon_provincials)" >= 225
+						}
+					}
+				}
+			}
+			subtract = { desc = "dhe_jungchuwon_faction_dominance" value = 1.0 }
+		}
+	}
 }

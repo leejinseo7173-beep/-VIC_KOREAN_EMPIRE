@@ -141,7 +141,7 @@ dhe_mod_military_reform_success = {
 	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
 	unit_offense_add = 10                  # 군대 공격력 +10%
 	unit_defense_add = 10                  # 군대 방어력 +10%
-	country_military_pol_str_mult = 0.10   # 군부 정치력 +10% (신식 군대 위상)
+	country_officers_pol_str_mult = 0.10   # 장교 정치력 +10% (신식 군대 위상)
 }
 dhe_mod_military_reform_advanced_success = {
 	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
@@ -151,10 +151,194 @@ dhe_mod_military_reform_advanced_success = {
 	unit_defense_add = 20                  # 군대 방어력 +20%
 	
 	# 2. 최정예 부대의 유지력
-	unit_morale_recovery_add = 0.2         # 사기 회복 속도 +20% (좀비처럼 회복해서 싸웁니다)
+	unit_morale_recovery_mult = 0.2        # 사기 회복 속도 +20%
 	
 	# 3. 제국의 위상
-	country_army_power_projection_mult = 0.25 # 군사력 투사 +25% (군대 규모로 얻는 위신이 대폭 증가하여 열강 진입이 매우 쉬워집니다)
+	country_prestige_from_army_power_projection_mult = 0.25
+}
+dhe_mod_imperial_general_staff = {
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+	country_military_tech_spread_mult = 0.10
+	military_formation_organization_gain_mult = 0.10
+	country_military_wages_mult = 0.05
+}
+dhe_mod_foreign_military_mission = {
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+	country_military_tech_spread_mult = 0.15
+	building_barrack_throughput_add = 0.05
+	country_military_goods_cost_mult = 0.05
+}
+dhe_mod_imperial_guard_division = {
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+	unit_army_defense_mult = 0.05
+	unit_morale_recovery_mult = 0.10
+	country_prestige_from_army_power_projection_mult = 0.05
+}
+dhe_mod_military_procurement_drive = {
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+	building_arms_industry_throughput_add = 0.10
+	building_artillery_foundry_throughput_add = 0.10
+	building_munition_plant_throughput_add = 0.10
+	country_military_goods_cost_mult = 0.05
+}
+dhe_mod_officer_corps_dispute = {
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+	military_formation_organization_gain_mult = -0.10
+	unit_morale_recovery_mult = -0.10
+}
+dhe_mod_imperial_combined_fleet_success = {
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	country_prestige_from_navy_power_projection_mult = 0.25
+	country_ship_construction_efficiency_add = 0.10
+	country_navy_goods_cost_mult = -0.05
+}
+dhe_mod_imperial_admiralty_board = {
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	country_prestige_from_navy_power_projection_mult = 0.10
+	country_military_tech_spread_mult = 0.05
+	building_naval_administration_hiring_rate_mult = 0.15
+}
+dhe_mod_imperial_dockyard_program = {
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	building_shipyard_throughput_add = 0.10
+	country_ship_construction_efficiency_add = 0.05
+	country_navy_goods_cost_mult = 0.05
+}
+dhe_mod_imperial_fleet_exercises = {
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	country_prestige_from_navy_power_projection_mult = 0.05
+	country_navy_goods_cost_mult = 0.05
+	ship_interest_gain_mult = 0.05
+}
+dhe_mod_british_naval_advisers = {
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	country_prestige_from_navy_power_projection_mult = 0.15
+	country_ship_construction_efficiency_add = 0.10
+	country_military_tech_spread_mult = 0.10
+	building_naval_administration_hiring_rate_mult = 0.20
+}
+dhe_mod_british_dockyard_blueprints = {
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	country_ship_construction_efficiency_add = 0.15
+	building_shipyard_throughput_add = 0.10
+	country_navy_goods_cost_mult = -0.05
+}
+dhe_mod_british_fleet_observers = {
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	country_prestige_from_navy_power_projection_mult = 0.10
+	ship_interest_gain_mult = 0.10
+	country_military_tech_spread_mult = 0.05
+}
+dhe_mod_geobuk_armor_design = {
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	country_ship_group_capital_ships_construction_efficiency_add = 0.10
+	ship_armor_mult = 0.10
+	ship_hit_points_max_mult = 0.05
+	ship_movement_speed_mult = -0.03
+}
+dhe_mod_hangang_cruiser_design = {
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	country_ship_group_cruisers_construction_efficiency_add = 0.10
+	ship_movement_speed_mult = 0.05
+	ship_detection_mult = 0.05
+	ship_visibility_mult = -0.05
+}
+dhe_mod_jemulpo_coastal_design = {
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	country_ship_construction_efficiency_add = 0.05
+	ship_blockade_strength_mult = 0.08
+	ship_max_distance_to_port_add = 1
+	state_building_naval_fortification_max_level_add = 1
+}
+dhe_mod_susinsa_bobingsa_active = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	interest_group_ig_intelligentsia_pol_str_mult = 1.50
+	country_authority_mult = -0.05
+}
+dhe_mod_susinsa_japan_administration = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	country_bureaucracy_mult = 0.10
+	country_legitimacy_base_add = 8
+	country_authority_mult = 0.05
+}
+dhe_mod_susinsa_japan_military = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	country_military_tech_spread_mult = 0.20
+	country_prestige_from_army_power_projection_mult = 0.10
+	military_formation_organization_gain_mult = 0.05
+}
+dhe_mod_qing_diplomatic_lessons = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	country_influence_mult = 0.15
+	country_diplomatic_play_maneuvers_mult = 0.10
+	country_prestige_mult = 0.05
+}
+dhe_mod_qing_border_intelligence = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	country_bureaucracy_mult = 0.10
+	country_prestige_mult = 0.08
+	country_influence_mult = 0.05
+}
+dhe_mod_bobingsa_western_industry = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	country_production_tech_spread_mult = 0.25
+	country_weekly_innovation_add = 10
+	country_construction_add = 10
+}
+dhe_mod_bobingsa_constitutional_study = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	country_society_tech_spread_mult = 0.25
+	country_legitimacy_base_add = 10
+	country_law_enactment_success_add = 0.10
+}
+dhe_mod_mission_reform_reports = {
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	country_tech_spread_mult = 0.20
+	country_influence_mult = 0.10
+	country_weekly_innovation_add = 5
+}
+dhe_mod_mission_industrial_program = {
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+	country_production_tech_spread_mult = 0.25
+	country_weekly_innovation_add = 10
+	country_construction_add = 10
+}
+dhe_mod_mission_statecraft_program = {
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	country_bureaucracy_mult = 0.15
+	country_legitimacy_base_add = 12
+	country_law_enactment_success_add = 0.08
+}
+dhe_mod_mission_diplomatic_program = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	country_influence_add = 100
+	country_prestige_mult = 0.10
+	country_diplomatic_play_maneuvers_mult = 0.05
+}
+dhe_mod_british_technical_exchange = {
+	icon = "gfx/interface/icons/event_icons/event_trade.dds"
+	country_production_tech_spread_mult = 0.10
+	country_prestige_from_navy_power_projection_mult = 0.05
+}
+dhe_mod_french_legal_exchange = {
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	country_society_tech_spread_mult = 0.10
+	country_legitimacy_base_add = 5
+}
+dhe_mod_american_education_exchange = {
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	country_weekly_innovation_add = 5
+	country_tech_spread_mult = 0.05
+}
+dhe_mod_russian_border_exchange = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	country_bureaucracy_mult = 0.05
+	country_influence_mult = 0.05
+}
+dhe_mod_german_military_exchange = {
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	country_military_tech_spread_mult = 0.10
+	military_formation_organization_gain_mult = 0.05
 }
 # 🚂 [심화] 제국 철도망 완성 보상
 dhe_mod_railway_network_success = {
@@ -197,7 +381,7 @@ dhe_mod_southern_expansion_success = {
 	icon = "gfx/interface/icons/event_icons/dhe_great_korea_conquest.dds"
 	
 	country_prestige_add = 50                     # 위신 +50 (제국주의 열강으로서의 위엄)
-	country_navy_power_projection_mult = 0.25     # 해군력 투사 +25% (동아시아의 완벽한 제해권 장악)
+	country_prestige_from_navy_power_projection_mult = 0.25
 	state_assimilation_mult = 0.50                # 동화 속도 +50%
 	country_influence_add = 50                    # 외교 영향력 +50 (역내 패권국으로 도약)
 }

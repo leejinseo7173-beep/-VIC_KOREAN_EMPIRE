@@ -32,7 +32,38 @@ je_dhe_independence_club = {
 	scripted_button = dhe_button_ic_constitutional_compromise
 
 	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					any_political_movement = {
+						is_political_movement_type = movement_dhe_independence_club
+					}
+				}
+			}
+			create_political_movement = { type = movement_dhe_independence_club }
+		}
 		trigger_event = { id = dhe_independence_club.1 popup = yes }
+	}
+
+	widget = {
+		gui = "gui/journal_entry_widgets/dhe_manchuria_widgets.gui"
+		name = "widget_je_dhe_independence_club_header"
+		container = "custom_widget_container_3"
+	}
+
+	on_monthly_pulse = {
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						any_political_movement = {
+							is_political_movement_type = movement_dhe_independence_club
+						}
+					}
+				}
+				create_political_movement = { type = movement_dhe_independence_club }
+			}
+		}
 	}
 
 	complete = {
@@ -139,10 +170,345 @@ je_dhe_constitutional_reform = {
 		else = {
 			trigger_event = { id = dhe_constitutional_reform.4 popup = yes }
 		}
+
+		if = {
+			limit = {
+				NOT = { has_variable = dhe_jungchuwon_system_started }
+			}
+			set_variable = dhe_jungchuwon_system_started
+			add_journal_entry = { type = je_dhe_jungchuwon_system }
+		}
 	}
 
 	on_fail = {
 		set_variable = dhe_constitutional_reform_resolved
 		remove_variable = dhe_constitutional_reform_started
 	}
+}
+
+
+# Encoding: UTF-8 with BOM
+# File: common/journal_entries/dhe_jungchuwon_journal_entries.txt
+
+je_dhe_jungchuwon_system = {
+	icon = "gfx/interface/icons/event_icons/dhe_jung.png"
+	group = dhe_reforms
+
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
+
+	is_shown_when_inactive = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_jungchuwon_system_started
+	}
+
+	possible = {
+		exists = c:KOR
+		this = c:KOR
+		has_variable = dhe_jungchuwon_system_started
+	}
+
+	immediate = {
+		if = { limit = { NOT = { has_variable = dhe_jungchuwon_session_counter } } set_variable = { name = dhe_jungchuwon_session_counter value = 0 } }
+		if = { limit = { NOT = { has_variable = dhe_jungchuwon_budget_counter } } set_variable = { name = dhe_jungchuwon_budget_counter value = 0 } }
+		if = { limit = { NOT = { has_variable = dhe_jungchuwon_petition_counter } } set_variable = { name = dhe_jungchuwon_petition_counter value = 0 } }
+		if = { limit = { NOT = { has_variable = dhe_jungchuwon_delegate_counter } } set_variable = { name = dhe_jungchuwon_delegate_counter value = 0 } }
+		if = { limit = { NOT = { has_variable = dhe_jungchuwon_reform_bill_counter } } set_variable = { name = dhe_jungchuwon_reform_bill_counter value = 0 } }
+		if = { limit = { NOT = { has_variable = dhe_jungchuwon_emergency_counter } } set_variable = { name = dhe_jungchuwon_emergency_counter value = 0 } }
+		if = {
+			limit = {
+				NOT = { has_variable = dhe_cool_jungchuwon_political_basis }
+			}
+			set_variable = { name = dhe_cool_jungchuwon_political_basis days = 90 }
+			dhe_jungchuwon_apply_political_basis_drift = yes
+		}
+		trigger_event = { id = dhe_jungchuwon.1 popup = yes }
+	}
+
+	widget = {
+		gui = "gui/journal_entry_widgets/dhe_jungchuwon_widgets.gui"
+		name = "widget_je_dhe_jungchuwon_header"
+		container = "custom_widget_container_3"
+	}
+
+	scripted_progress_bar = dhe_progress_bar_jungchuwon_royalists
+	scripted_progress_bar = dhe_progress_bar_jungchuwon_reformists
+	scripted_progress_bar = dhe_progress_bar_jungchuwon_provincials
+	scripted_progress_bar = dhe_progress_bar_jungchuwon_public_trust
+
+	scripted_button = dhe_button_jungchuwon_convene_session
+	scripted_button = dhe_button_jungchuwon_imperial_budget
+	scripted_button = dhe_button_jungchuwon_emergency_session
+	scripted_button = dhe_button_jungchuwon_public_petitions
+	scripted_button = dhe_button_jungchuwon_provincial_delegates
+	scripted_button = dhe_button_jungchuwon_pass_reform_bill
+
+	on_monthly_pulse = {
+		effect = {
+			if = { limit = { NOT = { has_variable = dhe_jungchuwon_session_counter } } set_variable = { name = dhe_jungchuwon_session_counter value = 0 } }
+			if = { limit = { NOT = { has_variable = dhe_jungchuwon_budget_counter } } set_variable = { name = dhe_jungchuwon_budget_counter value = 0 } }
+			if = { limit = { NOT = { has_variable = dhe_jungchuwon_petition_counter } } set_variable = { name = dhe_jungchuwon_petition_counter value = 0 } }
+			if = { limit = { NOT = { has_variable = dhe_jungchuwon_delegate_counter } } set_variable = { name = dhe_jungchuwon_delegate_counter value = 0 } }
+			if = { limit = { NOT = { has_variable = dhe_jungchuwon_reform_bill_counter } } set_variable = { name = dhe_jungchuwon_reform_bill_counter value = 0 } }
+			if = { limit = { NOT = { has_variable = dhe_jungchuwon_emergency_counter } } set_variable = { name = dhe_jungchuwon_emergency_counter value = 0 } }
+			if = {
+				limit = {
+					NOT = { has_variable = dhe_cool_jungchuwon_political_basis }
+				}
+				set_variable = { name = dhe_cool_jungchuwon_political_basis days = 90 }
+				dhe_jungchuwon_apply_political_basis_drift = yes
+			}
+			if = {
+				limit = {
+					in_election_campaign = yes
+					NOT = { has_variable = dhe_jungchuwon_election_campaign_active }
+				}
+				set_variable = dhe_jungchuwon_election_campaign_active
+				trigger_event = { id = dhe_jungchuwon.8 popup = yes }
+			}
+			if = {
+				limit = {
+					in_election_campaign = no
+					has_variable = dhe_jungchuwon_election_campaign_active
+				}
+				remove_variable = dhe_jungchuwon_election_campaign_active
+				trigger_event = { id = dhe_jungchuwon.9 popup = yes }
+			}
+			if = {
+				limit = {
+					je:je_dhe_jungchuwon_system ?= {
+						"scripted_bar_progress(dhe_progress_bar_jungchuwon_royalists)" >= 225
+					}
+				}
+				if = { limit = { has_modifier = dhe_mod_jungchuwon_reformist_dominance } remove_modifier = dhe_mod_jungchuwon_reformist_dominance }
+				if = { limit = { has_modifier = dhe_mod_jungchuwon_provincial_dominance } remove_modifier = dhe_mod_jungchuwon_provincial_dominance }
+				add_modifier = { name = dhe_mod_jungchuwon_royalist_dominance months = 2 }
+			}
+			else_if = {
+				limit = {
+					je:je_dhe_jungchuwon_system ?= {
+						"scripted_bar_progress(dhe_progress_bar_jungchuwon_reformists)" >= 225
+					}
+				}
+				if = { limit = { has_modifier = dhe_mod_jungchuwon_royalist_dominance } remove_modifier = dhe_mod_jungchuwon_royalist_dominance }
+				if = { limit = { has_modifier = dhe_mod_jungchuwon_provincial_dominance } remove_modifier = dhe_mod_jungchuwon_provincial_dominance }
+				add_modifier = { name = dhe_mod_jungchuwon_reformist_dominance months = 2 }
+			}
+			else_if = {
+				limit = {
+					je:je_dhe_jungchuwon_system ?= {
+						"scripted_bar_progress(dhe_progress_bar_jungchuwon_provincials)" >= 225
+					}
+				}
+				if = { limit = { has_modifier = dhe_mod_jungchuwon_royalist_dominance } remove_modifier = dhe_mod_jungchuwon_royalist_dominance }
+				if = { limit = { has_modifier = dhe_mod_jungchuwon_reformist_dominance } remove_modifier = dhe_mod_jungchuwon_reformist_dominance }
+				add_modifier = { name = dhe_mod_jungchuwon_provincial_dominance months = 2 }
+			}
+			else = {
+				if = { limit = { has_modifier = dhe_mod_jungchuwon_royalist_dominance } remove_modifier = dhe_mod_jungchuwon_royalist_dominance }
+				if = { limit = { has_modifier = dhe_mod_jungchuwon_reformist_dominance } remove_modifier = dhe_mod_jungchuwon_reformist_dominance }
+				if = { limit = { has_modifier = dhe_mod_jungchuwon_provincial_dominance } remove_modifier = dhe_mod_jungchuwon_provincial_dominance }
+			}
+			if = {
+				limit = {
+					je:je_dhe_jungchuwon_system ?= {
+						"scripted_bar_progress(dhe_progress_bar_jungchuwon_public_trust)" < 20
+					}
+				}
+				if = { limit = { has_modifier = dhe_mod_jungchuwon_public_confidence_high } remove_modifier = dhe_mod_jungchuwon_public_confidence_high }
+				add_modifier = { name = dhe_mod_jungchuwon_public_trust_crisis months = 2 }
+			}
+			else_if = {
+				limit = {
+					je:je_dhe_jungchuwon_system ?= {
+						"scripted_bar_progress(dhe_progress_bar_jungchuwon_public_trust)" >= 75
+					}
+				}
+				if = { limit = { has_modifier = dhe_mod_jungchuwon_public_trust_crisis } remove_modifier = dhe_mod_jungchuwon_public_trust_crisis }
+				add_modifier = { name = dhe_mod_jungchuwon_public_confidence_high months = 2 }
+			}
+			else = {
+				if = { limit = { has_modifier = dhe_mod_jungchuwon_public_trust_crisis } remove_modifier = dhe_mod_jungchuwon_public_trust_crisis }
+				if = { limit = { has_modifier = dhe_mod_jungchuwon_public_confidence_high } remove_modifier = dhe_mod_jungchuwon_public_confidence_high }
+			}
+		}
+		random_events = {
+			80 = 0
+			8 = dhe_jungchuwon.3
+			6 = dhe_jungchuwon.15
+			4 = dhe_jungchuwon.10
+			4 = dhe_jungchuwon.11
+			4 = dhe_jungchuwon.12
+			4 = dhe_jungchuwon.13
+			4 = dhe_jungchuwon.14
+			5 = dhe_jungchuwon.23
+			5 = dhe_jungchuwon.24
+			1 = dhe_jungchuwon.25
+		}
+	}
+
+	should_be_pinned_by_default_uninvolved_or_context = yes
+}
+
+je_dhe_jungchuwon_economic_growth_agenda = {
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+	group = dhe_reforms
+
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
+
+	possible = {
+		exists = c:KOR
+		this = c:KOR
+		has_journal_entry = je_dhe_jungchuwon_system
+		has_variable = dhe_jungchuwon_economic_growth_agenda_active
+	}
+
+	modifiers_while_active = {
+		dhe_mod_jungchuwon_growth_agenda_active
+	}
+
+	complete = {
+		scope:journal_entry = { is_goal_complete = yes }
+	}
+
+	current_value = {
+		value = gdp
+	}
+
+	goal_add_value = {
+		value = gdp
+		multiply = 0.15
+	}
+
+	timeout = 1825
+
+	on_complete = {
+		trigger_event = { id = dhe_jungchuwon.16 popup = yes }
+		remove_variable = dhe_jungchuwon_economic_growth_agenda_active
+	}
+
+	on_timeout = {
+		trigger_event = { id = dhe_jungchuwon.17 popup = yes }
+		remove_variable = dhe_jungchuwon_economic_growth_agenda_active
+	}
+
+	invalid = {
+		OR = {
+			NOT = { has_journal_entry = je_dhe_jungchuwon_system }
+			NOT = { has_variable = dhe_jungchuwon_economic_growth_agenda_active }
+		}
+	}
+
+	should_be_pinned_by_default_uninvolved_or_context = yes
+}
+
+je_dhe_jungchuwon_imperial_administration_agenda = {
+	icon = "gfx/interface/icons/law_icons/monarchy.dds"
+	group = dhe_reforms
+
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
+
+	possible = {
+		exists = c:KOR
+		this = c:KOR
+		has_journal_entry = je_dhe_jungchuwon_system
+		has_variable = dhe_jungchuwon_imperial_administration_agenda_active
+	}
+
+	modifiers_while_active = {
+		dhe_mod_jungchuwon_imperial_agenda_active
+	}
+
+	complete = {
+		bureaucracy >= 250
+		authority >= 100
+		country_has_building_group_levels = {
+			type = bg_government
+			value >= 12
+		}
+	}
+
+	timeout = 1825
+
+	on_complete = {
+		trigger_event = { id = dhe_jungchuwon.18 popup = yes }
+		remove_variable = dhe_jungchuwon_imperial_administration_agenda_active
+	}
+
+	on_timeout = {
+		trigger_event = { id = dhe_jungchuwon.19 popup = yes }
+		remove_variable = dhe_jungchuwon_imperial_administration_agenda_active
+	}
+
+	invalid = {
+		OR = {
+			NOT = { has_journal_entry = je_dhe_jungchuwon_system }
+			NOT = { has_variable = dhe_jungchuwon_imperial_administration_agenda_active }
+		}
+	}
+
+	should_be_pinned_by_default_uninvolved_or_context = yes
+}
+
+je_dhe_jungchuwon_provincial_coordination_agenda = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	group = dhe_reforms
+
+	is_shown_in_lobby = {
+		country_has_primary_culture = cu:korean
+	}
+
+	possible = {
+		exists = c:KOR
+		this = c:KOR
+		has_journal_entry = je_dhe_jungchuwon_system
+		has_variable = dhe_jungchuwon_provincial_coordination_agenda_active
+	}
+
+	modifiers_while_active = {
+		dhe_mod_jungchuwon_provincial_agenda_active
+	}
+
+	complete = {
+		bureaucracy >= 100
+		country_has_building_group_levels = {
+			type = bg_infrastructure
+			value >= 10
+		}
+		any_scope_building = {
+			is_building_type = building_government_administration
+			level >= 5
+		}
+		any_scope_building = {
+			is_building_type = building_railway
+			level >= 5
+		}
+	}
+
+	timeout = 1825
+
+	on_complete = {
+		trigger_event = { id = dhe_jungchuwon.20 popup = yes }
+		remove_variable = dhe_jungchuwon_provincial_coordination_agenda_active
+	}
+
+	on_timeout = {
+		trigger_event = { id = dhe_jungchuwon.21 popup = yes }
+		remove_variable = dhe_jungchuwon_provincial_coordination_agenda_active
+	}
+
+	invalid = {
+		OR = {
+			NOT = { has_journal_entry = je_dhe_jungchuwon_system }
+			NOT = { has_variable = dhe_jungchuwon_provincial_coordination_agenda_active }
+		}
+	}
+
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }

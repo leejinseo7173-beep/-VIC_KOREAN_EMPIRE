@@ -3,6 +3,79 @@
 # [리워크] 겹침 제거 + 난이도 상향 + 고유 조건 강화
 # 광무개혁 bar, 간도, 연해주는 변경 없음
 
+dhe_progress_bar_susinsa_bobingsa = {
+	name = "dhe_progress_bar_susinsa_bobingsa"
+	desc = "dhe_progress_bar_susinsa_bobingsa_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		if = {
+			limit = { always = yes }
+			subtract = { desc = "dhe_mission_time_pressure" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_japan_report } }
+			add = { desc = "dhe_mission_japan_report_progress" value = 2.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_qing_report } }
+			add = { desc = "dhe_mission_qing_report_progress" value = 1.5 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_west_report } }
+			add = { desc = "dhe_mission_west_report_progress" value = 2.5 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_current_location_var } }
+			add = { desc = "dhe_mission_abroad_progress" value = 2.0 }
+		}
+		if = {
+			limit = { owner = { has_law_or_variant = law_type:law_appointed_bureaucrats } }
+			add = { desc = "dhe_mission_appointed_bureaucrats" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_law = law_type:law_public_schools } }
+			add = { desc = "dhe_mission_public_schools" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_law = law_type:law_censorship } }
+			subtract = { desc = "dhe_mission_censorship" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { ig:ig_intelligentsia = { ig_approval >= 5 } } }
+			add = { desc = "dhe_mission_intelligentsia_support" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { ig:ig_landowners = { ig_approval <= -5 } } }
+			subtract = { desc = "dhe_mission_conservative_resistance" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_british_exchange } }
+			add = { desc = "dhe_mission_british_exchange_progress" value = 1.5 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_french_exchange } }
+			add = { desc = "dhe_mission_french_exchange_progress" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_american_exchange } }
+			add = { desc = "dhe_mission_american_exchange_progress" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_russian_exchange } }
+			add = { desc = "dhe_mission_russian_exchange_progress" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_german_exchange } }
+			add = { desc = "dhe_mission_german_exchange_progress" value = 1.5 }
+		}
+	}
+}
+
 # ==========================================================
 # 👑 왕권 회복 (세도정치 타파)
 # 고유 열쇠: 지주 약화 + 정통성 + 검열 폐지
@@ -723,6 +796,262 @@ dhe_progress_bar_outer_manchuria = {
 	start_value = 0
 	min_value = 0
 	max_value = 13
+}
+
+# ==========================================================
+# ⚔️ 원수부와 제국군 개편 — 법률, 기술, 군수공업, 군부 신뢰가 함께 움직이는 심화 군제개혁
+# ==========================================================
+dhe_progress_bar_imperial_army_reform = {
+	name = "dhe_progress_bar_imperial_army_reform"
+	desc = "dhe_progress_bar_imperial_army_reform_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		if = {
+			limit = { always = yes }
+			subtract = { desc = "dhe_imperial_army_base_decay" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_law_or_variant = law_type:law_professional_army } }
+			add = { desc = "dhe_imperial_army_professional_army" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { has_law_or_variant = law_type:law_mass_conscription } }
+			add = { desc = "dhe_imperial_army_mass_conscription" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_law_or_variant = law_type:law_peasant_levies } }
+			subtract = { desc = "dhe_imperial_army_peasant_levies" value = 3.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = general_staff } }
+			add = { desc = "dhe_imperial_army_general_staff_tech" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = breech_loading_artillery } }
+			add = { desc = "dhe_imperial_army_artillery_tech" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = handcranked_machine_gun } }
+			add = { desc = "dhe_imperial_army_machine_guns" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { army_size >= 100 } }
+			add = { desc = "dhe_imperial_army_field_force" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { army_size >= 150 } }
+			add = { desc = "dhe_imperial_army_large_force" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				owner = {
+					any_scope_building = { is_building_type = building_arms_industry level >= 5 }
+				}
+			}
+			add = { desc = "dhe_imperial_army_arms_industry" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				owner = {
+					any_scope_building = { is_building_type = building_artillery_foundry level >= 3 }
+				}
+			}
+			add = { desc = "dhe_imperial_army_artillery_foundry" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				owner = {
+					any_scope_building = { is_building_type = building_munition_plant level >= 3 }
+				}
+			}
+			add = { desc = "dhe_imperial_army_munitions" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				owner = {
+					country_army_unit_type_fraction = {
+						target = unit_type:combat_unit_type_skirmish_infantry
+						value >= 0.5
+					}
+				}
+			}
+			add = { desc = "dhe_imperial_army_modern_infantry" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { ig:ig_armed_forces = { ig_approval >= 5 } } }
+			add = { desc = "dhe_imperial_army_armed_forces_support" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { ig:ig_armed_forces = { ig_approval <= -5 } } }
+			subtract = { desc = "dhe_imperial_army_armed_forces_resist" value = 2.0 }
+		}
+	}
+}
+
+# ==========================================================
+# ⚓ 대한제국 연합함대 — 해군법, 조선소, 해군 행정, 철갑함 기술이 함께 움직이는 해군 일지
+# ==========================================================
+dhe_progress_bar_imperial_combined_fleet = {
+	name = "dhe_progress_bar_imperial_combined_fleet"
+	desc = "dhe_progress_bar_imperial_combined_fleet_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		if = {
+			limit = { always = yes }
+			subtract = { desc = "dhe_combined_fleet_base_decay" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_law_or_variant = law_type:law_professional_navy } }
+			add = { desc = "dhe_combined_fleet_professional_navy" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { has_law_or_variant = law_type:law_diplomatic_navy } }
+			add = { desc = "dhe_combined_fleet_diplomatic_navy" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_law_or_variant = law_type:law_merchant_navy } }
+			subtract = { desc = "dhe_combined_fleet_merchant_navy" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = ironclad_tech } }
+			add = { desc = "dhe_combined_fleet_ironclads" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = monitor_tech } }
+			add = { desc = "dhe_combined_fleet_monitors" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = self_propelled_torpedoes } }
+			add = { desc = "dhe_combined_fleet_torpedoes" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = battleship_tech } }
+			add = { desc = "dhe_combined_fleet_pre_dreadnoughts" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = gantry_cranes } }
+			add = { desc = "dhe_combined_fleet_gantry_cranes" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_variable = dhe_mission_british_naval_advisers } }
+			add = { desc = "dhe_combined_fleet_british_advisers" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { has_variable = dhe_mission_british_dockyard_blueprints } }
+			add = { desc = "dhe_combined_fleet_british_blueprints" value = 1.5 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = dhe_korean_warship_design_1 } }
+			add = { desc = "dhe_combined_fleet_korean_warship_design_1" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = dhe_korean_warship_design_2 } }
+			add = { desc = "dhe_combined_fleet_korean_warship_design_2" value = 1.5 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = dhe_korean_warship_design_3 } }
+			add = { desc = "dhe_combined_fleet_korean_warship_design_3" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { navy_size >= 25 } }
+			add = { desc = "dhe_combined_fleet_coastal_squadron" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { navy_size >= 50 } }
+			add = { desc = "dhe_combined_fleet_sea_squadron" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { navy_size >= 75 } }
+			add = { desc = "dhe_combined_fleet_combined_fleet" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				owner = {
+					any_scope_building = { is_building_type = building_shipyard level >= 5 }
+				}
+			}
+			add = { desc = "dhe_combined_fleet_shipyards" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				owner = {
+					any_scope_building = { is_building_type = building_naval_administration level >= 4 }
+				}
+			}
+			add = { desc = "dhe_combined_fleet_administration" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				owner = {
+					any_scope_building = { is_building_type = building_port level >= 5 }
+				}
+			}
+			add = { desc = "dhe_combined_fleet_ports" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { ig:ig_armed_forces = { ig_approval >= 5 } } }
+			add = { desc = "dhe_combined_fleet_navy_support" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { ig:ig_armed_forces = { ig_approval <= -5 } } }
+			subtract = { desc = "dhe_combined_fleet_navy_resist" value = 2.0 }
+		}
+	}
+}
+
+dhe_progress_bar_naval_design_bureau = {
+	name = "dhe_progress_bar_naval_design_bureau"
+	desc = "dhe_progress_bar_naval_design_bureau_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
 }
 
 # ==========================================================

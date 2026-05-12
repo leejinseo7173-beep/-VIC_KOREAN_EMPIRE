@@ -79,3 +79,120 @@
         localization_key = "DHE_CHECK_INFRA_NO"
     }
 }
+
+DHE_JUNGCHUWON_ELECTION_RESULT_TEXT = {
+	type = country
+
+	text = {
+		trigger = {
+			has_variable = dhe_jungchuwon_election_conservative_result
+		}
+		localization_key = DHE_JUNGCHUWON_ELECTION_RESULT_CONSERVATIVE
+	}
+
+	text = {
+		trigger = {
+			has_variable = dhe_jungchuwon_election_reformist_result
+		}
+		localization_key = DHE_JUNGCHUWON_ELECTION_RESULT_REFORMIST
+	}
+
+	text = {
+		trigger = {
+			has_variable = dhe_jungchuwon_election_local_result
+		}
+		localization_key = DHE_JUNGCHUWON_ELECTION_RESULT_LOCAL
+	}
+
+	text = {
+		localization_key = DHE_JUNGCHUWON_ELECTION_RESULT_UNKNOWN
+	}
+}
+
+DHE_JUNGCHUWON_SYSTEM_STATUS = {
+	type = country
+
+	text = {
+		trigger = {
+			has_variable = dhe_jungchuwon_no_budget
+		}
+		localization_key = DHE_JUNGCHUWON_STATUS_BUDGET_DEADLOCK
+	}
+
+	text = {
+		trigger = {
+			has_modifier = dhe_mod_jungchuwon_emergency_budget
+		}
+		localization_key = DHE_JUNGCHUWON_STATUS_EMERGENCY_BUDGET
+	}
+
+	text = {
+		trigger = {
+			has_modifier = dhe_mod_jungchuwon_public_relief
+		}
+		localization_key = DHE_JUNGCHUWON_STATUS_PUBLIC_RELIEF
+	}
+
+	text = {
+		trigger = {
+			has_modifier = dhe_mod_jungchuwon_grand_compromise
+		}
+		localization_key = DHE_JUNGCHUWON_STATUS_GRAND_COMPROMISE
+	}
+
+	text = {
+		trigger = {
+			has_modifier = dhe_mod_jungchuwon_imperial_budget
+		}
+		localization_key = DHE_JUNGCHUWON_STATUS_IMPERIAL_BUDGET
+	}
+
+	text = {
+		trigger = {
+			has_modifier = dhe_mod_jungchuwon_industrial_budget
+		}
+		localization_key = DHE_JUNGCHUWON_STATUS_INDUSTRIAL_BUDGET
+	}
+
+	text = {
+		trigger = {
+			has_modifier = dhe_mod_jungchuwon_agricultural_budget
+		}
+		localization_key = DHE_JUNGCHUWON_STATUS_AGRICULTURAL_BUDGET
+	}
+
+	text = {
+		trigger = {
+			has_modifier = dhe_mod_jungchuwon_infrastructure_budget
+		}
+		localization_key = DHE_JUNGCHUWON_STATUS_INFRASTRUCTURE_BUDGET
+	}
+
+	text = {
+		trigger = {
+			has_modifier = dhe_mod_jungchuwon_education_budget
+		}
+		localization_key = DHE_JUNGCHUWON_STATUS_EDUCATION_BUDGET
+	}
+
+	text = {
+		trigger = {
+			has_modifier = dhe_mod_jungchuwon_military_budget
+		}
+		localization_key = DHE_JUNGCHUWON_STATUS_MILITARY_BUDGET
+	}
+
+	text = {
+		trigger = {
+			OR = {
+				has_law_or_variant = law_type:law_protected_speech
+				has_law_or_variant = law_type:law_right_of_assembly
+			}
+		}
+		localization_key = DHE_JUNGCHUWON_STATUS_OPEN_DEBATE
+	}
+
+	text = {
+		localization_key = DHE_JUNGCHUWON_STATUS_NORMAL
+	}
+}
