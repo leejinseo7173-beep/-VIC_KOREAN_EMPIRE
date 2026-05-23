@@ -1,9 +1,0 @@
-prestige_good_gaeseong_ginseng = {
-	possible = {
-		has_dlc_feature = mp1_content
-	}
-
-	base_good = ginseng
-	prestige_bonus = 0.1
-	texture = "gfx/interface/icons/goods_icons/prestige_goods/ginseng.dds"
-}
