@@ -1,0 +1,97 @@
+pm_dhe_academy_old_drill = {
+	texture = "gfx/interface/icons/production_method_icons/samurai_training.dds"
+	is_default = yes
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_officers_add = 250
+			building_employment_academics_add = 100
+			building_employment_soldiers_add = 250
+		}
+	}
+
+	country_modifiers = {
+		workforce_scaled = {
+			unit_army_defense_mult = 0.01
+			military_formation_organization_gain_mult = 0.01
+		}
+	}
+}
+
+pm_dhe_academy_modern_staff_school = {
+	texture = "gfx/interface/icons/production_method_icons/breech_loading_artillery_production.dds"
+	unlocking_technologies = {
+		general_staff
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_officers_add = 500
+			building_employment_academics_add = 250
+			building_employment_clerks_add = 250
+		}
+	}
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_military_tech_spread_mult = 0.04
+			military_formation_organization_gain_mult = 0.03
+			unit_army_offense_mult = 0.01
+			unit_army_defense_mult = 0.01
+		}
+	}
+}
+
+pm_dhe_academy_balanced_doctrine = {
+	texture = "gfx/interface/icons/production_method_icons/samurai_training.dds"
+	is_default = yes
+
+	country_modifiers = {
+		workforce_scaled = {
+			unit_army_offense_mult = 0.01
+			unit_army_defense_mult = 0.01
+		}
+	}
+}
+
+pm_dhe_academy_offensive_doctrine = {
+	texture = "gfx/interface/icons/production_method_icons/shrapnel_artillery.dds"
+	unlocking_technologies = {
+		general_staff
+	}
+
+	country_modifiers = {
+		workforce_scaled = {
+			unit_army_offense_mult = 0.03
+			unit_army_defense_mult = -0.01
+		}
+	}
+}
+
+pm_dhe_academy_defensive_doctrine = {
+	texture = "gfx/interface/icons/production_method_icons/siege_artillery.dds"
+	unlocking_technologies = {
+		general_staff
+	}
+
+	country_modifiers = {
+		workforce_scaled = {
+			unit_army_defense_mult = 0.03
+			unit_army_offense_mult = -0.01
+		}
+	}
+}
+
+pm_dhe_academy_artillery_school = {
+	texture = "gfx/interface/icons/production_method_icons/cannon_artillery.dds"
+	unlocking_technologies = {
+		breech_loading_artillery
+	}
+
+	country_modifiers = {
+		workforce_scaled = {
+			unit_army_offense_mult = 0.02
+			country_military_goods_cost_mult = 0.02
+		}
+	}
+}

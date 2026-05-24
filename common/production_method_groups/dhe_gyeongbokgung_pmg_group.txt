@@ -1,0 +1,50 @@
+﻿pmg_gyeongbokgung = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	ai_selection = most_productive
+	is_hidden_when_unavailable = yes
+	production_methods = {
+		pm_gyeongbokgung_active
+		pm_monument_prestige_only
+		pm_monument_no_effects
+	}
+}
+pmg_jongmyo = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	ai_selection = most_productive
+	is_hidden_when_unavailable = yes
+	production_methods = {
+		pm_jongmyo_active
+		pm_monument_prestige_only
+		pm_monument_no_effects
+	}
+}
+pmg_sungkyunkwan = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	ai_selection = most_productive
+	is_hidden_when_unavailable = yes
+	production_methods = {
+		pm_sungkyunkwan_active
+		pm_monument_prestige_only
+		pm_monument_no_effects
+	}
+}
+pmg_wonsoobu = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	ai_selection = most_productive
+	is_hidden_when_unavailable = yes
+	production_methods = {
+		pm_wonsoobu_active
+		pm_monument_prestige_only
+		pm_monument_no_effects
+	}
+}
+pmg_seoul_station = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	ai_selection = most_productive
+	is_hidden_when_unavailable = yes
+	production_methods = {
+		pm_seoul_station_active
+		pm_monument_prestige_only
+		pm_monument_no_effects
+	}
+}

@@ -1,0 +1,43 @@
+﻿ideology_developmental_autocrat = {
+    icon = "gfx/interface/icons/ideology_icons/ideology_leader/idealogy_leader_technocratic.dds"
+    character_ideology = yes
+
+    # ---- 정체 및 권력 구조 (강력한 중앙집권) ----
+    lawgroup_governance_principles = {
+        law_presidential_republic = approve
+        law_monarchy = disapprove
+    }
+    lawgroup_distribution_of_power = {
+        law_autocracy = strongly_approve         # 독재 강력 지지
+        law_oligarchy = approve
+        law_single_party_state = strongly_approve # 일당독재 지지
+        law_universal_suffrage = strongly_disapprove # 보편투표 반대
+    }
+
+    # ---- 경제 (국가 주도 산업화) ----
+    lawgroup_economic_system = {
+        law_interventionism = strongly_approve   # 간섭주의(국가 주도 경제) 강력 지지
+        law_command_economy = approve
+        law_traditionalism = strongly_disapprove # 전통주의 극혐
+        law_laissez_faire = disapprove           # 자유방임주의 반대
+    }
+
+    # ---- 치안 및 언론 (철권통치) ----
+    lawgroup_internal_security = {
+        law_secret_police = strongly_approve     # 비밀경찰 지지
+        law_home_affairs = approve
+    }
+    lawgroup_free_speech = {
+        law_censorship = approve                 # 검열 지지
+        law_outlawed_dissent = strongly_approve  # 반체제 불법화
+    }
+
+    # ---- 군제 및 교육 ----
+    lawgroup_army_model = {
+        law_professional_army = strongly_approve
+        law_mass_conscription = approve
+    }
+    lawgroup_education_system = {
+        law_public_schools = strongly_approve    # 공립학교(의무교육) 강력 지지
+    }
+}

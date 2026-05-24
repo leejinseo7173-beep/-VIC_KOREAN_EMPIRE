@@ -1,0 +1,113 @@
+ship_names_dhe_korean_capital_ships = {
+	name = "shipname_default_format"
+	selection_weight = 20
+	culture = korean
+
+	allowed_ship_types = {
+		ship_type_dhe_gwangmu_super_dreadnought
+		ship_type_pre_dreadnought
+		ship_type_modern_ironclad
+		ship_type_dreadnought
+		ship_type_super_dreadnought
+	}
+
+	properties = {
+		{
+			type = custom_text
+			key = "PREFIX"
+			custom_text = "ship_prefix_blank"
+		}
+		{
+			type = name_list
+			key = "SHIP_NAMESAKE"
+			name_list = {
+				sn_dhe_gwangmu sn_dhe_geobuk sn_dhe_hwangje sn_dhe_daehan sn_dhe_baekdu
+				sn_dhe_halla sn_dhe_taebaek sn_dhe_bukhan sn_dhe_namhansanseong sn_dhe_ganghwa
+			}
+		}
+	}
+}
+
+ship_names_dhe_korean_carriers = {
+	name = "shipname_default_format"
+	selection_weight = 20
+	culture = korean
+
+	allowed_ship_types = {
+		ship_type_dhe_haedong_aircraft_carrier
+		ship_type_aircraft_carrier
+		ship_type_seaplane_tender
+	}
+
+	properties = {
+		{
+			type = custom_text
+			key = "PREFIX"
+			custom_text = "ship_prefix_blank"
+		}
+		{
+			type = name_list
+			key = "SHIP_NAMESAKE"
+			name_list = {
+				sn_dhe_haedong sn_dhe_cheonghae sn_dhe_changdeok sn_dhe_gyeongbok sn_dhe_dokdo
+				sn_dhe_ulldo sn_dhe_jeju sn_dhe_incheon sn_dhe_wonsan sn_dhe_busanjin
+			}
+		}
+	}
+}
+
+ship_names_dhe_korean_submarines = {
+	name = "shipname_default_format"
+	selection_weight = 20
+	culture = korean
+
+	allowed_ship_types = {
+		ship_type_dhe_jangbogo_submarine
+		ship_type_submarine
+	}
+
+	properties = {
+		{
+			type = custom_text
+			key = "PREFIX"
+			custom_text = "ship_prefix_blank"
+		}
+		{
+			type = name_list
+			key = "SHIP_NAMESAKE"
+			name_list = {
+				sn_dhe_jangbogo sn_dhe_yi_jongmu sn_dhe_icheon sn_dhe_ganggamchan sn_dhe_eulji
+				sn_dhe_duman sn_dhe_amnok sn_dhe_daedong sn_dhe_nakdong sn_dhe_geumgang
+			}
+		}
+	}
+}
+
+ship_names_dhe_korean_cruisers = {
+	name = "shipname_default_format"
+	selection_weight = 20
+	culture = korean
+
+	allowed_ship_types = {
+		ship_type_protected_cruiser
+		ship_type_armored_cruiser
+		ship_type_light_cruiser
+	}
+
+	properties = {
+		{
+			type = custom_text
+			key = "PREFIX"
+			custom_text = "ship_prefix_blank"
+		}
+		{
+			type = name_list
+			key = "SHIP_NAMESAKE"
+			name_list = {
+				sn_dhe_hangang sn_dhe_jemulpo sn_dhe_busanjin sn_dhe_wonsan sn_dhe_incheon
+				sn_dhe_donghae sn_dhe_seohae sn_dhe_namhae sn_dhe_duman sn_dhe_amnok
+				sn_dhe_daedong sn_dhe_nakdong sn_dhe_geumgang sn_dhe_yeongsan
+			}
+		}
+	}
+}

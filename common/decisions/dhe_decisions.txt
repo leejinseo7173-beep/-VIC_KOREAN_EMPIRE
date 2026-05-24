@@ -1,0 +1,102 @@
+﻿
+# File: common/decisions/dhe_hangeul_decisions.txt
+# (또는 기존 디시전 파일에 추가)
+
+# =============================================================================
+# 1. 한글 교육 준비 (Prepare)
+# =============================================================================
+dhe_hangeul_edu_prepare_decision = {
+	is_shown = {
+		this = c:KOR
+		NOT = { has_variable = dhe_hangeul_edu_preparing }
+		NOT = { has_variable = dhe_hangeul_edu_completed }
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = dhe_hangeul_edu_prepare_req_reform_tt
+        }
+			has_variable = dhe_gwangmu_reform_started
+		
+		# V3에서는 treasury(일시불 국고) 트리거가 잘 작동하지 않을 수 있습니다. 
+		# (필요시 삭제하거나 gold_reserves 등으로 우회해야 합니다)
+		# treasury >= 500000 
+		bureaucracy >= 200
+		authority >= 200
+	}
+
+	when_taken = {
+		set_variable = dhe_hangeul_edu_preparing 
+		add_modifier = {
+			name = dhe_mod_hangeul_edu_preparation_20y
+			months = 240 # [수정됨] 빅토리아 3는 years 대신 months를 사용합니다.
+		}
+	} 
+
+	ai_chance = { value = 50 }
+}
+
+# =============================================================================
+# 2. [신규] 한글 교육 완료 (Complete)
+# =============================================================================
+dhe_hangeul_edu_complete_decision = {
+	is_shown = {
+		this = c:KOR
+		has_variable = dhe_hangeul_edu_preparing
+		NOT = { has_variable = dhe_hangeul_edu_completed }
+    }
+	possible = {
+		literacy_rate >= 0.5
+		has_law = law_type:law_public_schools
+		
+		# [수정됨] 국가 스코프에서는 소유한 주(State)를 통해 건물을 검사해야 안전합니다.
+		any_scope_state = {
+			owner = ROOT
+			any_scope_building = { is_building_type = building_university level >= 3 }
+		}
+	}
+
+	when_taken = {
+		set_variable = dhe_hangeul_edu_completed
+		remove_variable = dhe_hangeul_edu_preparing
+		trigger_event = { id = dhe_event.5 popup = yes }
+		# 혹시 모를 버그 방지를 위해 조건부로 기존 모디파이어 제거
+		if = {
+			limit = { has_modifier = dhe_mod_hangeul_edu_preparation_20y }
+			remove_modifier = dhe_mod_hangeul_edu_preparation_20y
+		}
+		
+		add_modifier = {
+			name = dhe_mod_hangeul_edu_completed
+			months = -1 # 영구 지속
+		}
+
+
+	}
+
+	ai_chance = { value = 40 }
+}
+dhe_rebuild_gyeongbokgung_decision = {
+	is_shown = {
+		this = c:KOR
+		NOT = { has_global_variable = dhe_gyeongbokgung_completed }
+		NOT = { has_global_variable = dhe_gyeongbokgung_in_progress }
+	}
+	possible = {
+		any_scope_state = {
+			state_region = s:STATE_SEOUL
+			NOT = { has_building = building_gyeongbokgung }
+		}
+		gold_reserves >= 100000
+	}
+	when_taken = {
+		add_treasury = -100000
+		set_global_variable = {
+			name = dhe_gyeongbokgung_progress
+			value = 0
+		}
+		set_global_variable = dhe_gyeongbokgung_in_progress
+		trigger_event = { id = dhe_gyeongbokgung.1 popup = yes }
+	}
+	ai_chance = { base = 10 }
+}

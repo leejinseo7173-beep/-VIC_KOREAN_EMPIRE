@@ -1,0 +1,4 @@
+bg_dhe_imperial_military_academy = {
+	parent_group = bg_government
+	lens = development
+}

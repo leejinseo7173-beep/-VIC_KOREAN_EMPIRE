@@ -1,0 +1,353 @@
+dhe_korean_warship_design_1 = {
+	# Special Korean naval design doctrine unlocked through the Imperial Combined Fleet journal entry.
+	era = era_5
+	texture = "gfx/interface/icons/invention_icons/battleship_tech.dds"
+	category = military
+	can_research = no
+
+	modifier = {
+		country_ship_construction_efficiency_add = 0.05
+		ship_max_distance_to_port_add = 2
+	}
+
+	unlocking_technologies = {
+		battleship_tech
+	}
+
+	ai_weight = {
+		value = 0
+	}
+}
+
+dhe_korean_warship_design_2 = {
+	# Heavy armor refinements for Korean capital ships.
+	era = era_5
+	texture = "gfx/interface/icons/invention_icons/monitor_tech.dds"
+	category = military
+	can_research = no
+
+	modifier = {
+		country_ship_group_capital_ships_construction_efficiency_add = 0.08
+		ship_armor_mult = 0.1
+		ship_hit_points_max_mult = 0.08
+	}
+
+	unlocking_technologies = {
+		dhe_korean_warship_design_1
+	}
+
+	ai_weight = {
+		value = 0
+	}
+}
+
+dhe_korean_warship_module_armor = {
+	# Gwangmu armor and damage-control module package.
+	era = era_5
+	texture = "gfx/interface/icons/invention_icons/monitor_tech.dds"
+	category = military
+	can_research = no
+
+	modifier = {
+		ship_armor_mult = 0.05
+		ship_hit_points_max_mult = 0.05
+	}
+
+	unlocking_technologies = {
+		dhe_korean_warship_design_1
+	}
+
+	ai_weight = {
+		value = 0
+	}
+}
+
+dhe_korean_warship_module_battery = {
+	# Gwangmu heavy battery module package.
+	era = era_5
+	texture = "gfx/interface/icons/invention_icons/battleship_tech.dds"
+	category = military
+	can_research = no
+
+	modifier = {
+		ship_hull_damage_mult = 0.05
+		ship_crew_damage_mult = 0.05
+	}
+
+	unlocking_technologies = {
+		dhe_korean_warship_design_1
+	}
+
+	ai_weight = {
+		value = 0
+	}
+}
+
+dhe_korean_warship_module_propulsion = {
+	# Gwangmu high-pressure propulsion module package.
+	era = era_5
+	texture = "gfx/interface/icons/invention_icons/sea_lane_strategies.dds"
+	category = military
+	can_research = no
+
+	modifier = {
+		ship_movement_speed_mult = 0.03
+		ship_detection_mult = 0.03
+	}
+
+	unlocking_technologies = {
+		dhe_korean_warship_design_1
+	}
+
+	ai_weight = {
+		value = 0
+	}
+}
+
+dhe_korean_warship_module_stores = {
+	# Gwangmu long-range stores module package.
+	era = era_5
+	texture = "gfx/interface/icons/invention_icons/logistics_tech.dds"
+	category = military
+	can_research = no
+
+	modifier = {
+		ship_supply_efficiency_add = 0.05
+		ship_max_distance_to_port_add = 1
+	}
+
+	unlocking_technologies = {
+		dhe_korean_warship_design_1
+	}
+
+	ai_weight = {
+		value = 0
+	}
+}
+
+dhe_korean_warship_design_3 = {
+	# Fleet standardization for Korean cruisers and combined fleet operations.
+	era = era_5
+	texture = "gfx/interface/icons/invention_icons/sea_lane_strategies.dds"
+	category = military
+	can_research = no
+
+	modifier = {
+		country_ship_group_cruisers_construction_efficiency_add = 0.08
+		country_prestige_from_navy_power_projection_mult = 0.08
+		ship_movement_speed_mult = 0.05
+		ship_detection_mult = 0.05
+	}
+
+	unlocking_technologies = {
+		dhe_korean_warship_design_2
+	}
+
+	ai_weight = {
+		value = 0
+	}
+}
+
+dhe_korean_carrier_design = {
+	# Korean carrier conversion and flight-deck operating standards.
+	era = era_5
+	texture = "gfx/interface/icons/invention_icons/carrier_tech.dds"
+	category = military
+	can_research = no
+
+	modifier = {
+		country_ship_group_cruisers_construction_efficiency_add = 0.05
+		ship_detection_mult = 0.05
+		ship_blockade_strength_mult = 0.05
+	}
+
+	unlocking_technologies = {
+		carrier_tech
+	}
+
+	ai_weight = {
+		value = 0
+	}
+}
+
+dhe_korean_carrier_module_deck = {
+	era = era_5
+	texture = "gfx/interface/icons/invention_icons/carrier_tech.dds"
+	category = military
+	can_research = no
+
+	modifier = {
+		ship_detection_mult = 0.03
+		ship_blockade_strength_mult = 0.03
+	}
+
+	unlocking_technologies = {
+		dhe_korean_carrier_design
+	}
+
+	ai_weight = {
+		value = 0
+	}
+}
+
+dhe_korean_carrier_module_airgroup = {
+	era = era_5
+	texture = "gfx/interface/icons/invention_icons/carrier_tech.dds"
+	category = military
+	can_research = no
+
+	modifier = {
+		ship_hull_damage_mult = 0.04
+		ship_crew_damage_mult = 0.04
+	}
+
+	unlocking_technologies = {
+		dhe_korean_carrier_design
+	}
+
+	ai_weight = {
+		value = 0
+	}
+}
+
+dhe_korean_carrier_module_engine = {
+	era = era_5
+	texture = "gfx/interface/icons/invention_icons/sea_lane_strategies.dds"
+	category = military
+	can_research = no
+
+	modifier = {
+		ship_movement_speed_mult = 0.03
+		ship_readiness_gain_mult = 0.03
+	}
+
+	unlocking_technologies = {
+		dhe_korean_carrier_design
+	}
+
+	ai_weight = {
+		value = 0
+	}
+}
+
+dhe_korean_carrier_module_hangar = {
+	era = era_5
+	texture = "gfx/interface/icons/invention_icons/logistics_tech.dds"
+	category = military
+	can_research = no
+
+	modifier = {
+		ship_supply_efficiency_add = 0.04
+		ship_max_distance_to_port_add = 1
+	}
+
+	unlocking_technologies = {
+		dhe_korean_carrier_design
+	}
+
+	ai_weight = {
+		value = 0
+	}
+}
+
+dhe_korean_submarine_design = {
+	# Korean coastal submarine and commerce-raiding standards.
+	era = era_4
+	texture = "gfx/interface/icons/invention_icons/submarine.dds"
+	category = military
+	can_research = no
+
+	modifier = {
+		country_ship_group_torpedo_craft_construction_efficiency_add = 0.05
+		ship_visibility_mult = -0.03
+		ship_blockade_strength_mult = 0.03
+	}
+
+	unlocking_technologies = {
+		submarine
+	}
+
+	ai_weight = {
+		value = 0
+	}
+}
+
+dhe_korean_submarine_module_hull = {
+	era = era_4
+	texture = "gfx/interface/icons/invention_icons/submarine.dds"
+	category = military
+	can_research = no
+
+	modifier = {
+		ship_visibility_mult = -0.02
+		ship_hit_points_max_mult = 0.03
+	}
+
+	unlocking_technologies = {
+		dhe_korean_submarine_design
+	}
+
+	ai_weight = {
+		value = 0
+	}
+}
+
+dhe_korean_submarine_module_torpedo = {
+	era = era_4
+	texture = "gfx/interface/icons/invention_icons/submarine.dds"
+	category = military
+	can_research = no
+
+	modifier = {
+		ship_hull_damage_mult = 0.04
+		ship_critical_hit_chance_add = 0.03
+	}
+
+	unlocking_technologies = {
+		dhe_korean_submarine_design
+	}
+
+	ai_weight = {
+		value = 0
+	}
+}
+
+dhe_korean_submarine_module_engine = {
+	era = era_4
+	texture = "gfx/interface/icons/invention_icons/sea_lane_strategies.dds"
+	category = military
+	can_research = no
+
+	modifier = {
+		ship_movement_speed_mult = 0.03
+		ship_visibility_mult = -0.01
+	}
+
+	unlocking_technologies = {
+		dhe_korean_submarine_design
+	}
+
+	ai_weight = {
+		value = 0
+	}
+}
+
+dhe_korean_submarine_module_stores = {
+	era = era_4
+	texture = "gfx/interface/icons/invention_icons/logistics_tech.dds"
+	category = military
+	can_research = no
+
+	modifier = {
+		ship_supply_efficiency_add = 0.03
+		ship_blockade_strength_mult = 0.03
+	}
+
+	unlocking_technologies = {
+		dhe_korean_submarine_design
+	}
+
+	ai_weight = {
+		value = 0
+	}
+}

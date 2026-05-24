@@ -1,0 +1,46 @@
+dhe_send_general_to_imperial_military_academy = {
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	potential = {
+		owner ?= scope:actor
+		scope:actor ?= {
+			is_player = yes
+			dhe_has_imperial_military_academy = yes
+		}
+		has_role_of_type = general
+		is_ruler_of_own_country = no
+		is_heir_of_own_country = no
+		is_immortal = no
+	}
+
+	show_requirements = yes
+
+	possible = {
+		is_busy = no
+		owner ?= {
+			custom_tooltip = {
+				text = dhe_has_available_imperial_military_academy_tt
+				dhe_has_imperial_military_academy = yes
+			}
+			custom_tooltip = {
+				text = dhe_imperial_military_academy_training_available_tt
+				NOT = { has_variable = dhe_imperial_military_academy_training_active }
+			}
+		}
+	}
+
+	effect = {
+		set_character_busy_and_immortal = yes
+		set_variable = { name = dhe_imperial_academy_trainee value = yes days = 365 }
+		owner ?= {
+			set_variable = { name = dhe_imperial_military_academy_training_active days = 210 }
+			trigger_event = { id = dhe_academy_event.1 days = 30 }
+		}
+	}
+
+	ai_chance = {
+		value = 0
+	}
+
+	show_confirmation_box = yes
+}

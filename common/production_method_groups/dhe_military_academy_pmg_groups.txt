@@ -1,0 +1,19 @@
+pmg_dhe_imperial_military_academy_base = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	ai_selection = most_productive
+	production_methods = {
+		pm_dhe_academy_old_drill
+		pm_dhe_academy_modern_staff_school
+	}
+}
+
+pmg_dhe_imperial_military_academy_doctrine = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	ai_selection = most_productive
+	production_methods = {
+		pm_dhe_academy_balanced_doctrine
+		pm_dhe_academy_offensive_doctrine
+		pm_dhe_academy_defensive_doctrine
+		pm_dhe_academy_artillery_school
+	}
+}

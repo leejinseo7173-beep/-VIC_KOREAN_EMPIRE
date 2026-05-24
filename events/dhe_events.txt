@@ -1,0 +1,2045 @@
+﻿# Encoding: UTF-8 with BOM
+namespace = dhe_event
+
+
+# 1. 제국 선포
+dhe_event.1 = {
+	gui_window = event_window_superevent_classic
+type = country_event
+title = dhe_event.1.t
+desc = dhe_event.1.d
+event_image = {
+		video = "ep1_donghak_rebellion"
+	}
+
+
+option = {
+name = dhe_event.1.a
+add_primary_culture = cu:manchu
+add_modifier = { name = dhe_imperial_prestige days = -1 }
+set_variable = dhe_empire_formed
+trigger_event = { id = dhe_event.3 popup = yes }
+}
+}
+
+
+# 2. 통합 승리
+dhe_event.2 = {
+type = country_event
+title = dhe_event.2.t
+desc = dhe_event.2.d
+icon ="gfx/interface/icons/event_icons/event_default.dds"
+	event_image = { 
+		texture = "gfx/interface/icons/event_pictures/dhe_event_2.dds" 
+	}
+option = {
+name = dhe_event.2.a
+add_loyalists = { value = 0.2 }
+custom_tooltip = {
+			text = dhe_event_2_tt
+			tooltip = dhe_event_2_desc_tt
+		}
+s:STATE_SHENGJING = { add_homeland = cu:korean }
+s:STATE_SOUTHERN_MANCHURIA = { add_homeland = cu:korean }
+s:STATE_AMUR = { add_homeland = cu:korean }
+s:STATE_NORTHERN_MANCHURIA = { add_homeland = cu:korean }
+s:STATE_KYUSHU = { add_homeland = cu:korean }
+s:STATE_KANSAI = { add_homeland = cu:korean }
+s:STATE_HOKKAIDO = { add_homeland = cu:korean }
+s:STATE_TOHOKU = { add_homeland = cu:korean }
+s:STATE_KANTO = { add_homeland = cu:korean }
+s:STATE_TOKAI = { add_homeland = cu:korean }
+s:STATE_HOKUSHINETSU = { add_homeland = cu:korean }
+s:STATE_CHUGOKU = { add_homeland = cu:korean }
+s:STATE_SHIKOKU = { add_homeland = cu:korean }
+s:STATE_RYUKYU_ISLANDS = { add_homeland = cu:korean }
+s:STATE_FORMOSA = { add_homeland = cu:korean }
+
+
+add_modifier = { name = dhe_manifest_destiny_completed days = -1 }
+}
+}
+
+
+# 3. 광무개혁 선포
+dhe_event.3 = {
+type = country_event
+title = dhe_event.3.t
+desc = dhe_event.3.d
+icon = "gfx/interface/icons/modifier_icons/custom_modifier_icon.dds"
+	event_image = { 
+		texture = "gfx/interface/icons/event_pictures/dhe_event_3.dds" 
+	}
+
+option = {
+		name = dhe_event.3.a
+		custom_tooltip = {
+			text = dhe_event_3_tt
+			tooltip = dhe_event_3_desc_tt
+		}
+		
+		if = {
+			limit = { NOT = { has_variable = dhe_reform_score } }
+			set_variable = { name = dhe_reform_score value = 0 }
+		}
+		set_variable = dhe_gwangmu_reform_started
+
+		# ★ 메인 일지 1개
+		add_journal_entry = { type = je_dhe_gwangmu_reform_main }
+		
+		# ★ 분야별 개혁 일지 5개
+		add_journal_entry = { type = je_dhe_gwangmu_military }
+		add_journal_entry = { type = je_dhe_gwangmu_education }
+		add_journal_entry = { type = je_dhe_gwangmu_admin }
+		add_journal_entry = { type = je_dhe_gwangmu_society }
+		add_journal_entry = { type = je_dhe_gwangmu_infrastructure }
+
+		# [cite_start]★ (수정됨) 4대 권역 산업화 일지 4개 완벽 추가! [cite: 14, 15, 16, 17, 18]
+		add_journal_entry = { type = je_korea_capital_industry }
+		add_journal_entry = { type = je_korea_south_industry }
+		add_journal_entry = { type = je_korea_busan_industry }
+		add_journal_entry = { type = je_korea_north_industry }
+
+		# 4대 권역 모디파이어 뿌리기
+		every_scope_state = {
+			limit = {
+				owner = ROOT
+				OR = { state_region = s:STATE_SEOUL state_region = s:STATE_HAESEO }
+			}
+			add_modifier = { name = modifier_capital_developing months = -1 }
+		}
+		every_scope_state = {
+			limit = {
+				owner = ROOT
+				OR = { state_region = s:STATE_CHNGCHEONG state_region = s:STATE_YANGHO }
+			}
+			add_modifier = { name = modifier_south_developing months = -1 }
+		}
+		every_scope_state = {
+			limit = {
+				owner = ROOT
+				state_region = s:STATE_BUSAN
+			}
+			add_modifier = { name = modifier_busan_developing months = -1 }
+		}
+		every_scope_state = {
+			limit = {
+				owner = ROOT
+				OR = { state_region = s:STATE_GWANDONG state_region = s:STATE_PYONGYANG state_region = s:STATE_SARIWON }
+			}
+			add_modifier = { name = modifier_north_developing months = -1 }
+		}
+	}
+
+}
+
+
+namespace = dhe_mission_event
+
+dhe_mission_event.1 = {
+	type = country_event
+	placement = root
+	title = dhe_mission_event.1.t
+	desc = dhe_mission_event.1.desc
+	flavor = dhe_mission_event.1.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	immediate = {
+		ordered_scope_character = {
+			limit = {
+				NOR = {
+					has_role_of_type = ruler
+					has_role_of_type = heir
+					has_role_of_type = agitator
+				}
+				interest_group ?= {
+					is_in_government = yes
+				}
+			}
+			position = 0
+			order_by = prominence
+			save_scope_as = dhe_mission_leader_1
+		}
+		ordered_scope_character = {
+			limit = {
+				NOR = {
+					has_role_of_type = ruler
+					has_role_of_type = heir
+					has_role_of_type = agitator
+				}
+				interest_group ?= {
+					is_in_government = yes
+				}
+				NOT = { scope:dhe_mission_leader_1 ?= this }
+			}
+			position = 0
+			order_by = prominence
+			save_scope_as = dhe_mission_leader_2
+		}
+		ordered_scope_character = {
+			limit = {
+				NOR = {
+					has_role_of_type = ruler
+					has_role_of_type = heir
+					has_role_of_type = agitator
+				}
+				interest_group ?= {
+					is_in_government = yes
+				}
+				NOR = {
+					scope:dhe_mission_leader_1 ?= this
+					scope:dhe_mission_leader_2 ?= this
+				}
+			}
+			position = 0
+			order_by = prominence
+			save_scope_as = dhe_mission_leader_3
+		}
+	}
+
+	option = {
+		name = dhe_mission_event.1.a
+		trigger = { exists = scope:dhe_mission_leader_1 }
+		scope:dhe_mission_leader_1 = {
+			set_character_busy_and_immortal = yes
+			set_variable = dhe_mission_leader_var
+			ROOT = {
+				set_variable = { name = dhe_mission_leader_storage_var value = prev }
+			}
+		}
+		set_variable = dhe_mission_departed
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		trigger_event = { id = dhe_mission_event.2 days = 30 popup = yes }
+	}
+
+	option = {
+		name = dhe_mission_event.1.b
+		trigger = { exists = scope:dhe_mission_leader_2 }
+		scope:dhe_mission_leader_2 = {
+			set_character_busy_and_immortal = yes
+			set_variable = dhe_mission_leader_var
+			ROOT = {
+				set_variable = { name = dhe_mission_leader_storage_var value = prev }
+			}
+		}
+		set_variable = dhe_mission_departed
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		trigger_event = { id = dhe_mission_event.2 days = 30 popup = yes }
+	}
+
+	option = {
+		name = dhe_mission_event.1.c
+		trigger = { exists = scope:dhe_mission_leader_3 }
+		scope:dhe_mission_leader_3 = {
+			set_character_busy_and_immortal = yes
+			set_variable = dhe_mission_leader_var
+			ROOT = {
+				set_variable = { name = dhe_mission_leader_storage_var value = prev }
+			}
+		}
+		set_variable = dhe_mission_departed
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		trigger_event = { id = dhe_mission_event.2 days = 30 popup = yes }
+	}
+
+	option = {
+		name = dhe_mission_event.1.d
+		trigger = {
+			NOT = { exists = scope:dhe_mission_leader_1 }
+		}
+		set_variable = dhe_mission_departed
+		ig:ig_intelligentsia = { add_ig_approval = -1 }
+		trigger_event = { id = dhe_mission_event.2 days = 30 popup = yes }
+	}
+}
+
+dhe_mission_event.2 = {
+	type = country_event
+	placement = root
+	title = dhe_mission_event.2.t
+	desc = dhe_mission_event.2.d
+	flavor = dhe_mission_event.2.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	immediate = {
+		if = {
+			limit = { exists = c:JAP }
+			c:JAP ?= {
+				ROOT = {
+					set_variable = { name = dhe_mission_current_location_var value = prev }
+					add_to_variable_list = { name = dhe_mission_visited_countries target = prev }
+				}
+			}
+		}
+		set_variable = dhe_mission_japan_report
+	}
+
+	option = {
+		name = dhe_mission_event.2.a
+		add_modifier = { name = dhe_mod_susinsa_japan_administration months = 36 }
+		ig:ig_petty_bourgeoisie = { add_ig_approval = 1 }
+		je:je_dhe_susinsa_bobingsa_mission ?= {
+			add_progress = { name = dhe_progress_bar_susinsa_bobingsa value = 20 }
+		}
+		trigger_event = { id = dhe_mission_event.3 days = 120 popup = yes }
+	}
+
+	option = {
+		name = dhe_mission_event.2.b
+		add_modifier = { name = dhe_mod_susinsa_japan_military months = 36 }
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+		je:je_dhe_susinsa_bobingsa_mission ?= {
+			add_progress = { name = dhe_progress_bar_susinsa_bobingsa value = 15 }
+		}
+		trigger_event = { id = dhe_mission_event.3 days = 75 popup = yes }
+	}
+}
+
+dhe_mission_event.3 = {
+	type = country_event
+	placement = root
+	title = dhe_mission_event.3.t
+	desc = dhe_mission_event.3.d
+	flavor = dhe_mission_event.3.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	immediate = {
+		if = {
+			limit = { exists = c:CHI }
+			c:CHI ?= {
+				ROOT = {
+					set_variable = { name = dhe_mission_current_location_var value = prev }
+					add_to_variable_list = { name = dhe_mission_visited_countries target = prev }
+				}
+			}
+		}
+		set_variable = dhe_mission_qing_report
+	}
+
+	option = {
+		name = dhe_mission_event.3.a
+		add_modifier = { name = dhe_mod_qing_diplomatic_lessons months = 36 }
+		ig:ig_petty_bourgeoisie = { add_ig_approval = 1 }
+		je:je_dhe_susinsa_bobingsa_mission ?= {
+			add_progress = { name = dhe_progress_bar_susinsa_bobingsa value = 20 }
+		}
+		trigger_event = { id = dhe_mission_event.4 days = 120 popup = yes }
+	}
+
+	option = {
+		name = dhe_mission_event.3.b
+		add_modifier = { name = dhe_mod_qing_border_intelligence months = 36 }
+		ig:ig_landowners = { add_ig_approval = -1 }
+		je:je_dhe_susinsa_bobingsa_mission ?= {
+			add_progress = { name = dhe_progress_bar_susinsa_bobingsa value = 15 }
+		}
+		trigger_event = { id = dhe_mission_event.4 days = 75 popup = yes }
+	}
+}
+
+dhe_mission_event.4 = {
+	type = country_event
+	placement = root
+	title = dhe_mission_event.4.t
+	desc = dhe_mission_event.4.d
+	flavor = dhe_mission_event.4.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	immediate = {
+		remove_variable = dhe_mission_british_naval_visit
+		if = {
+			limit = { exists = c:GBR }
+			c:GBR ?= {
+				ROOT = {
+					set_variable = { name = dhe_mission_current_location_var value = prev }
+					add_to_variable_list = { name = dhe_mission_visited_countries target = prev }
+					set_variable = dhe_mission_british_naval_visit
+				}
+			}
+		}
+		else_if = {
+			limit = { exists = c:USA }
+			c:USA ?= {
+				ROOT = {
+					set_variable = { name = dhe_mission_current_location_var value = prev }
+					add_to_variable_list = { name = dhe_mission_visited_countries target = prev }
+				}
+			}
+		}
+		else_if = {
+			limit = { exists = c:FRA }
+			c:FRA ?= {
+				ROOT = {
+					set_variable = { name = dhe_mission_current_location_var value = prev }
+					add_to_variable_list = { name = dhe_mission_visited_countries target = prev }
+				}
+			}
+		}
+		set_variable = dhe_mission_west_report
+	}
+
+	option = {
+		name = dhe_mission_event.4.a
+		add_modifier = { name = dhe_mod_bobingsa_western_industry months = 36 }
+		ig:ig_industrialists = { add_ig_approval = 1 }
+		je:je_dhe_susinsa_bobingsa_mission ?= {
+			add_progress = { name = dhe_progress_bar_susinsa_bobingsa value = 30 }
+		}
+		if = {
+			limit = { has_variable = dhe_mission_british_naval_visit }
+			trigger_event = { id = dhe_mission_event.7 days = 45 popup = yes }
+		}
+		else = {
+			trigger_event = { id = dhe_mission_event.6 days = 150 popup = yes }
+		}
+	}
+
+	option = {
+		name = dhe_mission_event.4.b
+		add_modifier = { name = dhe_mod_bobingsa_constitutional_study months = 36 }
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		je:je_dhe_susinsa_bobingsa_mission ?= {
+			add_progress = { name = dhe_progress_bar_susinsa_bobingsa value = 30 }
+		}
+		if = {
+			limit = { has_variable = dhe_mission_british_naval_visit }
+			trigger_event = { id = dhe_mission_event.7 days = 45 popup = yes }
+		}
+		else = {
+			trigger_event = { id = dhe_mission_event.6 days = 150 popup = yes }
+		}
+	}
+}
+
+dhe_mission_event.7 = {
+	type = country_event
+	placement = root
+	title = dhe_mission_event.7.t
+	desc = dhe_mission_event.7.d
+	flavor = dhe_mission_event.7.f
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_journal_entry = je_dhe_imperial_combined_fleet }
+				NOT = { has_variable = dhe_imperial_combined_fleet_done }
+				has_variable = dhe_gwangmu_military_done
+			}
+			add_journal_entry = { type = je_dhe_imperial_combined_fleet }
+		}
+	}
+
+	option = {
+		name = dhe_mission_event.7.a
+		add_modifier = { name = dhe_mod_british_naval_advisers months = 72 }
+		set_variable = { name = dhe_mission_british_naval_advisers years = 5 }
+		c:GBR ?= { change_relations = { country = ROOT value = 20 } }
+		ig:ig_armed_forces = { add_ig_approval = 2 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 20 }
+		}
+		je:je_dhe_susinsa_bobingsa_mission ?= {
+			add_progress = { name = dhe_progress_bar_susinsa_bobingsa value = 15 }
+		}
+		trigger_event = { id = dhe_mission_event.6 days = 100 popup = yes }
+	}
+
+	option = {
+		name = dhe_mission_event.7.b
+		add_modifier = { name = dhe_mod_british_dockyard_blueprints months = 60 }
+		set_variable = { name = dhe_mission_british_dockyard_blueprints years = 5 }
+		add_treasury = -25000
+		ig:ig_industrialists = { add_ig_approval = 2 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 16 }
+		}
+		je:je_dhe_susinsa_bobingsa_mission ?= {
+			add_progress = { name = dhe_progress_bar_susinsa_bobingsa value = 12 }
+		}
+		trigger_event = { id = dhe_mission_event.6 days = 90 popup = yes }
+	}
+
+	option = {
+		name = dhe_mission_event.7.c
+		add_modifier = { name = dhe_mod_british_fleet_observers months = 36 }
+		set_variable = { name = dhe_mission_british_fleet_observers years = 3 }
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 10 }
+		}
+		je:je_dhe_susinsa_bobingsa_mission ?= {
+			add_progress = { name = dhe_progress_bar_susinsa_bobingsa value = 8 }
+		}
+		trigger_event = { id = dhe_mission_event.6 days = 70 popup = yes }
+	}
+}
+
+dhe_mission_event.6 = {
+	type = country_event
+	placement = root
+	title = dhe_mission_event.6.t
+	desc = dhe_mission_event.6.d
+	flavor = dhe_mission_event.6.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	immediate = {
+		remove_variable = dhe_mission_current_location_var
+		set_variable = dhe_mission_en_route_home
+	}
+
+	option = {
+		name = dhe_mission_event.6.a
+		remove_variable = dhe_mission_en_route_home
+		set_variable = dhe_mission_returned_home
+		set_variable = dhe_mission_complete_report
+		var:dhe_mission_leader_storage_var ?= {
+			if = {
+				limit = {
+					NOT = { has_trait = experienced_diplomat }
+					NOT = { has_trait = masterful_diplomat }
+				}
+				add_trait = experienced_diplomat
+			}
+			set_character_busy_and_immortal = no
+		}
+		je:je_dhe_susinsa_bobingsa_mission ?= {
+			add_progress = { name = dhe_progress_bar_susinsa_bobingsa value = 25 }
+		}
+	}
+}
+
+dhe_mission_event.5 = {
+	type = country_event
+	placement = root
+	title = dhe_mission_event.5.t
+	desc = dhe_mission_event.5.d
+	flavor = dhe_mission_event.5.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	option = {
+		name = dhe_mission_event.5.a
+		add_modifier = { name = dhe_mod_mission_industrial_program months = 120 }
+		ig:ig_industrialists = { add_ig_approval = 2 }
+	}
+
+	option = {
+		name = dhe_mission_event.5.b
+		add_modifier = { name = dhe_mod_mission_statecraft_program months = 120 }
+		ig:ig_petty_bourgeoisie = { add_ig_approval = 2 }
+	}
+
+	option = {
+		name = dhe_mission_event.5.c
+		add_modifier = { name = dhe_mod_mission_diplomatic_program months = 120 }
+		ig:ig_intelligentsia = { add_ig_approval = 2 }
+	}
+}
+
+
+namespace = dhe_event
+
+# 4. 광무개혁 성공
+dhe_event.4 = {
+type = country_event
+title = dhe_event.4.t
+desc = dhe_event.4.d
+icon ="gfx/interface/icons/modifier_icons/dhe_gwangmu_reform_success.dds"
+	event_image = { 
+		texture = "gfx/interface/icons/event_pictures/dhe_event_4.dds" 
+	}
+option = {
+name = dhe_event.4.a
+custom_tooltip = {
+			text = dhe_event_4_tt
+			tooltip = dhe_event_4_desc_tt
+		}
+add_modifier = { name = dhe_gwangmu_reform_success days = -1 }
+}
+}
+
+# [신규] 한글 교육 완료 이벤트
+dhe_event.5 = {
+    type = country_event
+    title = dhe_event.hangeul_complete.t
+    desc = dhe_event.hangeul_complete.d
+    icon = "gfx/interface/icons/modifier_icons/dhe_mod_hangeul_edu_completed.dds"
+	event_image = { 
+		texture = "gfx/interface/icons/event_pictures/dhe_event_5.dds" 
+	}
+    option = {
+        name = dhe_event.hangeul_complete.a
+custom_tooltip = {
+			text = dhe_event_5_tt
+			tooltip = dhe_event_5_desc_tt
+		}
+        add_loyalists = { value = 0.1 }
+    }
+}
+namespace = dhe_gyeongbokgung
+
+dhe_gyeongbokgung.1 = {
+	type = country_event
+	placement = scope:dhe_gyeongbokgung_state
+	
+	title = dhe_gyeongbokgung.1.t
+	desc = dhe_gyeongbokgung.1.d
+	flavor = dhe_gyeongbokgung.1.f
+	
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_reform.dds"
+	event_image = { 
+		texture = "gfx/interface/icons/event_pictures/dhe_event_3.dds" 
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_SEOUL
+			}
+			save_scope_as = dhe_gyeongbokgung_state
+		}
+	}
+
+	option = {
+		name = dhe_gyeongbokgung.1.a
+		default_option = yes
+		scope:dhe_gyeongbokgung_state = {
+			add_modifier = {
+				name = dhe_mod_gyeongbokgung_reconstruction
+			}
+		}
+		add_modifier = {
+			name = dhe_mod_gyeongbokgung_cost
+		}
+		add_journal_entry = { type = je_dhe_rebuild_gyeongbokgung }
+	}
+}
+
+dhe_gyeongbokgung.2 = {
+	type = country_event
+	placement = scope:dhe_gyeongbokgung_state
+
+	title = dhe_gyeongbokgung.2.t
+	desc = dhe_gyeongbokgung.2.d
+	flavor = dhe_gyeongbokgung.2.f
+
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_reform.dds"
+	event_image = {
+		texture = "gfx/interface/icons/event_pictures/dhe_event_3.dds"
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				state_region = s:STATE_SEOUL
+			}
+			save_scope_as = dhe_gyeongbokgung_state
+		}
+		set_global_variable = dhe_gyeongbokgung_completed
+	}
+
+	option = {
+		name = dhe_gyeongbokgung.2.a
+		default_option = yes
+		scope:dhe_gyeongbokgung_state = {
+			remove_modifier = dhe_mod_gyeongbokgung_reconstruction
+			if = {
+				limit = {
+					NOT = { has_building = building_gyeongbokgung }
+				}
+				create_building = {
+					building = "building_gyeongbokgung"
+					level = 1
+				}
+			}
+		}
+		if = {
+			limit = { has_variable = dhe_gyeongbokgung_expanded_rooms }
+			add_modifier = {
+				name = dhe_mod_gyeongbokgung_expanded
+				years = 10
+			}
+		}
+		remove_modifier = dhe_mod_gyeongbokgung_cost
+		remove_global_variable = dhe_gyeongbokgung_in_progress
+		remove_global_variable = dhe_gyeongbokgung_progress
+	}
+}
+
+dhe_gyeongbokgung.9 = {
+	type = country_event
+	placement = root
+
+	title = dhe_gyeongbokgung.9.t
+	desc = dhe_gyeongbokgung.9.d
+	flavor = dhe_gyeongbokgung.9.f
+
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_reform.dds"
+	event_image = {
+		texture = "gfx/interface/icons/event_pictures/dhe_event_3.dds"
+	}
+
+	option = {
+		name = dhe_gyeongbokgung.9.a
+		default_option = yes
+	}
+}
+
+dhe_gyeongbokgung.10 = {
+	type = country_event
+	hidden = yes
+
+	immediate = {
+		change_global_variable = {
+			name = dhe_gyeongbokgung_progress
+			add = 1
+		}
+		if = {
+			limit = {
+				any_scope_state = {
+					state_region = s:STATE_SEOUL
+					any_scope_building = {
+						is_building_type = building_construction_sector
+						level >= 3
+					}
+				}
+			}
+			change_global_variable = {
+				name = dhe_gyeongbokgung_progress
+				add = 1
+			}
+		}
+	}
+}
+
+dhe_gyeongbokgung.11 = {
+	type = country_event
+	placement = scope:dhe_gyeongbokgung_state
+
+	title = dhe_gyeongbokgung.11.t
+	desc = dhe_gyeongbokgung.11.d
+	flavor = dhe_gyeongbokgung.11.f
+
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_reform.dds"
+	event_image = {
+		texture = "gfx/interface/icons/event_pictures/dhe_event_3.dds"
+	}
+
+	cooldown = { years = 3 }
+
+	immediate = {
+		random_scope_state = {
+			limit = { state_region = s:STATE_SEOUL }
+			save_scope_as = dhe_gyeongbokgung_state
+		}
+	}
+
+	option = {
+		name = dhe_gyeongbokgung.11.a
+		default_option = yes
+		change_global_variable = {
+			name = dhe_gyeongbokgung_progress
+			add = 6
+		}
+		scope:dhe_gyeongbokgung_state = {
+			add_radicals_in_state = {
+				value = 0.03
+				pop_type = laborers
+			}
+		}
+		add_modifier = {
+			name = dhe_mod_gyeongbokgung_guard
+			years = 3
+		}
+	}
+
+	option = {
+		name = dhe_gyeongbokgung.11.b
+		change_global_variable = {
+			name = dhe_gyeongbokgung_progress
+			add = 2
+		}
+		add_treasury = -10000
+	}
+
+	option = {
+		name = dhe_gyeongbokgung.11.c
+		change_global_variable = {
+			name = dhe_gyeongbokgung_progress
+			add = -4
+		}
+	}
+}
+
+dhe_gyeongbokgung.12 = {
+	type = country_event
+	placement = scope:dhe_gyeongbokgung_state
+
+	title = dhe_gyeongbokgung.12.t
+	desc = dhe_gyeongbokgung.12.d
+	flavor = dhe_gyeongbokgung.12.f
+
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_reform.dds"
+	event_image = {
+		texture = "gfx/interface/icons/event_pictures/dhe_event_3.dds"
+	}
+
+	cooldown = { years = 3 }
+
+	immediate = {
+		random_scope_state = {
+			limit = { state_region = s:STATE_SEOUL }
+			save_scope_as = dhe_gyeongbokgung_state
+		}
+	}
+
+	option = {
+		name = dhe_gyeongbokgung.12.a
+		default_option = yes
+		change_global_variable = {
+			name = dhe_gyeongbokgung_progress
+			add = 6
+		}
+	}
+}
+
+dhe_gyeongbokgung.13 = {
+	type = country_event
+	placement = scope:dhe_gyeongbokgung_state
+
+	title = dhe_gyeongbokgung.13.t
+	desc = dhe_gyeongbokgung.13.d
+	flavor = dhe_gyeongbokgung.13.f
+
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_reform.dds"
+	event_image = {
+		texture = "gfx/interface/icons/event_pictures/dhe_event_3.dds"
+	}
+
+	cooldown = { years = 3 }
+
+	immediate = {
+		random_scope_state = {
+			limit = { state_region = s:STATE_SEOUL }
+			save_scope_as = dhe_gyeongbokgung_state
+		}
+	}
+
+	option = {
+		name = dhe_gyeongbokgung.13.a
+		default_option = yes
+		change_global_variable = {
+			name = dhe_gyeongbokgung_progress
+			add = -9
+		}
+	}
+}
+
+dhe_gyeongbokgung.14 = {
+	type = country_event
+	placement = scope:dhe_gyeongbokgung_state
+
+	title = dhe_gyeongbokgung.14.t
+	desc = dhe_gyeongbokgung.14.d
+	flavor = dhe_gyeongbokgung.14.f
+
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_reform.dds"
+	event_image = {
+		texture = "gfx/interface/icons/event_pictures/dhe_event_3.dds"
+	}
+
+	cooldown = { years = 10 }
+
+	immediate = {
+		random_scope_state = {
+			limit = { state_region = s:STATE_SEOUL }
+			save_scope_as = dhe_gyeongbokgung_state
+		}
+	}
+
+	option = {
+		name = dhe_gyeongbokgung.14.a
+		default_option = yes
+		custom_tooltip = {
+			text = dhe_gyeongbokgung_expanded_rooms_tt
+			set_variable = dhe_gyeongbokgung_expanded_rooms
+		}
+		add_treasury = -50000
+		change_global_variable = {
+			name = dhe_gyeongbokgung_progress
+			add = -6
+		}
+	}
+
+	option = {
+		name = dhe_gyeongbokgung.14.b
+		change_global_variable = {
+			name = dhe_gyeongbokgung_progress
+			add = 1
+		}
+	}
+}
+
+dhe_gyeongbokgung.15 = {
+	type = country_event
+	placement = scope:dhe_gyeongbokgung_state
+
+	title = dhe_gyeongbokgung.15.t
+	desc = dhe_gyeongbokgung.15.d
+	flavor = dhe_gyeongbokgung.15.f
+
+	gui_window = event_window_1char_tabloid
+	left_icon = scope:dhe_gyeongbokgung_ig_leader
+
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_reform.dds"
+	event_image = {
+		texture = "gfx/interface/icons/event_pictures/dhe_event_3.dds"
+	}
+
+	cooldown = { years = 3 }
+
+	immediate = {
+		random_scope_state = {
+			limit = { state_region = s:STATE_SEOUL }
+			save_scope_as = dhe_gyeongbokgung_state
+		}
+		random_interest_group = {
+			save_scope_as = dhe_gyeongbokgung_ig
+			leader = {
+				save_scope_as = dhe_gyeongbokgung_ig_leader
+			}
+		}
+	}
+
+	option = {
+		name = dhe_gyeongbokgung.15.a
+		default_option = yes
+		change_global_variable = {
+			name = dhe_gyeongbokgung_progress
+			add = 3
+		}
+		scope:dhe_gyeongbokgung_ig = {
+			add_modifier = {
+				name = dhe_mod_gyeongbokgung_impressed
+				years = 5
+			}
+		}
+	}
+}
+namespace = dhe_university
+
+# [1] 기초 교육 개혁 완료 -> 대학 설립 일지 활성화 이벤트
+dhe_university.1 = {
+	type = country_event
+	placement = root
+	
+	title = dhe_university.1.t
+	desc = dhe_university.1.d
+	flavor = dhe_university.1.f
+	
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	option = {
+		name = dhe_university.1.a
+custom_tooltip = {
+			text = dhe_university_1_tt
+			tooltip = dhe_university_1_desc_tt
+		}
+		add_journal_entry = { type = je_dhe_seoul_national_university }
+	}
+}
+
+# [2] 서울대학교(제국대학) 설립 완료 이벤트
+dhe_university.2 = {
+	type = country_event
+	placement = root
+	
+	title = dhe_university.2.t
+	desc = dhe_university.2.d
+	flavor = dhe_university.2.f
+	
+	icon = "gfx/interface/icons/building_icons/building_university.dds"
+
+	option = {
+		name = dhe_university.2.a
+custom_tooltip = {
+			text = dhe_university_2_tt
+			tooltip = dhe_university_2_desc_tt
+		}
+		random_scope_state = {
+			limit = { state_region = s:STATE_SEOUL }
+			add_modifier = {
+				name = dhe_mod_seoul_national_university
+				days = -1
+			}
+		}
+		
+		# 충성파 5만 명 획득
+		add_loyalists = {
+			value = 50000
+		}
+	}
+}
+namespace = dhe_military_event
+
+# 1단계 군사 개혁 완료 & 2단계 심화 일지 활성화 이벤트
+dhe_military_event.1 = {
+	type = country_event
+	placement = root
+	
+	title = dhe_military_event.1.t
+	desc = dhe_military_event.1.d
+	flavor = dhe_military_event.1.f
+	
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+
+	option = {
+		name = dhe_military_event.1.a
+		custom_tooltip = {
+			text = dhe_military_event_1_tt
+			tooltip = dhe_military_event_1_desc_tt
+		}
+		# 2단계 심화 군사 일지 활성화!
+		add_journal_entry = { type = je_dhe_gwangmu_military_advanced }
+		add_journal_entry = { type = je_dhe_imperial_combined_fleet }
+		set_global_variable = dhe_wonsoobu_unlocked
+	}
+}
+
+dhe_military_event.2 = {
+	type = country_event
+	placement = root
+
+	title = dhe_military_event.2.t
+	desc = dhe_military_event.2.d
+	flavor = dhe_military_event.2.f
+
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+
+	option = {
+		name = dhe_military_event.2.a
+		add_loyalists = { value = 0.03 }
+		ig:ig_armed_forces = { add_ig_approval = 3 }
+	}
+}
+
+dhe_military_event.3 = {
+	type = country_event
+	placement = root
+
+	title = dhe_military_event.3.t
+	desc = dhe_military_event.3.d
+	flavor = dhe_military_event.3.f
+
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_gwangmu_military_advanced
+		NOT = { has_variable = dhe_cd_imperial_army_random_officers }
+	}
+
+	option = {
+		name = dhe_military_event.3.a
+		je:je_dhe_gwangmu_military_advanced ?= {
+			add_progress = { name = dhe_progress_bar_imperial_army_reform value = 5 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+		set_variable = { name = dhe_cd_imperial_army_random_officers days = 540 }
+	}
+
+	option = {
+		name = dhe_military_event.3.b
+		je:je_dhe_gwangmu_military_advanced ?= {
+			add_progress = { name = dhe_progress_bar_imperial_army_reform value = 3 }
+		}
+		ig:ig_landowners = { add_ig_approval = 1 }
+		set_variable = { name = dhe_cd_imperial_army_random_officers days = 540 }
+	}
+}
+
+dhe_military_event.4 = {
+	type = country_event
+	placement = root
+
+	title = dhe_military_event.4.t
+	desc = dhe_military_event.4.d
+	flavor = dhe_military_event.4.f
+
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_gwangmu_military_advanced
+		NOT = { has_variable = dhe_cd_imperial_army_random_procurement }
+	}
+
+	option = {
+		name = dhe_military_event.4.a
+		add_treasury = -30000
+		add_modifier = { name = dhe_mod_military_procurement_drive months = 36 }
+		je:je_dhe_gwangmu_military_advanced ?= {
+			add_progress = { name = dhe_progress_bar_imperial_army_reform value = 6 }
+		}
+		set_variable = { name = dhe_cd_imperial_army_random_procurement days = 720 }
+	}
+
+	option = {
+		name = dhe_military_event.4.b
+		je:je_dhe_gwangmu_military_advanced ?= {
+			add_progress = { name = dhe_progress_bar_imperial_army_reform value = 2 }
+		}
+		set_variable = { name = dhe_cd_imperial_army_random_procurement days = 720 }
+	}
+}
+
+dhe_military_event.5 = {
+	type = country_event
+	placement = root
+
+	title = dhe_military_event.5.t
+	desc = dhe_military_event.5.d
+	flavor = dhe_military_event.5.f
+
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_gwangmu_military_advanced
+		NOT = { has_variable = dhe_cd_imperial_army_random_academy }
+	}
+
+	option = {
+		name = dhe_military_event.5.a
+		je:je_dhe_gwangmu_military_advanced ?= {
+			add_progress = { name = dhe_progress_bar_imperial_army_reform value = 5 }
+		}
+		add_loyalists = { value = 0.01 pop_type = officers }
+		set_variable = { name = dhe_cd_imperial_army_random_academy days = 720 }
+	}
+}
+
+dhe_military_event.6 = {
+	type = country_event
+	placement = root
+
+	title = dhe_military_event.6.t
+	desc = dhe_military_event.6.d
+	flavor = dhe_military_event.6.f
+
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_gwangmu_military_advanced
+		NOT = { has_variable = dhe_cd_imperial_army_random_scandal }
+	}
+
+	option = {
+		name = dhe_military_event.6.a
+		je:je_dhe_gwangmu_military_advanced ?= {
+			add_progress = { name = dhe_progress_bar_imperial_army_reform value = -5 }
+		}
+		add_modifier = { name = dhe_mod_officer_corps_dispute months = 24 }
+		ig:ig_armed_forces = { add_ig_approval = -2 }
+		set_variable = { name = dhe_cd_imperial_army_random_scandal days = 900 }
+	}
+
+	option = {
+		name = dhe_military_event.6.b
+		add_treasury = -20000
+		je:je_dhe_gwangmu_military_advanced ?= {
+			add_progress = { name = dhe_progress_bar_imperial_army_reform value = 2 }
+		}
+		set_variable = { name = dhe_cd_imperial_army_random_scandal days = 900 }
+	}
+}
+
+dhe_military_event.7 = {
+	type = country_event
+	placement = root
+
+	title = dhe_military_event.7.t
+	desc = dhe_military_event.7.d
+	flavor = dhe_military_event.7.f
+
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+
+	option = {
+		name = dhe_military_event.7.a
+		add_modifier = { name = dhe_mod_imperial_general_staff months = 60 }
+		je:je_dhe_gwangmu_military_advanced ?= {
+			add_progress = { name = dhe_progress_bar_imperial_army_reform value = 12 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 2 }
+		set_variable = { name = dhe_cd_imperial_army_general_staff days = 720 }
+	}
+
+	option = {
+		name = dhe_military_event.7.b
+		add_modifier = { name = dhe_mod_imperial_general_staff months = 36 }
+		je:je_dhe_gwangmu_military_advanced ?= {
+			add_progress = { name = dhe_progress_bar_imperial_army_reform value = 8 }
+		}
+		set_variable = { name = dhe_cd_imperial_army_general_staff days = 720 }
+	}
+}
+
+dhe_military_event.8 = {
+	type = country_event
+	placement = root
+
+	title = dhe_military_event.8.t
+	desc = dhe_military_event.8.d
+	flavor = dhe_military_event.8.f
+
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+
+	option = {
+		name = dhe_military_event.8.a
+		add_modifier = { name = dhe_mod_foreign_military_mission months = 60 }
+		je:je_dhe_gwangmu_military_advanced ?= {
+			add_progress = { name = dhe_progress_bar_imperial_army_reform value = 10 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+		set_variable = { name = dhe_cd_imperial_army_training_mission days = 720 }
+	}
+
+	option = {
+		name = dhe_military_event.8.b
+		add_modifier = { name = dhe_mod_foreign_military_mission months = 36 }
+		je:je_dhe_gwangmu_military_advanced ?= {
+			add_progress = { name = dhe_progress_bar_imperial_army_reform value = 7 }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		set_variable = { name = dhe_cd_imperial_army_training_mission days = 720 }
+	}
+}
+
+dhe_military_event.9 = {
+	type = country_event
+	placement = root
+
+	title = dhe_military_event.9.t
+	desc = dhe_military_event.9.d
+	flavor = dhe_military_event.9.f
+
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+
+	option = {
+		name = dhe_military_event.9.a
+		add_modifier = { name = dhe_mod_imperial_guard_division months = 60 }
+		je:je_dhe_gwangmu_military_advanced ?= {
+			add_progress = { name = dhe_progress_bar_imperial_army_reform value = 10 }
+		}
+		set_variable = { name = dhe_cd_imperial_army_guard_division days = 720 }
+	}
+
+	option = {
+		name = dhe_military_event.9.b
+		je:je_dhe_gwangmu_military_advanced ?= {
+			add_progress = { name = dhe_progress_bar_imperial_army_reform value = 7 }
+		}
+		ig:ig_rural_folk = { add_ig_approval = 1 }
+		set_variable = { name = dhe_cd_imperial_army_guard_division days = 720 }
+	}
+}
+
+dhe_military_event.10 = {
+	type = country_event
+	placement = root
+
+	title = dhe_military_event.10.t
+	desc = dhe_military_event.10.d
+	flavor = dhe_military_event.10.f
+
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+
+	option = {
+		name = dhe_military_event.10.a
+		add_modifier = { name = dhe_mod_imperial_military_academy_foundation months = 60 }
+		ig:ig_armed_forces = { add_ig_approval = 2 }
+	}
+}
+
+namespace = dhe_navy_event
+
+dhe_navy_event.1 = {
+	type = country_event
+	placement = root
+
+	title = dhe_navy_event.1.t
+	desc = dhe_navy_event.1.d
+	flavor = dhe_navy_event.1.f
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	option = {
+		name = dhe_navy_event.1.a
+		add_loyalists = { value = 0.03 }
+		ig:ig_armed_forces = { add_ig_approval = 2 }
+	}
+}
+
+dhe_navy_event.2 = {
+	type = country_event
+	placement = root
+
+	title = dhe_navy_event.2.t
+	desc = dhe_navy_event.2.d
+	flavor = dhe_navy_event.2.f
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_imperial_combined_fleet
+		NOT = { has_variable = dhe_cd_imperial_navy_random_mission }
+	}
+
+	option = {
+		name = dhe_navy_event.2.a
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 5 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+		set_variable = { name = dhe_cd_imperial_navy_random_mission days = 720 }
+	}
+
+	option = {
+		name = dhe_navy_event.2.b
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 3 }
+		}
+		add_treasury = -15000
+		set_variable = { name = dhe_cd_imperial_navy_random_mission days = 720 }
+	}
+}
+
+dhe_navy_event.3 = {
+	type = country_event
+	placement = root
+
+	title = dhe_navy_event.3.t
+	desc = dhe_navy_event.3.d
+	flavor = dhe_navy_event.3.f
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_imperial_combined_fleet
+		NOT = { has_variable = dhe_cd_imperial_navy_random_dockyard }
+	}
+
+	option = {
+		name = dhe_navy_event.3.a
+		add_treasury = -35000
+		add_modifier = { name = dhe_mod_imperial_dockyard_program months = 36 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 6 }
+		}
+		set_variable = { name = dhe_cd_imperial_navy_random_dockyard days = 720 }
+	}
+
+	option = {
+		name = dhe_navy_event.3.b
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 2 }
+		}
+		set_variable = { name = dhe_cd_imperial_navy_random_dockyard days = 720 }
+	}
+}
+
+dhe_navy_event.4 = {
+	type = country_event
+	placement = root
+
+	title = dhe_navy_event.4.t
+	desc = dhe_navy_event.4.d
+	flavor = dhe_navy_event.4.f
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_imperial_combined_fleet
+		NOT = { has_variable = dhe_cd_imperial_navy_random_accident }
+	}
+
+	option = {
+		name = dhe_navy_event.4.a
+		add_treasury = -25000
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 2 }
+		}
+		set_variable = { name = dhe_cd_imperial_navy_random_accident days = 900 }
+	}
+
+	option = {
+		name = dhe_navy_event.4.b
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = -5 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = -2 }
+		set_variable = { name = dhe_cd_imperial_navy_random_accident days = 900 }
+	}
+}
+
+dhe_navy_event.5 = {
+	type = country_event
+	placement = root
+
+	title = dhe_navy_event.5.t
+	desc = dhe_navy_event.5.d
+	flavor = dhe_navy_event.5.f
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	option = {
+		name = dhe_navy_event.5.a
+		add_modifier = { name = dhe_mod_imperial_admiralty_board months = 60 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 12 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 2 }
+		set_variable = { name = dhe_cd_imperial_navy_admiralty days = 720 }
+	}
+
+	option = {
+		name = dhe_navy_event.5.b
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 8 }
+		}
+		ig:ig_industrialists = { add_ig_approval = 1 }
+		set_variable = { name = dhe_cd_imperial_navy_admiralty days = 720 }
+	}
+}
+
+dhe_navy_event.6 = {
+	type = country_event
+	placement = root
+
+	title = dhe_navy_event.6.t
+	desc = dhe_navy_event.6.d
+	flavor = dhe_navy_event.6.f
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	option = {
+		name = dhe_navy_event.6.a
+		add_modifier = { name = dhe_mod_imperial_dockyard_program months = 60 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 10 }
+		}
+		set_variable = { name = dhe_cd_imperial_navy_dockyard days = 720 }
+	}
+
+	option = {
+		name = dhe_navy_event.6.b
+		add_modifier = { name = dhe_mod_imperial_dockyard_program months = 36 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 7 }
+		}
+		ig:ig_industrialists = { add_ig_approval = 1 }
+		set_variable = { name = dhe_cd_imperial_navy_dockyard days = 720 }
+	}
+}
+
+dhe_navy_event.7 = {
+	type = country_event
+	placement = root
+
+	title = dhe_navy_event.7.t
+	desc = dhe_navy_event.7.d
+	flavor = dhe_navy_event.7.f
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	option = {
+		name = dhe_navy_event.7.a
+		add_modifier = { name = dhe_mod_imperial_fleet_exercises months = 36 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 10 }
+		}
+		set_variable = { name = dhe_cd_imperial_navy_fleet_exercises days = 720 }
+	}
+
+	option = {
+		name = dhe_navy_event.7.b
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 6 }
+		}
+		set_variable = { name = dhe_cd_imperial_navy_fleet_exercises days = 720 }
+	}
+}
+
+dhe_navy_event.8 = {
+	type = country_event
+	placement = root
+
+	title = dhe_navy_event.8.t
+	desc = dhe_navy_event.8.d
+	flavor = dhe_navy_event.8.f
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	option = {
+		name = dhe_navy_event.8.a
+		trigger = {
+			NOT = { has_technology_researched = dhe_korean_warship_design_1 }
+		}
+		add_journal_entry = { type = je_dhe_naval_design_bureau }
+		set_variable = dhe_korean_warship_design_unlocked
+		set_variable = dhe_jemulpo_coastal_design_selected
+		add_modifier = { name = dhe_mod_jemulpo_coastal_design months = -1 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 6 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_navy_event.8.b
+		trigger = {
+			has_technology_researched = dhe_korean_warship_design_1
+			NOT = { has_technology_researched = dhe_korean_warship_design_2 }
+		}
+		add_journal_entry = { type = je_dhe_naval_design_bureau }
+		set_variable = dhe_korean_warship_design_unlocked
+		set_variable = dhe_geobuk_armor_design_selected
+		add_modifier = { name = dhe_mod_geobuk_armor_design months = -1 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 8 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_navy_event.8.c
+		trigger = {
+			has_technology_researched = dhe_korean_warship_design_2
+			NOT = { has_technology_researched = dhe_korean_warship_design_3 }
+		}
+		add_journal_entry = { type = je_dhe_naval_design_bureau }
+		set_variable = dhe_korean_warship_design_unlocked
+		set_variable = dhe_hangang_cruiser_design_selected
+		add_modifier = { name = dhe_mod_hangang_cruiser_design months = -1 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 10 }
+		}
+		ig:ig_industrialists = { add_ig_approval = 1 }
+	}
+}
+
+dhe_navy_event.9 = {
+	type = country_event
+	placement = root
+
+	title = dhe_navy_event.9.t
+	desc = dhe_navy_event.9.desc
+	flavor = dhe_navy_event.9.f
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	option = {
+		name = dhe_navy_event.9.a
+		trigger = {
+			NOT = { has_technology_researched = dhe_korean_warship_module_armor }
+		}
+		add_technology_researched = dhe_korean_warship_module_armor
+		set_variable = dhe_geobuk_armor_design_selected
+		add_modifier = { name = dhe_mod_geobuk_armor_design months = -1 }
+		set_variable = { name = dhe_cd_gwangmu_module_design_project days = 365 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 3 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_navy_event.9.b
+		trigger = {
+			NOT = { has_technology_researched = dhe_korean_warship_module_battery }
+		}
+		add_technology_researched = dhe_korean_warship_module_battery
+		set_variable = dhe_gwangmu_heavy_battery_design_selected
+		set_variable = { name = dhe_cd_gwangmu_module_design_project days = 365 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 3 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_navy_event.9.c
+		trigger = {
+			NOT = { has_technology_researched = dhe_korean_warship_module_propulsion }
+		}
+		add_technology_researched = dhe_korean_warship_module_propulsion
+		set_variable = dhe_hangang_cruiser_design_selected
+		add_modifier = { name = dhe_mod_hangang_cruiser_design months = -1 }
+		set_variable = { name = dhe_cd_gwangmu_module_design_project days = 365 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 3 }
+		}
+		ig:ig_industrialists = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_navy_event.9.d
+		trigger = {
+			NOT = { has_technology_researched = dhe_korean_warship_module_stores }
+		}
+		add_technology_researched = dhe_korean_warship_module_stores
+		set_variable = dhe_jemulpo_coastal_design_selected
+		add_modifier = { name = dhe_mod_jemulpo_coastal_design months = -1 }
+		set_variable = { name = dhe_cd_gwangmu_module_design_project days = 365 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 3 }
+		}
+		ig:ig_industrialists = { add_ig_approval = 1 }
+	}
+
+	after = {
+		if = {
+			limit = {
+				has_technology_researched = dhe_korean_warship_module_armor
+				has_technology_researched = dhe_korean_warship_module_battery
+				has_technology_researched = dhe_korean_warship_module_propulsion
+				has_technology_researched = dhe_korean_warship_module_stores
+			}
+			add_technology_researched = dhe_korean_warship_design_2
+			set_variable = dhe_gwangmu_module_design_project_done
+			je:je_dhe_imperial_combined_fleet ?= {
+				add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 4 }
+			}
+		}
+	}
+}
+
+dhe_navy_event.10 = {
+	type = country_event
+	placement = root
+
+	title = dhe_navy_event.10.t
+	desc = dhe_navy_event.10.desc
+	flavor = dhe_navy_event.10.f
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	option = {
+		name = dhe_navy_event.10.a
+		trigger = {
+			NOT = { has_technology_researched = dhe_korean_carrier_module_deck }
+		}
+		add_technology_researched = dhe_korean_carrier_module_deck
+		set_variable = { name = dhe_cd_haedong_carrier_module_project days = 365 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 2 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_navy_event.10.b
+		trigger = {
+			NOT = { has_technology_researched = dhe_korean_carrier_module_airgroup }
+		}
+		add_technology_researched = dhe_korean_carrier_module_airgroup
+		set_variable = { name = dhe_cd_haedong_carrier_module_project days = 365 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 2 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_navy_event.10.c
+		trigger = {
+			NOT = { has_technology_researched = dhe_korean_carrier_module_engine }
+		}
+		add_technology_researched = dhe_korean_carrier_module_engine
+		set_variable = { name = dhe_cd_haedong_carrier_module_project days = 365 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 2 }
+		}
+		ig:ig_industrialists = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_navy_event.10.d
+		trigger = {
+			NOT = { has_technology_researched = dhe_korean_carrier_module_hangar }
+		}
+		add_technology_researched = dhe_korean_carrier_module_hangar
+		set_variable = { name = dhe_cd_haedong_carrier_module_project days = 365 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 2 }
+		}
+		ig:ig_industrialists = { add_ig_approval = 1 }
+	}
+}
+
+dhe_navy_event.11 = {
+	type = country_event
+	placement = root
+
+	title = dhe_navy_event.11.t
+	desc = dhe_navy_event.11.desc
+	flavor = dhe_navy_event.11.f
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	option = {
+		name = dhe_navy_event.11.a
+		trigger = {
+			NOT = { has_technology_researched = dhe_korean_submarine_module_hull }
+		}
+		add_technology_researched = dhe_korean_submarine_module_hull
+		set_variable = { name = dhe_cd_jangbogo_submarine_module_project days = 365 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 2 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_navy_event.11.b
+		trigger = {
+			NOT = { has_technology_researched = dhe_korean_submarine_module_torpedo }
+		}
+		add_technology_researched = dhe_korean_submarine_module_torpedo
+		set_variable = { name = dhe_cd_jangbogo_submarine_module_project days = 365 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 2 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_navy_event.11.c
+		trigger = {
+			NOT = { has_technology_researched = dhe_korean_submarine_module_engine }
+		}
+		add_technology_researched = dhe_korean_submarine_module_engine
+		set_variable = { name = dhe_cd_jangbogo_submarine_module_project days = 365 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 2 }
+		}
+		ig:ig_industrialists = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_navy_event.11.d
+		trigger = {
+			NOT = { has_technology_researched = dhe_korean_submarine_module_stores }
+		}
+		add_technology_researched = dhe_korean_submarine_module_stores
+		set_variable = { name = dhe_cd_jangbogo_submarine_module_project days = 365 }
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 2 }
+		}
+		ig:ig_industrialists = { add_ig_approval = 1 }
+	}
+}
+
+dhe_navy_event.12 = {
+	type = country_event
+	placement = root
+
+	title = dhe_navy_event.12.t
+	desc = dhe_navy_event.12.d
+	flavor = dhe_navy_event.12.f
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_imperial_combined_fleet
+		NOT = { has_variable = dhe_cd_naval_foreign_technical_mission }
+		OR = {
+			has_journal_entry = je_dhe_naval_design_bureau
+			has_journal_entry = je_dhe_carrier_design_bureau
+			has_journal_entry = je_dhe_submarine_design_bureau
+		}
+		OR = {
+			AND = {
+				exists = c:GBR
+				c:GBR = { relations:root >= relations_threshold:cordial }
+			}
+			AND = {
+				exists = c:USA
+				c:USA = { relations:root >= relations_threshold:cordial }
+			}
+			AND = {
+				exists = c:JAP
+				c:JAP = { relations:root >= relations_threshold:cordial }
+			}
+			AND = {
+				exists = c:GER
+				c:GER = { relations:root >= relations_threshold:cordial }
+			}
+			AND = {
+				exists = c:PRU
+				c:PRU = { relations:root >= relations_threshold:cordial }
+			}
+		}
+	}
+
+	option = {
+		name = dhe_navy_event.12.a
+		trigger = {
+			exists = c:GBR
+			c:GBR = { relations:root >= relations_threshold:cordial }
+		}
+		add_modifier = { name = dhe_mod_british_naval_mission months = 60 }
+		set_variable = { name = dhe_mission_british_naval_advisers years = 5 }
+		c:GBR ?= { change_relations = { country = ROOT value = 10 } }
+		je:je_dhe_naval_design_bureau ?= {
+			add_progress = { name = dhe_progress_bar_naval_design_bureau value = 10 }
+		}
+		je:je_dhe_carrier_design_bureau ?= {
+			add_progress = { name = dhe_progress_bar_carrier_design_bureau value = 6 }
+		}
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 6 }
+		}
+		set_variable = { name = dhe_cd_naval_foreign_technical_mission days = 900 }
+	}
+
+	option = {
+		name = dhe_navy_event.12.b
+		trigger = {
+			exists = c:USA
+			c:USA = { relations:root >= relations_threshold:cordial }
+		}
+		add_modifier = { name = dhe_mod_american_naval_air_mission months = 60 }
+		set_variable = { name = dhe_mission_american_exchange years = 5 }
+		c:USA ?= { change_relations = { country = ROOT value = 10 } }
+		je:je_dhe_carrier_design_bureau ?= {
+			add_progress = { name = dhe_progress_bar_carrier_design_bureau value = 12 }
+		}
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 5 }
+		}
+		set_variable = { name = dhe_cd_naval_foreign_technical_mission days = 900 }
+	}
+
+	option = {
+		name = dhe_navy_event.12.c
+		trigger = {
+			OR = {
+				AND = {
+					exists = c:GER
+					c:GER = { relations:root >= relations_threshold:cordial }
+				}
+				AND = {
+					exists = c:PRU
+					c:PRU = { relations:root >= relations_threshold:cordial }
+				}
+			}
+		}
+		add_modifier = { name = dhe_mod_german_naval_engineering_mission months = 60 }
+		set_variable = { name = dhe_mission_german_exchange years = 5 }
+		c:GER ?= { change_relations = { country = ROOT value = 10 } }
+		c:PRU ?= { change_relations = { country = ROOT value = 10 } }
+		je:je_dhe_naval_design_bureau ?= {
+			add_progress = { name = dhe_progress_bar_naval_design_bureau value = 6 }
+		}
+		je:je_dhe_submarine_design_bureau ?= {
+			add_progress = { name = dhe_progress_bar_submarine_design_bureau value = 12 }
+		}
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 5 }
+		}
+		set_variable = { name = dhe_cd_naval_foreign_technical_mission days = 900 }
+	}
+
+	option = {
+		name = dhe_navy_event.12.e
+		trigger = {
+			exists = c:JAP
+			c:JAP = { relations:root >= relations_threshold:cordial }
+		}
+		add_modifier = { name = dhe_mod_japanese_naval_observers months = 60 }
+		set_variable = { name = dhe_mission_japanese_naval_observers years = 5 }
+		c:JAP ?= { change_relations = { country = ROOT value = 10 } }
+		je:je_dhe_carrier_design_bureau ?= {
+			add_progress = { name = dhe_progress_bar_carrier_design_bureau value = 5 }
+		}
+		je:je_dhe_submarine_design_bureau ?= {
+			add_progress = { name = dhe_progress_bar_submarine_design_bureau value = 5 }
+		}
+		je:je_dhe_imperial_combined_fleet ?= {
+			add_progress = { name = dhe_progress_bar_imperial_combined_fleet value = 4 }
+		}
+		set_variable = { name = dhe_cd_naval_foreign_technical_mission days = 900 }
+	}
+}
+namespace = dhe_infra_event
+
+# 1단계 인프라 완료 & 경성역/2단계 일지 해금 이벤트
+dhe_infra_event.1 = {
+	type = country_event
+	placement = root
+	
+	title = dhe_infra_event.1.t
+	desc = dhe_infra_event.1.d
+	flavor = dhe_infra_event.1.f
+	
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_infrastructure.dds"
+
+	option = {
+		name = dhe_infra_event.1.a
+		custom_tooltip = {
+			text = dhe_infra_event_1_tt
+			tooltip = dhe_infra_event_1_desc_tt
+		}
+		# 경성역(서울역) 건설 변수 해금
+		set_global_variable = dhe_seoul_station_unlocked
+		
+		# 2단계 철도망 심화 일지 추가
+		add_journal_entry = { type = je_dhe_gwangmu_railway_network }
+	}
+}
+namespace = dhe_conquest_event
+
+# 1. 북방 영토 수복 (만주) 완료 이벤트
+dhe_conquest_event.1 = {
+	type = country_event
+	placement = root
+	
+	title = dhe_conquest_event.1.t
+	desc = dhe_conquest_event.1.d
+	flavor = dhe_conquest_event.1.f
+	
+	icon = "gfx/interface/icons/event_icons/dhe_great_korea_conquest.dds"
+	
+	option = {
+		name = dhe_conquest_event.1.a
+		custom_tooltip = {
+			text = dhe_conquest_event_1_tt
+			tooltip = dhe_conquest_event_1_desc_tt
+		}
+		
+		# 기존 지역 본토 편입
+		s:STATE_SHENGJING = { add_homeland = cu:korean }
+		s:STATE_SOUTHERN_MANCHURIA = { add_homeland = cu:korean }
+		s:STATE_NORTHERN_MANCHURIA = { add_homeland = cu:korean }
+		s:STATE_AMUR = { add_homeland = cu:korean }
+		
+		# 추가된 고토 지역 본토 편입
+		s:STATE_JIANDAO = { add_homeland = cu:korean }
+		# s:STATE_JILIN = { add_homeland = cu:korean }
+		# s:STATE_REHE = { add_homeland = cu:korean }
+		
+		# 충성파 10% 증가 및 만주 수복 영구 버프 획득
+		add_loyalists = { value = 0.1 }
+		add_modifier = {
+			name = dhe_mod_northern_expansion_success
+			months = -1
+		}
+	}
+}
+# 2. 남방 영토 수복 (일본 및 대만) 완료 이벤트
+dhe_conquest_event.2 = {
+	type = country_event
+	placement = root
+	
+	title = dhe_conquest_event.2.t
+	desc = dhe_conquest_event.2.d
+	flavor = dhe_conquest_event.2.f
+	
+	icon = "gfx/interface/icons/event_icons/dhe_great_korea_conquest.dds"
+	
+	option = {
+		name = dhe_conquest_event.2.a
+		custom_tooltip = {
+			text = dhe_conquest_event_2_tt
+			tooltip = dhe_conquest_event_2_desc_tt
+		}
+		
+		# 일본 및 대만 전역 한국인 본토 편입
+		s:STATE_KYUSHU = { add_homeland = cu:korean }
+		s:STATE_KANSAI = { add_homeland = cu:korean }
+		s:STATE_HOKKAIDO = { add_homeland = cu:korean }
+		s:STATE_TOHOKU = { add_homeland = cu:korean }
+		s:STATE_KANTO = { add_homeland = cu:korean }
+		s:STATE_TOKAI = { add_homeland = cu:korean }
+		s:STATE_HOKUSHINETSU = { add_homeland = cu:korean }
+		s:STATE_CHUGOKU = { add_homeland = cu:korean }
+		s:STATE_SHIKOKU = { add_homeland = cu:korean }
+		s:STATE_RYUKYU_ISLANDS = { add_homeland = cu:korean }
+		s:STATE_FORMOSA = { add_homeland = cu:korean }
+		
+		# 충성파 10% 증가 및 남방 정벌 영구 버프 획득
+		add_loyalists = { value = 0.1 }
+		add_modifier = {
+			name = dhe_mod_southern_expansion_success
+			months = -1
+		}
+	}
+}
+
+
+namespace = dhe_character_event
+
+dhe_character_event.1 = {
+	type = country_event
+	placement = root
+	
+	title = dhe_character_event.1.t
+	desc = dhe_character_event.1.d
+	
+	option = {
+		name = dhe_character_event.1.a
+		default_option = yes
+		
+		# 밀레니엄 모드와 100% 동일한 구조
+		create_character = {
+			template = dhe_min_yeong_hwan
+			on_created = {
+				add_character_role = politician
+			}
+		}
+		
+		create_character = {
+			template = dhe_ahn_jung_geun
+			on_created = {
+				add_character_role = politician
+			}
+		}
+	}
+}
+# 박정희 등장 이벤트 (군사 정변 또는 강력한 지도자 대두)
+  dhe_character_event.2 = {
+	type = country_event
+	placement = root
+		event_image = { 
+		texture = "gfx/interface/icons/event_pictures/dhe_event_6.dds" 
+	}
+	title = dhe_character_event.2.t
+	desc = dhe_character_event.2.d
+	
+	event_image = {
+		video = "unspecific_military_parade"
+	}
+	
+	# 이벤트 창 양옆에 3D 초상화 띄우기 (얼굴 깎기 전까진 랜덤 아저씨가 섭니다)
+	left_icon = scope_park
+
+	immediate = {
+		create_character = {
+			template = dhe_park_chung_hee
+			save_scope_as = scope_park
+			on_created = {
+				add_character_role = politician
+				make_interest_group_leader = yes  # ★ 등장 즉시 군부 1인자로 강제 등극!
+			}
+		}
+	}
+
+	option = {
+		name = dhe_character_event.2.a
+		default_option = yes
+		
+		# 강력한 국가 주도 산업화 버프 5년 제공
+		add_modifier = {
+			name = state_construction_mult
+			months = 60
+		}
+	}
+}

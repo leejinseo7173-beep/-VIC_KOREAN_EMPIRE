@@ -1,0 +1,8 @@
+dhe_headline_korea_japan_trade_treaty = {
+	type = country
+	texture = "gfx/interface/icons/notification_icons/news.dds"
+	group = "dhe_headline_notification_group"
+	notification_type = feed
+	days = 28
+	color = good
+}

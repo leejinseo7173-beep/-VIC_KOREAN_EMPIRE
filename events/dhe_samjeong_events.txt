@@ -1,0 +1,296 @@
+# Encoding: UTF-8 with BOM
+namespace = dhe_samjeong
+
+# ==========================================================
+# 삼정이정청: 하위 개혁 착수 인물 이벤트
+# ==========================================================
+dhe_samjeong.10 = {
+	type = country_event
+	placement = root
+	title = dhe_samjeong.10.t
+	desc = dhe_samjeong.10.d
+	flavor = dhe_samjeong.10.f
+	icon = "gfx/interface/icons/event_icons/dhe_samjeong_land_badge.dds"
+	event_image = { texture = "gfx/interface/icons/event_pictures/dhe_event_samjeong_land_ai.png" }
+	gui_window = event_window_1char_tabloid
+	left_icon = root.ruler
+
+	option = {
+		name = dhe_samjeong.10.a
+		default_option = yes
+		custom_tooltip = dhe_samjeong_10_a_tt
+		set_variable = dhe_samjeong_land_launched
+		remove_variable = dhe_samjeong_land_compromise
+		remove_variable = dhe_samjeong_land_modern_audit
+		set_variable = dhe_samjeong_land_hardline
+		add_authority = -50
+		ig:ig_landowners = { add_ig_approval = -3 }
+		add_journal_entry = { type = je_dhe_samjeong_land_reform }
+		dhe_samjeong_init_unrest_gauge = yes
+		change_variable = { name = dhe_samjeong_unrest_gauge add = 45 }
+		dhe_samjeong_resolve_unrest_gauge = yes
+		add_modifier = { name = dhe_mod_samjeong_land_hardline months = 24 }
+	}
+
+	option = {
+		name = dhe_samjeong.10.b
+		custom_tooltip = dhe_samjeong_10_b_tt
+		set_variable = dhe_samjeong_land_launched
+		remove_variable = dhe_samjeong_land_hardline
+		remove_variable = dhe_samjeong_land_modern_audit
+		set_variable = dhe_samjeong_land_compromise
+		add_treasury = -15000
+		ig:ig_landowners = { add_ig_approval = 1 }
+		add_journal_entry = { type = je_dhe_samjeong_land_reform }
+		dhe_samjeong_init_unrest_gauge = yes
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -20 }
+		dhe_samjeong_resolve_unrest_gauge = yes
+		add_modifier = { name = dhe_mod_samjeong_land_compromise months = 24 }
+	}
+
+	option = {
+		name = dhe_samjeong.10.c
+		custom_tooltip = dhe_samjeong_10_c_tt
+		set_variable = dhe_samjeong_land_launched
+		remove_variable = dhe_samjeong_land_hardline
+		remove_variable = dhe_samjeong_land_compromise
+		set_variable = dhe_samjeong_land_modern_audit
+		add_authority = -30
+		add_treasury = -10000
+		ig:ig_intelligentsia = { add_ig_approval = 2 }
+		add_journal_entry = { type = je_dhe_samjeong_land_reform }
+		dhe_samjeong_init_unrest_gauge = yes
+		change_variable = { name = dhe_samjeong_unrest_gauge add = 15 }
+		dhe_samjeong_resolve_unrest_gauge = yes
+		add_modifier = { name = dhe_mod_samjeong_land_modern_audit months = 24 }
+	}
+}
+
+dhe_samjeong.20 = {
+	type = country_event
+	placement = root
+	title = dhe_samjeong.20.t
+	desc = dhe_samjeong.20.d
+	flavor = dhe_samjeong.20.f
+	icon = "gfx/interface/icons/event_icons/dhe_samjeong_military_badge.dds"
+	event_image = { texture = "gfx/interface/icons/event_pictures/dhe_event_samjeong_military_ai.png" }
+	gui_window = event_window_1char_tabloid
+	left_icon = root.ruler
+
+	option = {
+		name = dhe_samjeong.20.a
+		default_option = yes
+		custom_tooltip = dhe_samjeong_20_a_tt
+		set_variable = dhe_samjeong_military_launched
+		remove_variable = dhe_samjeong_military_salary
+		remove_variable = dhe_samjeong_military_hopo
+		set_variable = dhe_samjeong_military_audit
+		add_authority = -50
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+		add_journal_entry = { type = je_dhe_samjeong_military_reform }
+		dhe_samjeong_init_unrest_gauge = yes
+		change_variable = { name = dhe_samjeong_unrest_gauge add = 20 }
+		dhe_samjeong_resolve_unrest_gauge = yes
+		add_modifier = { name = dhe_mod_samjeong_military_audit months = 24 }
+	}
+
+	option = {
+		name = dhe_samjeong.20.b
+		custom_tooltip = dhe_samjeong_20_b_tt
+		set_variable = dhe_samjeong_military_launched
+		remove_variable = dhe_samjeong_military_audit
+		remove_variable = dhe_samjeong_military_hopo
+		set_variable = dhe_samjeong_military_salary
+		add_treasury = -30000
+		add_loyalists = { value = 0.02 pop_type = servicemen }
+		add_journal_entry = { type = je_dhe_samjeong_military_reform }
+		dhe_samjeong_init_unrest_gauge = yes
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -60 }
+		dhe_samjeong_resolve_unrest_gauge = yes
+		add_modifier = { name = dhe_mod_samjeong_military_salary months = 24 }
+	}
+
+	option = {
+		name = dhe_samjeong.20.c
+		custom_tooltip = dhe_samjeong_20_c_tt
+		set_variable = dhe_samjeong_military_launched
+		remove_variable = dhe_samjeong_military_audit
+		remove_variable = dhe_samjeong_military_salary
+		set_variable = dhe_samjeong_military_hopo
+		add_authority = -30
+		ig:ig_landowners = { add_ig_approval = -2 }
+		add_journal_entry = { type = je_dhe_samjeong_military_reform }
+		dhe_samjeong_init_unrest_gauge = yes
+		change_variable = { name = dhe_samjeong_unrest_gauge add = 25 }
+		dhe_samjeong_resolve_unrest_gauge = yes
+		add_modifier = { name = dhe_mod_samjeong_military_hopo months = 24 }
+	}
+}
+
+dhe_samjeong.30 = {
+	type = country_event
+	placement = root
+	title = dhe_samjeong.30.t
+	desc = dhe_samjeong.30.d
+	flavor = dhe_samjeong.30.f
+	icon = "gfx/interface/icons/event_icons/dhe_samjeong_granary_badge.dds"
+	event_image = { texture = "gfx/interface/icons/event_pictures/dhe_event_samjeong_granary_ai.png" }
+	gui_window = event_window_1char_tabloid
+	left_icon = root.ruler
+
+	option = {
+		name = dhe_samjeong.30.a
+		default_option = yes
+		custom_tooltip = dhe_samjeong_30_a_tt
+		set_variable = dhe_samjeong_granary_launched
+		remove_variable = dhe_samjeong_granary_debt_relief
+		remove_variable = dhe_samjeong_granary_sachang
+		set_variable = dhe_samjeong_granary_seizure
+		add_treasury = -15000
+		ig:ig_rural_folk = { add_ig_approval = 2 }
+		ig:ig_landowners = { add_ig_approval = -2 }
+		add_journal_entry = { type = je_dhe_samjeong_granary_reform }
+		dhe_samjeong_init_unrest_gauge = yes
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -35 }
+		dhe_samjeong_resolve_unrest_gauge = yes
+		add_modifier = { name = dhe_mod_samjeong_granary_seizure months = 24 }
+	}
+
+	option = {
+		name = dhe_samjeong.30.b
+		custom_tooltip = dhe_samjeong_30_b_tt
+		set_variable = dhe_samjeong_granary_launched
+		remove_variable = dhe_samjeong_granary_seizure
+		remove_variable = dhe_samjeong_granary_sachang
+		set_variable = dhe_samjeong_granary_debt_relief
+		add_treasury = -30000
+		add_loyalists = { value = 0.02 strata = lower }
+		add_journal_entry = { type = je_dhe_samjeong_granary_reform }
+		dhe_samjeong_init_unrest_gauge = yes
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -75 }
+		dhe_samjeong_resolve_unrest_gauge = yes
+		add_modifier = { name = dhe_mod_samjeong_granary_debt_relief months = 24 }
+	}
+
+	option = {
+		name = dhe_samjeong.30.c
+		custom_tooltip = dhe_samjeong_30_c_tt
+		set_variable = dhe_samjeong_granary_launched
+		remove_variable = dhe_samjeong_granary_seizure
+		remove_variable = dhe_samjeong_granary_debt_relief
+		set_variable = dhe_samjeong_granary_sachang
+		add_treasury = -10000
+		ig:ig_rural_folk = { add_ig_approval = 1 }
+		ig:ig_landowners = { add_ig_approval = 1 }
+		add_journal_entry = { type = je_dhe_samjeong_granary_reform }
+		dhe_samjeong_init_unrest_gauge = yes
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -20 }
+		dhe_samjeong_resolve_unrest_gauge = yes
+		add_modifier = { name = dhe_mod_samjeong_granary_sachang months = 24 }
+	}
+}
+
+# ==========================================================
+# 삼정이정청: 감찰회의
+# ==========================================================
+dhe_samjeong.1 = {
+	type = country_event
+	placement = root
+	title = dhe_samjeong.1.t
+	desc = dhe_samjeong.1.d
+	flavor = dhe_samjeong.1.f
+	icon = "gfx/interface/icons/event_icons/dhe_samjeong_council_badge.dds"
+	event_image = { texture = "gfx/interface/icons/event_pictures/dhe_event_samjeong_council_ai.png" }
+	gui_window = event_window_1char_tabloid
+	left_icon = root.ruler
+
+	option = {
+		name = dhe_samjeong.1.a
+		default_option = yes
+		custom_tooltip = dhe_samjeong_1_a_tt
+		remove_variable = dhe_samjeong_land_focus
+		remove_variable = dhe_samjeong_military_focus
+		remove_variable = dhe_samjeong_granary_focus
+		remove_variable = dhe_samjeong_compromise_focus
+		set_variable = { name = dhe_samjeong_land_focus days = 365 }
+		add_authority = -50
+		ig:ig_landowners = { add_ig_approval = -2 }
+		dhe_samjeong_init_unrest_gauge = yes
+		change_variable = { name = dhe_samjeong_unrest_gauge add = 35 }
+		dhe_samjeong_resolve_unrest_gauge = yes
+	}
+
+	option = {
+		name = dhe_samjeong.1.b
+		custom_tooltip = dhe_samjeong_1_b_tt
+		remove_variable = dhe_samjeong_land_focus
+		remove_variable = dhe_samjeong_military_focus
+		remove_variable = dhe_samjeong_granary_focus
+		remove_variable = dhe_samjeong_compromise_focus
+		set_variable = { name = dhe_samjeong_military_focus days = 365 }
+		add_treasury = -30000
+		ig:ig_armed_forces = { add_ig_approval = 2 }
+		dhe_samjeong_init_unrest_gauge = yes
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -40 }
+		dhe_samjeong_resolve_unrest_gauge = yes
+	}
+
+	option = {
+		name = dhe_samjeong.1.c
+		custom_tooltip = dhe_samjeong_1_c_tt
+		remove_variable = dhe_samjeong_land_focus
+		remove_variable = dhe_samjeong_military_focus
+		remove_variable = dhe_samjeong_granary_focus
+		remove_variable = dhe_samjeong_compromise_focus
+		set_variable = { name = dhe_samjeong_granary_focus days = 365 }
+		add_treasury = -20000
+		add_loyalists = 10000
+		dhe_samjeong_init_unrest_gauge = yes
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -55 }
+		dhe_samjeong_resolve_unrest_gauge = yes
+	}
+
+	option = {
+		name = dhe_samjeong.1.e
+		custom_tooltip = dhe_samjeong_1_e_tt
+		remove_variable = dhe_samjeong_land_focus
+		remove_variable = dhe_samjeong_military_focus
+		remove_variable = dhe_samjeong_granary_focus
+		remove_variable = dhe_samjeong_compromise_focus
+		set_variable = { name = dhe_samjeong_compromise_focus days = 365 }
+		ig:ig_landowners = { add_ig_approval = 1 }
+		dhe_samjeong_init_unrest_gauge = yes
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -25 }
+		dhe_samjeong_resolve_unrest_gauge = yes
+	}
+}
+
+dhe_samjeong.2 = {
+	type = country_event
+	placement = root
+	title = dhe_samjeong.2.t
+	desc = dhe_samjeong.2.d
+	flavor = dhe_samjeong.2.f
+	icon = "gfx/interface/icons/event_icons/event_victory.dds"
+	event_image = { video = "unspecific_signed_contract" }
+
+	option = {
+		name = dhe_samjeong.2.a
+		default_option = yes
+	}
+}
+
+dhe_samjeong.3 = {
+	type = country_event
+	placement = root
+	title = dhe_samjeong.3.t
+	desc = dhe_samjeong.3.d
+	flavor = dhe_samjeong.3.f
+	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
+	event_image = { video = "asia_poor_people_moving" }
+
+	option = {
+		name = dhe_samjeong.3.a
+		default_option = yes
+	}
+}

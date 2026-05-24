@@ -1,0 +1,20 @@
+INJECT_OR_CREATE:JAP = {
+	dynamic_country_name = {
+		name = dyn_c_dhe_japanese_governor_general
+		adjective = dyn_c_dhe_japanese_governor_general_adj
+
+		is_main_tag_only = yes
+		use_overlord_prefix = no
+		priority = 1000001
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				this = {
+					is_subject = yes
+					has_variable = dhe_japanese_governor_general_country_name
+				}
+			}
+		}
+	}
+}

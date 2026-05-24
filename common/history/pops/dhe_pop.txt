@@ -1,0 +1,145 @@
+﻿POPS = {
+
+#korea
+	s:STATE_SEOUL = {
+		region_state:KOR = {
+			create_pop = {
+				culture = korean
+				size = 2032336
+			}
+			create_pop = {
+				culture = korean
+				religion = mahayana
+				size = 686642
+			}
+		}
+	}
+
+
+	s:STATE_BUSAN = {
+		region_state:KOR = {
+			create_pop = {
+				culture = korean
+				size = 2409741
+			}
+			create_pop = {
+				culture = korean
+				religion = mahayana
+				size = 1486886
+			}
+		}
+	}
+
+
+	s:STATE_SARIWON = {
+		region_state:KOR = {
+			create_pop = {
+				culture = korean
+				size = 1153067
+			}
+			create_pop = {
+				culture = korean
+				religion = mahayana
+				size = 567035
+			}
+		}
+	}
+	
+
+
+	s:STATE_PYONGYANG = {
+		region_state:KOR = {
+			create_pop = {
+				culture = korean
+				size = 1828980
+			}
+			create_pop = {
+				culture = korean
+				religion = mahayana
+				size = 883848
+			}
+		}
+	}
+
+
+	s:STATE_YANGHO = {
+		region_state:KOR = {
+			create_pop = {
+				culture = korean
+				size = 2285968
+			}
+			create_pop = {
+				culture = korean
+				religion = mahayana
+				size = 2266519
+			}
+		}
+	}
+
+
+	s:STATE_CHNGCHEONG = {
+		region_state:KOR = {
+			create_pop = {
+				culture = korean
+				size = 1285968
+			}
+			create_pop = {
+				culture = korean
+				religion = mahayana
+				size = 766519
+			}
+		}
+	}
+	
+
+
+	s:STATE_GWANDONG = {
+		region_state:KOR = {
+			create_pop = {
+				culture = korean
+				size = 532336
+			}
+			create_pop = {
+				culture = korean
+				religion = mahayana
+				size = 486642
+			}
+		}
+	}
+
+
+	s:STATE_HAESEO = {
+		region_state:KOR = {
+			create_pop = {
+				culture = korean
+				size = 1032336
+			}
+			create_pop = {
+				culture = korean
+				religion = mahayana
+				size = 386642
+			}
+		}
+	}
+	s:STATE_JIANDAO = {
+		region_state:CHI = {
+			create_pop = {
+				culture = manchu
+				size = 510800
+			}
+			create_pop = {
+				culture = han # nanfaren
+				size = 11992
+			}
+			create_pop = {
+				culture = han # nanfaren
+				size = 7992
+				religion = mahayana
+			}			
+			create_pop = {
+				culture = korean
+				size = 134000
+			}
+		}
+	}
+}

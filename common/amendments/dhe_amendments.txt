@@ -1,0 +1,230 @@
+amendment_dhe_sedo_politics = {
+	parent = law_oligarchy
+
+	allowed_laws = {
+		law_dhe_confucian_absolutism
+		law_autocracy
+		law_oligarchy
+	}
+
+	modifier = {
+		country_legitimacy_headofstate_add = -25
+		country_aristocrats_pol_str_mult = 0.35
+		country_bureaucrats_pol_str_mult = 0.20
+		interest_group_ig_landowners_pol_str_mult = 0.35
+		country_bureaucracy_mult = -0.10
+		state_tax_capacity_mult = -0.10
+	}
+
+	possible = {
+		country_has_primary_culture = cu:korean
+	}
+
+	would_sponsor = {
+		ROOT = {
+			is_interest_group_type = ig_landowners
+		}
+	}
+
+	ai_will_revoke = {
+		legitimacy >= 60
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.75
+}
+
+amendment_dhe_gongmyeongcheop = {
+	parent = law_dhe_loose_social_order
+
+	allowed_laws = {
+		law_dhe_loose_social_order
+	}
+
+	modifier = {
+		interest_group_ig_landowners_pol_str_mult = 0.15
+		country_aristocrats_pol_str_mult = 0.15
+		state_education_access_add = -0.05
+		state_tax_capacity_mult = -0.07
+		country_bureaucracy_mult = -0.05
+		country_tech_spread_mult = -0.05
+	}
+
+	possible = {
+		country_has_primary_culture = cu:korean
+	}
+
+	would_sponsor = {
+		ROOT = {
+			is_interest_group_type = ig_landowners
+		}
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.5
+}
+
+amendment_dhe_anti_christian_persecution = {
+	parent = law_state_religion
+
+	allowed_laws = {
+		law_state_religion
+	}
+
+	modifier = {
+		interest_group_ig_devout_pol_str_mult = 0.15
+		country_authority_add = 50
+		country_non_state_religion_wages_mult = -0.10
+		state_conversion_mult = 0.15
+		state_mortality_mult = 0.03
+		country_acceptance_no_shared_religious_trait_add = -5
+	}
+
+	possible = {
+		country_has_primary_culture = cu:korean
+	}
+
+	would_sponsor = {
+		ROOT = {
+			is_interest_group_type = ig_devout
+		}
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.75
+}
+
+amendment_dhe_military_service_disorder = {
+	parent = law_peasant_levies
+
+	allowed_laws = {
+		law_dhe_peasant_corvee_service
+		law_peasant_levies
+	}
+
+	modifier = {
+		unit_army_offense_mult = -0.20
+		unit_army_defense_mult = -0.15
+		unit_morale_loss_mult = 0.10
+		unit_experience_gain_mult = -0.10
+		state_lower_strata_standard_of_living_add = -0.50
+		state_peasants_consumption_multiplier_add = 0.05
+		interest_group_ig_landowners_pol_str_mult = 0.10
+	}
+
+	possible = {
+		country_has_primary_culture = cu:korean
+	}
+
+	would_sponsor = {
+		ROOT = {
+			is_interest_group_type = ig_landowners
+		}
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.75
+}
+
+amendment_dhe_jeonjeong_disorder = {
+	parent = law_land_based_taxation
+
+	allowed_laws = {
+		law_land_based_taxation
+	}
+
+	modifier = {
+		state_tax_capacity_mult = -0.35
+		state_lower_strata_standard_of_living_add = -0.75
+		state_peasants_consumption_multiplier_add = 0.10
+		interest_group_ig_landowners_pol_str_mult = 0.20
+		country_bureaucracy_mult = -0.10
+	}
+
+	tax_modifier_very_low = {
+		tax_land_add = -0.10
+	}
+
+	tax_modifier_low = {
+		tax_land_add = -0.15
+	}
+
+	tax_modifier_medium = {
+		tax_land_add = -0.20
+	}
+
+	tax_modifier_high = {
+		tax_land_add = -0.25
+	}
+
+	tax_modifier_very_high = {
+		tax_land_add = -0.30
+	}
+
+	possible = {
+		country_has_primary_culture = cu:korean
+	}
+
+	would_sponsor = {
+		ROOT = {
+			is_interest_group_type = ig_landowners
+		}
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.75
+}
+
+amendment_dhe_hwangok_disorder = {
+	parent = law_poor_laws
+
+	allowed_laws = {
+		law_hwangok_system
+		law_poor_laws
+	}
+
+	modifier = {
+		interest_group_ig_landowners_pol_str_mult = 0.25
+		state_dependent_wage_mult = -0.25
+		state_tax_capacity_mult = -0.15
+		state_lower_strata_standard_of_living_add = -0.50
+	}
+
+	institution = institution_social_security
+	institution_modifier = {
+		state_welfare_payments_mult = -0.30
+		state_political_strength_from_welfare_mult = -0.25
+		state_dependent_wage_mult = -0.05
+	}
+
+	possible = {
+		country_has_primary_culture = cu:korean
+	}
+
+	would_sponsor = {
+		ROOT = {
+			is_interest_group_type = ig_landowners
+		}
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.75
+}

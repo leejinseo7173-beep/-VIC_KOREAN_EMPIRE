@@ -1,0 +1,1133 @@
+﻿# Encoding: UTF-8 with BOM
+# File: common/scripted_progress_bars/dhe_progress_bars2.txt
+# [리워크] 겹침 제거 + 난이도 상향 + 고유 조건 강화
+# 광무개혁 bar, 간도, 연해주는 변경 없음
+
+dhe_progress_bar_susinsa_bobingsa = {
+	name = "dhe_progress_bar_susinsa_bobingsa"
+	desc = "dhe_progress_bar_susinsa_bobingsa_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		if = {
+			limit = { always = yes }
+			subtract = { desc = "dhe_mission_time_pressure" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_japan_report } }
+			add = { desc = "dhe_mission_japan_report_progress" value = 2.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_qing_report } }
+			add = { desc = "dhe_mission_qing_report_progress" value = 1.5 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_west_report } }
+			add = { desc = "dhe_mission_west_report_progress" value = 2.5 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_current_location_var } }
+			add = { desc = "dhe_mission_abroad_progress" value = 2.0 }
+		}
+		if = {
+			limit = { owner = { has_law_or_variant = law_type:law_appointed_bureaucrats } }
+			add = { desc = "dhe_mission_appointed_bureaucrats" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_law = law_type:law_public_schools } }
+			add = { desc = "dhe_mission_public_schools" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_law = law_type:law_censorship } }
+			subtract = { desc = "dhe_mission_censorship" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { ig:ig_intelligentsia = { ig_approval >= 5 } } }
+			add = { desc = "dhe_mission_intelligentsia_support" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { ig:ig_landowners = { ig_approval <= -5 } } }
+			subtract = { desc = "dhe_mission_conservative_resistance" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_british_exchange } }
+			add = { desc = "dhe_mission_british_exchange_progress" value = 1.5 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_french_exchange } }
+			add = { desc = "dhe_mission_french_exchange_progress" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_american_exchange } }
+			add = { desc = "dhe_mission_american_exchange_progress" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_russian_exchange } }
+			add = { desc = "dhe_mission_russian_exchange_progress" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_mission_german_exchange } }
+			add = { desc = "dhe_mission_german_exchange_progress" value = 1.5 }
+		}
+	}
+}
+
+# ==========================================================
+# 👑 왕권 회복 (세도정치 타파)
+# 고유 열쇠: 지주 약화 + 정통성 + 검열 폐지
+# 목표: 3~5년  |  최악: -10/월  |  최선: +6/월
+# ==========================================================
+dhe_progress_bar_royal_authority = {
+	name = "dhe_progress_bar_royal_authority"
+	desc = "dhe_progress_bar_royal_authority_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+
+		# ── [기본] 세도 정치의 관성 ──
+		if = {
+			limit = { always = yes }
+			subtract = { desc = "dhe_royal_auth_base" value = 4.0 }
+		}
+
+		# ── [페널티] 지주 clout 30% 이상: 조정 장악 ──
+		if = {
+			limit = { owner = { ig:ig_landowners = { clout >= 0.3 } } }
+			subtract = { desc = "dhe_royal_auth_landowners_dominant" value = 3.0 }
+		}
+
+		# ── [페널티] 세습 관료제: 양반 세습 체제 ──
+		if = {
+			limit = { owner = { has_law = law_type:law_hereditary_bureaucrats } }
+			subtract = { desc = "dhe_royal_auth_hereditary" value = 2.0 }
+		}
+
+		# ── [페널티] 농노제: 구체제의 무게 ──
+		if = {
+			limit = { owner = { has_law = law_type:law_serfdom } }
+			subtract = { desc = "dhe_royal_auth_serfdom" value = 1.0 }
+		}
+
+		# ── [보너스] 지주 clout 20% 미만: 양반 약화 (★ 고유 핵심) ──
+		if = {
+			limit = {
+				owner = {
+					ig:ig_landowners = { clout < 0.2 }
+					NOT = { ig:ig_landowners = { clout < 0.1 } }
+				}
+			}
+			add = { desc = "dhe_royal_auth_landowners_weak" value = 3.0 }
+		}
+
+		# ── [보너스] 지주 clout 10% 미만: 양반 궤멸 (★ 고유 핵심) ──
+		if = {
+			limit = { owner = { ig:ig_landowners = { clout < 0.1 } } }
+			add = { desc = "dhe_royal_auth_landowners_crushed" value = 2.0 }
+		}
+
+		# ── [보너스] 정통성 50 이상: 왕권 안정 (★ 고유 핵심) ──
+		if = {
+			limit = { owner = { government_legitimacy >= 50 } }
+			add = { desc = "dhe_royal_auth_legitimacy_stable" value = 2.0 }
+		}
+
+		# ── [보너스] 정통성 75 이상: 왕권 절대 ──
+		if = {
+			limit = { owner = { government_legitimacy >= 75 } }
+			add = { desc = "dhe_royal_auth_legitimacy_supreme" value = 1.0 }
+		}
+
+		# ── [보너스] 지식인 clout 15% 이상: 개화파 지원 ──
+		if = {
+			limit = { owner = { ig:ig_intelligentsia = { clout >= 0.15 } } }
+			add = { desc = "dhe_royal_auth_intelligentsia" value = 1.0 }
+		}
+
+		# ── [보너스] 검열 폐지: 여론 동원 (★ 왕권 전용) ──
+		if = {
+			limit = { owner = { NOT = { has_law = law_type:law_censorship } } }
+			add = { desc = "dhe_royal_auth_free_press" value = 1.0 }
+		}
+	}
+}
+
+# ==========================================================
+# ⚔️ 자주독립 준비도
+# 고유 열쇠: 군대 규모 + 청나라 상태 + 삼정 전부 해결
+# 목표: 4~6년  |  최악: -7/월  |  최선: +8/월
+# ==========================================================
+dhe_progress_bar_independence = {
+	name = "dhe_progress_bar_independence"
+	desc = "dhe_progress_bar_independence_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+
+		# ── [기본] 청나라의 지속적 압박 ──
+		if = {
+			limit = { always = yes }
+			subtract = { desc = "dhe_ind_base_decay" value = 3.0 }
+		}
+
+		# ── [페널티] 군대 10 미만: 독립할 힘이 없음 ──
+		if = {
+			limit = { owner = { NOT = { army_size >= 10 } } }
+			subtract = { desc = "dhe_ind_army_weak" value = 2.0 }
+		}
+
+		# ── [페널티] 정통성 30 미만: 내부 분열 ──
+		if = {
+			limit = { owner = { government_legitimacy < 30 } }
+			subtract = { desc = "dhe_ind_internal_chaos" value = 2.0 }
+		}
+
+		# ── [보너스] 군대 30 이상 (★ 독립 고유) ──
+		if = {
+			limit = { owner = { army_size >= 30 } }
+			add = { desc = "dhe_ind_army_strong" value = 1.0 }
+		}
+
+		# ── [보너스] 군대 50 이상 (★ 독립 고유) ──
+		if = {
+			limit = { owner = { army_size >= 50 } }
+			add = { desc = "dhe_ind_army_mighty" value = 1.0 }
+		}
+
+		# ── [보너스] 직업 군인제 ──
+		if = {
+			limit = { owner = { has_law = law_type:law_professional_army } }
+			add = { desc = "dhe_ind_professional" value = 2.0 }
+		}
+
+		# ── [보너스] 정통성 75 이상 ──
+		if = {
+			limit = { owner = { government_legitimacy >= 75 } }
+			add = { desc = "dhe_ind_legitimacy_high" value = 1.0 }
+		}
+
+		# ── [보너스] 청나라 내전 (★ 독립 핵심: +4) ──
+		if = {
+			limit = {
+				exists = c:CHI
+				c:CHI = { has_civil_war = yes }
+			}
+			add = { desc = "dhe_ind_qing_civil_war" value = 4.0 }
+		}
+
+		# ── [보너스] 청나라 전쟁 중 (내전 아님) ──
+		if = {
+			limit = {
+				exists = c:CHI
+				c:CHI = {
+					is_at_war = yes
+					NOT = { has_civil_war = yes }
+				}
+			}
+			add = { desc = "dhe_ind_qing_at_war" value = 2.0 }
+		}
+
+		# ── [연동] 삼정 모두 해결: 내정 완전 안정 (★ 독립 핵심 연동) ──
+		if = {
+			limit = {
+				owner = {
+					has_variable = dhe_sedo_resolved
+					has_variable = dhe_jeonjeong_resolved
+					has_variable = dhe_gunjeong_resolved
+					has_variable = dhe_hwangok_resolved
+				}
+			}
+			add = { desc = "dhe_ind_samjeong_all_done" value = 2.0 }
+		}
+	}
+}
+
+# ==========================================================
+# 🐉 만주 영향력 경쟁 — 청나라 정세와 조선의 준비 상태에 따라 월간 변동
+# ==========================================================
+dhe_progress_bar_manchuria_rivalry = {
+	name = "dhe_progress_bar_manchuria_rivalry"
+	desc = "dhe_progress_bar_manchuria_rivalry_desc"
+	double_sided_bad = yes
+
+	start_value = 0
+	min_value = -40
+	max_value = 40
+
+	monthly_progress = {
+		if = {
+			limit = {
+				c:KOR ?= { has_variable = dhe_manchuria_scout_network }
+			}
+			add = { desc = "dhe_manchuria_inf_scout_network" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				c:KOR ?= { has_variable = dhe_manchuria_settlement_network }
+			}
+			add = { desc = "dhe_manchuria_inf_settlement_network" value = 1.5 }
+		}
+
+		if = {
+			limit = {
+				c:KOR ?= { has_variable = dhe_manchuria_official_network }
+			}
+			add = { desc = "dhe_manchuria_inf_official_network" value = 2.0 }
+		}
+
+		if = {
+			limit = {
+				c:KOR ?= { has_variable = dhe_manchuria_qing_alarm }
+				exists = c:CHI
+				c:CHI = { NOT = { has_civil_war = yes } }
+			}
+			subtract = { desc = "dhe_manchuria_inf_qing_alarm" value = 3.0 }
+		}
+
+		if = {
+			limit = {
+				exists = c:CHI
+				c:CHI = {
+					NOT = { has_civil_war = yes }
+					is_at_war = no
+					army_size >= 100
+				}
+			}
+			subtract = { desc = "dhe_manchuria_inf_qing_garrisons" value = 2.0 }
+		}
+
+		if = {
+			limit = {
+				exists = c:CHI
+				c:CHI = {
+					NOT = { has_civil_war = yes }
+					government_legitimacy >= 50
+				}
+			}
+			subtract = { desc = "dhe_manchuria_inf_qing_court" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				exists = c:CHI
+				c:CHI = {
+					NOT = { has_civil_war = yes }
+					bureaucracy >= 200
+				}
+			}
+			subtract = { desc = "dhe_manchuria_inf_qing_bureaucrats" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				c:KOR ?= { "relations(c:CHI)" <= -20 }
+				exists = c:CHI
+				c:CHI = { NOT = { has_civil_war = yes } }
+			}
+			subtract = { desc = "dhe_manchuria_inf_qing_hostility" value = 1.0 }
+		}
+
+		if = {
+			limit = { c:KOR ?= { army_size >= 30 } }
+			add = { desc = "dhe_manchuria_inf_border_army" value = 1.0 }
+		}
+
+		if = {
+			limit = { c:KOR ?= { army_size >= 50 } }
+			add = { desc = "dhe_manchuria_inf_army_dominance" value = 1.0 }
+		}
+
+		if = {
+			limit = { c:KOR ?= { bureaucracy >= 200 } }
+			add = { desc = "dhe_manchuria_inf_administration" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				exists = c:CHI
+				c:CHI = { has_civil_war = yes }
+			}
+			add = { desc = "dhe_manchuria_inf_qing_civil_war" value = 4.0 }
+		}
+
+		if = {
+			limit = {
+				exists = c:CHI
+				c:CHI = {
+					is_at_war = yes
+					NOT = { has_civil_war = yes }
+				}
+			}
+			add = { desc = "dhe_manchuria_inf_qing_at_war" value = 2.0 }
+		}
+	}
+}
+
+# ==========================================================
+# 🧭 대한제국 대외전략 — 하위 확장 일지 성과를 모으는 상위 게이지
+# ==========================================================
+dhe_progress_bar_imperial_foreign_strategy = {
+	name = "dhe_progress_bar_imperial_foreign_strategy"
+	desc = "dhe_progress_bar_imperial_foreign_strategy_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+}
+
+# ==========================================================
+# 🌊 광무호 사건 — 일본 연안 함포 사격 압박
+# ==========================================================
+dhe_progress_bar_gwangmuho_bombardment = {
+	name = "dhe_progress_bar_gwangmuho_bombardment"
+	desc = "dhe_progress_bar_gwangmuho_bombardment_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 8
+}
+
+# ==========================================================
+# 🗺️ 간도 진척도 — 순수 버튼/이벤트 구동 (변경 없음)
+# ==========================================================
+dhe_progress_bar_jiandao = {
+	name = "dhe_progress_bar_jiandao"
+	desc = "dhe_progress_bar_jiandao_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 9
+}
+
+# ==========================================================
+# 🗺️ 연해주 진척도 — 순수 버튼/이벤트 구동 (변경 없음)
+# ==========================================================
+dhe_progress_bar_outer_manchuria = {
+	name = "dhe_progress_bar_outer_manchuria"
+	desc = "dhe_progress_bar_outer_manchuria_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 13
+}
+
+# ==========================================================
+# ⚔️ 원수부와 제국군 개편 — 법률, 기술, 군수공업, 군부 신뢰가 함께 움직이는 심화 군제개혁
+# ==========================================================
+dhe_progress_bar_imperial_army_reform = {
+	name = "dhe_progress_bar_imperial_army_reform"
+	desc = "dhe_progress_bar_imperial_army_reform_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		if = {
+			limit = { always = yes }
+			subtract = { desc = "dhe_imperial_army_base_decay" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_law_or_variant = law_type:law_professional_army } }
+			add = { desc = "dhe_imperial_army_professional_army" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { has_law_or_variant = law_type:law_mass_conscription } }
+			add = { desc = "dhe_imperial_army_mass_conscription" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_law_or_variant = law_type:law_peasant_levies } }
+			subtract = { desc = "dhe_imperial_army_peasant_levies" value = 3.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = general_staff } }
+			add = { desc = "dhe_imperial_army_general_staff_tech" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = breech_loading_artillery } }
+			add = { desc = "dhe_imperial_army_artillery_tech" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = handcranked_machine_gun } }
+			add = { desc = "dhe_imperial_army_machine_guns" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { army_size >= 100 } }
+			add = { desc = "dhe_imperial_army_field_force" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { army_size >= 150 } }
+			add = { desc = "dhe_imperial_army_large_force" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				owner = {
+					any_scope_building = { is_building_type = building_arms_industry level >= 5 }
+				}
+			}
+			add = { desc = "dhe_imperial_army_arms_industry" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				owner = {
+					any_scope_building = { is_building_type = building_artillery_foundry level >= 3 }
+				}
+			}
+			add = { desc = "dhe_imperial_army_artillery_foundry" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				owner = {
+					any_scope_building = { is_building_type = building_munition_plant level >= 3 }
+				}
+			}
+			add = { desc = "dhe_imperial_army_munitions" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				owner = {
+					any_scope_building = { is_building_type = building_dhe_imperial_military_academy level >= 1 }
+				}
+			}
+			add = { desc = "dhe_imperial_army_academy" value = 1.5 }
+		}
+
+		if = {
+			limit = {
+				owner = {
+					any_scope_building = { is_building_type = building_dhe_imperial_military_academy level >= 3 }
+				}
+			}
+			add = { desc = "dhe_imperial_army_academy_expanded" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				owner = {
+					any_scope_building = {
+						is_building_type = building_dhe_imperial_military_academy
+						has_active_production_method = pm_dhe_academy_modern_staff_school
+					}
+				}
+			}
+			add = { desc = "dhe_imperial_army_modern_staff_school" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				owner = {
+					country_army_unit_type_fraction = {
+						target = unit_type:combat_unit_type_skirmish_infantry
+						value >= 0.5
+					}
+				}
+			}
+			add = { desc = "dhe_imperial_army_modern_infantry" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { ig:ig_armed_forces = { ig_approval >= 5 } } }
+			add = { desc = "dhe_imperial_army_armed_forces_support" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { ig:ig_armed_forces = { ig_approval <= -5 } } }
+			subtract = { desc = "dhe_imperial_army_armed_forces_resist" value = 2.0 }
+		}
+	}
+}
+
+# ==========================================================
+# ⚓ 대한제국 연합함대 — 해군법, 조선소, 해군 행정, 철갑함 기술이 함께 움직이는 해군 일지
+# ==========================================================
+dhe_progress_bar_imperial_combined_fleet = {
+	name = "dhe_progress_bar_imperial_combined_fleet"
+	desc = "dhe_progress_bar_imperial_combined_fleet_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		if = {
+			limit = { always = yes }
+			subtract = { desc = "dhe_combined_fleet_base_decay" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_law_or_variant = law_type:law_professional_navy } }
+			add = { desc = "dhe_combined_fleet_professional_navy" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { has_law_or_variant = law_type:law_diplomatic_navy } }
+			add = { desc = "dhe_combined_fleet_diplomatic_navy" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_law_or_variant = law_type:law_merchant_navy } }
+			subtract = { desc = "dhe_combined_fleet_merchant_navy" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = ironclad_tech } }
+			add = { desc = "dhe_combined_fleet_ironclads" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = monitor_tech } }
+			add = { desc = "dhe_combined_fleet_monitors" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = self_propelled_torpedoes } }
+			add = { desc = "dhe_combined_fleet_torpedoes" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = battleship_tech } }
+			add = { desc = "dhe_combined_fleet_pre_dreadnoughts" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = gantry_cranes } }
+			add = { desc = "dhe_combined_fleet_gantry_cranes" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_variable = dhe_mission_british_naval_advisers } }
+			add = { desc = "dhe_combined_fleet_british_advisers" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { has_variable = dhe_mission_british_dockyard_blueprints } }
+			add = { desc = "dhe_combined_fleet_british_blueprints" value = 1.5 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = dhe_korean_warship_design_1 } }
+			add = { desc = "dhe_combined_fleet_korean_warship_design_1" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = dhe_korean_warship_design_2 } }
+			add = { desc = "dhe_combined_fleet_korean_warship_design_2" value = 1.5 }
+		}
+
+		if = {
+			limit = { owner = { has_technology_researched = dhe_korean_warship_design_3 } }
+			add = { desc = "dhe_combined_fleet_korean_warship_design_3" value = 2.0 }
+		}
+
+		if = {
+			limit = { owner = { navy_size >= 25 } }
+			add = { desc = "dhe_combined_fleet_coastal_squadron" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { navy_size >= 50 } }
+			add = { desc = "dhe_combined_fleet_sea_squadron" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { navy_size >= 75 } }
+			add = { desc = "dhe_combined_fleet_combined_fleet" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				owner = {
+					any_scope_building = { is_building_type = building_shipyard level >= 5 }
+				}
+			}
+			add = { desc = "dhe_combined_fleet_shipyards" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				owner = {
+					any_scope_building = { is_building_type = building_naval_administration level >= 4 }
+				}
+			}
+			add = { desc = "dhe_combined_fleet_administration" value = 1.0 }
+		}
+
+		if = {
+			limit = {
+				owner = {
+					any_scope_building = { is_building_type = building_port level >= 5 }
+				}
+			}
+			add = { desc = "dhe_combined_fleet_ports" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { ig:ig_armed_forces = { ig_approval >= 5 } } }
+			add = { desc = "dhe_combined_fleet_navy_support" value = 1.0 }
+		}
+
+		if = {
+			limit = { owner = { ig:ig_armed_forces = { ig_approval <= -5 } } }
+			subtract = { desc = "dhe_combined_fleet_navy_resist" value = 2.0 }
+		}
+	}
+}
+
+dhe_progress_bar_naval_design_bureau = {
+	name = "dhe_progress_bar_naval_design_bureau"
+	desc = "dhe_progress_bar_naval_design_bureau_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+}
+
+dhe_progress_bar_carrier_design_bureau = {
+	name = "dhe_progress_bar_carrier_design_bureau"
+	desc = "dhe_progress_bar_carrier_design_bureau_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+}
+
+dhe_progress_bar_submarine_design_bureau = {
+	name = "dhe_progress_bar_submarine_design_bureau"
+	desc = "dhe_progress_bar_submarine_design_bureau_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 100
+}
+
+# ==========================================================
+# 🌊 일본 장악 — 대일수호조규 이후 총독부 설치 준비
+# ==========================================================
+dhe_progress_bar_japan_control = {
+	name = "dhe_progress_bar_japan_control"
+	desc = "dhe_progress_bar_japan_control_desc"
+	default = yes
+
+	start_value = 15
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		if = {
+			limit = { owner = { has_variable = dhe_korea_japan_trade_treaty_signed } }
+			add = { desc = "dhe_japan_control_treaty_base" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { navy_size >= 25 } }
+			add = { desc = "dhe_japan_control_naval_presence" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { bureaucracy >= 200 } }
+			add = { desc = "dhe_japan_control_bureaucracy" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_japan_control_pro_korean_cabinet_focus } }
+			add = { desc = "dhe_japan_control_pro_korean_cabinet_focus" value = 1.5 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_japan_control_investment_network_focus } }
+			add = { desc = "dhe_japan_control_investment_network_focus" value = 1.5 }
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP ?= {
+					gdp_ownership_ratio = {
+						target = c:KOR
+						value >= 0.05
+					}
+				}
+			}
+			add = { desc = "dhe_japan_control_gdp_ownership_5" value = 1.0 }
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP ?= {
+					gdp_ownership_ratio = {
+						target = c:KOR
+						value >= 0.1
+					}
+				}
+			}
+			add = { desc = "dhe_japan_control_gdp_ownership_10" value = 1.5 }
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP ?= {
+					gdp_ownership_ratio = {
+						target = c:KOR
+						value >= 0.2
+					}
+				}
+			}
+			add = { desc = "dhe_japan_control_gdp_ownership_20" value = 2.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_japan_control_military_advisers_focus } }
+			add = { desc = "dhe_japan_control_military_advisers_focus" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { bureaucracy < 0 } }
+			subtract = { desc = "dhe_japan_control_bureaucratic_shortage" value = 1.5 }
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP = { is_at_war = yes }
+			}
+			subtract = { desc = "dhe_japan_control_japan_at_war" value = 1.0 }
+		}
+	}
+}
+
+dhe_progress_bar_japan_resistance = {
+	name = "dhe_progress_bar_japan_resistance"
+	desc = "dhe_progress_bar_japan_resistance_desc"
+	default_bad = yes
+
+	start_value = 25
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		if = {
+			limit = {
+				exists = c:JAP
+				owner = { "relations(c:JAP)" < 0 }
+			}
+			add = { desc = "dhe_japan_resistance_bad_relations" value = 1.0 }
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				owner = { "relations(c:JAP)" <= -50 }
+			}
+			add = { desc = "dhe_japan_resistance_hostile_relations" value = 1.0 }
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP = { army_size >= 50 }
+			}
+			add = { desc = "dhe_japan_resistance_japanese_army" value = 1.0 }
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP = {
+					any_scope_state = { turmoil >= 0.20 }
+				}
+			}
+			add = { desc = "dhe_japan_resistance_turmoil" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_japan_control_police_network_focus } }
+			subtract = { desc = "dhe_japan_resistance_police_network_focus" value = 1.5 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_japan_control_investment_network_focus } }
+			subtract = { desc = "dhe_japan_resistance_investment_network_focus" value = 0.5 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_japan_control_military_advisers_focus } }
+			add = { desc = "dhe_japan_resistance_military_advisers_focus" value = 1.0 }
+		}
+	}
+}
+
+dhe_progress_bar_japanese_governor_general_stability = {
+	name = "dhe_progress_bar_japanese_governor_general_stability"
+	desc = "dhe_progress_bar_japanese_governor_general_stability_desc"
+	default = yes
+
+	start_value = 45
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		if = {
+			limit = { owner = { bureaucracy >= 300 } }
+			add = { desc = "dhe_japanese_governor_general_stability_bureaucracy" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { bureaucracy >= 600 } }
+			add = { desc = "dhe_japanese_governor_general_stability_bureaucracy_surplus" value = 0.5 }
+		}
+		if = {
+			limit = { owner = { government_legitimacy >= 50 } }
+			add = { desc = "dhe_japanese_governor_general_stability_legitimacy" value = 0.5 }
+		}
+		if = {
+			limit = { owner = { government_legitimacy >= 75 } }
+			add = { desc = "dhe_japanese_governor_general_stability_high_legitimacy" value = 0.5 }
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP ?= {
+					is_subject_of = c:KOR
+					is_subject_type = subject_type_puppet
+				}
+			}
+			add = { desc = "dhe_japanese_governor_general_stability_puppet_framework" value = 0.75 }
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP ?= {
+					gdp_ownership_ratio = {
+						target = c:KOR
+						value >= 0.1
+					}
+				}
+			}
+			add = { desc = "dhe_japanese_governor_general_stability_investment" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_japanese_governor_general_admin_reform } }
+			add = { desc = "dhe_japanese_governor_general_stability_admin_reform" value = 1.5 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_tokyo_governor_policy_admin_focus } }
+			add = { desc = "dhe_tokyo_governor_stability_admin_focus" value = 1.5 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_tokyo_governor_budget_generous } }
+			add = { desc = "dhe_tokyo_governor_stability_generous_budget" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_tokyo_governor_security_patrols } }
+			add = { desc = "dhe_tokyo_governor_stability_security_patrols" value = 0.75 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_japanese_governor_general_economic_integration } }
+			add = { desc = "dhe_japanese_governor_general_stability_economic_integration" value = 1.5 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_tokyo_governor_economic_integration_plan } }
+			add = { desc = "dhe_tokyo_governor_stability_economic_plan" value = 1.0 }
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP = {
+					any_scope_state = { turmoil >= 0.25 }
+				}
+			}
+			subtract = { desc = "dhe_japanese_governor_general_stability_turmoil" value = 0.75 }
+		}
+		if = {
+			limit = { owner = { bureaucracy < 0 } }
+			subtract = { desc = "dhe_japanese_governor_general_stability_bureaucracy_shortage" value = 1.0 }
+		}
+	}
+}
+
+dhe_progress_bar_japanese_governor_general_collaboration = {
+	name = "dhe_progress_bar_japanese_governor_general_collaboration"
+	desc = "dhe_progress_bar_japanese_governor_general_collaboration_desc"
+	default = yes
+
+	start_value = 30
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP ?= {
+					gdp_ownership_ratio = {
+						target = c:KOR
+						value >= 0.1
+					}
+				}
+			}
+			add = { desc = "dhe_tokyo_governor_collaboration_investment" value = 0.75 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_tokyo_governor_policy_collaboration_focus } }
+			add = { desc = "dhe_tokyo_governor_collaboration_policy" value = 1.5 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_tokyo_governor_budget_generous } }
+			add = { desc = "dhe_tokyo_governor_collaboration_generous_budget" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_tokyo_governor_economic_integration_plan } }
+			add = { desc = "dhe_tokyo_governor_collaboration_economic_plan" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_tokyo_governor_education_bureaucrats } }
+			add = { desc = "dhe_tokyo_governor_collaboration_education" value = 1.25 }
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				owner = { "relations(c:JAP)" >= 0 }
+			}
+			add = { desc = "dhe_tokyo_governor_collaboration_relations" value = 0.5 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_tokyo_governor_security_harsh } }
+			subtract = { desc = "dhe_tokyo_governor_collaboration_harsh_security" value = 1.0 }
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				owner = { "relations(c:JAP)" < -50 }
+			}
+			subtract = { desc = "dhe_tokyo_governor_collaboration_bad_relations" value = 0.5 }
+		}
+	}
+}
+
+dhe_progress_bar_japanese_governor_general_resistance = {
+	name = "dhe_progress_bar_japanese_governor_general_resistance"
+	desc = "dhe_progress_bar_japanese_governor_general_resistance_desc"
+	default_bad = yes
+
+	start_value = 20
+	min_value = 0
+	max_value = 100
+
+	monthly_progress = {
+		if = {
+			limit = {
+				exists = c:JAP
+				owner = { "relations(c:JAP)" < -50 }
+			}
+			add = { desc = "dhe_japanese_governor_general_resistance_bad_relations" value = 0.5 }
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP = { army_size >= 70 }
+			}
+			add = { desc = "dhe_japanese_governor_general_resistance_army" value = 0.5 }
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP = {
+					any_scope_state = { turmoil >= 0.25 }
+				}
+			}
+			add = { desc = "dhe_japanese_governor_general_resistance_turmoil" value = 0.75 }
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP ?= {
+					is_subject_of = c:KOR
+					is_subject_type = subject_type_puppet
+				}
+			}
+			subtract = { desc = "dhe_japanese_governor_general_resistance_puppet_framework" value = 0.5 }
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP ?= {
+					gdp_ownership_ratio = {
+						target = c:KOR
+						value >= 0.1
+					}
+				}
+			}
+			subtract = { desc = "dhe_japanese_governor_general_resistance_investment" value = 0.5 }
+		}
+		if = {
+			limit = { owner = { government_legitimacy >= 50 } }
+			subtract = { desc = "dhe_japanese_governor_general_resistance_legitimacy" value = 0.5 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_japanese_governor_general_garrison_rotation } }
+			subtract = { desc = "dhe_japanese_governor_general_resistance_garrison_rotation" value = 2.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_tokyo_governor_security_patrols } }
+			subtract = { desc = "dhe_tokyo_governor_resistance_security_patrols" value = 1.25 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_tokyo_governor_security_harsh } }
+			add = { desc = "dhe_tokyo_governor_resistance_harsh_security" value = 1.0 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_japanese_governor_general_economic_integration } }
+			subtract = { desc = "dhe_japanese_governor_general_resistance_economic_integration" value = 1.5 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_tokyo_governor_policy_collaboration_focus } }
+			subtract = { desc = "dhe_tokyo_governor_resistance_collaboration_policy" value = 0.75 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_tokyo_governor_economic_integration_plan } }
+			subtract = { desc = "dhe_tokyo_governor_resistance_economic_plan" value = 0.75 }
+		}
+		if = {
+			limit = { owner = { has_variable = dhe_tokyo_governor_budget_austerity } }
+			add = { desc = "dhe_tokyo_governor_resistance_austerity" value = 0.75 }
+		}
+	}
+}
+
+# ==========================================================
+# ⚙️ 광무개혁 — 변경 없음 (유저 지시)
+# ==========================================================
+dhe_progress_bar_gwangmu = {
+	name = "dhe_progress_bar_gwangmu"
+	desc = "dhe_progress_bar_gwangmu_desc"
+	default = yes
+
+	start_value = 0
+	min_value = 0
+	max_value = 200
+
+	monthly_progress = {
+		if = {
+			limit = { always = yes }
+			add = { desc = "dhe_gwangmu_base_manual" value = 0 }
+		}
+	}
+}

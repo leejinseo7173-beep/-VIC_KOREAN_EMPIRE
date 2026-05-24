@@ -1,0 +1,1352 @@
+﻿
+# =============================================================================
+# [프롤로그 0] 타이머: 조용한 은자의 나라
+# =============================================================================
+je_dhe_hermit_kingdom = {
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	group = dhe_reforms
+	is_shown_when_inactive = {
+
+        exists = c:KOR
+         this = c:KOR
+}
+	possible = {
+		c:KOR ?= THIS
+		NOT = { has_variable = dhe_hermit_kingdom_broken }
+	}
+	
+	# ★ 일지가 시작된 후 1개월이 지나면 자동으로 완료됨
+	complete = {
+		game_date >= 1836.2.1
+	}
+	
+	on_complete = {
+		trigger_event = { id = dhe_event.100 popup = yes }
+	}
+}
+# =============================================================================
+# [프롤로그 1] 메인: 도탄에 빠진 왕조 (4개의 세부 일지를 모두 깨야 완료)
+# =============================================================================
+je_dhe_save_joseon = {
+	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
+	group = dhe_reforms
+	is_progressing = {
+		always = yes
+	}
+	possible = {
+		c:KOR ?= THIS
+		has_variable = dhe_hermit_kingdom_broken 
+		NOT = { has_variable = dhe_joseon_saved }
+	}
+complete = {
+		custom_tooltip = {
+			text = je_dhe_req_sedo_tt
+			tooltip = je_dhe_req_sedo_desc_tt
+			has_variable = dhe_sedo_resolved
+		}
+		custom_tooltip = {
+			text = je_dhe_req_jeonjeong_tt
+			tooltip = je_dhe_req_jeonjeong_desc_tt
+			has_variable = dhe_jeonjeong_resolved
+		}
+		custom_tooltip = {
+			text = je_dhe_req_gunjeong_tt
+			tooltip = je_dhe_req_gunjeong_desc_tt
+			has_variable = dhe_gunjeong_resolved
+		}
+		custom_tooltip = {
+			text = je_dhe_req_hwangok_tt
+			tooltip = je_dhe_req_hwangok_desc_tt
+			has_variable = dhe_hwangok_resolved
+		}
+	}
+	on_complete = {
+		trigger_event = { id = dhe_event.101 popup = yes }
+	}
+}
+
+# =============================================================================
+# [프롤로그 2] 정치: 세도정치 타파 (Progress Bar & Scripted Button 적용)
+# =============================================================================
+je_dhe_sedo_politics_reform = {
+	icon = "gfx/interface/icons/event_icons/dhe_sedo_politics_badge.dds"
+	group = dhe_reforms
+	# ★ 방금 만든 게이지와 버튼 2개를 이 일지에 연결합니다!
+	scripted_progress_bar = dhe_progress_bar_royal_authority
+	scripted_button = dhe_button_purge_corrupt_officials
+	scripted_button = dhe_button_abolish_seowon
+
+	possible = {
+		c:KOR ?= THIS
+		has_variable = dhe_hermit_kingdom_broken
+		NOT = { has_variable = dhe_sedo_resolved }
+	}
+
+complete = {
+		custom_tooltip = {
+			text = dhe_royal_authority_max_tt
+			tooltip = dhe_royal_authority_max_desc_tt
+			
+			je:je_dhe_sedo_politics_reform = {
+				"scripted_bar_progress(dhe_progress_bar_royal_authority)" >= 100
+			}
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_sedo_resolved
+	}
+}
+
+# ==========================================================
+# 삼정이정청: 삼정 리워크 상위 일지
+# ==========================================================
+je_dhe_samjeong_reform_headquarters = {
+	icon = "gfx/interface/icons/event_icons/dhe_samjeong_council_badge.dds"
+	group = dhe_reforms
+
+	possible = {
+		c:KOR ?= THIS
+		has_variable = dhe_hermit_kingdom_broken
+		NOT = { has_variable = dhe_samjeong_reform_resolved }
+	}
+
+	widget = {
+		gui = "gui/journal_entry_widgets/dhe_samjeong_widgets.gui"
+		name = "widget_je_dhe_samjeong_header"
+		container = "custom_widget_container_1"
+	}
+
+	progressbar = yes
+
+	immediate = {
+		dhe_samjeong_init_unrest_gauge = yes
+	}
+
+	current_value = {
+		value = root.var:dhe_samjeong_unrest_gauge
+		min = 0
+		max = 1000
+	}
+
+	goal_add_value = {
+		value = 1000
+		min = 0
+		max = 1000
+	}
+
+	scripted_button = dhe_button_samjeong_start_land
+	scripted_button = dhe_button_samjeong_start_military
+	scripted_button = dhe_button_samjeong_start_granary
+	scripted_button = dhe_button_samjeong_council
+	scripted_button = dhe_button_samjeong_emergency_relief
+
+	on_monthly_pulse = {
+		effect = {
+			dhe_samjeong_monthly_unrest = yes
+		}
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_samjeong_land_resolved_tt
+			has_variable = dhe_jeonjeong_resolved
+		}
+		custom_tooltip = {
+			text = dhe_samjeong_military_resolved_tt
+			has_variable = dhe_gunjeong_resolved
+		}
+		custom_tooltip = {
+			text = dhe_samjeong_granary_resolved_tt
+			has_variable = dhe_hwangok_resolved
+		}
+		custom_tooltip = {
+			text = dhe_samjeong_unrest_safe_tt
+			var:dhe_samjeong_unrest_gauge < 800
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_samjeong_reform_resolved
+		remove_variable = dhe_samjeong_land_focus
+		remove_variable = dhe_samjeong_military_focus
+		remove_variable = dhe_samjeong_granary_focus
+		remove_variable = dhe_samjeong_compromise_focus
+		remove_variable = dhe_samjeong_land_launched
+		remove_variable = dhe_samjeong_military_launched
+		remove_variable = dhe_samjeong_granary_launched
+		remove_variable = dhe_samjeong_land_hardline
+		remove_variable = dhe_samjeong_land_compromise
+		remove_variable = dhe_samjeong_land_modern_audit
+		remove_variable = dhe_samjeong_military_audit
+		remove_variable = dhe_samjeong_military_salary
+		remove_variable = dhe_samjeong_military_hopo
+		remove_variable = dhe_samjeong_granary_seizure
+		remove_variable = dhe_samjeong_granary_debt_relief
+		remove_variable = dhe_samjeong_granary_sachang
+		remove_variable = dhe_samjeong_unrest_gauge
+		add_loyalists = 25000
+		trigger_event = { id = dhe_samjeong.2 popup = yes }
+	}
+
+	fail = {
+		var:dhe_samjeong_unrest_gauge >= 1000
+	}
+
+	on_fail = {
+		remove_variable = dhe_samjeong_land_focus
+		remove_variable = dhe_samjeong_military_focus
+		remove_variable = dhe_samjeong_granary_focus
+		remove_variable = dhe_samjeong_compromise_focus
+		remove_variable = dhe_samjeong_land_hardline
+		remove_variable = dhe_samjeong_land_compromise
+		remove_variable = dhe_samjeong_land_modern_audit
+		remove_variable = dhe_samjeong_military_audit
+		remove_variable = dhe_samjeong_military_salary
+		remove_variable = dhe_samjeong_military_hopo
+		remove_variable = dhe_samjeong_granary_seizure
+		remove_variable = dhe_samjeong_granary_debt_relief
+		remove_variable = dhe_samjeong_granary_sachang
+		set_variable = dhe_samjeong_reform_failed
+		add_radicals = 30000
+		trigger_event = { id = dhe_samjeong.3 popup = yes }
+	}
+
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = je_dhe_samjeong_status_danger
+				trigger = {
+					var:dhe_samjeong_unrest_gauge >= 800
+				}
+			}
+			triggered_desc = {
+				desc = je_dhe_samjeong_status_focused
+				trigger = {
+					OR = {
+						has_variable = dhe_samjeong_land_focus
+						has_variable = dhe_samjeong_military_focus
+						has_variable = dhe_samjeong_granary_focus
+						has_variable = dhe_samjeong_compromise_focus
+					}
+				}
+			}
+			desc = je_dhe_samjeong_status_idle
+		}
+	}
+}
+
+je_dhe_samjeong_land_reform = {
+	icon = "gfx/interface/icons/event_icons/dhe_samjeong_land_badge.dds"
+	group = dhe_reforms
+
+	possible = {
+		c:KOR ?= THIS
+		has_journal_entry = je_dhe_samjeong_reform_headquarters
+		has_variable = dhe_samjeong_land_launched
+		NOT = { has_variable = dhe_jeonjeong_resolved }
+	}
+
+	modifiers_while_active = {
+		dhe_mod_samjeong_land_disorder
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_samjeong_land_complete_tt
+			country_has_building_type_levels = {
+				target = bt:building_government_administration
+				value >= 8
+			}
+		}
+		custom_tooltip = {
+			text = dhe_samjeong_land_bureaucracy_complete_tt
+			bureaucracy >= 150
+		}
+		custom_tooltip = {
+			text = dhe_samjeong_land_law_complete_tt
+			OR = {
+				has_law_or_variant = law_type:law_appointed_bureaucrats
+				has_law_or_variant = law_type:law_dhe_gwageo_bureaucracy
+			}
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_jeonjeong_resolved
+		remove_variable = dhe_samjeong_land_focus
+		add_authority = 50
+		ig:ig_landowners = { add_ig_approval = -3 }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -120 }
+		dhe_samjeong_resolve_unrest_gauge = yes
+	}
+}
+
+je_dhe_samjeong_military_reform = {
+	icon = "gfx/interface/icons/event_icons/dhe_samjeong_military_badge.dds"
+	group = dhe_reforms
+
+	possible = {
+		c:KOR ?= THIS
+		has_journal_entry = je_dhe_samjeong_reform_headquarters
+		has_variable = dhe_samjeong_military_launched
+		NOT = { has_variable = dhe_gunjeong_resolved }
+	}
+
+	modifiers_while_active = {
+		dhe_mod_samjeong_military_disorder
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_samjeong_military_complete_tt
+			country_has_building_type_levels = {
+				target = bt:building_barrack
+				value >= 25
+			}
+		}
+		custom_tooltip = {
+			text = dhe_samjeong_military_arms_complete_tt
+			country_has_building_type_levels = {
+				target = bt:building_arms_industry
+				value >= 2
+			}
+		}
+		custom_tooltip = {
+			text = dhe_samjeong_military_law_complete_tt
+			NOT = { has_law_or_variant = law_type:law_peasant_levies }
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_gunjeong_resolved
+		remove_variable = dhe_samjeong_military_focus
+		add_loyalists = { value = 0.02 pop_type = servicemen }
+		ig:ig_armed_forces = { add_ig_approval = 3 }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -100 }
+		dhe_samjeong_resolve_unrest_gauge = yes
+	}
+}
+
+je_dhe_samjeong_granary_reform = {
+	icon = "gfx/interface/icons/event_icons/dhe_samjeong_granary_badge.dds"
+	group = dhe_reforms
+
+	possible = {
+		c:KOR ?= THIS
+		has_journal_entry = je_dhe_samjeong_reform_headquarters
+		has_variable = dhe_samjeong_granary_launched
+		NOT = { has_variable = dhe_hwangok_resolved }
+	}
+
+	modifiers_while_active = {
+		dhe_mod_samjeong_granary_disorder
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_samjeong_granary_complete_tt
+			NOT = { has_law = law_type:law_hwangok_system }
+		}
+		custom_tooltip = {
+			text = dhe_samjeong_granary_welfare_complete_tt
+			OR = {
+				has_law_or_variant = law_type:law_poor_laws
+				has_law_or_variant = law_type:law_wage_subsidies
+				has_law_or_variant = law_type:law_old_age_pension
+			}
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_hwangok_resolved
+		remove_variable = dhe_samjeong_granary_focus
+		add_loyalists = { value = 0.02 strata = lower }
+		ig:ig_rural_folk = { add_ig_approval = 3 }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -160 }
+		dhe_samjeong_resolve_unrest_gauge = yes
+	}
+}
+
+# =============================================================================
+# ⚔️ 메인 일지: 자주독립의 길 (대청제국 종속국 탈피)
+# =============================================================================
+je_dhe_road_to_independence = {
+	icon = "gfx/interface/icons/event_icons/event_revolutions.dds"
+	group = dhe_reforms
+	
+	possible = {
+		c:KOR ?= THIS
+		# 조선을 구원한 이후이고, 아직 누군가의 종속국(조공국)일 때
+		has_variable = dhe_joseon_saved
+		is_subject = yes
+	}
+
+	immediate = {
+		scope:journal_entry ?= {
+			add_progress = { name = dhe_progress_bar_independence value = 0 }
+		}
+	}
+
+	scripted_progress_bar = dhe_progress_bar_independence
+	scripted_button = dhe_button_refuse_tribute
+	scripted_button = dhe_button_independence_parade
+	scripted_button = dhe_button_trigger_independence_war
+
+	# 💥 클리어 조건: 외교전을 통해 청나라로부터 진짜 '독립(is_subject = no)'을 쟁취했을 때!
+	complete = {
+		is_subject = no
+	}
+	
+	on_complete = {
+		set_variable = dhe_independence_achieved
+		add_journal_entry = { type = je_dhe_imperial_foreign_strategy }
+		trigger_event = { id = dhe_independence.2 popup = yes }
+	}
+}
+
+# =============================================================================
+# 🧭 대한제국 대외전략: 북벌론, 남벌론, 열강 외교를 묶는 상위 일지
+# =============================================================================
+je_dhe_imperial_foreign_strategy = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	group = dhe_conquest
+
+	is_shown_in_lobby = { c:KOR ?= THIS }
+	is_shown_when_inactive = {
+		c:KOR ?= THIS
+		has_variable = dhe_independence_achieved
+		NOT = { has_variable = dhe_imperial_foreign_strategy_resolved }
+	}
+
+	possible = {
+		c:KOR ?= THIS
+		has_variable = dhe_independence_achieved
+		NOT = { has_variable = dhe_imperial_foreign_strategy_resolved }
+	}
+
+	immediate = {
+		scope:journal_entry ?= {
+			add_progress = { name = dhe_progress_bar_imperial_foreign_strategy value = 0 }
+		}
+		if = {
+			limit = { has_variable = dhe_manchuria_influence_resolved }
+			je:je_dhe_imperial_foreign_strategy ?= {
+				add_progress = { name = dhe_progress_bar_imperial_foreign_strategy value = 20 }
+			}
+		}
+		if = {
+			limit = { has_variable = dhe_jiandao_resolved }
+			je:je_dhe_imperial_foreign_strategy ?= {
+				add_progress = { name = dhe_progress_bar_imperial_foreign_strategy value = 25 }
+			}
+		}
+		if = {
+			limit = { has_variable = dhe_jiandao_arable_resolved }
+			je:je_dhe_imperial_foreign_strategy ?= {
+				add_progress = { name = dhe_progress_bar_imperial_foreign_strategy value = 15 }
+			}
+		}
+		if = {
+			limit = { has_variable = dhe_outer_manchuria_resolved }
+			je:je_dhe_imperial_foreign_strategy ?= {
+				add_progress = { name = dhe_progress_bar_imperial_foreign_strategy value = 40 }
+			}
+		}
+		if = {
+			limit = { has_variable = dhe_korea_japan_trade_treaty_signed }
+			je:je_dhe_imperial_foreign_strategy ?= {
+				add_progress = { name = dhe_progress_bar_imperial_foreign_strategy value = 30 }
+			}
+		}
+		if = {
+			limit = { has_variable = dhe_japan_control_resolved }
+			je:je_dhe_imperial_foreign_strategy ?= {
+				add_progress = { name = dhe_progress_bar_imperial_foreign_strategy value = 40 }
+			}
+		}
+		if = {
+			limit = { NOT = { has_variable = dhe_foreign_strategy_meeting_called } }
+			set_variable = dhe_foreign_strategy_meeting_called
+			trigger_event = { id = dhe_expansion.5 days = 1 popup = yes }
+		}
+	}
+
+	scripted_progress_bar = dhe_progress_bar_imperial_foreign_strategy
+
+	widget = {
+		gui = "gui/journal_entry_widgets/dhe_foreign_strategy_widgets.gui"
+		name = "widget_je_dhe_imperial_foreign_strategy_header"
+		container = "custom_widget_container_3"
+	}
+
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = dhe_imperial_foreign_strategy_status_northern_done
+				trigger = {
+					has_variable = dhe_outer_manchuria_resolved
+					NOT = { has_journal_entry = je_dhe_southern_campaign_doctrine }
+					NOT = { has_variable = dhe_southern_campaign_doctrine_resolved }
+				}
+			}
+			triggered_desc = {
+				desc = dhe_imperial_foreign_strategy_status_northern_active
+				trigger = {
+					OR = {
+						has_journal_entry = je_dhe_northern_campaign_doctrine
+						has_journal_entry = je_dhe_manchuria_rivalry
+						has_journal_entry = je_dhe_jiandao_expansion
+						has_journal_entry = je_dhe_outer_manchuria
+					}
+				}
+			}
+			triggered_desc = {
+				desc = dhe_imperial_foreign_strategy_status_southern_active
+				trigger = {
+					OR = {
+						has_journal_entry = je_dhe_southern_campaign_doctrine
+						has_journal_entry = je_dhe_gwangmuho_incident
+						has_journal_entry = je_dhe_japan_control
+						has_variable = dhe_korea_japan_trade_treaty_signed
+					}
+				}
+			}
+			triggered_desc = {
+				desc = dhe_imperial_foreign_strategy_status_waiting
+				trigger = { always = yes }
+			}
+		}
+	}
+
+	on_monthly_pulse = {
+		effect = {
+			if = {
+				limit = {
+					has_variable = dhe_northern_campaign_doctrine_resolved
+					NOT = { has_variable = dhe_second_strategy_meeting_called }
+					NOT = { has_variable = dhe_chose_southern_strategy }
+				}
+				set_variable = dhe_second_strategy_meeting_called
+				trigger_event = { id = dhe_expansion.10 days = 1 popup = yes }
+			}
+		}
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_imperial_foreign_strategy_progress_max_tt
+			tooltip = dhe_imperial_foreign_strategy_progress_max_desc_tt
+			je:je_dhe_imperial_foreign_strategy ?= {
+				"scripted_bar_progress(dhe_progress_bar_imperial_foreign_strategy)" >= 100
+			}
+		}
+		custom_tooltip = {
+			text = dhe_imperial_foreign_strategy_second_route_tt
+			tooltip = dhe_imperial_foreign_strategy_second_route_desc_tt
+			OR = {
+				has_variable = dhe_southern_campaign_doctrine_resolved
+				has_variable = dhe_japan_control_resolved
+			}
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_imperial_foreign_strategy_resolved
+		add_prestige = 50
+	}
+}
+
+# =============================================================================
+# 🐉 북벌론: 만주 영향력 경쟁과 간도 확장의 중간 허브
+# =============================================================================
+je_dhe_northern_campaign_doctrine = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	group = dhe_conquest
+
+	is_shown_in_lobby = { c:KOR ?= THIS }
+	is_shown_when_inactive = {
+		c:KOR ?= THIS
+		has_journal_entry = je_dhe_imperial_foreign_strategy
+		has_variable = dhe_chose_northern_strategy
+		NOT = { has_variable = dhe_northern_campaign_doctrine_resolved }
+	}
+
+	possible = {
+		c:KOR ?= THIS
+		has_journal_entry = je_dhe_imperial_foreign_strategy
+		has_variable = dhe_chose_northern_strategy
+		NOT = { has_variable = dhe_northern_campaign_doctrine_resolved }
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_journal_entry = je_dhe_manchuria_rivalry }
+				NOT = { has_variable = dhe_manchuria_influence_resolved }
+			}
+			add_journal_entry = { type = je_dhe_manchuria_rivalry }
+		}
+	}
+
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = dhe_northern_campaign_status_grand_done
+				trigger = { has_variable = dhe_outer_manchuria_resolved }
+			}
+			triggered_desc = {
+				desc = dhe_northern_campaign_status_jiandao
+				trigger = {
+					OR = {
+						has_journal_entry = je_dhe_jiandao_expansion
+						has_variable = dhe_jiandao_resolved
+					}
+				}
+			}
+			triggered_desc = {
+				desc = dhe_northern_campaign_status_manchuria
+				trigger = {
+					OR = {
+						has_journal_entry = je_dhe_manchuria_rivalry
+						has_variable = dhe_manchuria_influence_resolved
+					}
+				}
+			}
+			triggered_desc = {
+				desc = dhe_northern_campaign_status_waiting
+				trigger = { always = yes }
+			}
+		}
+	}
+
+	complete = {
+		has_variable = dhe_outer_manchuria_resolved
+	}
+
+	on_complete = {
+		set_variable = dhe_northern_campaign_doctrine_resolved
+		add_prestige = 25
+		if = {
+			limit = {
+				NOT = { has_variable = dhe_second_strategy_meeting_called }
+				NOT = { has_variable = dhe_chose_southern_strategy }
+			}
+			set_variable = dhe_second_strategy_meeting_called
+			trigger_event = { id = dhe_expansion.10 days = 30 popup = yes }
+		}
+	}
+}
+
+# =============================================================================
+# 🌊 남진론: 광무호 사건과 대일 함포외교
+# =============================================================================
+je_dhe_southern_campaign_doctrine = {
+	icon = "gfx/interface/icons/event_icons/event_ship.dds"
+	group = dhe_conquest
+
+	is_shown_in_lobby = { c:KOR ?= THIS }
+	is_shown_when_inactive = {
+		c:KOR ?= THIS
+		#has_journal_entry = je_dhe_imperial_foreign_strategy
+		has_variable = dhe_chose_southern_strategy
+		NOT = { has_variable = dhe_southern_campaign_doctrine_resolved }
+	}
+
+	possible = {
+		c:KOR ?= THIS
+		#has_journal_entry = je_dhe_imperial_foreign_strategy
+		has_variable = dhe_chose_southern_strategy
+		NOT = { has_variable = dhe_southern_campaign_doctrine_resolved }
+	}
+
+	immediate = {
+		if = {
+			limit = { NOT = { has_variable = dhe_gwangmuho_incident_started } }
+			set_variable = dhe_gwangmuho_incident_started
+			trigger_event = { id = dhe_expansion.6 days = 90 popup = yes }
+		}
+	}
+
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = dhe_southern_campaign_status_treaty_done
+				trigger = { has_variable = dhe_korea_japan_trade_treaty_signed }
+			}
+			triggered_desc = {
+				desc = dhe_southern_campaign_status_gwangmuho_active
+				trigger = { has_journal_entry = je_dhe_gwangmuho_incident }
+			}
+			triggered_desc = {
+				desc = dhe_southern_campaign_status_direct_treaty
+				trigger = { has_variable = dhe_gwangmuho_direct_treaty_path }
+			}
+			triggered_desc = {
+				desc = dhe_southern_campaign_status_waiting
+				trigger = { always = yes }
+			}
+		}
+	}
+
+	complete = {
+		has_variable = dhe_korea_japan_trade_treaty_signed
+	}
+
+	on_complete = {
+		set_variable = dhe_southern_campaign_doctrine_resolved
+		add_prestige = 25
+		if = {
+			limit = {
+				exists = c:JAP
+				NOT = { has_journal_entry = je_dhe_japan_control }
+				NOT = { has_variable = dhe_japan_control_resolved }
+			}
+			add_journal_entry = { type = je_dhe_japan_control }
+		}
+	}
+}
+
+je_dhe_gwangmuho_incident = {
+	icon = "gfx/interface/icons/commander_order_icons/bomb_shores.dds"
+	group = dhe_conquest
+	scripted_progress_bar = dhe_progress_bar_gwangmuho_bombardment
+
+	is_shown_in_lobby = { c:KOR ?= THIS }
+	is_shown_when_inactive = {
+		c:KOR ?= THIS
+		has_variable = dhe_gwangmuho_incident_active
+		NOT = { has_variable = dhe_korea_japan_trade_treaty_signed }
+	}
+
+	possible = {
+		c:KOR ?= THIS
+		has_variable = dhe_gwangmuho_incident_active
+		NOT = { has_variable = dhe_korea_japan_trade_treaty_signed }
+	}
+
+	immediate = {
+		scope:journal_entry ?= {
+			add_progress = { name = dhe_progress_bar_gwangmuho_bombardment value = 0 }
+		}
+	}
+
+	on_weekly_pulse = {
+		effect = {
+			if = {
+				limit = {
+					exists = c:JAP
+					c:JAP = {
+						any_scope_state = {
+							OR = {
+								state_region = s:STATE_KYUSHU
+								state_region = s:STATE_CHUGOKU
+								state_region = s:STATE_SHIKOKU
+								state_region = s:STATE_KANSAI
+								state_region = s:STATE_RYUKYU_ISLANDS
+							}
+							is_being_bombarded = yes
+						}
+					}
+				}
+				je:je_dhe_gwangmuho_incident ?= {
+					add_progress = { name = dhe_progress_bar_gwangmuho_bombardment value = 1 }
+				}
+			}
+		}
+	}
+
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = dhe_gwangmuho_incident_status_bombarding
+				trigger = {
+					exists = c:JAP
+					c:JAP = {
+						any_scope_state = {
+							OR = {
+								state_region = s:STATE_KYUSHU
+								state_region = s:STATE_CHUGOKU
+								state_region = s:STATE_SHIKOKU
+								state_region = s:STATE_KANSAI
+								state_region = s:STATE_RYUKYU_ISLANDS
+							}
+							is_being_bombarded = yes
+						}
+					}
+				}
+			}
+			triggered_desc = {
+				desc = dhe_gwangmuho_incident_status_hostilities_open
+				trigger = { has_any_naval_only_hostilities = yes }
+			}
+			triggered_desc = {
+				desc = dhe_gwangmuho_incident_status_navy_too_small
+				trigger = { navy_size < 10 }
+			}
+			triggered_desc = {
+				desc = dhe_gwangmuho_incident_status_need_treaty_threat
+				trigger = { always = yes }
+			}
+		}
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_gwangmuho_bombardment_progress_max_tt
+			tooltip = dhe_gwangmuho_bombardment_progress_max_desc_tt
+			je:je_dhe_gwangmuho_incident ?= {
+				"scripted_bar_progress(dhe_progress_bar_gwangmuho_bombardment)" >= 8
+			}
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_gwangmuho_bombardment_success
+		trigger_event = { id = dhe_expansion.8 popup = yes }
+	}
+}
+
+# =============================================================================
+# 🌊 남진론 후속: 일본 장악과 총독부 설치 준비
+# =============================================================================
+je_dhe_japan_control = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	group = dhe_conquest
+	scripted_progress_bar = dhe_progress_bar_japan_control
+	scripted_progress_bar = dhe_progress_bar_japan_resistance
+	scripted_button = dhe_button_japan_control_pro_korean_cabinet
+	scripted_button = dhe_button_japan_control_military_advisers
+	scripted_button = dhe_button_japan_control_investment_network
+	scripted_button = dhe_button_japan_control_police_network
+
+	is_shown_in_lobby = { c:KOR ?= THIS }
+	is_shown_when_inactive = {
+		c:KOR ?= THIS
+		exists = c:JAP
+		has_variable = dhe_chose_southern_strategy
+		has_variable = dhe_korea_japan_trade_treaty_signed
+		NOT = { has_variable = dhe_japan_control_resolved }
+		NOT = { has_variable = dhe_japan_control_crisis }
+	}
+
+	possible = {
+		c:KOR ?= THIS
+		exists = c:JAP
+		has_variable = dhe_chose_southern_strategy
+		has_variable = dhe_korea_japan_trade_treaty_signed
+		NOT = { has_variable = dhe_japan_control_resolved }
+		NOT = { has_variable = dhe_japan_control_crisis }
+	}
+
+	immediate = {
+		scope:journal_entry ?= {
+			add_progress = { name = dhe_progress_bar_japan_control value = 0 }
+			add_progress = { name = dhe_progress_bar_japan_resistance value = 0 }
+		}
+	}
+
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = dhe_japan_control_status_ready
+				trigger = {
+					je:je_dhe_japan_control ?= {
+						"scripted_bar_progress(dhe_progress_bar_japan_control)" >= 100
+						"scripted_bar_progress(dhe_progress_bar_japan_resistance)" < 80
+					}
+					has_variable = KOR_korean_empire_declared
+					c:JAP ?= {
+						gdp_ownership_ratio = {
+							target = ROOT
+							value >= 0.1
+						}
+						army_power_projection < ROOT.army_power_projection
+						naval_power_projection < ROOT.naval_power_projection
+						prestige < ROOT.prestige
+					}
+				}
+			}
+			triggered_desc = {
+				desc = dhe_japan_control_status_resistance_high
+				trigger = {
+					je:je_dhe_japan_control ?= {
+						"scripted_bar_progress(dhe_progress_bar_japan_resistance)" >= 70
+					}
+				}
+			}
+			triggered_desc = {
+				desc = dhe_japan_control_status_building
+				trigger = { always = yes }
+			}
+		}
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_japan_control_goal_tt
+			tooltip = dhe_japan_control_goal_desc_tt
+			je:je_dhe_japan_control ?= {
+				"scripted_bar_progress(dhe_progress_bar_japan_control)" >= 100
+				"scripted_bar_progress(dhe_progress_bar_japan_resistance)" < 80
+			}
+		}
+		custom_tooltip = {
+			text = dhe_japan_control_korean_empire_tt
+			tooltip = dhe_japan_control_korean_empire_desc_tt
+			has_variable = KOR_korean_empire_declared
+		}
+		custom_tooltip = {
+			text = dhe_japan_control_gdp_ownership_10_tt
+			tooltip = dhe_japan_control_gdp_ownership_10_desc_tt
+			c:JAP ?= {
+				gdp_ownership_ratio = {
+					target = ROOT
+					value >= 0.1
+				}
+			}
+		}
+		custom_tooltip = {
+			text = dhe_japan_control_military_superiority_tt
+			tooltip = dhe_japan_control_military_superiority_desc_tt
+			c:JAP ?= {
+				army_power_projection < ROOT.army_power_projection
+				naval_power_projection < ROOT.naval_power_projection
+			}
+		}
+		custom_tooltip = {
+			text = dhe_japan_control_prestige_superiority_tt
+			tooltip = dhe_japan_control_prestige_superiority_desc_tt
+			c:JAP ?= {
+				prestige < ROOT.prestige
+			}
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_japan_control_resolved
+		set_variable = dhe_japanese_governor_general_prepared
+		add_prestige = 40
+		add_modifier = { name = dhe_mod_japanese_governor_general_preparation months = 120 }
+		je:je_dhe_imperial_foreign_strategy ?= {
+			add_progress = { name = dhe_progress_bar_imperial_foreign_strategy value = 40 }
+		}
+		trigger_event = { id = dhe_japan_control.1 popup = yes }
+	}
+
+	fail = {
+		je:je_dhe_japan_control ?= {
+			"scripted_bar_progress(dhe_progress_bar_japan_resistance)" >= 100
+		}
+	}
+
+	on_fail = {
+		set_variable = { name = dhe_japan_control_crisis days = 1095 }
+		add_modifier = { name = dhe_mod_japan_control_crisis months = 36 }
+		trigger_event = { id = dhe_japan_control.6 popup = yes }
+	}
+}
+
+je_dhe_japanese_governor_general = {
+	icon = "gfx/interface/icons/event_icons/dhe_tokyo_governor.png"
+	group = dhe_conquest
+	scripted_progress_bar = dhe_progress_bar_japanese_governor_general_stability
+	scripted_progress_bar = dhe_progress_bar_japanese_governor_general_collaboration
+	scripted_progress_bar = dhe_progress_bar_japanese_governor_general_resistance
+	scripted_button = dhe_button_tokyo_governor_general_council
+	scripted_button = dhe_button_tokyo_governor_general_budget
+	scripted_button = dhe_button_tokyo_governor_general_security
+	scripted_button = dhe_button_tokyo_governor_general_economic_plan
+	scripted_button = dhe_button_tokyo_governor_general_education
+
+	is_shown_in_lobby = { c:KOR ?= THIS }
+	is_shown_when_inactive = {
+		c:KOR ?= THIS
+		exists = c:JAP
+		has_variable = dhe_japanese_governor_general_established
+		NOT = { has_variable = dhe_japanese_governor_general_crisis }
+	}
+
+	possible = {
+		c:KOR ?= THIS
+		exists = c:JAP
+		has_variable = dhe_japanese_governor_general_established
+		NOT = { has_variable = dhe_japanese_governor_general_crisis }
+	}
+
+	immediate = {
+		if = { limit = { NOT = { has_variable = dhe_tokyo_governor_council_counter } } set_variable = { name = dhe_tokyo_governor_council_counter value = 0 } }
+		if = { limit = { NOT = { has_variable = dhe_tokyo_governor_budget_counter } } set_variable = { name = dhe_tokyo_governor_budget_counter value = 0 } }
+		if = { limit = { NOT = { has_variable = dhe_tokyo_governor_security_counter } } set_variable = { name = dhe_tokyo_governor_security_counter value = 0 } }
+		if = { limit = { NOT = { has_variable = dhe_tokyo_governor_economic_counter } } set_variable = { name = dhe_tokyo_governor_economic_counter value = 0 } }
+		if = { limit = { NOT = { has_variable = dhe_tokyo_governor_education_counter } } set_variable = { name = dhe_tokyo_governor_education_counter value = 0 } }
+		if = { limit = { NOT = { has_variable = dhe_tokyo_governor_integration_months } } set_variable = { name = dhe_tokyo_governor_integration_months value = 0 } }
+	}
+
+	widget = {
+		gui = "gui/journal_entry_widgets/dhe_tokyo_governor_widgets.gui"
+		name = "widget_je_dhe_tokyo_governor_header"
+		container = "custom_widget_container_3"
+	}
+
+	on_monthly_pulse = {
+		effect = {
+			if = {
+				limit = {
+					je:je_dhe_japanese_governor_general ?= {
+						"scripted_bar_progress(dhe_progress_bar_japanese_governor_general_stability)" >= 80
+						"scripted_bar_progress(dhe_progress_bar_japanese_governor_general_collaboration)" >= 60
+						"scripted_bar_progress(dhe_progress_bar_japanese_governor_general_resistance)" < 50
+					}
+				}
+				if = { limit = { has_modifier = dhe_mod_tokyo_governor_general_strained_rule } remove_modifier = dhe_mod_tokyo_governor_general_strained_rule }
+				add_modifier = { name = dhe_mod_tokyo_governor_general_orderly_rule months = 2 }
+			}
+			else_if = {
+				limit = {
+					je:je_dhe_japanese_governor_general ?= {
+						"scripted_bar_progress(dhe_progress_bar_japanese_governor_general_resistance)" >= 75
+					}
+				}
+				if = { limit = { has_modifier = dhe_mod_tokyo_governor_general_orderly_rule } remove_modifier = dhe_mod_tokyo_governor_general_orderly_rule }
+				add_modifier = { name = dhe_mod_tokyo_governor_general_strained_rule months = 2 }
+			}
+			else = {
+				if = { limit = { has_modifier = dhe_mod_tokyo_governor_general_orderly_rule } remove_modifier = dhe_mod_tokyo_governor_general_orderly_rule }
+				if = { limit = { has_modifier = dhe_mod_tokyo_governor_general_strained_rule } remove_modifier = dhe_mod_tokyo_governor_general_strained_rule }
+			}
+			if = {
+				limit = {
+					je:je_dhe_japanese_governor_general ?= {
+						"scripted_bar_progress(dhe_progress_bar_japanese_governor_general_stability)" >= 80
+						"scripted_bar_progress(dhe_progress_bar_japanese_governor_general_collaboration)" >= 70
+						"scripted_bar_progress(dhe_progress_bar_japanese_governor_general_resistance)" < 40
+					}
+				}
+				change_variable = { name = dhe_tokyo_governor_integration_months add = 1 }
+			}
+			else = {
+				set_variable = { name = dhe_tokyo_governor_integration_months value = 0 }
+			}
+		}
+		random_events = {
+			400 = 0
+			10 = dhe_japan_control.16
+			10 = dhe_japan_control.17
+			10 = dhe_japan_control.18
+			10 = dhe_japan_control.19
+		}
+	}
+
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = dhe_japanese_governor_general_status_secure
+				trigger = {
+					je:je_dhe_japanese_governor_general ?= {
+						"scripted_bar_progress(dhe_progress_bar_japanese_governor_general_stability)" >= 80
+						"scripted_bar_progress(dhe_progress_bar_japanese_governor_general_collaboration)" >= 60
+						"scripted_bar_progress(dhe_progress_bar_japanese_governor_general_resistance)" < 50
+					}
+				}
+			}
+			triggered_desc = {
+				desc = dhe_japanese_governor_general_status_unrest
+				trigger = {
+					je:je_dhe_japanese_governor_general ?= {
+						"scripted_bar_progress(dhe_progress_bar_japanese_governor_general_resistance)" >= 70
+					}
+				}
+			}
+			triggered_desc = {
+				desc = dhe_japanese_governor_general_status_operating
+				trigger = { always = yes }
+			}
+		}
+	}
+
+	fail = {
+		je:je_dhe_japanese_governor_general ?= {
+			"scripted_bar_progress(dhe_progress_bar_japanese_governor_general_resistance)" >= 100
+		}
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_tokyo_governor_naisen_ittai_goal_tt
+			tooltip = dhe_tokyo_governor_naisen_ittai_goal_desc_tt
+			scope:journal_entry = { is_goal_complete = yes }
+		}
+	}
+
+	current_value = {
+		value = root.var:dhe_tokyo_governor_integration_months
+	}
+
+	goal_add_value = {
+		add = 240
+	}
+
+	on_complete = {
+		set_variable = dhe_tokyo_governor_resolved
+		set_variable = dhe_naisen_ittai_proclaimed
+		add_prestige = 75
+		add_modifier = { name = dhe_mod_naisen_ittai_overlord years = 20 }
+		c:JAP ?= {
+			add_modifier = { name = dhe_mod_naisen_ittai_subject years = 20 }
+			add_radicals = -75000
+			change_relations = { country = c:KOR value = 25 }
+		}
+		trigger_event = { id = dhe_japan_control.20 popup = yes }
+	}
+
+	on_fail = {
+		set_variable = { name = dhe_japanese_governor_general_crisis days = 1825 }
+		add_modifier = { name = dhe_mod_japan_control_crisis months = 60 }
+		c:JAP ?= {
+			add_modifier = { name = dhe_mod_japanese_governor_general_backlash months = 60 }
+		}
+		trigger_event = { id = dhe_japan_control.10 popup = yes }
+	}
+}
+
+# =============================================================================
+# 🐉 만주 영향력 경쟁: 대청제국의 북방 장악력 흔들기
+# =============================================================================
+je_dhe_manchuria_rivalry = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	group = dhe_conquest
+
+	is_shown_in_lobby = {
+		c:KOR ?= THIS
+	}
+	possible = {
+		c:KOR ?= THIS
+		is_subject = no
+		exists = c:CHI
+		has_variable = dhe_independence_achieved
+		NOT = { has_variable = dhe_manchuria_influence_resolved }
+		NOT = { has_variable = dhe_great_korea_ambition_taken }
+	}
+
+	immediate = {
+		c:CHI ?= {
+			save_temporary_scope_as = dhe_manchuria_qing_scope
+		}
+		set_variable = {
+			name = dhe_manchuria_qing_country
+			value = scope:dhe_manchuria_qing_scope
+		}
+		scope:journal_entry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 0 }
+		}
+	}
+
+	widget = {
+		gui = "gui/journal_entry_widgets/dhe_manchuria_widgets.gui"
+		name = "widget_je_dhe_manchuria_rivalry_header"
+		container = "custom_widget_container_3"
+	}
+
+	scripted_progress_bar = dhe_progress_bar_manchuria_rivalry
+	scripted_button = dhe_button_manchuria_scouts
+	scripted_button = dhe_button_manchuria_settlers
+	scripted_button = dhe_button_manchuria_officials
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_manchuria_influence_korea_victory_tt
+			je:je_dhe_manchuria_rivalry ?= {
+				"scripted_bar_progress(dhe_progress_bar_manchuria_rivalry)" >= 40
+			}
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_manchuria_influence_resolved
+		add_prestige = 25
+		je:je_dhe_imperial_foreign_strategy ?= {
+			add_progress = { name = dhe_progress_bar_imperial_foreign_strategy value = 20 }
+		}
+		set_variable = dhe_jiandao_unlocked
+		if = {
+			limit = {
+				NOT = { has_journal_entry = je_dhe_jiandao_expansion }
+				NOT = { has_variable = dhe_jiandao_resolved }
+			}
+			add_journal_entry = { type = je_dhe_jiandao_expansion }
+		}
+		trigger_event = { id = dhe_manchuria_rivalry.4 popup = yes }
+	}
+}
+
+je_dhe_jiandao_expansion = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	group = dhe_conquest
+	
+	is_shown_in_lobby = { c:KOR ?= THIS }
+         possible = {
+		has_variable = dhe_jiandao_unlocked
+		NOT = { has_variable = dhe_jiandao_completed }
+	}
+	
+	scripted_progress_bar = dhe_progress_bar_jiandao
+	scripted_button = dhe_button_expand_jiandao
+	scripted_button = dhe_button_jiandao_immigration
+	
+	# 진행도 바가 9(간도 프로빈스 9개)에 도달하면 완료!
+	complete = {
+		custom_tooltip = {
+			text = dhe_jiandao_max_tt
+			tooltip = dhe_jiandao_max_desc_tt
+			je:je_dhe_jiandao_expansion ?= {
+				"scripted_bar_progress(dhe_progress_bar_jiandao)" >= 9
+			}
+		}
+	}
+	
+	on_complete = {
+		set_variable = dhe_jiandao_resolved 
+		je:je_dhe_imperial_foreign_strategy ?= {
+			add_progress = { name = dhe_progress_bar_imperial_foreign_strategy value = 25 }
+		}
+		set_variable = dhe_outer_manchuria_unlocked
+		if = {
+			limit = {
+				NOT = { has_journal_entry = je_dhe_outer_manchuria }
+				NOT = { has_variable = dhe_outer_manchuria_resolved }
+			}
+			add_journal_entry = { type = je_dhe_outer_manchuria }
+		}
+		add_journal_entry = { type = je_dhe_jiandao_arable_expansion }
+		trigger_event = { id = dhe_jiandao.2 popup = yes }
+	}
+}
+
+# =============================================================================
+# 간도 경작지 확장
+# =============================================================================
+je_dhe_jiandao_arable_expansion = {
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+	group = dhe_conquest
+
+	is_shown_in_lobby = { c:KOR ?= THIS }
+
+	is_shown_when_inactive = {
+		c:KOR ?= THIS
+		has_variable = dhe_jiandao_resolved
+		NOT = { has_variable = dhe_jiandao_arable_resolved }
+		owns_entire_state_region = STATE_JIANDAO
+	}
+
+	possible = {
+		c:KOR ?= THIS
+		has_variable = dhe_jiandao_resolved
+		NOT = { has_variable = dhe_jiandao_arable_resolved }
+		owns_entire_state_region = STATE_JIANDAO
+	}
+
+	immediate = {
+		trigger_event = { id = dhe_jiandao.8 popup = yes }
+		s:STATE_JIANDAO = {
+			random_scope_state = {
+				limit = {
+					owner = root
+				}
+				save_scope_as = dhe_jiandao_state_scope
+			}
+		}
+		set_variable = {
+			name = dhe_jiandao_arable_counter_var
+			value = 0
+		}
+		set_variable = {
+			name = dhe_jiandao_crop_counter_var
+			value = 0
+		}
+	}
+
+	scripted_progress_bar = dhe_progress_bar_jiandao_arable
+	scripted_button = dhe_button_jiandao_arable_land
+	scripted_button = dhe_button_jiandao_crop_potential
+
+	complete = {
+		custom_tooltip = {
+			text = dhe_jiandao_settlement_goal_tt
+			s:STATE_JIANDAO.region_state:KOR = {
+				state_population > 100000
+				gdp > 100000
+			}
+		}
+		custom_tooltip = {
+			text = dhe_jiandao_arable_land_goal_tt
+			je:je_dhe_jiandao_arable_expansion ?= {
+				"scripted_bar_progress(dhe_progress_bar_jiandao_arable)" >= 3
+			}
+		}
+		custom_tooltip = {
+			text = dhe_jiandao_crop_potential_goal_tt
+			exists = var:dhe_jiandao_crop_counter_var
+			var:dhe_jiandao_crop_counter_var >= 4
+		}
+	}
+
+	on_complete = {
+		set_variable = dhe_jiandao_arable_resolved
+		je:je_dhe_imperial_foreign_strategy ?= {
+			add_progress = { name = dhe_progress_bar_imperial_foreign_strategy value = 15 }
+		}
+		s:STATE_JIANDAO.region_state:KOR = {
+			add_modifier = {
+				name = dhe_mod_black_soil_development
+				months = 120
+			}
+		}
+		remove_variable = dhe_jiandao_arable_counter_var
+		remove_variable = dhe_jiandao_crop_counter_var
+		remove_variable = dhe_jiandao_rice_trial_var
+		remove_variable = dhe_jiandao_dye_trial_var
+		remove_variable = dhe_jiandao_tobacco_trial_var
+		remove_variable = dhe_jiandao_ginseng_trial_var
+		trigger_event = { id = dhe_jiandao.7 popup = yes }
+	}
+}
+
+# =============================================================================
+# 🦅 고토 수복: 연해주(외만주) 개척
+# =============================================================================
+je_dhe_outer_manchuria = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	group = dhe_conquest
+	
+	possible = {
+		c:KOR ?= THIS
+		has_variable =  dhe_outer_manchuria_unlocked
+		NOT = { has_variable = dhe_outer_manchuria_resolved }
+	}
+
+	immediate = {
+		scope:journal_entry ?= {
+			add_progress = { name = dhe_progress_bar_outer_manchuria value = 0 }
+		}
+	}
+
+	scripted_progress_bar = dhe_progress_bar_outer_manchuria
+	scripted_button = dhe_button_outer_manchuria_expansion
+    scripted_button = dhe_button_outer_manchuria_immigration
+	complete = {
+		# 타일 13개를 모두 먹어서 진척도가 13이 되면 일지 완료!
+		je:je_dhe_outer_manchuria ?= {
+			"scripted_bar_progress(dhe_progress_bar_outer_manchuria)" >= 13
+		}
+	}
+	
+	on_complete = {
+		set_variable = dhe_outer_manchuria_resolved
+		je:je_dhe_imperial_foreign_strategy ?= {
+			add_progress = { name = dhe_progress_bar_imperial_foreign_strategy value = 40 }
+		}
+		trigger_event = { id = dhe_expansion.2 popup = yes }
+		trigger_event = { id = dhe_expansion.4 popup = yes }
+	}
+}

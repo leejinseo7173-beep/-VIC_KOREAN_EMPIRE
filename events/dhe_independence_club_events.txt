@@ -1,0 +1,1887 @@
+﻿# Encoding: UTF-8 with BOM
+# File: events/dhe_independence_club_events.txt
+namespace = dhe_manchuria_rivalry
+
+dhe_manchuria_rivalry.1 = {
+	type = country_event
+	placement = root
+	title = dhe_manchuria_rivalry.1.t
+	desc = dhe_manchuria_rivalry.1.d
+	flavor = dhe_manchuria_rivalry.1.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_manchuria_rivalry.1.a
+		default_option = yes
+		add_authority = -50
+		set_variable = { name = dhe_cd_manchuria_scouts days = 180 }
+		set_variable = { name = dhe_manchuria_scout_network days = 365 }
+		c:CHI = { change_relations = { country = ROOT value = -5 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 2 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.1.b
+		trigger = { authority >= 80 }
+		add_authority = -80
+		set_variable = { name = dhe_cd_manchuria_scouts days = 240 }
+		set_variable = { name = dhe_manchuria_scout_network days = 540 }
+		set_variable = { name = dhe_manchuria_qing_alarm days = 365 }
+		c:CHI = { change_relations = { country = ROOT value = -15 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 4 }
+		}
+	}
+}
+
+dhe_manchuria_rivalry.2 = {
+	type = country_event
+	placement = root
+	title = dhe_manchuria_rivalry.2.t
+	desc = dhe_manchuria_rivalry.2.d
+	flavor = dhe_manchuria_rivalry.2.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_manchuria_rivalry.2.a
+		default_option = yes
+		add_treasury = -30000
+		set_variable = { name = dhe_cd_manchuria_settlers days = 360 }
+		set_variable = { name = dhe_manchuria_settlement_network days = 540 }
+		c:CHI = { change_relations = { country = ROOT value = -10 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 3 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.2.b
+		trigger = { authority >= 50 }
+		add_authority = -50
+		add_treasury = -60000
+		set_variable = { name = dhe_cd_manchuria_settlers days = 540 }
+		set_variable = { name = dhe_manchuria_settlement_network days = 720 }
+		set_variable = { name = dhe_manchuria_qing_alarm days = 540 }
+		c:CHI = { change_relations = { country = ROOT value = -20 } }
+		ig:ig_landowners ?= { add_ig_approval = -3 }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 5 }
+		}
+	}
+}
+
+dhe_manchuria_rivalry.3 = {
+	type = country_event
+	placement = root
+	title = dhe_manchuria_rivalry.3.t
+	desc = dhe_manchuria_rivalry.3.d
+	flavor = dhe_manchuria_rivalry.3.f
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_manchuria_rivalry.3.a
+		default_option = yes
+		add_authority = -80
+		add_treasury = -50000
+		set_variable = { name = dhe_cd_manchuria_officials days = 540 }
+		set_variable = { name = dhe_manchuria_official_network days = 720 }
+		c:CHI = { change_relations = { country = ROOT value = -15 } }
+		ig:ig_landowners ?= { add_ig_approval = -2 }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 4 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.3.b
+		trigger = { authority >= 100 }
+		add_authority = -100
+		add_treasury = -80000
+		set_variable = { name = dhe_cd_manchuria_officials days = 720 }
+		set_variable = { name = dhe_manchuria_official_network days = 900 }
+		set_variable = { name = dhe_manchuria_qing_alarm days = 720 }
+		c:CHI = { change_relations = { country = ROOT value = -25 } }
+		ig:ig_landowners ?= { add_ig_approval = -5 }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 6 }
+		}
+	}
+}
+
+dhe_manchuria_rivalry.4 = {
+	type = country_event
+	placement = root
+	title = dhe_manchuria_rivalry.4.t
+	desc = dhe_manchuria_rivalry.4.d
+	flavor = dhe_manchuria_rivalry.4.f
+	icon = "gfx/interface/icons/event_icons/event_eagle.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_manchuria_rivalry.4.a
+		default_option = yes
+	}
+}
+
+dhe_manchuria_rivalry.5 = {
+	type = country_event
+	placement = root
+	title = dhe_manchuria_rivalry.5.t
+	desc = dhe_manchuria_rivalry.5.d
+	flavor = dhe_manchuria_rivalry.5.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	is_triggered_only = yes
+
+	trigger = {
+		has_journal_entry = je_dhe_manchuria_rivalry
+		exists = c:CHI
+		has_variable = dhe_manchuria_scout_network
+		NOT = { has_variable = dhe_manchuria_incident_cd }
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.5.a
+		default_option = yes
+		add_authority = -25
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 2 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.5.b
+		add_treasury = -15000
+		set_variable = { name = dhe_manchuria_qing_alarm days = 180 }
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = -10 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 4 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.5.c
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = 5 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = -3 }
+		}
+	}
+}
+
+dhe_manchuria_rivalry.6 = {
+	type = country_event
+	placement = root
+	title = dhe_manchuria_rivalry.6.t
+	desc = dhe_manchuria_rivalry.6.d
+	flavor = dhe_manchuria_rivalry.6.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	is_triggered_only = yes
+
+	trigger = {
+		has_journal_entry = je_dhe_manchuria_rivalry
+		exists = c:CHI
+		has_variable = dhe_manchuria_settlement_network
+		NOT = { has_variable = dhe_manchuria_incident_cd }
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.6.a
+		default_option = yes
+		add_treasury = -25000
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 2 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.6.b
+		add_authority = -40
+		change_infamy = 2
+		set_variable = { name = dhe_manchuria_qing_alarm days = 240 }
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = -15 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 5 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.6.c
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = 10 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = -4 }
+		}
+	}
+}
+
+dhe_manchuria_rivalry.7 = {
+	type = country_event
+	placement = root
+	title = dhe_manchuria_rivalry.7.t
+	desc = dhe_manchuria_rivalry.7.d
+	flavor = dhe_manchuria_rivalry.7.f
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+	is_triggered_only = yes
+
+	trigger = {
+		has_journal_entry = je_dhe_manchuria_rivalry
+		exists = c:CHI
+		has_variable = dhe_manchuria_official_network
+		NOT = { has_variable = dhe_manchuria_incident_cd }
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.7.a
+		default_option = yes
+		add_treasury = -20000
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 3 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.7.b
+		change_infamy = 2
+		set_variable = { name = dhe_manchuria_qing_alarm days = 300 }
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = -20 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 6 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.7.c
+		remove_variable = dhe_manchuria_official_network
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = 5 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = -3 }
+		}
+	}
+}
+
+dhe_manchuria_rivalry.8 = {
+	type = country_event
+	placement = root
+	title = dhe_manchuria_rivalry.8.t
+	desc = dhe_manchuria_rivalry.8.d
+	flavor = dhe_manchuria_rivalry.8.f
+	icon = "gfx/interface/icons/event_icons/event_red_cross.dds"
+	is_triggered_only = yes
+
+	trigger = {
+		has_journal_entry = je_dhe_manchuria_rivalry
+		has_variable = dhe_manchuria_qing_alarm
+		NOT = { has_variable = dhe_manchuria_incident_cd }
+		exists = c:CHI
+		c:CHI = { NOT = { has_civil_war = yes } }
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.8.a
+		default_option = yes
+		add_authority = -30
+		remove_variable = dhe_manchuria_qing_alarm
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = 10 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = -3 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.8.b
+		change_infamy = 3
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = -15 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 3 }
+		}
+	}
+
+	option = {
+		name = dhe_manchuria_rivalry.8.c
+		trigger = { authority >= 60 }
+		add_authority = -60
+		set_variable = { name = dhe_manchuria_incident_cd days = 120 }
+		c:CHI = { change_relations = { country = ROOT value = -20 } }
+		je:je_dhe_manchuria_rivalry ?= {
+			add_progress = { name = dhe_progress_bar_manchuria_rivalry value = 5 }
+		}
+	}
+}
+
+
+
+namespace = dhe_jiandao
+
+# [간도 경작지 확장] 시작
+dhe_jiandao.8 = {
+	type = country_event
+	placement = root
+	title = dhe_jiandao.8.t
+	desc = dhe_jiandao.8.d
+	flavor = dhe_jiandao.8.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jiandao.8.a
+	}
+}
+
+# [간도 경작지 확장] 개간 사업
+dhe_jiandao.5 = {
+	type = country_event
+	placement = scope:dhe_jiandao_state_scope
+	title = dhe_jiandao.5.t
+	desc = dhe_jiandao.5.d
+	flavor = dhe_jiandao.5.f
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jiandao.5.a
+		add_treasury = -25000
+		s:STATE_JIANDAO.region_state:KOR = {
+			state_region = {
+				add_arable_land = 10
+			}
+			add_modifier = {
+				name = dhe_mod_black_soil_development
+				months = 36
+			}
+		}
+	}
+}
+
+# [간도 경작지 확장] 작물 도입
+dhe_jiandao.6 = {
+	type = country_event
+	placement = scope:dhe_jiandao_state_scope
+	title = dhe_jiandao.6.t
+	desc = dhe_jiandao.6.d
+	flavor = dhe_jiandao.6.f
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jiandao.6.a
+		trigger = {
+			NOT = { has_variable = dhe_jiandao_rice_trial_var }
+		}
+		set_variable = dhe_jiandao_rice_trial_var
+		change_variable = {
+			name = dhe_jiandao_crop_counter_var
+			add = 1
+		}
+		add_treasury = -15000
+		s:STATE_JIANDAO = {
+			add_resource_potential = building_rice_farm
+		}
+		s:STATE_JIANDAO.region_state:KOR = {
+			add_modifier = {
+				name = dhe_mod_black_soil_development
+				months = 36
+			}
+		}
+	}
+
+	option = {
+		name = dhe_jiandao.6.b
+		trigger = {
+			NOT = { has_variable = dhe_jiandao_dye_trial_var }
+		}
+		set_variable = dhe_jiandao_dye_trial_var
+		change_variable = {
+			name = dhe_jiandao_crop_counter_var
+			add = 1
+		}
+		add_treasury = -15000
+		s:STATE_JIANDAO = {
+			add_resource_potential = building_dye_plantation
+		}
+		s:STATE_JIANDAO.region_state:KOR = {
+			add_modifier = {
+				name = dhe_mod_black_soil_development
+				months = 36
+			}
+		}
+	}
+
+	option = {
+		name = dhe_jiandao.6.c
+		trigger = {
+			NOT = { has_variable = dhe_jiandao_tobacco_trial_var }
+		}
+		set_variable = dhe_jiandao_tobacco_trial_var
+		change_variable = {
+			name = dhe_jiandao_crop_counter_var
+			add = 1
+		}
+		add_treasury = -15000
+		s:STATE_JIANDAO = {
+			add_resource_potential = building_tobacco_plantation
+		}
+		s:STATE_JIANDAO.region_state:KOR = {
+			add_modifier = {
+				name = dhe_mod_black_soil_development
+				months = 36
+			}
+		}
+	}
+
+	option = {
+		name = dhe_jiandao.6.e
+		trigger = {
+			NOT = { has_variable = dhe_jiandao_ginseng_trial_var }
+		}
+		set_variable = dhe_jiandao_ginseng_trial_var
+		change_variable = {
+			name = dhe_jiandao_crop_counter_var
+			add = 1
+		}
+		add_treasury = -15000
+		s:STATE_JIANDAO = {
+			add_resource_potential = building_ginseng_plantation
+		}
+		s:STATE_JIANDAO.region_state:KOR = {
+			add_modifier = {
+				name = dhe_mod_black_soil_development
+				months = 36
+			}
+		}
+	}
+}
+
+# [간도 경작지 확장] 완료
+dhe_jiandao.7 = {
+	type = country_event
+	placement = root
+	title = dhe_jiandao.7.t
+	desc = dhe_jiandao.7.d
+	flavor = dhe_jiandao.7.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jiandao.7.a
+		add_prestige = 10
+	}
+}
+
+
+namespace = dhe_independence_club
+
+dhe_independence_club.1 = {
+	type = country_event
+	placement = root
+	title = dhe_independence_club.1.t
+	desc = dhe_independence_club.1.d
+	flavor = dhe_independence_club.1.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	option = {
+		name = dhe_independence_club.1.a
+		ig:ig_intelligentsia = { add_ig_approval = 2 }
+	}
+}
+
+dhe_independence_club.3 = {
+	type = country_event
+	placement = root
+	title = dhe_independence_club.3.t
+	desc = dhe_independence_club.3.d
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	option = {
+		name = dhe_independence_club.3.a
+		add_modifier = { name = dhe_mod_imperial_absolutism_reaffirmed months = 120 }
+		ig:ig_landowners = { add_ig_approval = 3 }
+		ig:ig_intelligentsia = { add_ig_approval = -3 }
+	}
+}
+
+dhe_independence_club.4 = {
+	type = country_event
+	placement = root
+	title = dhe_independence_club.4.t
+	desc = dhe_independence_club.4.d
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	option = {
+		name = dhe_independence_club.4.a
+		add_modifier = { name = dhe_mod_constitutional_experiment months = 120 }
+		ig:ig_intelligentsia = { add_ig_approval = 4 }
+		ig:ig_landowners = { add_ig_approval = -2 }
+		add_journal_entry = { type = je_dhe_constitutional_reform }
+		set_variable = dhe_constitutional_reform_started
+	}
+}
+
+dhe_independence_club.5 = {
+	type = country_event
+	placement = root
+	title = dhe_independence_club.5.t
+	desc = dhe_independence_club.5.d
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	option = {
+		name = dhe_independence_club.5.a
+		add_modifier = { name = dhe_mod_manhmin_unrest months = 60 }
+	}
+}
+
+namespace = dhe_constitutional_reform
+
+dhe_constitutional_reform.1 = {
+	type = country_event
+	placement = root
+	title = dhe_constitutional_reform.1.t
+	desc = dhe_constitutional_reform.1.d
+	flavor = dhe_constitutional_reform.1.f
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	option = {
+		name = dhe_constitutional_reform.1.a
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		ig:ig_landowners = { add_ig_approval = -1 }
+	}
+}
+
+dhe_constitutional_reform.2 = {
+	type = country_event
+	placement = root
+	title = dhe_constitutional_reform.2.t
+	desc = dhe_constitutional_reform.2.d
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	option = {
+		name = dhe_constitutional_reform.2.a
+		add_modifier = { name = dhe_mod_imperial_constitution months = 120 }
+		ig:ig_landowners = { add_ig_approval = 2 }
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+	}
+}
+
+dhe_constitutional_reform.3 = {
+	type = country_event
+	placement = root
+	title = dhe_constitutional_reform.3.t
+	desc = dhe_constitutional_reform.3.d
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	option = {
+		name = dhe_constitutional_reform.3.a
+		add_modifier = { name = dhe_mod_limited_constitutional_monarchy months = 120 }
+		ig:ig_intelligentsia = { add_ig_approval = 4 }
+		ig:ig_landowners = { add_ig_approval = -2 }
+		if = {
+			limit = {
+				NOR = {
+					has_law = law_type:law_wealth_voting
+					has_law = law_type:law_census_voting
+					has_law = law_type:law_universal_suffrage
+				}
+			}
+			activate_law = law_type:law_wealth_voting
+		}
+	}
+}
+
+dhe_constitutional_reform.4 = {
+	type = country_event
+	placement = root
+	title = dhe_constitutional_reform.4.t
+	desc = dhe_constitutional_reform.4.d
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	option = {
+		name = dhe_constitutional_reform.4.a
+		add_modifier = { name = dhe_mod_constitutional_charter months = 120 }
+		ig:ig_intelligentsia = { add_ig_approval = 2 }
+	}
+}
+
+
+namespace = dhe_jungchuwon
+
+dhe_jungchuwon.1 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.1.t
+	desc = dhe_jungchuwon.1.d
+	flavor = dhe_jungchuwon.1.f
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jungchuwon.1.a
+	}
+}
+
+dhe_jungchuwon.2 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.2.t
+	desc = dhe_jungchuwon.2.d
+	flavor = dhe_jungchuwon.2.f
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jungchuwon.2.a
+		custom_tooltip = dhe_jungchuwon_seat_2a_tt
+		default_option = yes
+		add_modifier = { name = dhe_mod_jungchuwon_reform_bill years = 3 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 12 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 10 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_royalists }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 2 }
+		ig:ig_landowners = { add_ig_approval = -1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.2.b
+		custom_tooltip = dhe_jungchuwon_seat_2b_tt
+		add_modifier = { name = dhe_mod_jungchuwon_imperial_review_bill years = 3 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 18 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_provincials }
+		}
+		ig:ig_landowners = { add_ig_approval = 1 }
+		ig:ig_intelligentsia = { add_ig_approval = -1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.2.c
+		custom_tooltip = dhe_jungchuwon_seat_2c_tt
+		add_modifier = { name = dhe_mod_jungchuwon_public_minutes_bill years = 3 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 24 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 12 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = -24 name = dhe_progress_bar_jungchuwon_royalists }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		ig:ig_landowners = { add_ig_approval = -2 }
+	}
+}
+
+dhe_jungchuwon.3 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.3.t
+	desc = dhe_jungchuwon.3.d
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_jungchuwon_system
+		je:je_dhe_jungchuwon_system ?= {
+			"scripted_bar_progress(dhe_progress_bar_jungchuwon_royalists)" >= 150
+			"scripted_bar_progress(dhe_progress_bar_jungchuwon_reformists)" >= 90
+		}
+	}
+
+	option = {
+		name = dhe_jungchuwon.3.a
+		custom_tooltip = dhe_jungchuwon_seat_3a_tt
+		set_variable = dhe_jungchuwon_no_budget
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+	}
+}
+
+dhe_jungchuwon.4 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.4.t
+	desc = dhe_jungchuwon.4.d
+	flavor = dhe_jungchuwon.4.f
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jungchuwon.4.a
+		custom_tooltip = dhe_jungchuwon_seat_4a_tt
+		default_option = yes
+
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_imperial_budget } remove_modifier = dhe_mod_jungchuwon_imperial_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_industrial_budget } remove_modifier = dhe_mod_jungchuwon_industrial_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_agricultural_budget } remove_modifier = dhe_mod_jungchuwon_agricultural_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_infrastructure_budget } remove_modifier = dhe_mod_jungchuwon_infrastructure_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_education_budget } remove_modifier = dhe_mod_jungchuwon_education_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_military_budget } remove_modifier = dhe_mod_jungchuwon_military_budget }
+
+		set_variable = { name = dhe_jungchuwon_imperial_budget_focus days = 720 }
+		add_modifier = { name = dhe_mod_jungchuwon_imperial_budget years = 4 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 30 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -15 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -15 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = -2 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_landowners = { add_ig_approval = 1 }
+		ig:ig_intelligentsia = { add_ig_approval = -1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.4.b
+		custom_tooltip = dhe_jungchuwon_seat_4b_tt
+
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_imperial_budget } remove_modifier = dhe_mod_jungchuwon_imperial_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_industrial_budget } remove_modifier = dhe_mod_jungchuwon_industrial_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_agricultural_budget } remove_modifier = dhe_mod_jungchuwon_agricultural_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_infrastructure_budget } remove_modifier = dhe_mod_jungchuwon_infrastructure_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_education_budget } remove_modifier = dhe_mod_jungchuwon_education_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_military_budget } remove_modifier = dhe_mod_jungchuwon_military_budget }
+
+		remove_variable = dhe_jungchuwon_imperial_budget_focus
+		add_modifier = { name = dhe_mod_jungchuwon_industrial_budget years = 4 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = -33 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = 24 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 9 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 2 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_industrialists = { add_ig_approval = 1 }
+		ig:ig_landowners = { add_ig_approval = -1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.4.c
+		custom_tooltip = dhe_jungchuwon_seat_4c_tt
+
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_imperial_budget } remove_modifier = dhe_mod_jungchuwon_imperial_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_industrial_budget } remove_modifier = dhe_mod_jungchuwon_industrial_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_agricultural_budget } remove_modifier = dhe_mod_jungchuwon_agricultural_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_infrastructure_budget } remove_modifier = dhe_mod_jungchuwon_infrastructure_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_education_budget } remove_modifier = dhe_mod_jungchuwon_education_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_military_budget } remove_modifier = dhe_mod_jungchuwon_military_budget }
+
+		remove_variable = dhe_jungchuwon_imperial_budget_focus
+		add_modifier = { name = dhe_mod_jungchuwon_agricultural_budget years = 4 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 24 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_rural_folk = { add_ig_approval = 1 }
+		ig:ig_landowners = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.4.e
+		custom_tooltip = dhe_jungchuwon_seat_4e_tt
+
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_imperial_budget } remove_modifier = dhe_mod_jungchuwon_imperial_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_industrial_budget } remove_modifier = dhe_mod_jungchuwon_industrial_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_agricultural_budget } remove_modifier = dhe_mod_jungchuwon_agricultural_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_infrastructure_budget } remove_modifier = dhe_mod_jungchuwon_infrastructure_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_education_budget } remove_modifier = dhe_mod_jungchuwon_education_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_military_budget } remove_modifier = dhe_mod_jungchuwon_military_budget }
+
+		remove_variable = dhe_jungchuwon_imperial_budget_focus
+		add_modifier = { name = dhe_mod_jungchuwon_infrastructure_budget years = 4 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = -15 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -15 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 30 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 4 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_petty_bourgeoisie = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.4.h
+		custom_tooltip = dhe_jungchuwon_seat_4h_tt
+
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_imperial_budget } remove_modifier = dhe_mod_jungchuwon_imperial_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_industrial_budget } remove_modifier = dhe_mod_jungchuwon_industrial_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_agricultural_budget } remove_modifier = dhe_mod_jungchuwon_agricultural_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_infrastructure_budget } remove_modifier = dhe_mod_jungchuwon_infrastructure_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_education_budget } remove_modifier = dhe_mod_jungchuwon_education_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_military_budget } remove_modifier = dhe_mod_jungchuwon_military_budget }
+
+		remove_variable = dhe_jungchuwon_imperial_budget_focus
+		add_modifier = { name = dhe_mod_jungchuwon_education_budget years = 4 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 18 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 8 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = -9 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -9 name = dhe_progress_bar_jungchuwon_provincials }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		ig:ig_devout = { add_ig_approval = -1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.4.g
+		custom_tooltip = dhe_jungchuwon_seat_4g_tt
+
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_imperial_budget } remove_modifier = dhe_mod_jungchuwon_imperial_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_industrial_budget } remove_modifier = dhe_mod_jungchuwon_industrial_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_agricultural_budget } remove_modifier = dhe_mod_jungchuwon_agricultural_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_infrastructure_budget } remove_modifier = dhe_mod_jungchuwon_infrastructure_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_education_budget } remove_modifier = dhe_mod_jungchuwon_education_budget }
+		if = { limit = { has_modifier = dhe_mod_jungchuwon_military_budget } remove_modifier = dhe_mod_jungchuwon_military_budget }
+
+		remove_variable = dhe_jungchuwon_imperial_budget_focus
+		add_modifier = { name = dhe_mod_jungchuwon_military_budget years = 4 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 18 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -9 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -9 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = -3 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+		ig:ig_intelligentsia = { add_ig_approval = -1 }
+	}
+}
+
+dhe_jungchuwon.5 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.5.t
+	desc = dhe_jungchuwon.5.d
+	flavor = dhe_jungchuwon.5.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jungchuwon.5.a
+		custom_tooltip = dhe_jungchuwon_seat_5a_tt
+		default_option = yes
+		add_modifier = { name = dhe_mod_jungchuwon_regular_session years = 2 }
+		if = {
+			limit = {
+				NOT = { has_journal_entry = je_dhe_jungchuwon_economic_growth_agenda }
+				NOT = { has_journal_entry = je_dhe_jungchuwon_imperial_administration_agenda }
+				NOT = { has_journal_entry = je_dhe_jungchuwon_provincial_coordination_agenda }
+			}
+			set_variable = dhe_jungchuwon_economic_growth_agenda_active
+			add_journal_entry = { type = je_dhe_jungchuwon_economic_growth_agenda }
+		}
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 8 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = 12 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_provincials }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.5.b
+		custom_tooltip = dhe_jungchuwon_seat_5b_tt
+		add_modifier = { name = dhe_mod_jungchuwon_court_agenda years = 2 }
+		if = {
+			limit = {
+				NOT = { has_journal_entry = je_dhe_jungchuwon_economic_growth_agenda }
+				NOT = { has_journal_entry = je_dhe_jungchuwon_imperial_administration_agenda }
+				NOT = { has_journal_entry = je_dhe_jungchuwon_provincial_coordination_agenda }
+			}
+			set_variable = dhe_jungchuwon_imperial_administration_agenda_active
+			add_journal_entry = { type = je_dhe_jungchuwon_imperial_administration_agenda }
+		}
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 18 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -9 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -9 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 3 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_landowners = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.5.c
+		custom_tooltip = dhe_jungchuwon_seat_5c_tt
+		add_modifier = { name = dhe_mod_jungchuwon_compromise_session years = 2 }
+		if = {
+			limit = {
+				NOT = { has_journal_entry = je_dhe_jungchuwon_economic_growth_agenda }
+				NOT = { has_journal_entry = je_dhe_jungchuwon_imperial_administration_agenda }
+				NOT = { has_journal_entry = je_dhe_jungchuwon_provincial_coordination_agenda }
+			}
+			set_variable = dhe_jungchuwon_provincial_coordination_agenda_active
+			add_journal_entry = { type = je_dhe_jungchuwon_provincial_coordination_agenda }
+		}
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_royalists }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		ig:ig_landowners = { add_ig_approval = 1 }
+	}
+}
+
+dhe_jungchuwon.6 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.6.t
+	desc = dhe_jungchuwon.6.d
+	flavor = dhe_jungchuwon.6.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jungchuwon.6.a
+		custom_tooltip = dhe_jungchuwon_seat_6a_tt
+		default_option = yes
+		add_modifier = { name = dhe_mod_jungchuwon_public_hearings years = 2 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 24 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 5 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		ig:ig_landowners = { add_ig_approval = -1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.6.b
+		custom_tooltip = dhe_jungchuwon_seat_6b_tt
+		add_modifier = { name = dhe_mod_jungchuwon_filtered_petitions years = 2 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 9 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -15 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 2 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_landowners = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.6.c
+		custom_tooltip = dhe_jungchuwon_seat_6c_tt
+		add_modifier = { name = dhe_mod_jungchuwon_petition_white_paper years = 2 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = -21 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = 15 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 8 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_provincials }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+	}
+}
+
+dhe_jungchuwon.7 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.7.t
+	desc = dhe_jungchuwon.7.d
+	flavor = dhe_jungchuwon.7.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jungchuwon.7.a
+		custom_tooltip = dhe_jungchuwon_seat_7a_tt
+		default_option = yes
+		add_modifier = { name = dhe_mod_jungchuwon_provincial_network years = 2 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 24 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 9 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -33 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 3 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_landowners = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.7.b
+		custom_tooltip = dhe_jungchuwon_seat_7b_tt
+		add_modifier = { name = dhe_mod_jungchuwon_commercial_delegates years = 2 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = -15 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -15 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 30 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 4 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_petty_bourgeoisie = { add_ig_approval = 1 }
+		ig:ig_industrialists = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.7.c
+		custom_tooltip = dhe_jungchuwon_seat_7c_tt
+		add_modifier = { name = dhe_mod_jungchuwon_broad_local_delegates years = 2 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 36 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 9 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -45 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = 3 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		ig:ig_landowners = { add_ig_approval = -1 }
+	}
+}
+
+dhe_jungchuwon.8 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.8.t
+	desc = dhe_jungchuwon.8.d
+	flavor = dhe_jungchuwon.8.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jungchuwon.8.a
+		custom_tooltip = dhe_jungchuwon_seat_8a_tt
+		default_option = yes
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 15 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -9 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 5 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		if = { limit = { exists = py:liberal_party } py:liberal_party = { add_momentum = momentum_medium } }
+		if = { limit = { exists = py:radical_party } py:radical_party = { add_momentum = momentum_small } }
+		if = { limit = { exists = py:free_trade_party } py:free_trade_party = { add_momentum = momentum_small } }
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		ig:ig_landowners = { add_ig_approval = -1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.8.b
+		custom_tooltip = dhe_jungchuwon_seat_8b_tt
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 18 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = -2 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		if = { limit = { exists = py:conservative_party } py:conservative_party = { add_momentum = momentum_medium } }
+		if = { limit = { exists = py:military_party } py:military_party = { add_momentum = momentum_small } }
+		if = { limit = { exists = py:religious_party } py:religious_party = { add_momentum = momentum_small } }
+		ig:ig_landowners = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.8.c
+		custom_tooltip = dhe_jungchuwon_seat_8c_tt
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 18 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = -9 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -9 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 3 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		if = { limit = { exists = py:agrarian_party } py:agrarian_party = { add_momentum = momentum_medium } }
+		if = { limit = { exists = py:free_trade_party } py:free_trade_party = { add_momentum = momentum_small } }
+		ig:ig_rural_folk = { add_ig_approval = 1 }
+	}
+}
+
+dhe_jungchuwon.9 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.9.t
+	desc = dhe_jungchuwon.9.d
+	flavor = dhe_jungchuwon.9.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	is_triggered_only = yes
+
+	immediate = {
+		remove_variable = dhe_jungchuwon_election_reformist_result
+		remove_variable = dhe_jungchuwon_election_conservative_result
+		remove_variable = dhe_jungchuwon_election_local_result
+
+		if = {
+			limit = {
+				any_interest_group = {
+					ig_clout >= 0.18
+					leader ?= {
+						OR = {
+							has_ideology = ideology:ideology_reformer
+							has_ideology = ideology:ideology_radical
+							has_ideology = ideology:ideology_market_liberal
+							has_ideology = ideology:ideology_liberal_leader
+							has_ideology = ideology:ideology_republican_leader
+							has_ideology = ideology:ideology_humanitarian
+						}
+					}
+				}
+			}
+			set_variable = dhe_jungchuwon_election_reformist_result
+		}
+		else_if = {
+			limit = {
+				any_interest_group = {
+					ig_clout >= 0.18
+					leader ?= {
+						OR = {
+							has_ideology = ideology:ideology_royalist
+							has_ideology = ideology:ideology_traditionalist
+							has_ideology = ideology:ideology_authoritarian
+							has_ideology = ideology:ideology_paternalistic
+							has_ideology = ideology:ideology_reactionary
+							has_ideology = ideology:ideology_developmental_autocrat
+						}
+					}
+				}
+			}
+			set_variable = dhe_jungchuwon_election_conservative_result
+		}
+		else_if = {
+			limit = {
+				any_interest_group = {
+					ig_clout >= 0.12
+					OR = {
+						is_interest_group_type = ig_rural_folk
+						is_interest_group_type = ig_petty_bourgeoisie
+						is_interest_group_type = ig_industrialists
+					}
+				}
+			}
+			set_variable = dhe_jungchuwon_election_local_result
+		}
+		else_if = {
+			limit = {
+				OR = {
+					ig:ig_landowners = { is_in_government = yes }
+					ig:ig_devout = { is_in_government = yes }
+					ig:ig_armed_forces = { is_in_government = yes }
+					ig:ig_landowners = { is_powerful = yes }
+				}
+			}
+			set_variable = dhe_jungchuwon_election_conservative_result
+		}
+		else = {
+			set_variable = dhe_jungchuwon_election_local_result
+		}
+	}
+
+	option = {
+		name = dhe_jungchuwon.9.a
+		custom_tooltip = dhe_jungchuwon_seat_9a_tt
+		default_option = yes
+		trigger = {
+			has_variable = dhe_jungchuwon_election_reformist_result
+		}
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 24 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -18 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 8 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		remove_variable = dhe_jungchuwon_election_reformist_result
+		remove_variable = dhe_jungchuwon_election_conservative_result
+		remove_variable = dhe_jungchuwon_election_local_result
+		remove_variable = dhe_jungchuwon_election_party_lead_conservative
+		remove_variable = dhe_jungchuwon_election_party_lead_reformist
+		remove_variable = dhe_jungchuwon_election_party_lead_local
+	}
+
+	option = {
+		name = dhe_jungchuwon.9.b
+		custom_tooltip = dhe_jungchuwon_seat_9b_tt
+		trigger = {
+			has_variable = dhe_jungchuwon_election_conservative_result
+		}
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 18 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 3 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_landowners = { add_ig_approval = 1 }
+		remove_variable = dhe_jungchuwon_election_reformist_result
+		remove_variable = dhe_jungchuwon_election_conservative_result
+		remove_variable = dhe_jungchuwon_election_local_result
+		remove_variable = dhe_jungchuwon_election_party_lead_conservative
+		remove_variable = dhe_jungchuwon_election_party_lead_reformist
+		remove_variable = dhe_jungchuwon_election_party_lead_local
+	}
+
+	option = {
+		name = dhe_jungchuwon.9.c
+		custom_tooltip = dhe_jungchuwon_seat_9c_tt
+		trigger = {
+			has_variable = dhe_jungchuwon_election_local_result
+		}
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 18 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -24 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = 4 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_petty_bourgeoisie = { add_ig_approval = 1 }
+		remove_variable = dhe_jungchuwon_election_reformist_result
+		remove_variable = dhe_jungchuwon_election_conservative_result
+		remove_variable = dhe_jungchuwon_election_local_result
+		remove_variable = dhe_jungchuwon_election_party_lead_conservative
+		remove_variable = dhe_jungchuwon_election_party_lead_reformist
+		remove_variable = dhe_jungchuwon_election_party_lead_local
+	}
+}
+
+dhe_jungchuwon.10 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.10.t
+	desc = dhe_jungchuwon.10.d
+	flavor = dhe_jungchuwon.10.f
+	icon = "gfx/interface/icons/law_icons/monarchy.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_jungchuwon_system
+		je:je_dhe_jungchuwon_system ?= {
+			"scripted_bar_progress(dhe_progress_bar_jungchuwon_royalists)" >= 210
+		}
+		NOT = { has_modifier = dhe_mod_jungchuwon_imperial_discipline }
+	}
+
+	option = {
+		name = dhe_jungchuwon.10.a
+		default_option = yes
+		add_modifier = { name = dhe_mod_jungchuwon_imperial_discipline years = 2 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 12 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = -5 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_landowners = { add_ig_approval = 1 }
+		ig:ig_intelligentsia = { add_ig_approval = -1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.10.b
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 4 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_landowners = { add_ig_approval = -1 }
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+	}
+}
+
+dhe_jungchuwon.11 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.11.t
+	desc = dhe_jungchuwon.11.d
+	flavor = dhe_jungchuwon.11.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_jungchuwon_system
+		je:je_dhe_jungchuwon_system ?= {
+			"scripted_bar_progress(dhe_progress_bar_jungchuwon_reformists)" >= 180
+			"scripted_bar_progress(dhe_progress_bar_jungchuwon_public_trust)" >= 45
+		}
+		NOT = { has_modifier = dhe_mod_jungchuwon_reform_agenda }
+	}
+
+	option = {
+		name = dhe_jungchuwon.11.a
+		default_option = yes
+		add_modifier = { name = dhe_mod_jungchuwon_reform_agenda years = 2 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 9 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -3 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		ig:ig_industrialists = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.11.b
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 9 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 3 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = -3 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = -1 }
+		ig:ig_landowners = { add_ig_approval = 1 }
+	}
+}
+
+dhe_jungchuwon.12 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.12.t
+	desc = dhe_jungchuwon.12.d
+	flavor = dhe_jungchuwon.12.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_jungchuwon_system
+		je:je_dhe_jungchuwon_system ?= {
+			"scripted_bar_progress(dhe_progress_bar_jungchuwon_provincials)" >= 165
+		}
+		NOT = { has_modifier = dhe_mod_jungchuwon_provincial_settlement }
+	}
+
+	option = {
+		name = dhe_jungchuwon.12.a
+		default_option = yes
+		add_modifier = { name = dhe_mod_jungchuwon_provincial_settlement years = 2 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 12 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 5 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_rural_folk = { add_ig_approval = 1 }
+		ig:ig_petty_bourgeoisie = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.12.b
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 12 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = -4 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_landowners = { add_ig_approval = 1 }
+		ig:ig_rural_folk = { add_ig_approval = -1 }
+	}
+}
+
+dhe_jungchuwon.13 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.13.t
+	desc = dhe_jungchuwon.13.d
+	flavor = dhe_jungchuwon.13.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_jungchuwon_system
+		je:je_dhe_jungchuwon_system ?= {
+			"scripted_bar_progress(dhe_progress_bar_jungchuwon_public_trust)" <= 25
+		}
+		NOT = { has_modifier = dhe_mod_jungchuwon_public_resentment }
+	}
+
+	option = {
+		name = dhe_jungchuwon.13.a
+		default_option = yes
+		add_modifier = { name = dhe_mod_jungchuwon_public_resentment years = 2 }
+		set_variable = dhe_jungchuwon_no_budget
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = -8 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = 9 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -3 name = dhe_progress_bar_jungchuwon_provincials }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = -1 }
+		ig:ig_petty_bourgeoisie = { add_ig_approval = -1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.13.b
+		add_modifier = { name = dhe_mod_jungchuwon_emergency_open_session years = 2 }
+		remove_variable = dhe_jungchuwon_no_budget
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 10 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = 9 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 3 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_royalists }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		ig:ig_landowners = { add_ig_approval = -1 }
+	}
+}
+
+dhe_jungchuwon.14 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.14.t
+	desc = dhe_jungchuwon.14.d
+	flavor = dhe_jungchuwon.14.f
+	icon = "gfx/interface/icons/event_icons/dhe_gwangmu_admin.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_jungchuwon_system
+		je:je_dhe_jungchuwon_system ?= {
+			"scripted_bar_progress(dhe_progress_bar_jungchuwon_public_trust)" >= 80
+		}
+		NOT = { has_modifier = dhe_mod_jungchuwon_public_confidence }
+	}
+
+	option = {
+		name = dhe_jungchuwon.14.a
+		default_option = yes
+		add_modifier = { name = dhe_mod_jungchuwon_public_confidence years = 3 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 5 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_royalists }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		ig:ig_petty_bourgeoisie = { add_ig_approval = 1 }
+	}
+}
+
+dhe_jungchuwon.16 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.16.t
+	desc = dhe_jungchuwon.16.d
+	flavor = dhe_jungchuwon.16.f
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jungchuwon.16.a
+		default_option = yes
+		add_modifier = { name = dhe_mod_jungchuwon_growth_agenda_success years = 5 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 10 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = 12 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_provincials }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 2 }
+		ig:ig_industrialists = { add_ig_approval = 2 }
+	}
+}
+
+dhe_jungchuwon.17 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.17.t
+	desc = dhe_jungchuwon.17.d
+	flavor = dhe_jungchuwon.17.f
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jungchuwon.17.a
+		default_option = yes
+		add_modifier = { name = dhe_mod_jungchuwon_growth_agenda_failure years = 3 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = -8 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_provincials }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = -2 }
+		ig:ig_industrialists = { add_ig_approval = -1 }
+	}
+}
+
+dhe_jungchuwon.18 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.18.t
+	desc = dhe_jungchuwon.18.d
+	flavor = dhe_jungchuwon.18.f
+	icon = "gfx/interface/icons/law_icons/monarchy.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jungchuwon.18.a
+		default_option = yes
+		add_modifier = { name = dhe_mod_jungchuwon_imperial_agenda_success years = 5 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 12 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = 18 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -9 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -9 name = dhe_progress_bar_jungchuwon_provincials }
+		}
+		ig:ig_landowners = { add_ig_approval = 2 }
+		ig:ig_devout = { add_ig_approval = 1 }
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+	}
+}
+
+dhe_jungchuwon.19 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.19.t
+	desc = dhe_jungchuwon.19.d
+	flavor = dhe_jungchuwon.19.f
+	icon = "gfx/interface/icons/law_icons/monarchy.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jungchuwon.19.a
+		default_option = yes
+		add_modifier = { name = dhe_mod_jungchuwon_imperial_agenda_failure years = 3 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = -10 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_provincials }
+		}
+		ig:ig_landowners = { add_ig_approval = -2 }
+		ig:ig_devout = { add_ig_approval = -1 }
+	}
+}
+
+dhe_jungchuwon.20 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.20.t
+	desc = dhe_jungchuwon.20.d
+	flavor = dhe_jungchuwon.20.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jungchuwon.20.a
+		default_option = yes
+		add_modifier = { name = dhe_mod_jungchuwon_provincial_agenda_success years = 5 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 12 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = 18 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -24 name = dhe_progress_bar_jungchuwon_royalists }
+		}
+		ig:ig_rural_folk = { add_ig_approval = 2 }
+		ig:ig_petty_bourgeoisie = { add_ig_approval = 2 }
+	}
+}
+
+dhe_jungchuwon.21 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.21.t
+	desc = dhe_jungchuwon.21.d
+	flavor = dhe_jungchuwon.21.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jungchuwon.21.a
+		default_option = yes
+		add_modifier = { name = dhe_mod_jungchuwon_provincial_agenda_failure years = 3 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = -8 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_reformists }
+		}
+		ig:ig_rural_folk = { add_ig_approval = -2 }
+		ig:ig_petty_bourgeoisie = { add_ig_approval = -1 }
+	}
+}
+
+dhe_jungchuwon.15 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.15.t
+	desc = dhe_jungchuwon.15.d
+	flavor = dhe_jungchuwon.15.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_jungchuwon_system
+		NOT = { has_variable = dhe_cool_jungchuwon_minutes_event }
+		NOT = { has_modifier = dhe_mod_jungchuwon_orderly_minutes }
+		NOT = { has_modifier = dhe_mod_jungchuwon_ritual_session }
+	}
+
+	immediate = {
+		set_variable = { name = dhe_cool_jungchuwon_minutes_event days = 720 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.15.a
+		default_option = yes
+		add_modifier = { name = dhe_mod_jungchuwon_orderly_minutes years = 1 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 4 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -3 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -3 name = dhe_progress_bar_jungchuwon_provincials }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.15.b
+		add_modifier = { name = dhe_mod_jungchuwon_ritual_session years = 1 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 2 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -3 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -3 name = dhe_progress_bar_jungchuwon_provincials }
+		}
+		ig:ig_landowners = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.15.c
+		add_modifier = { name = dhe_mod_jungchuwon_orderly_minutes years = 1 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 3 name = dhe_progress_bar_jungchuwon_public_trust }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = -3 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -3 name = dhe_progress_bar_jungchuwon_reformists }
+		}
+		ig:ig_petty_bourgeoisie = { add_ig_approval = 1 }
+	}
+}
+
+dhe_jungchuwon.22 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.22.t
+	desc = dhe_jungchuwon.22.d
+	flavor = dhe_jungchuwon.22.f
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_jungchuwon.22.a
+		custom_tooltip = dhe_jungchuwon_seat_22a_tt
+		default_option = yes
+		add_modifier = { name = dhe_mod_jungchuwon_emergency_budget years = 2 }
+		remove_variable = dhe_jungchuwon_no_budget
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 12 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = -4 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_landowners = { add_ig_approval = 1 }
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.22.b
+		custom_tooltip = dhe_jungchuwon_seat_22b_tt
+		add_modifier = { name = dhe_mod_jungchuwon_public_relief years = 2 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 10 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		ig:ig_rural_folk = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.22.c
+		custom_tooltip = dhe_jungchuwon_seat_22c_tt
+		add_modifier = { name = dhe_mod_jungchuwon_grand_compromise years = 2 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = 3 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 3 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_petty_bourgeoisie = { add_ig_approval = 1 }
+		ig:ig_devout = { add_ig_approval = 1 }
+	}
+}
+
+dhe_jungchuwon.23 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.23.t
+	desc = dhe_jungchuwon.23.d
+	flavor = dhe_jungchuwon.23.f
+	icon = "gfx/interface/icons/law_icons/monarchy.dds"
+	category = enactment
+
+	trigger = {
+		has_journal_entry = je_dhe_jungchuwon_system
+		enacting_any_law = yes
+		NOT = { has_variable = dhe_cool_jungchuwon_law_deliberation }
+		NOT = { has_variable = dhe_cool_jungchuwon_imperial_assent_event }
+		je:je_dhe_jungchuwon_system ?= {
+			"scripted_bar_progress(dhe_progress_bar_jungchuwon_royalists)" >= 120
+		}
+	}
+
+	immediate = {
+		set_variable = { name = dhe_cool_jungchuwon_law_deliberation days = 540 }
+		set_variable = { name = dhe_cool_jungchuwon_imperial_assent_event days = 1440 }
+		currently_enacting_law = {
+			save_scope_as = current_law_scope
+		}
+	}
+
+	cancellation_trigger = {
+		NOT = { currently_enacting_law = scope:current_law_scope }
+	}
+
+	option = {
+		name = dhe_jungchuwon.23.a
+		custom_tooltip = dhe_jungchuwon_seat_23a_tt
+		default_option = yes
+		add_enactment_setback = 1
+		add_enactment_modifier = {
+			name = dhe_mod_jungchuwon_imperial_assent_delay
+		}
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 9 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -3 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = -4 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_landowners = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.23.b
+		custom_tooltip = dhe_jungchuwon_seat_23b_tt
+		add_enactment_modifier = {
+			name = dhe_mod_jungchuwon_public_resolution
+		}
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = -9 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = 9 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 3 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+		ig:ig_landowners = { add_ig_approval = -1 }
+	}
+}
+
+dhe_jungchuwon.24 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.24.t
+	desc = dhe_jungchuwon.24.d
+	flavor = dhe_jungchuwon.24.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	category = enactment
+
+	trigger = {
+		has_journal_entry = je_dhe_jungchuwon_system
+		enacting_any_law = yes
+		NOT = { has_variable = dhe_cool_jungchuwon_law_deliberation }
+		NOT = { has_variable = dhe_cool_jungchuwon_provincial_boycott_event }
+		je:je_dhe_jungchuwon_system ?= {
+			"scripted_bar_progress(dhe_progress_bar_jungchuwon_provincials)" >= 120
+		}
+	}
+
+	immediate = {
+		set_variable = { name = dhe_cool_jungchuwon_law_deliberation days = 540 }
+		set_variable = { name = dhe_cool_jungchuwon_provincial_boycott_event days = 1440 }
+		currently_enacting_law = {
+			save_scope_as = current_law_scope
+		}
+	}
+
+	cancellation_trigger = {
+		NOT = { currently_enacting_law = scope:current_law_scope }
+	}
+
+	option = {
+		name = dhe_jungchuwon.24.a
+		custom_tooltip = dhe_jungchuwon_seat_24a_tt
+		default_option = yes
+		add_enactment_modifier = {
+			name = dhe_mod_jungchuwon_local_compromise
+		}
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = -3 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 9 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = 4 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_rural_folk = { add_ig_approval = 1 }
+		ig:ig_petty_bourgeoisie = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.24.b
+		custom_tooltip = dhe_jungchuwon_seat_24b_tt
+		add_enactment_phase = 1
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -12 name = dhe_progress_bar_jungchuwon_provincials }
+			add_progress = { value = -4 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_rural_folk = { add_ig_approval = -1 }
+	}
+}
+
+dhe_jungchuwon.25 = {
+	type = country_event
+	placement = root
+	title = dhe_jungchuwon.25.t
+	desc = dhe_jungchuwon.25.d
+	flavor = dhe_jungchuwon.25.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	category = enactment
+
+	trigger = {
+		has_journal_entry = je_dhe_jungchuwon_system
+		enacting_any_law = yes
+		NOT = { has_variable = dhe_cool_jungchuwon_law_deliberation }
+		NOT = { has_variable = dhe_cool_jungchuwon_petition_leak_event }
+		OR = {
+			has_law = law_type:law_protected_speech
+			has_law = law_type:law_censorship
+		}
+	}
+
+	immediate = {
+		set_variable = { name = dhe_cool_jungchuwon_law_deliberation days = 720 }
+		set_variable = { name = dhe_cool_jungchuwon_petition_leak_event days = 2880 }
+		currently_enacting_law = {
+			save_scope_as = current_law_scope
+		}
+	}
+
+	cancellation_trigger = {
+		NOT = { currently_enacting_law = scope:current_law_scope }
+	}
+
+	option = {
+		name = dhe_jungchuwon.25.a
+		custom_tooltip = dhe_jungchuwon_seat_25a_tt
+		default_option = yes
+		add_enactment_modifier = {
+			name = dhe_mod_jungchuwon_open_minutes
+		}
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = -9 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = 9 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = 6 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = 1 }
+	}
+
+	option = {
+		name = dhe_jungchuwon.25.b
+		custom_tooltip = dhe_jungchuwon_seat_25b_tt
+		add_enactment_setback = 1
+		add_modifier = { name = dhe_mod_jungchuwon_suppressed_petitions years = 2 }
+		je:je_dhe_jungchuwon_system ?= {
+			add_progress = { value = 9 name = dhe_progress_bar_jungchuwon_royalists }
+			add_progress = { value = -9 name = dhe_progress_bar_jungchuwon_reformists }
+			add_progress = { value = -6 name = dhe_progress_bar_jungchuwon_public_trust }
+		}
+		ig:ig_intelligentsia = { add_ig_approval = -1 }
+		ig:ig_landowners = { add_ig_approval = 1 }
+	}
+}

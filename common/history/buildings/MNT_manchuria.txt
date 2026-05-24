@@ -1,0 +1,786 @@
+﻿#업데이트 요령
+## 11_asia에서 STATE_SEOUL 찾기하서 한국 5개주를 복붙한다. 이후 STATE_SHENGJING 찾아서 만주 4개주를 복붙한다. 아무르 주는 east asia 파일에 없을 뿐더러 건들지 않는다.
+## 11_east_asia는 5+4개주를 뺀 파일을 놔둔다. 중복 방지용이다.
+## 채워야 하는 주는 한국은 해서, 호서지방 뿐이며, 중국은 남만주_길림> 송강, 북만주_눈강 > 합강 정도다.
+
+ BUILDINGS={
+ 	s:STATE_SEOUL={
+		region_state:KOR={
+			create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:KOR"
+						levels=3
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_professional_bureaucrats" "pm_religious_bureaucrats" "pm_horizontal_drawer_cabinets" }
+			}
+			create_building={
+				building="building_construction_sector"
+				add_ownership={
+					country={
+						country="c:KOR"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_wooden_buildings" }
+			}
+			create_building={
+				building="building_glassworks"
+				add_ownership={
+					building={
+						type="building_glassworks"
+						country="c:KOR"
+						levels=3
+						region="STATE_SEOUL"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_forest_glass"  "pm_manual_glassblowing" "pm_ceramics" }
+			}
+			create_building={
+				building="building_fishing_wharf"
+				add_ownership={
+					building={
+						type="building_fishing_wharf"
+						country="c:KOR"
+						levels=2
+						region="STATE_SEOUL"
+					}
+				}
+				reserves=1
+				activate_production_methods={  "pm_unrefrigerated" "pm_fishing_trawlers" }
+			}
+			create_building={
+				building="building_rice_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:KOR"
+						levels=3
+						region="STATE_SEOUL"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_farming_building_rice_farm"  "pm_tools_disabled" "pm_fig_orchards_building_rice_farm" }
+			}
+			create_building={
+				building="building_tobacco_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:KOR"
+						levels=3
+						region="STATE_SEOUL"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_tobacco_plantation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_barrack"
+				add_ownership={
+					country={
+						country="c:KOR"
+						levels=10
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_no_organization" }
+			}
+		}
+	}
+	s:STATE_BUSAN={
+		region_state:KOR={
+			create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:KOR"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_professional_bureaucrats" "pm_religious_bureaucrats" }
+			}
+			create_building={
+				building="building_shipyard"
+				add_ownership={
+					country={
+						country="c:KOR"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_basic_shipbuilding"  }
+			}
+			create_building={
+				building="building_glassworks"
+				add_ownership={
+					building={
+						type="building_glassworks"
+						country="c:KOR"
+						levels=1
+						region="STATE_BUSAN"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_forest_glass" "pm_ceramics" "pm_manual_glassblowing"  }
+			}
+			create_building={
+				building="building_fishing_wharf"
+				add_ownership={
+					building={
+						type="building_fishing_wharf"
+						country="c:KOR"
+						levels=2
+						region="STATE_BUSAN"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_fishing_trawlers" "pm_unrefrigerated"  }
+			}
+			create_building={
+				building="building_rice_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:KOR"
+						levels=1
+						region="STATE_BUSAN"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_farming_building_rice_farm"  "pm_tools_disabled" "pm_no_secondary" }
+			}
+			create_building={
+				building="building_tobacco_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:KOR"
+						levels=2
+						region="STATE_BUSAN"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_tobacco_plantation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_barrack"
+				add_ownership={
+					country={
+						country="c:KOR"
+						levels=3
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_no_organization" }
+			}
+			create_building={
+				building="building_port"
+				add_ownership={
+					country={
+						country="c:KOR"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_basic_port" }
+			}
+		}
+	}
+	s:STATE_YANGHO={
+		region_state:KOR={
+			create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:KOR"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_professional_bureaucrats" "pm_religious_bureaucrats" }
+			}
+			create_building={
+				building="building_glassworks"
+				add_ownership={
+					building={
+						type="building_glassworks"
+						country="c:KOR"
+						levels=1
+						region="STATE_YANGHO"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_forest_glass" "pm_ceramics" "pm_manual_glassblowing"  }
+			}
+			create_building={
+				building="building_fishing_wharf"
+				add_ownership={
+					building={
+						type="building_fishing_wharf"
+						country="c:KOR"
+						levels=2
+						region="STATE_YANGHO"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_fishing_trawlers" "pm_unrefrigerated"  }
+			}
+			create_building={
+				building="building_rice_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:KOR"
+						levels=1
+						region="STATE_YANGHO"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_farming_building_rice_farm"  "pm_tools_disabled" "pm_no_secondary" }
+			}
+			create_building={
+				building="building_tobacco_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:KOR"
+						levels=1
+						region="STATE_YANGHO"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_tobacco_plantation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_barrack"
+				add_ownership={
+					country={
+						country="c:KOR"
+						levels=2
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_no_organization" }
+			}
+		}
+	}
+	s:STATE_SARIWON={
+		region_state:KOR={
+			create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:KOR"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_professional_bureaucrats" "pm_religious_bureaucrats" }
+			}
+			create_building={
+				building="building_rice_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:KOR"
+						levels=1
+						region="STATE_SARIWON"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_farming_building_rice_farm" "pm_no_secondary" "pm_tools_disabled"  }
+			}
+			create_building={
+				building="building_livestock_ranch"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:KOR"
+						levels=1
+						region="STATE_SARIWON"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
+			}
+			create_building={
+				building="building_tobacco_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:KOR"
+						levels=2
+						region="STATE_SARIWON"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_tobacco_plantation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_barrack"
+				add_ownership={
+					country={
+						country="c:KOR"
+						levels=5
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_no_organization" }
+			}
+		}
+	}
+	s:STATE_PYONGYANG={
+		region_state:KOR={
+
+		}
+	}
+ 
+ 
+ 
+# korea new state
+
+#관동지방 - Don't touch this state
+
+	s:STATE_GWANDONG ={
+	 	region_state:KOR={
+		}
+	}
+ 
+ 
+#호서 STATE_YANGHO DIVIDED
+
+	s:STATE_HOSEO={
+	 	region_state:KOR={
+				create_building={
+					building="building_government_administration"
+					add_ownership={
+						country={
+							country="c:KOR"
+							levels=1
+						}
+					}
+				reserves=1
+				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_professional_bureaucrats" "pm_religious_bureaucrats" }
+			}
+			create_building={
+				building="building_glassworks"
+				add_ownership={
+					building={
+						type="building_glassworks"
+						country="c:KOR"
+						levels=1
+						region="STATE_HOSEO"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_forest_glass" "pm_ceramics" "pm_manual_glassblowing"  }
+			}
+			create_building={
+				building="building_fishing_wharf"
+				add_ownership={
+					building={
+						type="building_fishing_wharf"
+						country="c:KOR"
+						levels=2
+						region="STATE_HOSEO"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_fishing_trawlers" "pm_unrefrigerated"  }
+			}
+			create_building={
+				building="building_rice_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:KOR"
+						levels=1
+						region="STATE_HOSEO"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_farming_building_rice_farm"  "pm_tools_disabled" "pm_no_secondary" }
+			}
+			create_building={
+				building="building_tobacco_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:KOR"
+						levels=1
+						region="STATE_HOSEO"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_tobacco_plantation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_barrack"
+				add_ownership={
+					country={
+						country="c:KOR"
+						levels=2
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_no_organization" }
+			}			
+		
+		}
+				
+	}
+	
+#해서 STATE_PYONGYANG DIVIDED
+
+	s:STATE_HAESEO ={
+	 	region_state:KOR={
+					create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:KOR"
+						levels=2
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_professional_bureaucrats" "pm_religious_bureaucrats" }
+			}
+			create_building={
+				building="building_glassworks"
+				add_ownership={
+					building={
+						type="building_glassworks"
+						country="c:KOR"
+						levels=2
+						region="STATE_HAESEO"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_forest_glass" "pm_ceramics" "pm_manual_glassblowing"  }
+			}
+			create_building={
+				building="building_iron_mine"
+				add_ownership={
+					building={
+						type="building_iron_mine"
+						country="c:KOR"
+						levels=1
+						region="STATE_HAESEO"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_picks_and_shovels_building_iron_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_rice_farm"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:KOR"
+						levels=2
+						region="STATE_HAESEO"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_simple_farming_building_rice_farm" "pm_no_secondary" "pm_tools_disabled"  }
+			}
+			create_building={
+				building="building_livestock_ranch"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:KOR"
+						levels=2
+						region="STATE_HAESEO"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
+			}
+			create_building={
+				building="building_barrack"
+				add_ownership={
+					country={
+						country="c:KOR"
+						levels=10
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_no_organization" }
+			}
+		
+		}
+	}
+
+  
+#제주 - Just one port
+
+	s:STATE_JEJU_ISLAND ={
+	 	region_state:KOR={
+			create_building={
+				building="building_port"
+				add_ownership={
+					country={
+						country="c:KOR"
+						levels=1
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_basic_port" }
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+#china
+
+	s:STATE_SHENGJING={
+		region_state:CHI={
+		}
+	}
+	s:STATE_OUTER_MANCHURIA={
+		region_state:CHI={
+		}
+	}
+	s:STATE_SOUTHERN_MANCHURIA={#갈림성 > 송강성에 일부 할당
+		region_state:CHI={
+			create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:CHI"
+						levels=2
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_professional_bureaucrats" "pm_religious_bureaucrats" }
+			}
+			create_building={
+				building="building_iron_mine"
+				add_ownership={
+					building={
+						type="building_iron_mine"
+						country="c:CHI"
+						levels=2
+						region="STATE_SOUTHERN_MANCHURIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_picks_and_shovels_building_iron_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_logging_camp"
+						country="c:CHI"
+						levels=5
+						region="STATE_SOUTHERN_MANCHURIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_saw_mills"  "pm_no_equipment" "pm_road_carts" "pm_hardwood" }
+			}
+			create_building={
+				building="building_livestock_ranch"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:CHI"
+						levels=2
+						region="STATE_SOUTHERN_MANCHURIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
+			}
+		}
+	}
+	s:STATE_NORTHERN_MANCHURIA={#눈강성 > 합강성에 일부 할당
+		region_state:CHI={
+			create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_logging_camp"
+						country="c:CHI"
+						levels=4
+						region="STATE_NORTHERN_MANCHURIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_saw_mills"  "pm_no_equipment" "pm_road_carts" "pm_hardwood" }
+			}
+			create_building={
+				building="building_livestock_ranch"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:CHI"
+						levels=1
+						region="STATE_NORTHERN_MANCHURIA"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
+			}
+		}
+	}
+	
+	
+	
+	
+	
+### china new state
+	
+	
+	
+	
+	
+	
+	
+	
+#열하 - empty
+
+	s:STATE_JEHOL ={
+	 	region_state:CHI={
+		}
+	}
+	
+#요북 - empty
+
+	s:STATE_YOBUK ={
+	 	region_state:CHI={
+		}
+	}
+
+#흥안 - empty
+
+	s:STATE_HEUNGAN ={
+	 	region_state:CHI={
+		}
+	}
+	
+#안동 - empty
+	
+	s:STATE_ANDONG = {
+		 	region_state:CHI={
+		}
+	}
+ 
+#흑룡강 이남 - empty
+
+	s:STATE_BLACK_DRAGON_GANG= {
+		 	region_state:CHI={
+		}
+	}
+ 
+ 
+ #송강성 < 남만주_길림성 분할주
+	s:STATE_SONGGANG={#갈림성 > 송강성에 일부 할당
+		region_state:CHI={
+			create_building={
+				building="building_government_administration"
+				add_ownership={
+					country={
+						country="c:CHI"
+						levels=2
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_professional_bureaucrats" "pm_religious_bureaucrats" }
+			}
+			create_building={
+				building="building_iron_mine"
+				add_ownership={
+					building={
+						type="building_iron_mine"
+						country="c:CHI"
+						levels=2
+						region="STATE_SONGGANG"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_picks_and_shovels_building_iron_mine" "pm_no_explosives" "pm_no_steam_automation" "pm_road_carts"  }
+			}
+			create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_logging_camp"
+						country="c:CHI"
+						levels=5
+						region="STATE_SONGGANG"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_saw_mills"  "pm_no_equipment" "pm_road_carts" "pm_hardwood" }
+			}
+			create_building={
+				building="building_livestock_ranch"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:CHI"
+						levels=2
+						region="STATE_SONGGANG"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
+			}
+		}
+	}
+ 
+ 
+ #합강성 < 북만주_눈강성 분할주, 건물 반반 나눔
+ 
+	s:STATE_HAPGANG ={#눈강성 반반
+		region_state:CHI={
+			create_building={
+				building="building_logging_camp"
+				add_ownership={
+					building={
+						type="building_logging_camp"
+						country="c:CHI"
+						levels=4
+						region="STATE_HAPGANG"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_saw_mills"  "pm_no_equipment" "pm_road_carts" "pm_hardwood" }
+			}
+			create_building={
+				building="building_livestock_ranch"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:CHI"
+						levels=1
+						region="STATE_HAPGANG"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
+			}
+		}
+	}
+ 
+
+ 
+ 
+ 
+ 
+ 
+ }#building 닫음

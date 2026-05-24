@@ -1,0 +1,735 @@
+namespace = dhe_japan_control
+
+dhe_japan_control.1 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.1.t
+	desc = dhe_japan_control.1.d
+	flavor = dhe_japan_control.1.f
+	icon = "gfx/interface/icons/event_icons/dhe_tokyo_governor.png"
+
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_japan_control.1.a
+		default_option = yes
+		set_variable = dhe_japanese_governor_general_established
+		add_prestige = 50
+		add_modifier = { name = dhe_mod_japanese_governor_general_active months = 120 }
+		c:KOR ?= {
+			if = {
+				limit = {
+					exists = c:JAP
+					c:JAP = {
+						is_subject = no
+					}
+				}
+				create_diplomatic_pact = {
+					country = c:JAP
+					type = puppet
+				}
+			}
+			else_if = {
+				limit = {
+					exists = c:JAP
+					c:JAP = {
+						is_subject = yes
+						NOT = { is_subject_of = c:KOR }
+					}
+				}
+				transfer_subject = c:JAP
+			}
+			c:JAP ?= {
+				if = {
+					limit = {
+						is_subject = yes
+						NOT = { is_subject_type = subject_type_puppet }
+					}
+					change_subject_type = subject_type_puppet
+				}
+				set_variable = dhe_japanese_governor_general_country_name
+			}
+			if = {
+				limit = {
+					exists = c:EZO
+					c:EZO = {
+						is_subject = yes
+						NOT = { is_subject_of = c:KOR }
+					}
+				}
+				transfer_subject = c:EZO
+			}
+			else_if = {
+				limit = {
+					exists = c:EZO
+					c:EZO = {
+						is_subject = no
+					}
+				}
+				if = {
+					limit = { is_country_type = unrecognized }
+					create_diplomatic_pact = {
+						country = c:EZO
+						type = vassal
+					}
+				}
+				else = {
+					create_diplomatic_pact = {
+						country = c:EZO
+						type = puppet
+					}
+				}
+			}
+			if = {
+				limit = {
+					exists = c:RYU
+					c:RYU = {
+						is_subject = yes
+						NOT = { is_subject_of = c:KOR }
+					}
+				}
+				transfer_subject = c:RYU
+			}
+			else_if = {
+				limit = {
+					exists = c:RYU
+					c:RYU = {
+						is_subject = no
+					}
+				}
+				if = {
+					limit = { is_country_type = unrecognized }
+					create_diplomatic_pact = {
+						country = c:RYU
+						type = vassal
+					}
+				}
+				else = {
+					create_diplomatic_pact = {
+						country = c:RYU
+						type = puppet
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_journal_entry = je_dhe_japanese_governor_general }
+			}
+			add_journal_entry = { type = je_dhe_japanese_governor_general }
+		}
+		c:JAP ?= {
+			add_modifier = { name = dhe_mod_japanese_governor_general_under_korea months = 120 }
+			add_radicals = 50000
+			change_relations = {
+				country = c:KOR
+				value = -20
+			}
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP = {
+					is_subject = no
+				}
+			}
+			c:KOR ?= {
+				create_diplomatic_pact = {
+					country = c:JAP
+					type = puppet
+				}
+			}
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP = {
+					is_subject_of = c:KOR
+					NOT = { is_subject_type = subject_type_puppet }
+				}
+			}
+			c:JAP = {
+				change_subject_type = subject_type_puppet
+			}
+		}
+		if = {
+			limit = {
+				exists = c:JAP
+				c:JAP = {
+					is_subject_of = c:KOR
+					is_subject_type = subject_type_puppet
+				}
+			}
+			trigger_event = { id = dhe_japan_control.21 days = 1 popup = yes }
+		}
+	}
+}
+
+dhe_japan_control.2 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.2.t
+	desc = dhe_japan_control.2.d
+	flavor = dhe_japan_control.2.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_japan_control.2.a
+		default_option = yes
+	}
+}
+
+dhe_japan_control.3 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.3.t
+	desc = dhe_japan_control.3.d
+	flavor = dhe_japan_control.3.f
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_japan_control.3.a
+		default_option = yes
+	}
+}
+
+dhe_japan_control.4 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.4.t
+	desc = dhe_japan_control.4.d
+	flavor = dhe_japan_control.4.f
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_japan_control.4.a
+		default_option = yes
+	}
+}
+
+dhe_japan_control.5 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.5.t
+	desc = dhe_japan_control.5.d
+	flavor = dhe_japan_control.5.f
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_japan_control.5.a
+		default_option = yes
+	}
+}
+
+dhe_japan_control.6 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.6.t
+	desc = dhe_japan_control.6.d
+	flavor = dhe_japan_control.6.f
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_japan_control.6.a
+		default_option = yes
+	}
+}
+
+dhe_japan_control.10 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.10.t
+	desc = dhe_japan_control.10.d
+	flavor = dhe_japan_control.10.f
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_japan_control.10.a
+		default_option = yes
+	}
+}
+
+dhe_japan_control.11 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.11.t
+	desc = dhe_japan_control.11.d
+	flavor = dhe_japan_control.11.f
+	icon = "gfx/interface/icons/event_icons/dhe_tokyo_governor.png"
+
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_japan_control.11.a
+		custom_tooltip = dhe_tokyo_governor_11a_tt
+		set_variable = { name = dhe_tokyo_governor_policy_admin_focus days = 720 }
+		add_modifier = { name = dhe_mod_tokyo_governor_admin_priority months = 24 }
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = 8 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = 3 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = 2 }
+		}
+		c:JAP ?= {
+			add_modifier = { name = dhe_mod_japanese_governor_general_administration months = 24 }
+		}
+	}
+
+	option = {
+		name = dhe_japan_control.11.b
+		custom_tooltip = dhe_tokyo_governor_11b_tt
+		set_variable = { name = dhe_tokyo_governor_policy_collaboration_focus days = 720 }
+		add_modifier = { name = dhe_mod_tokyo_governor_collaboration_priority months = 24 }
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = 4 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = 10 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = -3 }
+		}
+		c:JAP ?= {
+			change_relations = { country = c:KOR value = 5 }
+		}
+	}
+
+	option = {
+		name = dhe_japan_control.11.c
+		custom_tooltip = dhe_tokyo_governor_11c_tt
+		set_variable = { name = dhe_tokyo_governor_security_patrols days = 720 }
+		add_modifier = { name = dhe_mod_tokyo_governor_security_priority months = 24 }
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = 5 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = -3 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = -6 }
+		}
+		c:JAP ?= {
+			change_relations = { country = c:KOR value = -5 }
+		}
+	}
+}
+
+dhe_japan_control.12 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.12.t
+	desc = dhe_japan_control.12.d
+	flavor = dhe_japan_control.12.f
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_japan_control.12.a
+		custom_tooltip = dhe_tokyo_governor_12a_tt
+		add_treasury = -75000
+		set_variable = { name = dhe_tokyo_governor_budget_generous days = 1080 }
+		add_modifier = { name = dhe_mod_tokyo_governor_generous_budget months = 36 }
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = 8 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = 8 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = -5 }
+		}
+	}
+
+	option = {
+		name = dhe_japan_control.12.b
+		custom_tooltip = dhe_tokyo_governor_12b_tt
+		add_treasury = -30000
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = 4 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = 4 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = -2 }
+		}
+	}
+
+	option = {
+		name = dhe_japan_control.12.c
+		custom_tooltip = dhe_tokyo_governor_12c_tt
+		add_treasury = 25000
+		set_variable = { name = dhe_tokyo_governor_budget_austerity days = 1080 }
+		add_modifier = { name = dhe_mod_tokyo_governor_austerity_budget months = 36 }
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = -4 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = -4 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = 8 }
+		}
+	}
+}
+
+dhe_japan_control.13 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.13.t
+	desc = dhe_japan_control.13.d
+	flavor = dhe_japan_control.13.f
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_japan_control.13.a
+		custom_tooltip = dhe_tokyo_governor_13a_tt
+		set_variable = { name = dhe_tokyo_governor_security_patrols days = 900 }
+		add_modifier = { name = dhe_mod_tokyo_governor_security_patrols months = 30 }
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = 4 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = -2 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = -10 }
+		}
+		c:JAP ?= {
+			change_relations = { country = c:KOR value = -5 }
+		}
+	}
+
+	option = {
+		name = dhe_japan_control.13.b
+		custom_tooltip = dhe_tokyo_governor_13b_tt
+		set_variable = { name = dhe_tokyo_governor_security_harsh days = 900 }
+		add_modifier = { name = dhe_mod_tokyo_governor_harsh_security months = 30 }
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = 2 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = -10 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = -18 }
+		}
+		c:JAP ?= {
+			add_radicals = 25000
+			change_relations = { country = c:KOR value = -10 }
+		}
+	}
+
+	option = {
+		name = dhe_japan_control.13.c
+		custom_tooltip = dhe_tokyo_governor_13c_tt
+		set_variable = { name = dhe_tokyo_governor_policy_collaboration_focus days = 540 }
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = -2 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = 8 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = -4 }
+		}
+		c:JAP ?= {
+			change_relations = { country = c:KOR value = 5 }
+		}
+	}
+}
+
+dhe_japan_control.14 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.14.t
+	desc = dhe_japan_control.14.d
+	flavor = dhe_japan_control.14.f
+	icon = "gfx/interface/icons/event_icons/event_trade.dds"
+
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_japan_control.14.a
+		custom_tooltip = dhe_tokyo_governor_14a_tt
+		add_treasury = -50000
+		set_variable = { name = dhe_tokyo_governor_economic_integration_plan days = 1080 }
+		add_modifier = { name = dhe_mod_tokyo_governor_economic_plan months = 36 }
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = 6 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = 6 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = -4 }
+		}
+	}
+
+	option = {
+		name = dhe_japan_control.14.b
+		custom_tooltip = dhe_tokyo_governor_14b_tt
+		add_modifier = { name = dhe_mod_japanese_governor_general_revenue months = 36 }
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = 4 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = -4 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = 8 }
+		}
+	}
+
+	option = {
+		name = dhe_japan_control.14.c
+		custom_tooltip = dhe_tokyo_governor_14c_tt
+		set_variable = { name = dhe_tokyo_governor_policy_collaboration_focus days = 720 }
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = 2 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = 10 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = -6 }
+		}
+		c:JAP ?= {
+			change_relations = { country = c:KOR value = 5 }
+		}
+	}
+}
+
+dhe_japan_control.15 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.15.t
+	desc = dhe_japan_control.15.d
+	flavor = dhe_japan_control.15.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_japan_control.15.a
+		custom_tooltip = dhe_tokyo_governor_15a_tt
+		set_variable = { name = dhe_tokyo_governor_education_bureaucrats days = 1080 }
+		add_modifier = { name = dhe_mod_tokyo_governor_education_program months = 36 }
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = 4 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = 8 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = 2 }
+		}
+	}
+
+	option = {
+		name = dhe_japan_control.15.b
+		custom_tooltip = dhe_tokyo_governor_15b_tt
+		set_variable = { name = dhe_tokyo_governor_policy_admin_focus days = 720 }
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = 8 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = 4 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = 8 }
+		}
+		c:JAP ?= {
+			add_radicals = 15000
+		}
+	}
+
+	option = {
+		name = dhe_japan_control.15.c
+		custom_tooltip = dhe_tokyo_governor_15c_tt
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = -2 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = 8 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = -4 }
+		}
+	}
+}
+
+dhe_japan_control.16 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.16.t
+	desc = dhe_japan_control.16.d
+	flavor = dhe_japan_control.16.f
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_japanese_governor_general
+		je:je_dhe_japanese_governor_general ?= {
+			"scripted_bar_progress(dhe_progress_bar_japanese_governor_general_resistance)" >= 50
+		}
+	}
+
+	option = {
+		name = dhe_japan_control.16.a
+		custom_tooltip = dhe_tokyo_governor_16a_tt
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = -8 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = -5 }
+		}
+		c:JAP ?= { add_radicals = 10000 }
+	}
+
+	option = {
+		name = dhe_japan_control.16.b
+		custom_tooltip = dhe_tokyo_governor_16b_tt
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = -3 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = 6 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = -2 }
+		}
+	}
+}
+
+dhe_japan_control.17 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.17.t
+	desc = dhe_japan_control.17.d
+	flavor = dhe_japan_control.17.f
+	icon = "gfx/interface/icons/event_icons/event_trade.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_japanese_governor_general
+		je:je_dhe_japanese_governor_general ?= {
+			"scripted_bar_progress(dhe_progress_bar_japanese_governor_general_collaboration)" >= 50
+		}
+	}
+
+	option = {
+		name = dhe_japan_control.17.a
+		custom_tooltip = dhe_tokyo_governor_17a_tt
+		add_treasury = -20000
+		set_variable = { name = dhe_tokyo_governor_policy_collaboration_focus days = 540 }
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = 4 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = 8 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = -4 }
+		}
+	}
+
+	option = {
+		name = dhe_japan_control.17.b
+		custom_tooltip = dhe_tokyo_governor_17b_tt
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = 2 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = -4 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = 3 }
+		}
+	}
+}
+
+dhe_japan_control.18 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.18.t
+	desc = dhe_japan_control.18.d
+	flavor = dhe_japan_control.18.f
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_japanese_governor_general
+	}
+
+	option = {
+		name = dhe_japan_control.18.a
+		custom_tooltip = dhe_tokyo_governor_18a_tt
+		add_treasury = -15000
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = 5 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = 3 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = -2 }
+		}
+	}
+
+	option = {
+		name = dhe_japan_control.18.b
+		custom_tooltip = dhe_tokyo_governor_18b_tt
+		add_treasury = 10000
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = -5 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = -3 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = 5 }
+		}
+	}
+}
+
+dhe_japan_control.19 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.19.t
+	desc = dhe_japan_control.19.d
+	flavor = dhe_japan_control.19.f
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		has_journal_entry = je_dhe_japanese_governor_general
+		OR = {
+			has_variable = dhe_tokyo_governor_economic_integration_plan
+			je:je_dhe_japanese_governor_general ?= {
+				"scripted_bar_progress(dhe_progress_bar_japanese_governor_general_resistance)" >= 40
+			}
+		}
+	}
+
+	option = {
+		name = dhe_japan_control.19.a
+		custom_tooltip = dhe_tokyo_governor_19a_tt
+		add_treasury = -25000
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = 3 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = 4 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = -6 }
+		}
+	}
+
+	option = {
+		name = dhe_japan_control.19.b
+		custom_tooltip = dhe_tokyo_governor_19b_tt
+		set_variable = { name = dhe_tokyo_governor_security_patrols days = 360 }
+		je:je_dhe_japanese_governor_general ?= {
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_stability value = 2 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_collaboration value = -5 }
+			add_progress = { name = dhe_progress_bar_japanese_governor_general_resistance value = -4 }
+		}
+		c:JAP ?= { add_radicals = 10000 }
+	}
+}
+
+dhe_japan_control.20 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.20.t
+	desc = dhe_japan_control.20.d
+	flavor = dhe_japan_control.20.f
+	icon = "gfx/interface/icons/event_icons/dhe_tokyo_governor.png"
+
+	is_triggered_only = yes
+
+	option = {
+		name = dhe_japan_control.20.a
+		default_option = yes
+	}
+}
+
+dhe_japan_control.21 = {
+	type = country_event
+	placement = root
+	title = dhe_japan_control.21.t
+	desc = dhe_japan_control.21.d
+	flavor = dhe_japan_control.21.f
+	icon = "gfx/interface/icons/event_icons/dhe_tokyo_governor.png"
+
+	is_triggered_only = yes
+
+	trigger = {
+		exists = c:JAP
+		c:JAP = {
+			is_subject_of = c:KOR
+			is_subject_type = subject_type_puppet
+		}
+	}
+
+	option = {
+		name = dhe_japan_control.21.a
+		default_option = yes
+		c:JAP ?= {
+			set_variable = dhe_japanese_governor_general_country_name
+			set_variable = dhe_tokyo_governor_general_law_established
+			activate_law = law_type:law_dhe_japanese_governor_general
+			activate_law = law_type:law_oligarchy
+			activate_law = law_type:law_appointed_bureaucrats
+			activate_law = law_type:law_subjecthood
+			if = {
+				limit = {
+					NOT = { has_variable = dhe_korean_governor_sent }
+				}
+				set_variable = dhe_korean_governor_sent
+				create_character = {
+					first_name = dhe_hong_jip
+					last_name = dhe_kim
+					culture = cu:korean
+					religion = rel:mahayana
+					interest_group = ig_armed_forces
+					ideology = ideology_moderate
+					age = 55
+					ruler = yes
+				}
+			}
+			add_modifier = { name = dhe_mod_korean_governor_installed months = 120 }
+			add_radicals = 25000
+		}
+	}
+}

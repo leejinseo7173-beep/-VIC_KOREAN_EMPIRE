@@ -1,0 +1,27 @@
+building_dhe_imperial_military_academy = {
+	building_group = bg_dhe_imperial_military_academy
+	icon = "gfx/interface/icons/building_icons/dhe_imperial_military_academy.dds"
+	city_type = city
+	levels_per_mesh = 5
+	has_max_level = yes
+
+	production_method_groups = {
+		pmg_dhe_imperial_military_academy_base
+		pmg_dhe_imperial_military_academy_doctrine
+	}
+
+	potential = {
+		state_region = s:STATE_SEOUL
+	}
+
+	can_build_government = {
+		custom_tooltip = {
+			text = dhe_imperial_military_academy_unlock_tt
+			has_global_variable = dhe_imperial_military_academy_unlocked
+		}
+	}
+
+	required_construction = construction_cost_medium
+	ai_value = 10000
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_monuments.dds"
+}

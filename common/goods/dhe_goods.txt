@@ -1,0 +1,25 @@
+ginseng = {
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/ginseng.dds"
+	cost = 45
+	category = luxury
+
+	obsession_chance = 0.25
+	prestige_factor = 4
+	traded_quantity = 5
+	convoy_cost_multiplier = 0.25
+
+	consumption_tax_cost = 300
+}
+
+hanyak = {
+	texture = "gfx/interface/icons/goods_icons/groceries.dds"
+	cost = 60
+	category = luxury
+
+	obsession_chance = 0.15
+	prestige_factor = 5
+	traded_quantity = 4
+	convoy_cost_multiplier = 0.4
+
+	consumption_tax_cost = 350
+}

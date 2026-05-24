@@ -1,0 +1,4 @@
+colors = {
+	ginseng = hsv360 { 120 45 65 }
+	hanyak = hsv360 { 32 70 76 }
+}

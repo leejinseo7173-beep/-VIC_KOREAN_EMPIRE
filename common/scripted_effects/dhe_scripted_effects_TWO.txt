@@ -1,0 +1,394 @@
+﻿# ==========================================================
+# ==========================================================
+dhe_transfer_next_jiandao_province = {
+	if = {
+		limit = { p:x031AD1 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x031AD1
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xDF828B = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xDF828B
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:x76800C = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x76800C
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xA05162 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xA05162
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xE43B63 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xE43B63
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xA05646 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xA05646
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xF956C5 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xF956C5
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:x3F61E8 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x3F61E8
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:x5D6142 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x5D6142
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+}
+
+# ==========================================================
+#
+# ==========================================================
+dhe_count_korean_jiandao_provinces = {
+	set_variable = { name = dhe_jiandao_korean_province_count value = 0 }
+	
+	if = {
+		limit = { p:x031AD1 = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+	if = {
+		limit = { p:x76800C = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+	if = {
+		limit = { p:xA05162 = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+	if = {
+		limit = { p:xA05646 = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+	if = {
+		limit = { p:xDF828B = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+	if = {
+		limit = { p:xE43B63 = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+	if = {
+		limit = { p:xF956C5 = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+	if = {
+		limit = { p:x3F61E8 = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+	if = {
+		limit = { p:x5D6142 = { owner = ROOT } }
+		change_variable = {
+			name = dhe_jiandao_korean_province_count
+			add = 1
+		}
+	}
+}
+dhe_transfer_outer_manchuria_prov = {
+	if = {
+		limit = { p:x60D080 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x60D080
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:x55EDE2 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x55EDE2
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:x08BE7F = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x08BE7F
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:x79F88A = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x79F88A
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:x8811C4 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x8811C4
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:x1E0962 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x1E0962
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xA748D2 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xA748D2
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xF44CBD = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xF44CBD
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xF44CBD = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xF44CBD
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xCD3C76 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xCD3C76
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xF8C942 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xF8C942
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	#dDSDSDD			
+	else_if = {
+		limit = { p:x9F61D4 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = x9F61D4
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xD93024 = { owner = c:CHI } }
+		transfer_province = {
+			PROVINCE = xD93024
+			GIVER = c:CHI
+			TAKER = ROOT
+		}
+	}
+	else_if = {
+		limit = { p:xEFA41F = { owner = c:CHI } }
+		transfer_province = { PROVINCE = xEFA41F GIVER = c:CHI TAKER = ROOT }
+	}	
+}
+
+# ==========================================================
+# 삼정이정청: 민심 불안 변수 게이지
+# - Victoria 3 v1.13 바닐라 JE current_value/goal_add_value 문법과
+#   Joseon Flavor Pack의 임술민란 변수 게이지 패턴을 따른다.
+# ==========================================================
+dhe_samjeong_init_unrest_gauge = {
+	if = {
+		limit = { NOT = { has_variable = dhe_samjeong_unrest_gauge } }
+		set_variable = {
+			name = dhe_samjeong_unrest_gauge
+			value = 350
+		}
+	}
+	dhe_samjeong_resolve_unrest_gauge = yes
+}
+
+dhe_samjeong_resolve_unrest_gauge = {
+	if = {
+		limit = { var:dhe_samjeong_unrest_gauge > 1000 }
+		set_variable = {
+			name = dhe_samjeong_unrest_gauge
+			value = 1000
+		}
+	}
+	if = {
+		limit = { var:dhe_samjeong_unrest_gauge < 0 }
+		set_variable = {
+			name = dhe_samjeong_unrest_gauge
+			value = 0
+		}
+	}
+
+	if = { limit = { has_modifier = dhe_mod_samjeong_unrest_low } remove_modifier = dhe_mod_samjeong_unrest_low }
+	if = { limit = { has_modifier = dhe_mod_samjeong_unrest_high } remove_modifier = dhe_mod_samjeong_unrest_high }
+	if = { limit = { has_modifier = dhe_mod_samjeong_unrest_severe } remove_modifier = dhe_mod_samjeong_unrest_severe }
+
+	if = {
+		limit = { var:dhe_samjeong_unrest_gauge >= 750 }
+		add_modifier = { name = dhe_mod_samjeong_unrest_severe months = 2 }
+	}
+	else_if = {
+		limit = { var:dhe_samjeong_unrest_gauge >= 500 }
+		add_modifier = { name = dhe_mod_samjeong_unrest_high months = 2 }
+	}
+	else_if = {
+		limit = { var:dhe_samjeong_unrest_gauge >= 250 }
+		add_modifier = { name = dhe_mod_samjeong_unrest_low months = 2 }
+	}
+}
+
+dhe_samjeong_monthly_unrest = {
+	dhe_samjeong_init_unrest_gauge = yes
+
+	if = {
+		limit = { tax_level = very_low }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -20 }
+	}
+	else_if = {
+		limit = { tax_level = low }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -10 }
+	}
+	else_if = {
+		limit = { tax_level = medium }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = 5 }
+	}
+	else_if = {
+		limit = { tax_level = high }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = 15 }
+	}
+	else_if = {
+		limit = { tax_level = very_high }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = 30 }
+	}
+
+	if = {
+		limit = { has_law = law_type:law_hwangok_system }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = 12 }
+	}
+	if = {
+		limit = { has_law_or_variant = law_type:law_peasant_levies }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = 8 }
+	}
+	if = {
+		limit = { bureaucracy < -10 }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = 10 }
+	}
+	if = {
+		limit = { government_legitimacy >= 60 }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -8 }
+	}
+	if = {
+		limit = { average_sol < 8 }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = 12 }
+	}
+	if = {
+		limit = { average_sol >= 10 }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -6 }
+	}
+	if = {
+		limit = { any_scope_state = { turmoil >= 0.20 } }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = 15 }
+	}
+	if = {
+		limit = { ig:ig_landowners = { clout >= 0.25 } }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = 8 }
+	}
+
+	if = {
+		limit = {
+			NOT = { has_variable = dhe_samjeong_land_focus }
+			NOT = { has_variable = dhe_samjeong_military_focus }
+			NOT = { has_variable = dhe_samjeong_granary_focus }
+			NOT = { has_variable = dhe_samjeong_compromise_focus }
+		}
+		change_variable = { name = dhe_samjeong_unrest_gauge add = 8 }
+	}
+	if = {
+		limit = { has_variable = dhe_samjeong_land_focus }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = 6 }
+	}
+	if = {
+		limit = { has_variable = dhe_samjeong_military_focus }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -8 }
+	}
+	if = {
+		limit = { has_variable = dhe_samjeong_granary_focus }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -12 }
+	}
+	if = {
+		limit = { has_variable = dhe_samjeong_compromise_focus }
+		change_variable = { name = dhe_samjeong_unrest_gauge add = -6 }
+	}
+
+	dhe_samjeong_resolve_unrest_gauge = yes
+}

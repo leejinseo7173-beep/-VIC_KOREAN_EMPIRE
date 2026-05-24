@@ -1,0 +1,119 @@
+# Encoding: UTF-8 with BOM
+
+movement_dhe_independence_club = {
+	category = movement_category_ideological
+
+	ideology = ideology_liberal_movement
+	character_ideologies = {
+		ideology_reformer
+		ideology_radical
+		ideology_market_liberal
+		ideology_abolitionist
+		ideology_modernizer_leader
+	}
+
+	creation_trigger = {
+		c:KOR ?= THIS
+		has_variable = dhe_gwangmu_reform_started
+		NOT = { has_variable = dhe_independence_club_resolved }
+	}
+
+	creation_weight = {
+		value = 0
+	}
+
+	disband_trigger = {
+		has_variable = dhe_independence_club_resolved
+	}
+
+	character_support_trigger = {
+		OR = {
+			has_ideology = ideology:ideology_reformer
+			has_ideology = ideology:ideology_radical
+			has_ideology = ideology:ideology_market_liberal
+			has_ideology = ideology:ideology_abolitionist
+			has_ideology = ideology:ideology_modernizer_leader
+			scope:interest_group ?= {
+				OR = {
+					has_ideology = ideology:ideology_liberal
+					has_ideology = ideology:ideology_liberal_modern
+					has_ideology = ideology:ideology_modernizer
+					has_ideology = ideology:ideology_cartist
+				}
+			}
+		}
+	}
+
+	character_support_weight = {
+		value = 200
+		if = {
+			limit = {
+				OR = {
+					has_ideology = ideology:ideology_reformer
+					has_ideology = ideology:ideology_radical
+					has_ideology = ideology:ideology_market_liberal
+					has_ideology = ideology:ideology_modernizer_leader
+				}
+			}
+			multiply = 5
+		}
+	}
+
+	pop_support_trigger = {
+		NOR = {
+			is_pop_type = clergymen
+			is_pop_type = peasants
+			is_pop_type = slaves
+		}
+	}
+
+	pop_support_factors = {
+		movement_support_high_literacy
+		movement_support_academics
+		movement_support_bureaucrats
+		movement_support_clerks
+		movement_support_engineers
+		movement_support_capitalists
+		movement_support_shopkeepers
+	}
+
+	pop_support_weight = {
+		add = {
+			value = 10
+			desc = "POP_BASE_SUPPORT"
+		}
+		if = {
+			limit = {
+				OR = {
+					is_pop_type = academics
+					is_pop_type = bureaucrats
+					is_pop_type = clerks
+				}
+			}
+			add = {
+				value = 100
+				desc = "dhe_independence_club_educated_support"
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					is_pop_type = capitalists
+					is_pop_type = shopkeepers
+					is_pop_type = engineers
+				}
+			}
+			add = {
+				value = 50
+				desc = "dhe_independence_club_urban_support"
+			}
+		}
+	}
+
+	additional_radicalism_factors = {
+		add = {
+			value = 1
+			desc = "dhe_independence_club_public_agitation"
+		}
+	}
+}

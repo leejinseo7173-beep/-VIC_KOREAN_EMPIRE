@@ -1,0 +1,27 @@
+dhe_has_imperial_military_academy = {
+	any_scope_building = {
+		is_building_type = building_dhe_imperial_military_academy
+		level >= 1
+	}
+}
+
+dhe_has_academy_offensive_doctrine = {
+	any_scope_building = {
+		is_building_type = building_dhe_imperial_military_academy
+		has_active_production_method = pm_dhe_academy_offensive_doctrine
+	}
+}
+
+dhe_has_academy_defensive_doctrine = {
+	any_scope_building = {
+		is_building_type = building_dhe_imperial_military_academy
+		has_active_production_method = pm_dhe_academy_defensive_doctrine
+	}
+}
+
+dhe_has_academy_artillery_school = {
+	any_scope_building = {
+		is_building_type = building_dhe_imperial_military_academy
+		has_active_production_method = pm_dhe_academy_artillery_school
+	}
+}

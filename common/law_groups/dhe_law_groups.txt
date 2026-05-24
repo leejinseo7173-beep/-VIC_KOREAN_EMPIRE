@@ -1,0 +1,5 @@
+lawgroup_dhe_social_order = {
+	law_group_category = power_structure
+	ideological_opinion_impact = 0.5
+	affected_by_regime_change = yes
+}

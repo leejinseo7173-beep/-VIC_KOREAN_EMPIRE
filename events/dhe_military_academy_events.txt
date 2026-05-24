@@ -1,0 +1,147 @@
+namespace = dhe_academy_event
+
+dhe_academy_event.1 = {
+	type = country_event
+	placement = root
+
+	title = dhe_academy_event.1.t
+	desc = dhe_academy_event.1.d
+	flavor = dhe_academy_event.1.f
+
+	duration = 3
+	event_image = {
+		video = "unspecific_military_parade"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+
+	immediate = {
+		random_scope_character = {
+			limit = { has_variable = dhe_imperial_academy_trainee }
+			save_scope_as = dhe_academy_trainee
+		}
+	}
+
+	option = {
+		name = dhe_academy_event.1.a
+		default_option = yes
+		trigger_event = { id = dhe_academy_event.2 days = 90 }
+	}
+}
+
+dhe_academy_event.2 = {
+	type = country_event
+	placement = root
+
+	title = dhe_academy_event.2.t
+	desc = dhe_academy_event.2.d
+	flavor = dhe_academy_event.2.f
+
+	duration = 3
+	event_image = {
+		video = "unspecific_military_parade"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/dhe_army_reform.dds"
+
+	immediate = {
+		random_scope_character = {
+			limit = { has_variable = dhe_imperial_academy_trainee }
+			save_scope_as = dhe_academy_trainee
+		}
+	}
+
+	option = {
+		name = dhe_academy_event.2.a
+		default_option = yes
+		scope:dhe_academy_trainee = {
+			if = {
+				limit = {
+					NOT = { has_trait = basic_offensive_planner }
+				}
+				if = {
+					limit = { root = { dhe_has_academy_offensive_doctrine = yes } }
+					random_list = {
+						160 = { add_trait = basic_offensive_planner }
+						40 = { }
+					}
+				}
+				else = {
+					random_list = {
+						80 = { add_trait = basic_offensive_planner }
+						60 = { }
+					}
+				}
+			}
+			set_character_busy_and_immortal = no
+			remove_variable = dhe_imperial_academy_trainee
+		}
+		je:je_dhe_gwangmu_military_advanced ?= {
+			add_progress = { name = dhe_progress_bar_imperial_army_reform value = 8 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+		remove_variable = dhe_imperial_military_academy_training_active
+	}
+
+	option = {
+		name = dhe_academy_event.2.b
+		scope:dhe_academy_trainee = {
+			if = {
+				limit = {
+					NOT = { has_trait = stalwart_defender }
+				}
+				if = {
+					limit = { root = { dhe_has_academy_defensive_doctrine = yes } }
+					random_list = {
+						160 = { add_trait = stalwart_defender }
+						40 = { }
+					}
+				}
+				else = {
+					random_list = {
+						80 = { add_trait = stalwart_defender }
+						60 = { }
+					}
+				}
+			}
+			set_character_busy_and_immortal = no
+			remove_variable = dhe_imperial_academy_trainee
+		}
+		je:je_dhe_gwangmu_military_advanced ?= {
+			add_progress = { name = dhe_progress_bar_imperial_army_reform value = 8 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+		remove_variable = dhe_imperial_military_academy_training_active
+	}
+
+	option = {
+		name = dhe_academy_event.2.c
+		scope:dhe_academy_trainee = {
+			if = {
+				limit = {
+					NOT = { has_trait = basic_artillery_commander }
+				}
+				if = {
+					limit = { root = { dhe_has_academy_artillery_school = yes } }
+					random_list = {
+						180 = { add_trait = basic_artillery_commander }
+						40 = { }
+					}
+				}
+				else = {
+					random_list = {
+						80 = { add_trait = basic_artillery_commander }
+						60 = { }
+					}
+				}
+			}
+			set_character_busy_and_immortal = no
+			remove_variable = dhe_imperial_academy_trainee
+		}
+		je:je_dhe_gwangmu_military_advanced ?= {
+			add_progress = { name = dhe_progress_bar_imperial_army_reform value = 8 }
+		}
+		ig:ig_armed_forces = { add_ig_approval = 1 }
+		remove_variable = dhe_imperial_military_academy_training_active
+	}
+}
