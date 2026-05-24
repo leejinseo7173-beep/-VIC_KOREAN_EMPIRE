@@ -1,0 +1,152 @@
+### DHE custom foreign strategy journal widgets
+
+flowcontainer = {
+	name = "widget_je_dhe_imperial_foreign_strategy_header"
+	ignoreinvisible = yes
+	direction = vertical
+	parentanchor = hcenter
+	spacing = 8
+
+	widget = {
+		size = { 500 112 }
+		maximumsize = { 500 112 }
+		parentanchor = hcenter
+		tooltip = "dhe_foreign_strategy_widget_tt"
+
+		background = {
+			using = entry_bg
+		}
+
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			margin = { 10 8 }
+			spacing = 7
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = growing
+				spacing = 8
+
+				large_flag = {
+					datacontext = "[JournalEntry.GetCountry]"
+					size = { 30 30 }
+					parentanchor = vcenter
+				}
+
+				textbox = {
+					text = "dhe_foreign_strategy_widget_title"
+					align = left|nobaseline
+					size = { 430 26 }
+					maximumsize = { 430 26 }
+					default_format = "#header"
+					using = fontsize_medium
+					elide = right
+				}
+			}
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				spacing = 8
+
+				widget = {
+					size = { 235 58 }
+					tooltip = "dhe_foreign_strategy_widget_northern_desc"
+
+					background = {
+						using = dark_area
+					}
+
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						margin = { 7 6 }
+						spacing = 6
+
+						icon = {
+							texture = "gfx/interface/icons/lens_toolbar_icons/rivalry.dds"
+							size = { 34 34 }
+							parentanchor = vcenter
+						}
+
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							spacing = 1
+
+							textbox = {
+								text = "dhe_foreign_strategy_widget_northern"
+								align = left|nobaseline
+								size = { 170 20 }
+								maximumsize = { 170 20 }
+								default_format = "#v"
+								using = fontsize_medium
+								elide = right
+							}
+
+							textbox = {
+								text = "dhe_foreign_strategy_widget_northern_status"
+								align = left|nobaseline
+								size = { 170 18 }
+								maximumsize = { 170 18 }
+								default_format = "#v"
+								using = fontsize_small
+								elide = right
+							}
+						}
+					}
+				}
+
+				widget = {
+					size = { 235 58 }
+					tooltip = "dhe_foreign_strategy_widget_southern_desc"
+
+					background = {
+						using = dark_area
+					}
+
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						margin = { 7 6 }
+						spacing = 6
+
+						icon = {
+							texture = "gfx/interface/icons/event_icons/event_map.dds"
+							size = { 34 34 }
+							parentanchor = vcenter
+						}
+
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							spacing = 1
+
+							textbox = {
+								text = "dhe_foreign_strategy_widget_southern"
+								align = left|nobaseline
+								size = { 170 20 }
+								maximumsize = { 170 20 }
+								default_format = "#v"
+								using = fontsize_medium
+								elide = right
+							}
+
+							textbox = {
+								text = "dhe_foreign_strategy_widget_southern_status"
+								align = left|nobaseline
+								size = { 170 18 }
+								maximumsize = { 170 18 }
+								default_format = "#v"
+								using = fontsize_small
+								elide = right
+							}
+						}
+					}
+				}
+
+			}
+		}
+	}
+}

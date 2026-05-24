@@ -1,0 +1,123 @@
+### DHE custom Tokyo Governor-General journal widgets
+
+flowcontainer = {
+	name = "widget_je_dhe_tokyo_governor_header"
+	ignoreinvisible = yes
+	direction = vertical
+	parentanchor = hcenter
+	spacing = 8
+
+	widget = {
+		size = { 500 74 }
+		maximumsize = { 500 74 }
+		parentanchor = hcenter
+		tooltip = "dhe_tokyo_governor_widget_tt"
+
+		background = {
+			using = entry_bg
+		}
+
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			margin = { 10 8 }
+			spacing = 8
+
+			vbox = {
+				layoutpolicy_horizontal = growing
+				layoutpolicy_vertical = expanding
+				spacing = 4
+				tooltip = "dhe_tokyo_governor_widget_control_desc"
+
+				icon = {
+					texture = "gfx/interface/icons/invention_icons/bureaucracy.dds"
+					size = { 34 34 }
+					parentanchor = hcenter
+				}
+
+				textbox = {
+					text = "dhe_tokyo_governor_widget_control"
+					align = center|nobaseline
+					size = { 105 22 }
+					maximumsize = { 105 22 }
+					parentanchor = hcenter
+					default_format = "#v"
+					using = fontsize_medium
+					elide = right
+				}
+			}
+
+			vbox = {
+				layoutpolicy_horizontal = growing
+				layoutpolicy_vertical = expanding
+				spacing = 4
+				tooltip = "dhe_tokyo_governor_widget_collaboration_desc"
+
+				icon = {
+					texture = "gfx/interface/icons/event_icons/event_trade.dds"
+					size = { 34 34 }
+					parentanchor = hcenter
+				}
+
+				textbox = {
+					text = "dhe_tokyo_governor_widget_collaboration"
+					align = center|nobaseline
+					size = { 105 22 }
+					maximumsize = { 105 22 }
+					parentanchor = hcenter
+					default_format = "#v"
+					using = fontsize_medium
+					elide = right
+				}
+			}
+
+			vbox = {
+				layoutpolicy_horizontal = growing
+				layoutpolicy_vertical = expanding
+				spacing = 4
+				tooltip = "dhe_tokyo_governor_widget_resistance_desc"
+
+				icon = {
+					texture = "gfx/interface/icons/event_icons/event_protest.dds"
+					size = { 34 34 }
+					parentanchor = hcenter
+				}
+
+				textbox = {
+					text = "dhe_tokyo_governor_widget_resistance"
+					align = center|nobaseline
+					size = { 105 22 }
+					maximumsize = { 105 22 }
+					parentanchor = hcenter
+					default_format = "#v"
+					using = fontsize_medium
+					elide = right
+				}
+			}
+
+			vbox = {
+				layoutpolicy_horizontal = growing
+				layoutpolicy_vertical = expanding
+				spacing = 4
+				tooltip = "dhe_tokyo_governor_widget_policy_desc"
+
+				icon = {
+					texture = "gfx/interface/icons/event_icons/event_newspaper.dds"
+					size = { 34 34 }
+					parentanchor = hcenter
+				}
+
+				textbox = {
+					text = "dhe_tokyo_governor_widget_policy"
+					align = center|nobaseline
+					size = { 105 22 }
+					maximumsize = { 105 22 }
+					parentanchor = hcenter
+					default_format = "#v"
+					using = fontsize_medium
+					elide = right
+				}
+			}
+		}
+	}
+}

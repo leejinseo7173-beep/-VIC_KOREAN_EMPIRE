@@ -1,0 +1,219 @@
+### DHE Samjeong Reform Journal Widget
+
+flowcontainer = {
+	name = "widget_je_dhe_samjeong_header"
+	ignoreinvisible = yes
+	direction = vertical
+	parentanchor = hcenter
+
+	widget = {
+		size = { 500 154 }
+		maximumsize = { 500 154 }
+		parentanchor = hcenter
+		tooltip = "dhe_samjeong_widget_tt"
+
+		background = {
+			using = entry_bg
+		}
+
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			margin = { 10 8 }
+			spacing = 6
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				spacing = 8
+
+				widget = {
+					size = { 92 104 }
+					tooltip = "dhe_samjeong_widget_ruler_tt"
+
+					background = {
+						using = dark_area
+					}
+
+					character_portrait_large_torso = {
+						parentanchor = top|hcenter
+						position = { 0 3 }
+						datacontext = "[JournalEntry.GetCountry.GetRuler]"
+						blockoverride "show_hat" {}
+						blockoverride "highlight" {}
+						blockoverride "portrait_size" {
+							size = { 78 78 }
+						}
+					}
+
+					textbox = {
+						parentanchor = bottom|hcenter
+						position = { 0 -5 }
+						text = "dhe_samjeong_widget_ruler"
+						align = center|nobaseline
+						size = { 84 18 }
+						maximumsize = { 84 18 }
+						default_format = "#v"
+						using = fontsize_small
+						elide = right
+					}
+				}
+
+				widget = {
+					size = { 123 104 }
+					tooltip = "dhe_samjeong_widget_land_desc"
+
+					background = {
+						using = dark_area
+					}
+
+					vbox = {
+						parentanchor = hcenter
+						position = { 0 7 }
+						spacing = 4
+
+						icon = {
+							texture = "gfx/interface/icons/event_icons/dhe_samjeong_land_badge.dds"
+							size = { 38 38 }
+							parentanchor = hcenter
+						}
+
+						textbox = {
+							text = "dhe_samjeong_widget_land"
+							align = center|nobaseline
+							size = { 112 20 }
+							maximumsize = { 112 20 }
+							default_format = "#gold"
+							using = fontsize_small
+							elide = right
+						}
+
+						textbox = {
+							text = "dhe_samjeong_widget_land_status"
+							align = center|nobaseline
+							size = { 112 20 }
+							maximumsize = { 112 20 }
+							default_format = "#v"
+							using = fontsize_small
+							elide = right
+						}
+					}
+				}
+
+				widget = {
+					size = { 123 104 }
+					tooltip = "dhe_samjeong_widget_military_desc"
+
+					background = {
+						using = dark_area
+					}
+
+					vbox = {
+						parentanchor = hcenter
+						position = { 0 7 }
+						spacing = 4
+
+						icon = {
+							texture = "gfx/interface/icons/event_icons/dhe_samjeong_military_badge.dds"
+							size = { 38 38 }
+							parentanchor = hcenter
+						}
+
+						textbox = {
+							text = "dhe_samjeong_widget_military"
+							align = center|nobaseline
+							size = { 112 20 }
+							maximumsize = { 112 20 }
+							default_format = "#gold"
+							using = fontsize_small
+							elide = right
+						}
+
+						textbox = {
+							text = "dhe_samjeong_widget_military_status"
+							align = center|nobaseline
+							size = { 112 20 }
+							maximumsize = { 112 20 }
+							default_format = "#v"
+							using = fontsize_small
+							elide = right
+						}
+					}
+				}
+
+				widget = {
+					size = { 123 104 }
+					tooltip = "dhe_samjeong_widget_granary_desc"
+
+					background = {
+						using = dark_area
+					}
+
+					vbox = {
+						parentanchor = hcenter
+						position = { 0 7 }
+						spacing = 4
+
+						icon = {
+							texture = "gfx/interface/icons/event_icons/dhe_samjeong_granary_badge.dds"
+							size = { 38 38 }
+							parentanchor = hcenter
+						}
+
+						textbox = {
+							text = "dhe_samjeong_widget_granary"
+							align = center|nobaseline
+							size = { 112 20 }
+							maximumsize = { 112 20 }
+							default_format = "#gold"
+							using = fontsize_small
+							elide = right
+						}
+
+						textbox = {
+							text = "dhe_samjeong_widget_granary_status"
+							align = center|nobaseline
+							size = { 112 20 }
+							maximumsize = { 112 20 }
+							default_format = "#v"
+							using = fontsize_small
+							elide = right
+						}
+					}
+				}
+			}
+
+			widget = {
+				size = { 480 28 }
+				tooltip = "dhe_samjeong_widget_unrest_desc"
+
+				background = {
+					using = dark_area
+				}
+
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					margin = { 8 4 }
+					spacing = 7
+
+					icon = {
+						texture = "gfx/interface/icons/event_icons/event_protest.dds"
+						size = { 20 20 }
+						parentanchor = vcenter
+					}
+
+					textbox = {
+						text = "dhe_samjeong_widget_footer"
+						align = left|nobaseline
+						size = { 435 18 }
+						maximumsize = { 435 18 }
+						default_format = "#v"
+						using = fontsize_small
+						elide = right
+					}
+				}
+			}
+		}
+	}
+}
